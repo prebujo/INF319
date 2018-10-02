@@ -1,0 +1,43 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\title{Pickup \& Delivery Problem with Mulitiple Time Windows}
+\author{Preben Bucher-Johannessen}
+\date{\today}
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+TODO..
+
+\section{Problem Formulation}
+Our problem is typically for a vehicle manufacturing company that has a certain set of factories where the vehicles are produced, each with a set of demanded parts for production. The parts, or orders (typically named transport orders but we refer to orders here), can be delivered from a set of suppliers. At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistics companies. \par 
+The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not considered neither is time). The cost structure can be multidimentional taking into account total distance and volume in different formats (variable costs, fix costs etc). \par
+When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock. The docks in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can visit at each factory. \par
+Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
+The mathematical formulation of the problem will now follow where the set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$. We let $n$ be the number of orders in the problem, so if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order. Here it follows that for each vehicle we have a set $O_i^v$ of orders $i \in m$ that vehicle $v \in V$ can transport based on the incompatabilities. The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. The delivery nodes that belong to one factory can then be represented as $N_f^D = N_f \subset N^D$. The factory docking limit is denoted by  Each node has $l$ time windows represented by $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $i \in n$ and $k \in l$. each vehicle has a current time based on which node its currently at, denoted by $t_{iv}$ and a current load, denoted by $l_{iv}$, where $i \in n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ijv}$  (which should be calculated on some formula $C_v(l^{max}_{v})(d^{max}_{v})(d_{ij})$ where $d^{max}_{v}$ and $l^{max}_{v}$ represent the maksimum total distance/load for vehicle $v$. TODO.. still not sure of this part). $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
+\begin{equation} \label{eq:1}
+min\sum_{v\epsilon V} \sum_{(i,j)\epsilon A_v} C_{ijv}x_{ijv} + \sum_{i\in N^P}C^Ny_i
+\end{equation}
+
+subject to:
+\begin{equation}
+min\sum_{v\epsilon V}\sum_{(i,j)\epsilon N_v}
+\end{equation}
+
+
+
+\par
+The objective function \ref{eq:1} sums up to the cost of the spot cars and the aim is to minimize these costs.
+
+
+\section{Solution in AMPL}
+TODO..
+\end{document}
