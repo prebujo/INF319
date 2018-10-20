@@ -23,29 +23,63 @@ Our problem is typically for a vehicle manufacturing company that has a certain 
 The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not considered neither is time). The cost structure can be multidimentional taking into account total distance and volume in different formats (variable costs, fix costs etc). \par
 When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock. The docks in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can visit at each factory. \par
 Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
-The mathematical formulation of the problem will now follow where the set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$. We let $n$ be the number of orders in the problem, so if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order. Here it follows that for each vehicle we have a set $O_v$ of orders that vehicle $v \in V$ can transport based on the incompatabilities. The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. The delivery nodes that belong to one factory can then be represented as $N_f^D = N_f \subset N^D$. Each vehicle has a set of Nodes it can travel to (corresponding to orders $O_v$) represented by $N_v$. This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. The set of Edges that each vehicle can traverse is represented by $E_v$. The factory docking limit is denoted by $D_f$. Each vehicle has a given amount of docks per factory it wants to deliver to represented by $d_{fv}$. \par 
-Each node has a set of $h$ time windows represented by $T_i^h$ which contains tuples of $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$. each vehicle has a current time based on which node its currently at, denoted by $t_{iv}$ and a current load, denoted by $l_{iv}$, where $i \in n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ijv}^{q(v)w(v)}$  (). $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
+The mathematical formulation of the problem will now follow where the set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$. We let $n$ be the number of orders in the problem, so if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order. Here it follows that for each vehicle we have a set $O_v$ of orders that vehicle $v \in V$ can transport based on the incompatabilities. The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. The delivery nodes that belong to one factory can then be represented as $N_f^D = N_f \subset N^D$. Each vehicle has a set of Nodes it can travel to (corresponding to orders $O_v$) represented by $N_v$. This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. The set of Edges that each vehicle can traverse is represented by $E_v$. The factory docking limit is denoted by $D_f$. Each vehicle has a given amount of docks per factory it wants to deliver to represented by $d_{f}^v$. \par 
+Each node has a set of $h$ time windows represented by $T_i^h$ which contains tuples of $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$. each vehicle has a current time based on which node its currently at, denoted by $t_{i}^v$ and a current load, denoted by $l_{i}^v$, where $i \in n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ij}^{vq(v)w(v)}$ and the corresponding time between the nodes $T_{ij}^v$. $l_{i}^v$ is the load of vehicle $v$ leaving node $i$ and $x_{ij}^v$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
 \begin{equation}
 \label{eq:1}
-min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} C_{ijv}^{q(v)w(v)}x_{ijv} + \sum_{i\in N^P}C^Ny_i
+min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} C_{ij}^{vq(v)w(v)}x_{ij}^v + \sum_{i\in N^P}C^Ny_i
 \end{equation}
 
 subject to:
 \begin{equation} \label{eq:2}
-\sum_{v\epsilon V}\sum_{j\epsilon N_v} x_{ijv} + y_i >= 1, ~~~~~ i \in N^P
+\sum_{v\epsilon V}\sum_{j\epsilon N_v} x_{ij}^v + y_i >= 1, ~~~~~ i \in N^P
 \end{equation}
 
 \begin{equation} \label{eq:3}
-\sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v} x_{jiv} = 0, ~~~~~ v \in V, i\in N_v \backslash \{o(v), d(v)\} 
+\sum_{j\epsilon N_v}x_{ij}^v - \sum_{j\epsilon N_v} x_{ji}^v = 0, ~~~~~ v \in V, i\in N_v \backslash \{o(v), d(v)\} 
 \end{equation}
 
 \begin{equation} \label{eq:4}
-\sum_{j\epsilon N_v} x_{o(v)jv} = 1, ~~~~~ v \in V
+\sum_{j\epsilon N_v} x_{o(v)j}^v = 1, ~~~~~ v \in V
 \end{equation}
 
-\begin{equation} \label{eq:4}
-\sum_{j\epsilon N_v} x_{j d(v)v} = 1, ~~~~~ v \in V
+\begin{equation} \label{eq:5}
+\sum_{j\epsilon N_v} x_{j d(v)}^v = 1, ~~~~~ v \in V
 \end{equation}
+
+\begin{equation} \label{eq:6}
+\sum_{j\epsilon N_v}x_{ij}^v - \sum_{j\epsilon N_v} x_{(i+n)j}^v = 0, ~~~~~ v \in V, i\in N^P_v
+\end{equation}
+
+\begin{equation} \label{eq:7}
+0 \leq l_{i}^v \leq K_v, ~~~~~~~~ v \in V, i \in N^P_v
+\end{equation}
+
+\begin{equation} \label{eq:8}
+0 \leq d_{if}^v \leq D_f, ~~~~~~~~ v \in V, i \in N^D_v, f \in F
+\end{equation}'
+
+\begin{equation} \label{eq:9}
+t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
+\end{equation}
+
+\begin{equation} \label{eq:10}
+t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
+\end{equation}'
+
+\begin{equation} \label{eq:13}
+  \underline{T_{ik}} \leq t_{i}^v \leq  \overline{T_{ik}}, ~~~~~~~~ v \in V, i \in N_v,
+\end{equation}
+
+\begin{equation} \label{eq:14}
+y_i \in \{0, 1\} ~~~~ i \in N_v^P
+\end{equation}
+
+\begin{equation} \label{eq:15}
+x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
+\end{equation}
+
+
 
 
 
@@ -65,10 +99,15 @@ $N^P$ - pickup nodes\newline
 $N^D$ - delivery Nodes\newline
 $f \in F$ - Factory\newline
 $D_f$ - Factory docking limit\newline
-$d_{fv}$ - docking amount per vehicle per factory\newline
-$C_{ijv}^{q w}$ - Cost of transport from $i$ to $j$ with vehicle $v$ given the vehicles $q$ and $w$ \newline
+$d_{if}^v$ - docking amount at node $i$ per vehicle $v$ and factory$f$ \newline
+$C_{ij}^{v q w}$ - Cost of transport from $i$ to $j$ with vehicle $v$ given the vehicles $q$ and $w$ \newline
 $T_i^h$ - Node $i$ has a sets of $h$ time windows in tuples $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$  \newline
-$E_v$ - Edges that vehicle $v$ can traverse
+$T_{ij}^v$ - Travel time from $i$ to $j$ using $v$
+$E_v$ - Edges that vehicle $v$ can traverse \newline
+$l_{i}^v$ - Load at node $i$ with vehicle $v$ \newline
+$x_{ij}^v$ - binary variable indicating travel from $i$ to $j$ with $v$ \newline
+$y_i$ - binary indicating order not picked up \newline
+$C^N$ - cost of not transporting an order \newline
 
 \section{Solution in AMPL}
 TODO..
