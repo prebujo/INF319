@@ -27,7 +27,7 @@ The mathematical formulation of the problem will now follow where the set of veh
 Each node has a set of $h$ time windows represented by $T_i^h$ which contains tuples of $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$. each vehicle has a current time based on which node its currently at, denoted by $t_{i}^v$ and a current load, denoted by $l_{i}^v$, where $i \in n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ij}^{vq(v)w(v)}$ and the corresponding time between the nodes $T_{ij}^v$. $l_{i}^v$ is the load of vehicle $v$ leaving node $i$ and $x_{ij}^v$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
 \begin{equation}
 \label{eq:1}
-min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} C_{ij}^{vq(v)w(v)}x_{ij}^v + \sum_{i\in N^P}C^Ny_i
+min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} C_{ij}^vx_{ij}^v + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
@@ -64,8 +64,16 @@ t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~
 \end{equation}
 
 \begin{equation} \label{eq:10}
-t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
+    t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
 \end{equation}'
+
+\begin{equation} \label{eq:11}
+    q^v = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ij}^vq_{ij}^v,~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:12}
+    0 \leq q_v \leq Q_1w_1
+\end{equation}
 
 \begin{equation} \label{eq:13}
   \underline{T_{ik}} \leq t_{i}^v \leq  \overline{T_{ik}}, ~~~~~~~~ v \in V, i \in N_v,
@@ -97,10 +105,11 @@ $q(v)$ - Max travel distance for Vehicle $v$ \newline
 $O_v$ - Set of orders $i$ that vehicle $v$ can transport \newline
 $N^P$ - pickup nodes\newline
 $N^D$ - delivery Nodes\newline
+$E^v$ - Edges/Arcs the vehicle $v$ can traverse
 $f \in F$ - Factory\newline
 $D_f$ - Factory docking limit\newline
 $d_{if}^v$ - docking amount at node $i$ per vehicle $v$ and factory$f$ \newline
-$C_{ij}^{v q w}$ - Cost of transport from $i$ to $j$ with vehicle $v$ given the vehicles $q$ and $w$ \newline
+$C_{ij}^{v}$ - Cost of transport from $i$ to $j$ with vehicle $v$ \newline
 $T_i^h$ - Node $i$ has a sets of $h$ time windows in tuples $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$  \newline
 $T_{ij}^v$ - Travel time from $i$ to $j$ using $v$
 $E_v$ - Edges that vehicle $v$ can traverse \newline
