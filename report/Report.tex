@@ -32,61 +32,82 @@ min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} \sum_{s \epsilon S} C_{ijvs}x_{ij
 
 subject to:
 \begin{equation} \label{eq:2}
-    \sum_{v\epsilon V}\sum_{j\epsilon N_v}\sum_{s\epsilon S} x_{ijvs} + y_i >= 1, ~~~~~ i \in N^P
+    \sum_{s\epsilon S} x_{ijvs} = x_{ijv} \leq 1, ~~~~~~~~ v \in V, (i, j)\in E_v
 \end{equation}
 
 \begin{equation} \label{eq:3}
-    \sum_{j\epsilon N_v}x_{ijvs} - \sum_{j\epsilon N_v}\sum_{s\epsilonS} x_{jivs} = 0, ~~~~~ v \in V, i\in N_v \backslash \{o(v), d(v)\} 
+    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i >= 1, ~~~~~ i \in N^P
 \end{equation}
 
 \begin{equation} \label{eq:4}
-\sum_{j\epsilon N_v} x_{o(v)j}^v = 1, ~~~~~ v \in V
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0, ~~~~~ v \in V, i\in N_v \backslash \{o(v), d(v)\} 
 \end{equation}
 
 \begin{equation} \label{eq:5}
-\sum_{j\epsilon N_v} x_{j d(v)}^v = 1, ~~~~~ v \in V
+    \sum_{j\epsilon N_v}x_{o(v)jv} = 1, ~~~~~ v \in V
 \end{equation}
 
 \begin{equation} \label{eq:6}
-\sum_{j\epsilon N_v}x_{ij}^v - \sum_{j\epsilon N_v} x_{(i+n)j}^v = 0, ~~~~~ v \in V, i\in N^P_v
+    \sum_{j\epsilon N_v}x_{j d(v)v} = 1, ~~~~~ v \in V
 \end{equation}
 
 \begin{equation} \label{eq:7}
-0 \leq l_{i}^v \leq K_v, ~~~~~~~~ v \in V, i \in N^P_v
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0, ~~~~~ v \in V, i\in N^P_v
 \end{equation}
 
 \begin{equation} \label{eq:8}
-0 \leq d_{if}^v \leq D_f, ~~~~~~~~ v \in V, i \in N^D_v, f \in F
-\end{equation}'
+    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),~~~~~~~~ v \in V,j\in N_v^P,(i,j) \in E_v
+\end{equation}
 
 \begin{equation} \label{eq:9}
-t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
+    l_{iv} - Q_j - l_{jv} \leq K_v(1-x_{i(j+n)v}), ~~~~~~~~ v \in V,j\in N_v^P, (i, n+j)\in E_v
 \end{equation}
 
 \begin{equation} \label{eq:10}
-    t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
-\end{equation}'
+0 \leq l_{iv} \leq K_v, ~~~~~~~~ v \in V, i \in N^P_v
+\end{equation}
 
 \begin{equation} \label{eq:11}
-    q^v = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ij}^vq_{ij}^v,~~~~~~~~ v \in V
+    h_{ifv} + 1 - h_{jfv} \leq H_f(1-x_{ijv}), ~~~~~~~~ v \in V,j\in N_v^P, (i, j)\in E_v
 \end{equation}
 
 \begin{equation} \label{eq:12}
-    0 \leq q_v \leq Q_1w_1
+    h_{ifv} - 1 - h_{jfv} \leq H_f(1-x_{i(j+n)v}), ~~~~~~~~ v \in V,j\in N_v^P, (i, n+j)\in E_v
 \end{equation}
 
 \begin{equation} \label{eq:13}
-  \underline{T_{ik}} \leq t_{i}^v \leq  \overline{T_{ik}}, ~~~~~~~~ v \in V, i \in N_v,
-\end{equation}
+0 \leq h_{ifv} \leq H_f, ~~~~~~~~ v \in V, i \in N^D_v, f \in F
+\end{equation}'
 
 \begin{equation} \label{eq:14}
-y_i \in \{0, 1\} ~~~~ i \in N_v^P
+t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
 \end{equation}
 
 \begin{equation} \label{eq:15}
-x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
+    t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
+\end{equation}'
+
+\begin{equation} \label{eq:16}
+  \underline{T_{ik}} \leq t_{i}^v \leq  \overline{T_{ik}}, ~~~~~~~~ v \in V, i \in N_v,
 \end{equation}
 
+
+\begin{equation} \label{eq:17}
+    d_v = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:18}
+    B_{(s-1)}x_{ijvs} \leq d_v \leq B_sx_{ijvs}
+\end{equation}
+
+\begin{equation} \label{eq:19}
+y_i \in \{0, 1\} ~~~~ i \in N_v^P
+\end{equation}
+
+
+\begin{equation} \label{eq:20}
+x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
+\end{equation}
 
 
 
