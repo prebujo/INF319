@@ -78,9 +78,9 @@ subject to:
 \begin{equation} \label{eq:13}
 0 \leq h_{ifv} \leq H_f, ~~~~~~~~ v \in V, i \in N^D_v, f \in F
 \end{equation}'
-
+TODO: this is just a copy from another paper need to find some solution here
 \begin{equation} \label{eq:14}
-t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
+    t_{iv} + T_{ijv} - t_{jv} \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
 \end{equation}
 
 \begin{equation} \label{eq:15}
@@ -88,24 +88,27 @@ t_{iv} + T_{ij}^v - t_{j}^v \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~
 \end{equation}'
 
 \begin{equation} \label{eq:16}
-  \underline{T_{ik}} \leq t_{i}^v \leq  \overline{T_{ik}}, ~~~~~~~~ v \in V, i \in N_v,
+    \sum_{a\epsilon A} u_{ia} \leq 1, ~~~~~~~~ v \in V, i\in E_v
 \end{equation}
-
-
+TODO: not final but need something like this
 \begin{equation} \label{eq:17}
+    u_{ia}\underline{T_{ia}} \leq t_{iv} \leq  \overline{T_{ia}}u_{ia}, ~~~~~~~~ v \in V, i \in N_v,
+\end{equation}
+TODO: The following should work but I also need to find a way to integrate total weight in the equation
+\begin{equation} \label{eq:18}
     d_v = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
 \end{equation}
 
-\begin{equation} \label{eq:18}
+\begin{equation} \label{eq:19}
     B_{(s-1)}x_{ijvs} \leq d_v \leq B_sx_{ijvs}
 \end{equation}
 
-\begin{equation} \label{eq:19}
+\begin{equation} \label{eq:20}
 y_i \in \{0, 1\} ~~~~ i \in N_v^P
 \end{equation}
 
 
-\begin{equation} \label{eq:20}
+\begin{equation} \label{eq:21}
 x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
 \end{equation}
 
@@ -116,29 +119,30 @@ x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
 The objective function (\ref{eq:1}) sums up to the cost of the spot cars and the aim is to minimize these costs. \newline \newline
 
 
-List of Variables: \newline
+List of Variables and parameters: \newline
 $v \in V$ - Vehicles \newline
 $n$ - number of orders\newline
 $s \in S$ - size of cost structure regarding distance \newline
 $i$ - orders\newline
 $K_v$ - Vehicle Capacity \newline
-$w(v)$ - Max load for Vehicle $v$ \newline
-$q(v)$ - Max travel distance for Vehicle $v$ \newline
 $O_v$ - Set of orders $i$ that vehicle $v$ can transport \newline
 $N^P$ - pickup nodes\newline
 $N^D$ - delivery Nodes\newline
-$E^v$ - Edges/Arcs the vehicle $v$ can traverse
+$E_v$ - Edges/Arcs the vehicle $v$ can traverse\newline
 $f \in F$ - Factory\newline
 $H_f$ - Factory docking limit\newline
-$h_{if}^v$ - docking amount at node $i$ per vehicle $v$ and factory$f$ \newline
-$C_{ij}^{v}$ - Cost of transport from $i$ to $j$ with vehicle $v$ \newline
-$T_i^h$ - Node $i$ has a sets of $h$ time windows in tuples $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$  \newline
-$T_{ij}^v$ - Travel time from $i$ to $j$ using $v$
-$E_v$ - Edges that vehicle $v$ can traverse \newline
-$l_{i}^v$ - Load at node $i$ with vehicle $v$ \newline
-$x_{ij}^v$ - binary variable indicating travel from $i$ to $j$ with $v$ \newline
+$h_{ifv}$ - docking amount at node $i$ per vehicle $v$ and factory$f$ \newline
+$C_{ijvs}$ - Cost of transport from $i$ to $j$ with vehicle $v$ \newline
+$T_{ia}$ - Node $i$ has a sets of $a$ time windows in tuples $[ \underline{T_{ia}},  \overline{T_{ia}} ]$ where $a \in A$ \newline
+$T_{ijv}$ - Travel time from $i$ to $j$ using $v$\newline
+$u_{ia}$ - binary variable for timewindow $a$ at node $i$\newline 
+$l_{iv}$ - Load at node $i$ with vehicle $v$ \newline
+$Q_j$ - weight of order at node j \newline
+$x_{ijvs}$ - binary variable indicating travel from $i$ to $j$ with $v$ \newline
+$x_{ijv}$ - sum of $x_{ijvs}$ for all $s\in S$ \newline
 $y_i$ - binary indicating order not picked up \newline
-$C^N$ - cost of not transporting an order \newline
+$C_i$ - cost of not transporting an order at node $i$ \newline
+$B_s$ - cost structure based on distance, $B_1 = 0$ \newline
 
 \section{Solution in AMPL}
 TODO.. I wrote something again and again.. hey it worked!
