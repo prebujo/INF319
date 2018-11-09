@@ -27,7 +27,7 @@ The mathematical formulation of the problem will now follow where the set of veh
 Each node has a set of $h$ time windows represented by $T_i^h$ which contains tuples of $[ \underline{T_{ik}},  \overline{T_{ik}} ]$ where $k \in \{0,1,...,h\}$. each vehicle has a current time based on which node its currently at, denoted by $t_{i}^v$ and a current load, denoted by $l_{i}^v$, where $i \in n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ij}^{vq(v)w(v)}$ and the corresponding time between the nodes $T_{ij}^v$. $l_{i}^v$ is the load of vehicle $v$ leaving node $i$ and $x_{ij}^v$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
 \begin{equation}
 \label{eq:1}
-min\sum_{v\epsilon V} \sum_{(i,j)\epsilon E_v} \sum_{s \epsilon S} C_{ijvs}x_{ijvs} + \sum_{i\in N^P}C_iy_i
+min\sum_{v\epsilon V} \sum_{s \epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
@@ -77,7 +77,8 @@ subject to:
 
 \begin{equation} \label{eq:13}
 0 \leq h_{ifv} \leq H_f, ~~~~~~~~ v \in V, i \in N^D_v, f \in F
-\end{equation}'
+\end{equation}
+
 TODO: this is just a copy from another paper need to find some solution here
 \begin{equation} \label{eq:14}
     t_{iv} + T_{ijv} - t_{jv} \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
@@ -96,19 +97,22 @@ TODO: not final but need something like this
 \end{equation}
 TODO: The following should work but I also need to find a way to integrate total weight in the equation
 \begin{equation} \label{eq:18}
-    d_v = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
+    \sum_{s \in S}d_{vs} = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
 \end{equation}
 
 \begin{equation} \label{eq:19}
-    B_{(s-1)}x_{ijvs} \leq d_v \leq B_sx_{ijvs}
+    B_{(s-1)}w_{vs} \leq d_{vs} \leq B_sw_{vs}
 \end{equation}
 
 \begin{equation} \label{eq:20}
+ \sum_{s \in S} w_{sv} = 1 ,~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:21}
 y_i \in \{0, 1\} ~~~~ i \in N_v^P
 \end{equation}
 
-
-\begin{equation} \label{eq:21}
+\begin{equation} \label{eq:22}
 x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
 \end{equation}
 
@@ -130,6 +134,7 @@ $N^P$ - pickup nodes\newline
 $N^D$ - delivery Nodes\newline
 $E_v$ - Edges/Arcs the vehicle $v$ can traverse\newline
 $f \in F$ - Factory\newline
+$N^{Df}$ - Delivery nodes for factory f \newline
 $H_f$ - Factory docking limit\newline
 $h_{ifv}$ - docking amount at node $i$ per vehicle $v$ and factory$f$ \newline
 $C_{ijvs}$ - Cost of transport from $i$ to $j$ with vehicle $v$ \newline
