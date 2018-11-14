@@ -33,10 +33,6 @@ min\sum_{v\epsilon V} \sum_{s \epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
-\begin{equation} \label{eq:2}
-    \sum_{s\epsilon S} x_{ijvs} = x_{ijv} \leq 1, ~~~~~~~~ v \in V, (i, j)\in E_v
-\end{equation}
-
 \begin{equation} \label{eq:3}
     \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i >= 1, ~~~~~ i \in N^P
 \end{equation}
@@ -85,7 +81,7 @@ subject to:
 0 \leq h_{i}, ~~~~~~~~ i \in N
 \end{equation}
 
-TODO: possible that 14 is redundant? Should be covered by 13 right? 
+TODO: possible that \ref{eq:14} is redundant? Should be covered by \ref{eq:13} right? 
 \begin{equation} \label{eq:15}
     \sum_{p = 1}^{h_i} u_{ip} = 1, ~~~~~~~~ i\in N
 \end{equation}
@@ -99,21 +95,14 @@ TODO: possible that 14 is redundant? Should be covered by 13 right?
 \end{equation}
 
 \begin{equation} \label{eq:15}
-    t_{iv} + T_{ijv} - t_{jv} \leq (\overline{T_{ik}} + T_{ij}^v)(1 - x_{ij}^v), ~~~~~~~~ v \in V, (i,j) \in A_v
+    t_{i} + T_{ijv} + W_j - t_{j} \leq M(1 - x_{ijv}), ~~~~~~~~ v \in V, (i,j) \in E_v
 \end{equation}
 
 \begin{equation} \label{eq:16}
-    t_{i}^v + T_{i(i+n)}^v - t_{(i+n)}^v \leq 0, ~~~~~~~~ v \in V, i \in N^P_v
+    t_{i} + T_{ijv} + W_j - t_{j} \geq M(x_{ijv}-1), ~~~~~~~~ v \in V, (i,j) \in E_v
 \end{equation}'
 
-\begin{equation} \label{eq:17}
-    \sum_{a\epsilon A} u_{ia} \leq 1, ~~~~~~~~ v \in V, i\in E_v
-\end{equation}
-TODO: not final but need something like this
-\begin{equation} \label{eq:17}
-    u_{ia}\underline{T_{ia}} \leq t_{iv} \leq  \overline{T_{ia}}u_{ia}, ~~~~~~~~ v \in V, i \in N_v,
-\end{equation}
-TODO: The following should work but I also need to find a way to integrate total weight in the equation
+TODO: Still working on integrating the weight here. WIP
 \begin{equation} \label{eq:18}
     \sum_{s \in S}d_{vs} = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
 \end{equation}
@@ -127,11 +116,11 @@ TODO: The following should work but I also need to find a way to integrate total
 \end{equation}
 
 \begin{equation} \label{eq:21}
-y_i \in \{0, 1\} ~~~~ i \in N_v^P
+y_i \in \{0, 1\} ~~~~ i \in N^P
 \end{equation}
 
 \begin{equation} \label{eq:22}
-x_{ij}^v \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
+x_{ijv} \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
 \end{equation}
 
 
@@ -147,6 +136,7 @@ $n$ - number of orders\newline
 $s \in S$ - size of cost structure regarding distance \newline
 $i$ - orders\newline
 $K_v$ - Vehicle Capacity \newline
+$l_{iv}$ - Load at node $i$ with vehicle $v$ \newline
 $O_v$ - Set of orders $i$ that vehicle $v$ can transport \newline
 $N^P$ - pickup nodes\newline
 $N^D$ - delivery Nodes\newline
@@ -155,20 +145,20 @@ $E_v$ - Edges/Arcs the vehicle $v$ can traverse\newline
 $f \in F$ - Factory\newline
 $H_f$ - Factory docking limit\newline
 $h_{i}$ - factory visits at node $i$  \newline
-$C_{ijvs}$ - Cost of transport from $i$ to $j$ with vehicle $v$ \newline
 $T_{ia}$ - Node $i$ has a sets of $a$ time windows in tuples $[ \underline{T_{ia}},  \overline{T_{ia}} ]$ where $a \in A$ \newline
 $T_{ijv}$ - Travel time from $i$ to $j$ using $v$\newline
-$u_{ia}$ - binary variable for timewindow $a$ at node $i$\newline 
-$l_{iv}$ - Load at node $i$ with vehicle $v$ \newline
+$u_{ip}$ - binary variable for timewindow $p$ at node $i$\newline
+$M$ - Arbitrary large constant \newline
+$W_i$ - Waiting time at node $i$ \newline
 $Q_j$ - weight of order at node j \newline
-$x_{ijvs}$ - binary variable indicating travel from $i$ to $j$ with $v$ \newline
-$x_{ijv}$ - sum of $x_{ijvs}$ for all $s\in S$ \newline
+$x_{ijv}$ - Binary variable indicating travel from $i$ to $j$ by vehicle $v$ \newline
 $y_i$ - binary indicating order not picked up \newline
-$C_i$ - cost of not transporting an order at node $i$ \newline
-$B_s$ - cost structure based on distance, $B_1 = 0$ \newline
-
+$d_{vs}$ - total distance for vehicle $v$ \newline
+$C_{vs}$ - Cost per km for vehicle $v$ in cost structure $s$ \newline
+$w_{vs}$ - binary indicating which interval vehicle $v$ is in cost structure $s$ \newline
+$B_s$ - distance determening interval $s$ in cost structure
 \section{Solution in AMPL}
-TODO.. I wrote something again and again.. hey it worked!
+TODO.. 
 
 \section{References} \label{sec:Ref}
 
