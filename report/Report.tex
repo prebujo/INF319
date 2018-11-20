@@ -29,7 +29,7 @@ Each vehicle has a set of Nodes it can travel to (corresponding to orders $O_v$)
 Each node has a set of $h_i$ time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in \{0,1,...,h_i\}$ and all nodes should be picked up and delivered after time 0 and before time T. Each node has a current time based on when its being served, denoted by $t_{i}$ and a current load, denoted by $l_{i}$, where $i \in 2n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ij}^{vq(v)w(v)}$ and the corresponding time between the nodes $T_{ij}^v$. $l_{i}^v$ is the load of vehicle $v$ leaving node $i$ and $x_{ij}^v$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
 \begin{equation}
 \label{eq:1}
-min\sum_{v\epsilon V} \sum_{s \epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
+min\sum_{v\epsilon V} \sum_{(i,j) \epsilon E_v} c_{ijv}d_{ij}x_{ijv} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
@@ -66,53 +66,69 @@ subject to:
 \end{equation}
 
 \begin{equation} \label{eq:11}
-    h_{j} - 1 - h_{i} \leq H_f(1-x_{ijv}), ~~~~~~~~ v \in V, (i, j)\in N^D_f, f\in F
+    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}), ~~~~~~~~ v \in V, (i,j)\in E_V, i\in N^D_f, j\in N^D_f, f\in F
 \end{equation}
 
 \begin{equation} \label{eq:12}
-    h_{i} \leq H_fx_{ijv}, ~~~~~~~~ v\in V, j\in E_v\backslash N_f^D, i\in N_f^D, f\in F
+    h_{i} \leq H_f, ~~~~~~~~ v\in V, i\in N_f^D, f\in F
 \end{equation}
 
 \begin{equation} \label{eq:13}
-    h_{i} = x_{ijv}, ~~~~~~~~ v \in V, i \in N^D_f, j \in E_v\backslash N_f^D, f \in F
-\end{equation}
-
-\begin{equation} \label{eq:14}
-0 \leq h_{i}, ~~~~~~~~ i \in N
-\end{equation}
-
-TODO: possible that \ref{eq:14} is redundant? Should be covered by \ref{eq:13} right? 
-\begin{equation} \label{eq:15}
-    \sum_{p = 1}^{h_i} u_{ip} = 1, ~~~~~~~~ i\in N
+    h_{i} = x_{ijv}, ~~~~~~~~ v \in V, (i, j)\in E_V, j \notin N_f^D, i \in N^D_f, f \in F
 \end{equation}
 
 \begin{equation} \label{eq:15}
-    \sum_{p = 1}^{h_i} u_{ip}\underline{T_{ip}} \leq t_{i}, ~~~~~~~~ i\in N
+    \sum_{p\in P_i} u_{ip} = 1, ~~~~~~~~ i\in N
 \end{equation}
 
 \begin{equation} \label{eq:15}
-    \sum_{p = 1}^{h_i} u_{ip}\overline{T_{ip}} \geq t_{i}, ~~~~~~~~ i\in N
+    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i}, ~~~~~~~~ i\in N
 \end{equation}
 
 \begin{equation} \label{eq:15}
-    t_{i} + T_{ijv} + W_j - t_{j} \leq M(1 - x_{ijv}), ~~~~~~~~ v \in V, (i,j) \in E_v
+    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i}, ~~~~~~~~ i\in N
 \end{equation}
 
-\begin{equation} \label{eq:16}
-    t_{i} + T_{ijv} + W_j - t_{j} \geq M(x_{ijv}-1), ~~~~~~~~ v \in V, (i,j) \in E_v
-\end{equation}'
+\begin{equation} \label{eq:15}
+    t_{i} + T_{ijv} + w_j - t_{j} \leq (\overline{T_{\pi_i i}} + T_{ijv} + w_j)(1 - x_{ijv}), ~~~~~~~~ v \in V, (i,j) \in E_v
+\end{equation}
 
-TODO: Still working on integrating the weight here. WIP
 \begin{equation} \label{eq:18}
-    \sum_{s \in S}d_{vs} = \sum_{v \in V} \sum_{(i,j) \in E_v} x_{ijv}D_{ijv},~~~~~~~~ v \in V
+    \sum_{r \in R}l_{vr} \geq l_{iv} + Q_j,~~~~~~~~ v \in V, j\in N_v^P, (i,j)\in E_v
 \end{equation}
 
 \begin{equation} \label{eq:19}
-    B_{(s-1)}w_{vs} \leq d_{vs} \leq B_sw_{vs}
+    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs}
 \end{equation}
 
 \begin{equation} \label{eq:20}
- \sum_{s \in S} w_{sv} = 1 ,~~~~~~~~ v \in V
+ \sum_{s \in S} b_{sv} = 1 ,~~~~~~~~ v \in V
+\end{equation}
+
+
+\begin{equation} \label{eq:18}
+    \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}d_{ij},~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:19}
+    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs}
+\end{equation}
+
+\begin{equation} \label{eq:20}
+ \sum_{s \in S} b_{sv} = 1 ,~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:20}
+    \sum_{s \in S} c_{sv}d_{sv} = \sum_{(i,j) \in E_v} c_{ijv}d_{ij}x_{ijv} ,~~~~~~~~ v \in V
+\end{equation}
+
+\begin{equation} \label{eq:14}
+    c_{ijv} = c_{klv}, ~~~~~~~~ (i, j) \in E_v, (k, l) \in E_v
+\end{equation}
+
+
+\begin{equation} \label{eq:14}
+0 \leq h_{i}, ~~~~~~~~ i \in N
 \end{equation}
 
 \begin{equation} \label{eq:21}
@@ -145,17 +161,23 @@ $E_v$ - Edges/Arcs the vehicle $v$ can traverse\newline
 $f \in F$ - Factory\newline
 $H_f$ - Factory docking limit\newline
 $h_{i}$ - factory visits at node $i$  \newline
-$T_{ia}$ - Node $i$ has a sets of $a$ time windows in tuples $[ \underline{T_{ia}},  \overline{T_{ia}} ]$ where $a \in A$ \newline
+$T_{ip}$ - Node $i$ has a sets of $p$ time windows $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i =\{1,..,\pi_i \}$ \newline
 $T_{ijv}$ - Travel time from $i$ to $j$ using $v$\newline
-$u_{ip}$ - binary variable for timewindow $p$ at node $i$\newline
+$u_{ip}$ - binary variable for timewindow $p\in P_i$ at node $i$\newline
 $M$ - Arbitrary large constant \newline
-$W_i$ - Waiting time at node $i$ \newline
+$w_i$ - Waiting time at node $i$ \newline
 $Q_j$ - weight of order at node j \newline
 $x_{ijv}$ - Binary variable indicating travel from $i$ to $j$ by vehicle $v$ \newline
 $y_i$ - binary indicating order not picked up \newline
-$d_{vs}$ - total distance for vehicle $v$ \newline
-$C_{vs}$ - Cost per km for vehicle $v$ in cost structure $s$ \newline
-$w_{vs}$ - binary indicating which interval vehicle $v$ is in cost structure $s$ \newline
+$d_{ij}$ - distance between node $i$ and $j$\newline
+$r \in R = \{1,...,\alpha\}$ - cost structure for vehicle $v$ weight dimension\newline
+$l_{vr}$ - weight of vehicle $v$ and fitting in cost matrix part $r$ \newline
+$A_r$ - interval weight limit $r$ of costmatrix\newline
+$a_{vr}$ - binary variable determining interval $r$ in cost structure of vehicle $v$\newline 
+$s \in S = \{1,...,\beta_v\}$ - cost structure in distance dimention \newline
+$d_{vs}$ - the total distance for vehicle $v$ fitting in the cost structure $s$ \newline
+$c_{vs}$ - Cost per km for vehicle $v$ in cost structure $s$ \newline
+$b_{vs}$ - binary indicating which interval vehicle $v$ is in cost structure $s$ \newline
 $B_s$ - distance determening interval $s$ in cost structure
 \section{Solution in AMPL}
 TODO.. 
