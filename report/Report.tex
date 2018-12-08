@@ -1,8 +1,9 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{pgfplots}
+\usepackage{amsmath}
 \usepackage{hyperref}
-
+\usepackage[square,sort,comma,numbers]{natbib}
 \begin{document}
 
 \title{Pickup \& Delivery Problem with Mulitiple Time Windows}
@@ -16,182 +17,194 @@
 \pagenumbering{arabic}
 
 \section{Introduction}
-TODO..
+The automobile industry is one of the most significant industries in Europe today which is facing high cost-reduction pressure from fierce international competition and difficult conditions.\cite{4flowWeb}
+The supply chain process in automobile industry requires alot of flexibility in their planning and modelling of transportation which often takes the form some sort of vehicle transportation problem.
+In planning the most efficient way of organizing your transportation network the classical VRPTW from is likely the first problem that comes to mind.
+
+\cite{parragh08}
+The Vehicle Routing Problem with Time Window Constraints (VRPTW) is defined as the problem of minimizing costs when a fleet of homogeneus vehicles has to destribute goods from a depot to a set of customers satisfying time windows and capacity constraints \cite{cordeau00}. 
+Another classical problem is the PDPTW, Pickup and Delivery Problem with Time Windows, with multiple vehicles is another problem that has been widely researched and solved for example in \cite{nanry00}. 
+\par
+\cite{solomon87} formalized an algirithm for general PDP
+\cite{lu06} insertion based heuristic
+\cite{kalantari85} An algorithm for the travelling salesman problem with pickup and delivery of customers
+\cite{dumas91} pickup and delivery problem with time windows
+\cite{fagerholt10} speed optimization and reduction of fuel emissions
+\cite{berbeglia10} dynamic and static pickup and delivery problems survey and classification scheme \cite{berbeglia07} static
+\cite{zhou13} Inventory management and inbound logistics optimization
+\cite{savelsbergh95} General pickup and delivery problem.
+\cite{dror89} Properties and solution framework
+\cite{christiansen02} Robust ship scheduling with multiple time windows
+\cite{christiansen04} Ship routing and scheduling 
+\cite{hemmati14} Bechmark suite for industrial and tramp ship routing and scheduling
+\cite{hemmati16} A iterative two-phase hybrid metaheuristic for multi-product short sea inventory routing problem
+\cite{ferreira18} variable neighbourhood search for vehicle routing problem with multiple time windows
+\cite{desrosiers95} Time constrained routing and scheduling
+
+
+In this paper we will propose a mathematical formulation to a multivehicle PDPTW problem, with certain adjustments to satisfy the needs of an automobile manufacturing company.
+To these type of companies the inbound production side of the supply chain is more in focus and require ajdustments on the classical PDPTW.
+In these type of industries companies often facing challenges related to the production side of the problem, which is often referred to as looking at the problem from an inbound perspective.
+Inbound oriented perspective means that you have less focus on the the supplier side of the of the production, and on the means of transportation as long as what is being transported arrives on time for production.
+This changes our problem away from the classical problems mentioned above. 
+Instead of having a customer oriented view, we must instead shift our view to focus on getting a set of orders from a set of suppliers to a set of factories where the orders are needed for production. 
+\par
+Being more inbound oriented also leads to having more focus on the problems that sometimes occur within the factory and the delivery part of the problem.
+Some manufacturers might have alot of traffic on their factories, and want to limit that, saying that a vehicle can only visit a certain amount of docks for each visit.
+This might lead to more ineffective solutions and more use of vehicles in some cases however, for the inbound oriented producer it is a nessecary limitation. To our knowledge dock constraints has not been researched before in PDPTW problems. \par
+
+Another result from the inbound thinker is that instead of using your own fleet of vehicles, you hire a logistics carrier to do your transports.
+The carries might have different cost structures and payment methods which you have no influence over.
+Leading you to need a model that takes that into account.
+We focus here on dealing with a carrier that offers a varying cost per kilometer.
+Meaning that the cost parameter of the standard PDP will change depending on how far a vehicle is travelling. 
+Using a carrier also changes the problem to that you dont care so much where the vehicle is travelling from to its first pickup.   
+The vehicle rather starts at its first pickup point because the cost of the car manufacturer starts only from the time of the first pickup.
+Before pickup and after delivery the carrier has the costs. To our knowledge very little research has been made into using a logistics carrier as vehicle fleet. \par
+
+In car manufacturing business you might have production periods that go over several days with strict opening times on delivery. 
+This leads to the problem of multiple time windows.
+The manufacturer might only want the parts delivered in the morning on one of three days but have a break in the middle of each time window (lunch). 
+There might also be advantageous to move the delivery of one order to the next day to bundle orders together and we want our model to be able to handle such problems. \par
+In \cite{favaretto07} they propose a time window model to handle multiple time windows and multiple visits. 
+We are using a modified version of this model to handle the multiple time windows in this paper to handle the time window constraints.
+However as they focus on satisfying a set of customers instead of production companies our model differs greatly when it comes to the rest of the constraints.\par
+\par
+To make a model that is as realistic as possible it is important to integrate each of the above aspects and take them all into account. 
+One aspect of the model could greatly influence the decision of another so it is important to build a model that satisfies all the aspects above. 
+Research often forcuses on solving single issues, like the multiple time windows, to handle this specific problem for a certain industry. 
+However handeling all of the above mentioned aspects have to our knowledge never been researched before and makes it therefore an important problem to solve. 
+\par
+The goal of this paper is to present a realistic mathematical model that can be further developed into a realistic model solving pickup and delivery problems on a daily/weekly basis for manufacturing companies. 
+The goal is also to have a mathematical basis to be used in a solver such as AMPL to solve a small instance, and finally to make a heuristic model that can solve the problem efficiently and be used by companies in similar sort of industries.
 
 \section{Problem Formulation} \label{sec:PForm}
-Our problem is typically for a vehicle manufacturing company that has a certain set of factories where the vehicles are produced, each with a set of demanded parts for production. The parts, or orders (typically named transport orders but we refer to orders here), can be delivered from a set of suppliers. At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistics companies. \par 
-The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not considered neither is time). The cost structure can be multidimentional taking into account total distance and volume in different formats (variable costs, fix costs etc). \par
-When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock. The docks in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can visit at each factory. \par
+Like mentioned above to take the perspective of a vehicle manufacturing company, we see that we have a certain set of factories where the products are produced, each with a set of demanded parts/orders for production.
+The parts, or orders (typically named transport orders but we refer to orders here), can be delivered from a set of suppliers.
+At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistic carriers. \par 
+
+\begin{flalign*}
+      &Sets \\ 
+    N &- \text{nodes $\{1,..,2n\}$} \\
+    V &- \text{vehicles}  \\
+    E &- \text{edges} \\
+    E_v &- \text{edges visitable by vehicle $v$} \\
+    N_v &- \text{nodes visitable by vehicle $v$}  \\
+    N^P &- \text{pickup nodes} \\
+    N^D &- \text{delivery Nodes} \\
+    F &- \text{factories} \\
+    N_f &- \text{delivery nodes for factory $f$} \\
+    S &- \text{cost structure} \\
+    P_i &- \text{time windows at node $i$, $\{1,..,\pi_i \}$}\\
+    T_{i} &- \text{timewindows at node $i$ $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i$}
+\end{flalign}
+
+The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not relevant to the manufacturer).
+The cost structure depend on the total distance a vehicle is driving and is calculated per km. \par
+When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock.
+The docks (each reperesented by a different node) in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can unload at per visit to the factory. \par
 Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
-The mathematical formulation of the problem will now follow where the set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$. We let $n$ be the number of orders in the problem, so if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order. Here it follows that for each vehicle we have a set $O_v$ of orders that vehicle $v \in V$ can transport based on the incompatabilities. 
-The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. All nodes are therefore represented by $N = N^P \cup N^D$ Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. The delivery nodes that belong to one factory can then be represented as $N_f^D = N_f \subset N^D$. 
-Each vehicle has a set of Nodes it can travel to (corresponding to orders $O_v$) represented by $N_v$. This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. The set of Edges that each vehicle can traverse is represented by $E_v$. The factory docking limit is denoted by $D_f$. Each vehicle has a given amount of docks per factory it wants to deliver to represented by $d_{f}^v$. \par 
-Each node has a set of $h_i$ time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in \{0,1,...,h_i\}$ and all nodes should be picked up and delivered after time 0 and before time T. Each node has a current time based on when its being served, denoted by $t_{i}$ and a current load, denoted by $l_{i}$, where $i \in 2n$ and $v \in V$. The distance from node $i$ to node $j$ is denoted by $d_{ij}$. The cost of vehicle $v$ driving from node $i$ to $j$ is denoted by $C_{ij}^{vq(v)w(v)}$ and the corresponding time between the nodes $T_{ij}^v$. $l_{i}^v$ is the load of vehicle $v$ leaving node $i$ and $x_{ij}^v$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. The cost of not transporting an order will be the same for each order (should be set relatively high to avoid dummy transports) so we denote this with $C^N$ and each order, $i$,  not transported is represented by a binary variable $y_i$. 
+The mathematical formulation of the problem will now follow. 
+The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the verticies and $n$ is the number of orders in the problem, and $E=\{(i,j): i,j \in N, i \neq j\}$ represent the edges in the graph.
+
+\begin{flalign*}
+    &Parameters \\ 
+    n &- \text{amount of orders} \\
+    K_v &- \text{weight limit of vehicle } v\in V \\
+    Q_i &- \text{weight of order at node } i\in N\\
+    H_f &- \text{docking limit at factory } f\in F\\
+    T_{ijv} &- \text{travel time from node } i\in N \text{ to } j\in N \text{ for vehicle } v\in V\\
+    \pi_i &- \text{amount of time windows at node } i\in N\\ 
+    \overline{T_{ip}} &- \text{upper bound time of time window } p\in P_i \text{ at node } i\in N \\
+    \underline{T_{ip}} &- \text{lower bound time of time window } p\in P_i \text{ at node } i\in N \\
+    C_{vs} &- \text{cost per distance unit in structure interval } s \in S \text{ for vehicle } v \\
+    C_i &- \text{cost of not transporting order at node } i\in N^P \\
+    D_{ij} &- \text{distance between node $i\in N$ and } j\in N\\
+    B_s &- \text{distance for interval $s\in S$ in cost structure}\\
+\end{flalign}
+
+
+
+The set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$.
+The set of Edges that each vehicle can traverse is represented by $E_v$. 
+Since $n$ is the number of orders in the problem, then if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order.
+The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. 
+All nodes are therefore equivalent to $N = N^P \cup N^D$. 
+Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. Since all factories are delivery nodes these sets only include delivery nodes.
+Each vehicle has a set of Nodes it can travel to represented by $N_v$.
+This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. 
+The factory docking limit is denoted by $H_f$. 
+Each vehicle has a given amount of docks per factory it wants to deliver to represented by $h_{f}$. \par 
+Each node has a set $T_{i}$ of time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in P_i=\{0,1,...,\pi_i\}$ and all nodes should be picked up and delivered after time 0 and before time T. 
+Each node has a current time based on when its being served, denoted by $t_{i}$ and where $i \in N$. 
+The distance from node $i$ to node $j$ is denoted by $D_{ij}$. 
+The cost per distance unit of vehicle $v$ for a cost structure interval $s$ is represented by $C_{vs}$ and the corresponding time between the nodes $T_{ijv}$. 
+The total distance travelled by vehicle $v$ will be denoted by the variables $d_{vs}$ for each $s\in S$, where only one variable will have the value equal to the total distance of vehicle. 
+Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the distance insterval parameter $B_s$, where $B_s$ indicated which distance interval we are in which again results in a different $C_{vs}$. \par
+
+\begin{flalign*}
+    &Variables\\
+    x_{ijv} &- \text{binary indicating travel from node $i\in N$ to $j\in N$ of vehicle $v\in V$}\\
+    y_i &- \text{binary indicating no pickup of order at node $i\in N^P$}\\
+    l_{iv} &- \text{load of vehicle $v$ at node $i$}\\ 
+    o(v) &- \text{origin node of vehicle $v$}\\
+    d(v) &- \text{destination node of vehicle $v$}\\
+    h_i &- \text{docking times in factory at node $i\in N_f$}\\
+    t_i &- \text{time of visit at node $i\in N$}\\
+    w_i &- \text{waiting time at node i}\\ 
+    u_{ip} &- \text{binary indicating usage of time window $p\in P_i$ at node $i$}\\
+    d_{vs} &- \text{total distance travelled of vehicle $v\in V$ if it fits in interval $s\in S$}\\
+    b_{vs} &- \text{binary indicating correct interval $s\in S$ for vehicle $v\in V$}\\
+\end{flalign}
+
+$l_{iv}$ is the load of vehicle $v$ leaving node $i$ and $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. 
+The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$ indicating if an order is not picked up. 
 \begin{equation}
 \label{eq:1}
-min\sum_{v\epsilon V} \sum_{(i,j) \epsilon E_v} c_{ijv}d_{ij}x_{ijv} + \sum_{i\in N^P}C_iy_i
+min\sum_{v\epsilon V} \sum_{s\epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
-\begin{equation} \label{eq:3}
-    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i >= 1, ~~~~~ i \in N^P
-\end{equation}
-
-\begin{equation} \label{eq:4}
-    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0, ~~~~~ v \in V, i\in N_v \backslash \{o(v), d(v)\} 
-\end{equation}
-
-\begin{equation} \label{eq:5}
-    \sum_{j\epsilon N_v}x_{o(v)jv} = 1, ~~~~~ v \in V
-\end{equation}
-
-\begin{equation} \label{eq:6}
-    \sum_{j\epsilon N_v}x_{j d(v)v} = 1, ~~~~~ v \in V
-\end{equation}
-
-\begin{equation} \label{eq:7}
-    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0, ~~~~~ v \in V, i\in N^P_v
-\end{equation}
-
-\begin{equation} \label{eq:8}
-    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),~~~~~~~~ v \in V,j\in N_v^P,(i,j) \in E_v
-\end{equation}
-
-\begin{equation} \label{eq:9}
-    l_{iv} - Q_j - l_{jv} \leq K_v(1-x_{i(j+n)v}), ~~~~~~~~ v \in V,j\in N_v^P, (i, n+j)\in E_v
-\end{equation}
-
-\begin{equation} \label{eq:10}
-0 \leq l_{iv} \leq K_v, ~~~~~~~~ v \in V, i \in N^P_v
-\end{equation}
-
-\begin{equation} \label{eq:11}
-    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}), ~~~~~~~~ v \in V, (i,j)\in E_V, i\in N^D_f, j\in N^D_f, f\in F
-\end{equation}
-
-\begin{equation} \label{eq:12}
-    h_{i} \leq H_f, ~~~~~~~~ v\in V, i\in N_f^D, f\in F
-\end{equation}
-
-\begin{equation} \label{eq:13}
-    h_{i} = x_{ijv}, ~~~~~~~~ v \in V, (i, j)\in E_V, j \notin N_f^D, i \in N^D_f, f \in F
-\end{equation}
-
-\begin{equation} \label{eq:15}
-    \sum_{p\in P_i} u_{ip} = 1, ~~~~~~~~ i\in N
-\end{equation}
-
-\begin{equation} \label{eq:15}
-    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i}, ~~~~~~~~ i\in N
-\end{equation}
-
-\begin{equation} \label{eq:15}
-    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i}, ~~~~~~~~ i\in N
-\end{equation}
-
-\begin{equation} \label{eq:15}
-    t_{i} + T_{ijv} + w_j - t_{j} \leq (\overline{T_{\pi_i i}} + T_{ijv} + w_j)(1 - x_{ijv}), ~~~~~~~~ v \in V, (i,j) \in E_v
-\end{equation}
-
-\begin{equation} \label{eq:18}
-    \sum_{r \in R}l_{vr} \geq l_{iv} + Q_j,~~~~~~~~ v \in V, j\in N_v^P, (i,j)\in E_v
-\end{equation}
-
-\begin{equation} \label{eq:19}
-    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs}
-\end{equation}
-
-\begin{equation} \label{eq:20}
- \sum_{s \in S} b_{sv} = 1 ,~~~~~~~~ v \in V
-\end{equation}
-
-
-\begin{equation} \label{eq:18}
-    \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}d_{ij},~~~~~~~~ v \in V
-\end{equation}
-
-\begin{equation} \label{eq:19}
-    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs}
-\end{equation}
-
-\begin{equation} \label{eq:20}
- \sum_{s \in S} b_{sv} = 1 ,~~~~~~~~ v \in V
-\end{equation}
-
-\begin{equation} \label{eq:20}
-    \sum_{s \in S} c_{sv}d_{sv} = \sum_{(i,j) \in E_v} c_{ijv}d_{ij}x_{ijv} ,~~~~~~~~ v \in V
-\end{equation}
-
-\begin{equation} \label{eq:14}
-    c_{ijv} = c_{klv}, ~~~~~~~~ (i, j) \in E_v, (k, l) \in E_v
-\end{equation}
-
-
-\begin{equation} \label{eq:14}
-0 \leq h_{i}, ~~~~~~~~ i \in N
-\end{equation}
-
-\begin{equation} \label{eq:21}
-y_i \in \{0, 1\} ~~~~ i \in N^P
-\end{equation}
-
-\begin{equation} \label{eq:22}
-x_{ijv} \in \{0, 1\} ~~~~ v \in V, (i, j) \in A_v
-\end{equation}
-
-
-
-
+\begin{alignat}{2}
+    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,&\quad\quad&&i \in N^P \label{eq:2} \\[4]
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0,& &&v \in V, i\in N_v \notin \{o(v), d(v)\} \label{eq:3} \\[4]
+    \sum_{j\epsilon N_v}x_{o(v)jv} = 1,& &&v \in V \label{eq:4}\\[4]
+    \sum_{j\epsilon N_v}x_{j d(v)v} = 1,& &&v \in V \label{eq:5}\\[4]
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0,& &&v \in V, i\in N^P_v \label{eq:6}\\[4]
+    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),& &&v \in V,j\in N_v^P,(i,j) \in E_v \label{eq:7} \\[8]
+    l_{iv} - Q_j - l_{jv} \leq K_v(1-x_{i(j+n)v}),& &&v \in V,j\in N_v^P, (i, n+j)\in E_v \label{eq:8}\\[8]
+    0 \leq l_{iv} \leq K_v,& &&v \in V, i \in N^P_v \label{eq:9}
+\end{alignat}
+\begin{alignat}{2}
+    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),&\quad\quad\quad &&v \in V, (i,j)\in E_v, i, j\in N_f, f\in F\label{eq:10}\\[4]
+    h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),& &&v\in V, j\in N_f, f\in F\label{eq:11}\\[4]
+    h_{j} = \sum_{i\epsilon N_v}(x_{ijv}),& &&v \in V, (i, j)\in E_v, i \notin N_f, j \in N_f\label{eq:12}\\[4]
+    \sum_{p\in P_i} u_{ip} = 1,& &&i\in N\label{eq:13}\\[4]
+    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},& &&i\in N\label{eq:14}\\[4]
+    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},& &&i\in N\label{eq:15}\\[4]
+    t_{i} + T_{ijv} + w_j - t_{j} \leq (\overline{T_{\pi_i i}} + & &&\nonumber\\
+    T_{ijv} + w_j)(1 - x_{ijv}),& && v \in V, (i,j) \in E_v\label{eq:16}\\[8]
+    \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}D_{ij},& &&v \in V\label{eq:17}\\[4]
+    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs},& &&v \in V, s \in S\label{eq:18}\\[4]
+    \sum_{s \in S} b_{vs} = 1,& &&v \in V\label{eq:19}\\[4]
+    h_{i} \geq 0,& &&i \in N\label{eq:20}\\[8]
+    u_{ip} \in \{0, 1\},& &&i \in N, p \in P_i\label{eq:21}\\[8]
+    b_{vs} \in \{0, 1\},& &&v \in V, s \in S\label{eq:22}\\[8]
+    y_i \in \{0, 1\},& &&i \in N^P\label{eq:23}\\[8]
+    x_{ijv} \in \{0, 1\},& &&v \in V, (i, j) \in E_v\label{eq:24}
+\end{alignat}
 \par
-The objective function (\ref{eq:1}) sums up to the cost of the spot cars and the aim is to minimize these costs. \newline \newline
+The objective function (\ref{eq:1}) sums up to the cost of the spot cars and the aim is to minimize these costs. 
+Constraints \ref{eq:2}-\ref{eq:6} makes sure that all orders that are picked up are also delivered and that orders has to either be picked up or not. They also make sure that nodes that are visited are also left except for the starting and finishing nodes.
+\ref{eq:7}-\ref{eq:9} are weight capacity constraints.
+Constraint \ref{eq:10}-\ref{eq:12} are dock constraints making sure no vehicle visits more than the allowed amount of docks per visit.
+Then \ref{eq:13}-\ref{eq:16} are handeling the multiple time windows to make sure an order is picked up within a given time window with regards to waiting time.
+Constraint \ref{eq:17}-\ref{eq:10} are deciding which interval the total distance is in which in return determines the calculation of the objective function. \newline
+
+\section{Final Remarks}
+The model presented in this paper is ready for testing in a solver software such as AMPL. Making a small instance to test the model would then be the next step before adapting the model to an even more complex version of itsself and developing a heuristic to solve the problem. 
 
 
-List of Variables and parameters: \newline
-$v \in V$ - Vehicles \newline
-$n$ - number of orders\newline
-$s \in S$ - size of cost structure regarding distance \newline
-$i$ - orders\newline
-$K_v$ - Vehicle Capacity \newline
-$l_{iv}$ - Load at node $i$ with vehicle $v$ \newline
-$O_v$ - Set of orders $i$ that vehicle $v$ can transport \newline
-$N^P$ - pickup nodes\newline
-$N^D$ - delivery Nodes\newline
-$N^D_f$ - Delivery nodes for factory f \newline
-$E_v$ - Edges/Arcs the vehicle $v$ can traverse\newline
-$f \in F$ - Factory\newline
-$H_f$ - Factory docking limit\newline
-$h_{i}$ - factory visits at node $i$  \newline
-$T_{ip}$ - Node $i$ has a sets of $p$ time windows $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i =\{1,..,\pi_i \}$ \newline
-$T_{ijv}$ - Travel time from $i$ to $j$ using $v$\newline
-$u_{ip}$ - binary variable for timewindow $p\in P_i$ at node $i$\newline
-$M$ - Arbitrary large constant \newline
-$w_i$ - Waiting time at node $i$ \newline
-$Q_j$ - weight of order at node j \newline
-$x_{ijv}$ - Binary variable indicating travel from $i$ to $j$ by vehicle $v$ \newline
-$y_i$ - binary indicating order not picked up \newline
-$d_{ij}$ - distance between node $i$ and $j$\newline
-$r \in R = \{1,...,\alpha\}$ - cost structure for vehicle $v$ weight dimension\newline
-$l_{vr}$ - weight of vehicle $v$ and fitting in cost matrix part $r$ \newline
-$A_r$ - interval weight limit $r$ of costmatrix\newline
-$a_{vr}$ - binary variable determining interval $r$ in cost structure of vehicle $v$\newline 
-$s \in S = \{1,...,\beta_v\}$ - cost structure in distance dimention \newline
-$d_{vs}$ - the total distance for vehicle $v$ fitting in the cost structure $s$ \newline
-$c_{vs}$ - Cost per km for vehicle $v$ in cost structure $s$ \newline
-$b_{vs}$ - binary indicating which interval vehicle $v$ is in cost structure $s$ \newline
-$B_s$ - distance determening interval $s$ in cost structure
-\section{Solution in AMPL}
-TODO.. 
-
-\section{References} \label{sec:Ref}
-
-\href{http://www-bcf.usc.edu/~maged/publications/MultiplePickup.pdf}{Lu 2012} \newline
-\url{https://www.sciencedirect.com/science/article/pii/S0305054813002165} \newline
-\url{https://www.sciencedirect.com/science/article/pii/S0305048304001550} \newline
-\url{https://link.springer.com/article/10.1007/s10732-005-5432-5} \newline
-\url{https://pubsonline.informs.org/doi/abs/10.1287/trsc.1050.0135} \newline
-\href{https://onlinelibrary.wiley.com/doi/epdf/10.1002/nav.10033}{M. Christiansen \& K. Fagerholt (2002) - Robust Ship Scheduling with Multiple Time Windows - } \newline
-
-
-
-
+\bibliographystyle{abbrvnat}
+\bibliography{references}
 \end{document}
