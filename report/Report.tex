@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{geometry}
 \begin{document}
 
 \title{Pickup \& Delivery Problem with Mulitiple Time Windows}
@@ -25,7 +26,7 @@ In planning the most efficient way of organizing your transportation network the
 The Vehicle Routing Problem with Time Window Constraints (VRPTW) is defined as the problem of minimizing costs when a fleet of homogeneus vehicles has to destribute goods from a depot to a set of customers satisfying time windows and capacity constraints \cite{cordeau00}. 
 Another classical problem is the PDPTW, Pickup and Delivery Problem with Time Windows, with multiple vehicles is another problem that has been widely researched and solved for example in \cite{nanry00}. 
 \par
-\cite{solomon87} formalized an algirithm for general PDP
+\cite{solomon87} formalized an algorithm for general PDP
 \cite{lu06} insertion based heuristic
 \cite{kalantari85} An algorithm for the travelling salesman problem with pickup and delivery of customers
 \cite{dumas91} pickup and delivery problem with time windows
@@ -99,6 +100,23 @@ At a given point in time (could be delivery for one day or a week) we consider a
     T_{i} &- \text{timewindows at node $i$ $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i$}
 \end{flalign}
 
+\begin{tabular}{l c l }
+          &Sets \\ 
+    $N    $ &-& nodes $\{1,..,2n\}$ \\
+    $V    $ &-& vehicles  \\
+    $E    $ &-& edges \\
+    $E_v  $ &-& edges visitable by vehicle $v$ \\
+    $N_v  $ &-& nodes visitable by vehicle $v$  \\
+    $N^P  $ &-& pickup nodes \\
+    $N^D  $ &-& delivery Nodes \\
+    $F    $ &-& factories \\
+    $N_f  $ &-& delivery nodes for factory $f$ \\
+    $S    $ &-& cost structure \\
+    $P_i  $ &-& time windows at node $i$, $\{1,..,\pi_i \}$\\
+    $T_{i}$ &-& timewindows at node $i$ $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i$
+\end{tabular}
+
+
 The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not relevant to the manufacturer).
 The cost structure depend on the total distance a vehicle is driving and is calculated per km. \par
 When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock.
@@ -165,25 +183,25 @@ min\sum_{v\epsilon V} \sum_{s\epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
+\begingroup
+    \allowdisplaybreaks
 \begin{alignat}{2}
-    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,&\quad\quad&&i \in N^P \label{eq:2} \\[4]
+    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,&\quad\quad\quad&&i \in N^P \label{eq:2} \\[4]
     \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0,& &&v \in V, i\in N_v \notin \{o(v), d(v)\} \label{eq:3} \\[4]
     \sum_{j\epsilon N_v}x_{o(v)jv} = 1,& &&v \in V \label{eq:4}\\[4]
     \sum_{j\epsilon N_v}x_{j d(v)v} = 1,& &&v \in V \label{eq:5}\\[4]
     \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0,& &&v \in V, i\in N^P_v \label{eq:6}\\[4]
     l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),& &&v \in V,j\in N_v^P,(i,j) \in E_v \label{eq:7} \\[8]
     l_{iv} - Q_j - l_{jv} \leq K_v(1-x_{i(j+n)v}),& &&v \in V,j\in N_v^P, (i, n+j)\in E_v \label{eq:8}\\[8]
-    0 \leq l_{iv} \leq K_v,& &&v \in V, i \in N^P_v \label{eq:9}
-\end{alignat}
-\begin{alignat}{2}
-    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),&\quad\quad\quad &&v \in V, (i,j)\in E_v, i, j\in N_f, f\in F\label{eq:10}\\[4]
+    0 \leq l_{iv} \leq K_v,& &&v \in V, i \in N^P_v \label{eq:9}\\[8]
+    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),& &&v \in V, (i,j)\in E_v, i, j\in N_f, f\in F\label{eq:10}\\[4]
     h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),& &&v\in V, j\in N_f, f\in F\label{eq:11}\\[4]
     h_{j} = \sum_{i\epsilon N_v}(x_{ijv}),& &&v \in V, (i, j)\in E_v, i \notin N_f, j \in N_f\label{eq:12}\\[4]
     \sum_{p\in P_i} u_{ip} = 1,& &&i\in N\label{eq:13}\\[4]
     \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},& &&i\in N\label{eq:14}\\[4]
     \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},& &&i\in N\label{eq:15}\\[4]
-    t_{i} + T_{ijv} + w_j - t_{j} \leq (\overline{T_{\pi_i i}} + & &&\nonumber\\
-    T_{ijv} + w_j)(1 - x_{ijv}),& && v \in V, (i,j) \in E_v\label{eq:16}\\[8]
+    t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + & &&\nonumber\\
+    T_{ijv})(1 - x_{ijv}),& && v \in V, (i,j) \in E_v\label{eq:16}\\[8]
     \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}D_{ij},& &&v \in V\label{eq:17}\\[4]
     B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs},& &&v \in V, s \in S\label{eq:18}\\[4]
     \sum_{s \in S} b_{vs} = 1,& &&v \in V\label{eq:19}\\[4]
@@ -193,6 +211,7 @@ subject to:
     y_i \in \{0, 1\},& &&i \in N^P\label{eq:23}\\[8]
     x_{ijv} \in \{0, 1\},& &&v \in V, (i, j) \in E_v\label{eq:24}
 \end{alignat}
+\endgroup
 \par
 The objective function (\ref{eq:1}) sums up to the cost of the spot cars and the aim is to minimize these costs. 
 Constraints \ref{eq:2}-\ref{eq:6} makes sure that all orders that are picked up are also delivered and that orders has to either be picked up or not. They also make sure that nodes that are visited are also left except for the starting and finishing nodes.
