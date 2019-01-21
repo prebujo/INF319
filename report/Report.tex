@@ -98,7 +98,7 @@ At a given point in time (could be delivery for one day or a week) we consider a
     S &- \text{cost structure} \\
     P_i &- \text{time windows at node $i$, $\{1,..,\pi_i \}$}\\
     T_{i} &- \text{timewindows at node $i$ $[ \underline{T_{ip}},  \overline{T_{ip}} ]$ where $p \in P_i$}
-\end{flalign}
+\end{flalign*}
 
 \begin{tabular}{l c l }
           &Sets \\ 
@@ -139,7 +139,7 @@ The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the ver
     C_i &- \text{cost of not transporting order at node } i\in N^P \\
     D_{ij} &- \text{distance between node $i\in N$ and } j\in N\\
     B_s &- \text{distance for interval $s\in S$ in cost structure}\\
-\end{flalign}
+\end{flalign*}
 
 
 
@@ -173,7 +173,7 @@ Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the dis
     u_{ip} &- \text{binary indicating usage of time window $p\in P_i$ at node $i$}\\
     d_{vs} &- \text{total distance travelled of vehicle $v\in V$ if it fits in interval $s\in S$}\\
     b_{vs} &- \text{binary indicating correct interval $s\in S$ for vehicle $v\in V$}\\
-\end{flalign}
+\end{flalign*}
 
 $l_{iv}$ is the load of vehicle $v$ leaving node $i$ and $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. 
 The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$ indicating if an order is not picked up. 
@@ -185,7 +185,7 @@ min\sum_{v\epsilon V} \sum_{s\epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 subject to:
 \begingroup
     \allowdisplaybreaks
-\begin{alignat}{2}
+\begin{alignat} {2}
     \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,&\quad\quad\quad&&i \in N^P \label{eq:2} \\[4]
     \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0,& &&v \in V, i\in N_v \notin \{o(v), d(v)\} \label{eq:3} \\[4]
     \sum_{j\epsilon N_v}x_{o(v)jv} = 1,& &&v \in V \label{eq:4}\\[4]
