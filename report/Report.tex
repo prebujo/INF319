@@ -1,8 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[usenames, dvipsnames]{color}
-\usepackage{pgfplots}
 \usepackage{amsmath}
-\usepackage{hyperref}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{geometry}
 \begin{document}
@@ -31,7 +29,8 @@ Another classical problem is the PDPTW, Pickup and Delivery Problem with Time Wi
 \cite{kalantari85} An algorithm for the travelling salesman problem with pickup and delivery of customers
 \cite{dumas91} pickup and delivery problem with time windows
 \cite{fagerholt10} speed optimization and reduction of fuel emissions
-\cite{berbeglia10} dynamic and static pickup and delivery problems survey and classification scheme \cite{berbeglia07} static
+\cite{berbeglia10} dynamic and static pickup and delivery problems survey and classification scheme 
+\cite{berbeglia07} static
 \cite{zhou13} Inventory management and inbound logistics optimization
 \cite{savelsbergh95} General pickup and delivery problem.
 \cite{dror89} Properties and solution framework
@@ -183,35 +182,37 @@ min\sum_{v\epsilon V} \sum_{s\epsilon S} C_{vs}d_{vs} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 subject to:
+
 \begingroup
     \allowdisplaybreaks
 \begin{alignat} {2}
-    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,&\quad\quad\quad&&i \in N^P \label{eq:2} \\[4]
-    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0,& &&v \in V, i\in N_v \notin \{o(v), d(v)\} \label{eq:3} \\[4]
-    \sum_{j\epsilon N_v}x_{o(v)jv} = 1,& &&v \in V \label{eq:4}\\[4]
-    \sum_{j\epsilon N_v}x_{j d(v)v} = 1,& &&v \in V \label{eq:5}\\[4]
-    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0,& &&v \in V, i\in N^P_v \label{eq:6}\\[4]
-    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),& &&v \in V,j\in N_v^P,(i,j) \in E_v \label{eq:7} \\[8]
-    l_{iv} - Q_j - l_{jv} \leq K_v(1-x_{i(j+n)v}),& &&v \in V,j\in N_v^P, (i, n+j)\in E_v \label{eq:8}\\[8]
-    0 \leq l_{iv} \leq K_v,& &&v \in V, i \in N^P_v \label{eq:9}\\[8]
-    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),& &&v \in V, (i,j)\in E_v, i, j\in N_f, f\in F\label{eq:10}\\[4]
-    h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),& &&v\in V, j\in N_f, f\in F\label{eq:11}\\[4]
-    h_{j} = \sum_{i\epsilon N_v}(x_{ijv}),& &&v \in V, (i, j)\in E_v, i \notin N_f, j \in N_f\label{eq:12}\\[4]
-    \sum_{p\in P_i} u_{ip} = 1,& &&i\in N\label{eq:13}\\[4]
-    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},& &&i\in N\label{eq:14}\\[4]
-    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},& &&i\in N\label{eq:15}\\[4]
-    t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + & &&\nonumber\\
-    T_{ijv})(1 - x_{ijv}),& && v \in V, (i,j) \in E_v\label{eq:16}\\[8]
-    \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}D_{ij},& &&v \in V\label{eq:17}\\[4]
-    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs},& &&v \in V, s \in S\label{eq:18}\\[4]
-    \sum_{s \in S} b_{vs} = 1,& &&v \in V\label{eq:19}\\[4]
-    h_{i} \geq 0,& &&i \in N\label{eq:20}\\[8]
-    u_{ip} \in \{0, 1\},& &&i \in N, p \in P_i\label{eq:21}\\[8]
-    b_{vs} \in \{0, 1\},& &&v \in V, s \in S\label{eq:22}\\[8]
-    y_i \in \{0, 1\},& &&i \in N^P\label{eq:23}\\[8]
-    x_{ijv} \in \{0, 1\},& &&v \in V, (i, j) \in E_v\label{eq:24}
+    \sum_{v\epsilon V}\sum_{j\epsilon N_v}x_{ijv} + y_i = 1,		&\quad\quad\quad	&& 	i \in N^P 						\label{eq:2} 	\\[4]
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{jiv} = 0,		& 			&&	v \in V, i\in N_v \notin \{o(v), d(v)\}		\label{eq:3} 	\\[4]
+    \sum_{j\epsilon N_v}x_{o(v)jv} = 1,						& 			&&	v \in V 						\label{eq:4}	\\[4]
+    \sum_{j\epsilon N_v}x_{j d(v)v} = 1,						& 			&&	v \in V 						\label{eq:5}	\\[4]
+    \sum_{j\epsilon N_v}x_{ijv} - \sum_{j\epsilon N_v}x_{(i+n)jv} = 0,	& 			&&	v \in V, i\in N^P_v 					\label{eq:6}	\\[4]
+    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),					& 			&&	v \in V, j\in N_v^P, (i,j) \in E_v 			\label{eq:7} 	\\[8]
+    l_{iv} - Q_j - l_{(j+n)v} \leq K_v(1-x_{i(j+n)v}),				& 			&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8]
+    0 \leq l_{iv} \leq K_v,								& 			&&	v \in V, i \in N^P_v 					\label{eq:9}	\\[8]
+    h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),						& 			&&	v \in V, (i,j)\in E_v,  i, j \in N_f, f\in F 		\label{eq:10}\\[4]
+    h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),					& 			&&	v \in V, j\in N_f, f\in F 				\label{eq:11}\\[4]
+    h_{j} = \sum_{i\epsilon N_v}(x_{ijv}),					& 			&&	v \in V, (i, j)\in E_v, i \notin N_f, j \in N_f 	\label{eq:12}\\[4]
+    \sum_{p\in P_i} u_{ip} = 1,							& 			&& 	i \in N 							\label{eq:13}\\[4]
+    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},			& 			&&	i \in N 							\label{eq:14}\\[4]
+    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},				& 			&& 	i \in N 							\label{eq:15}\\[4]
+    t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + 				& 			&&						\nonumber\\
+    T_{ijv})(1 - x_{ijv}),								& 			&& 	v \in V, (i,j) \in E_v					\label{eq:16}\\[8]
+    \sum_{s \in S}d_{vs} = \sum_{(i,j) \in E_v} x_{ijv}D_{ij},			& 			&&	v \in V							\label{eq:17}\\[4]
+    B_{(s-1)}b_{vs} \leq d_{vs} \leq B_sb_{vs},				& 			&&	v \in V, s \in S 					\label{eq:18}\\[4]
+    \sum_{s \in S} b_{vs} = 1,							& 			&&	v \in V							\label{eq:19}\\[4]
+    h_{i} \geq 0,									& 			&&	i \in N 							\label{eq:20}\\[8]
+    u_{ip} \in \{0, 1\},								& 			&&	i \in N, p \in P_i 					\label{eq:21}\\[8]
+    b_{vs} \in \{0, 1\},								& 			&&	v \in V, s \in S 					\label{eq:22}\\[8]
+    y_i \in \{0, 1\},									& 			&&	i \in N^P 						\label{eq:23}\\[8]
+    x_{ijv} \in \{0, 1\},								&			&&	v \in V, (i, j) \in E_v 				\label{eq:24}
 \end{alignat}
 \endgroup
+
 \par
 The objective function (\ref{eq:1}) sums up to the cost of the spot cars and the aim is to minimize these costs. 
 Constraints \ref{eq:2}-\ref{eq:6} makes sure that all orders that are picked up are also delivered and that orders has to either be picked up or not. They also make sure that nodes that are visited are also left except for the starting and finishing nodes.
