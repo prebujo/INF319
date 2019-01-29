@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{geometry}
+\usepackage{cancel}
 \begin{document}
 
 \title{Pickup \& Delivery Problem with Mulitiple Time Windows}
@@ -81,7 +82,8 @@ The goal is also to have a mathematical basis to be used in a solver such as AMP
 \section{Problem Formulation} \label{sec:PForm}
 Like mentioned above to take the perspective of a vehicle manufacturing company, we see that we have a certain set of factories where the products are produced, each with a set of demanded parts/orders for production.
 The parts, or orders (typically named transport orders but we refer to orders here), can be delivered from a set of suppliers.
-At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistic carriers. \par 
+At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistic carriers.
+\linebreak
 
 \begin{tabular}{l c l }
           &Sets 						\\ 
@@ -94,10 +96,11 @@ At a given point in time (could be delivery for one day or a week) we consider a
     $N^D  $ &-& delivery Nodes 					\\
     $F    $ &-& factories 					\\
     $N_f  $ &-& delivery nodes for factory $f$ 			\\
-    $A    $ &-& set of pairs (\alpha, \beta), repr. cost matrix	\\
+    $A    $ &-& set of pairs $(\alpha, \beta)$, repr. cost matrix	\\
     $P_i  $ &-& time windows at node $i$, $\{1,..,\pi_i \}$	\\
     $T_{i}$ &-& timewindows at node $i$ $[ \underline{T_{ip}},  
-		\overline{T_{ip}} ]$ where $p \in P_i$
+		\overline{T_{ip}} ]$ where $p \in P_i$		\\
+   $L_s$ &-& Sets of nodes for each possible stop location $s \in S$ 	\\
 \end{tabular}
 \linebreak
 \linebreak
@@ -110,6 +113,7 @@ The docks (each reperesented by a different node) in each factory can differ acc
 Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
 The mathematical formulation of the problem will now follow. 
 The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the verticies and $n$ is the number of orders in the problem, and $E=\{(i,j): i,j \in N, i \neq j\}$ represent the edges in the graph.
+\linebreak
 
 \begin{tabular}{l c l }
     			&Parameters 							\\ 
@@ -146,8 +150,8 @@ Each node has a current time based on when its being served, denoted by $t_{i}$ 
 The distance from node $i$ to node $j$ is denoted by $D_{ij}$. 
 The cost per distance unit of vehicle $v$ for a cost structure interval $s$ is represented by $C_{vs}$ and the corresponding time between the nodes $T_{ijv}$. 
 The total distance travelled by vehicle $v$ will be denoted by the variables $d_{vs}$ for each $s\in S$, where only one variable will have the value equal to the total distance of vehicle. 
-Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the distance insterval parameter $B_s$, where $B_s$ indicated which distance interval we are in which again results in a different $C_{vs}$. \par
-
+Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the distance insterval parameter $B_s$, where $B_s$ indicated which distance interval we are in which again results in a different $C_{vs}$. 
+\linebreak
 
 \begin{tabular} {l c l}
     			&Variables										\\
@@ -163,19 +167,21 @@ Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the dis
     	$d_{vs} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval $s\in S$	\\
 	$b_{vs} $	&-&	binary indicating correct interval $s\in S$ for vehicle $v\in V$		\\
 \end{tabular}
+\linebreak
+\linebreak
+\par
 
 $l_{iv}$ is the load of vehicle $v$ leaving node $i$ and $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. 
 The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$ indicating if an order is not picked up.
 
 \begin{equation}
 \label{eq:1}
-	min\sum_{v\epsilon V} \sum_{(\alpha, \beta) \epsilon A} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{i\in N^P}C_iy_i
+	min\sum_{v\epsilon V} \sum_{(\alpha, \beta) \epsilon A} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\epsilon V}\sum_{s\epsilon S}\sum_{\substack{i \epsilon L_s\\j \epsilon N_v\cancel{\epsilon} L_s}}x_{ijv}(C^{stop}_i + C^{stop}_j) + \sum_{i\epsilon N^P}C_iy_i
 \end{equation}
 
 
 
 subject to:
-
 \begingroup
     \allowdisplaybreaks
 \begin{alignat} {2}
@@ -187,27 +193,27 @@ subject to:
     	l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),				& 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:7} 	\\[8pt]
     	l_{iv} - Q_j - l_{(j+n)v} \leq K_v(1-x_{i(j+n)v}),			& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8pt]
     	0 \leq l_{iv} \leq K_v,							& 	&&	v \in V, i \in N^P_v 				\label{eq:9}	\\[8pt]
-    	h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),					& 	&&	v \in V, (i,j)\in E_v,  i, j \in N_f, f\in F 	\label{eq:10}	\\[4pt]
-    	h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),				& 	&&	v \in V, j\in N_f, f\in F 			\label{eq:11}	\\[4pt]
-    	h_{j} = \sum_{i\epsilon N_v}(x_{ijv}),					& 	&&	v \in V, (i, j)\in E_v, i \notin N_f, j \in N_f	\label{eq:12}	\\[4pt]
-    	\sum_{p\in P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:13}	\\[4pt]
-    	\sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},			& 	&&	i \in N 					\label{eq:14}	\\[4pt]
-    	\sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:15}	\\[4pt]
+    	h_{i} + 1 - h_{j} \leq H_f(1-x_{ijv}),					& 	&&	v \in V, f\in F,  i \in N_f, j \in N_f, j\neq i 	\label{eq:10}	\\[4pt]
+    	h_{j} \leq H_f\sum_{i\epsilon N_v}(x_{ijv}),				& 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:11}	\\[4pt]
+    	h_{j} = \sum_{\substack{i\epsilon N_v\\i\cancel{\epsilon} N_f}}(x_{ijv}),					& 	&&	v \in V, j \in N_f	\label{eq:12}	\\[4pt]
+    	\sum_{p\epsilon P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:13}	\\[4pt]
+    	\sum_{p\epsilon P_i} u_{ip}\underline{T_{ip}} \leq t_{i},			& 	&&	i \in N 					\label{eq:14}	\\[4pt]
+    	\sum_{p\epsilon P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:15}	\\[4pt]
     	t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + 			& 	&&						\nonumber\\
     	T_{ijv})(1 - x_{ijv}),							& 	&& 	v \in V, (i,j) \in E_v				\label{eq:16}	\\[8pt]
-    	\sum_{(\alpha,\beta) \in A}d_{v\alpha\beta} = 
-    	\sum_{(i,j) \in E_v} x_{ijv}D_{ij},					& 	&&	v \in V						\label{eq:17}	\\[4pt]
-	\sum_{(\alpha,\beta) \in A} l_{v\alpha\beta} \geq l_{iv}		&	&& 	v \in V, i \in N_v				\label{eq:18}	\\[4pt]
+    	\sum_{(\alpha,\beta)\epsilon A}d_{v\alpha\beta} = 
+	\sum_{(i,j) \epsilon E_v} x_{ijv}D_{ij},					& 	&&	v \in V						\label{eq:17}	\\[4pt]
+	\sum_{(\alpha,\beta) \epsilon A} l_{v\alpha\beta} \geq l_{iv}		&	&& 	v \in V, i \in N_v				\label{eq:18}	\\[4pt]
 	B_{(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
 	B_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta) \in A			\label{eq:19}	\\[8pt]
  	Z_{(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
-	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta \in A 			\label{eq:19}	\\[8pt]   	
-	\sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} = 1,			& 	&&	v \in V						\label{eq:20}	\\[4pt]
-    	h_{i} \geq 0,								& 	&&	i \in N 					\label{eq:21}	\\[8pt]
-    	u_{ip} \in \{0, 1\},							& 	&&	i \in N, p \in P_i 				\label{eq:22}	\\[8pt]
-    	b_{vs} \in \{0, 1\},							& 	&&	v \in V, s \in S 				\label{eq:23}	\\[8pt]
-    	y_i \in \{0, 1\},							& 	&&	i \in N^P 					\label{eq:24}	\\[8pt]
-    	x_{ijv} \in \{0, 1\},							&	&&	v \in V, (i, j) \in E_v 			\label{eq:25}
+	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta \in A 			\label{eq:20}	\\[8pt]   	
+	\sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} = 1,			& 	&&	v \in V						\label{eq:21}	\\[4pt]
+    	h_{i} \geq 0,								& 	&&	i \in N 					\label{eq:22}	\\[8pt]
+    	u_{ip} \in \{0, 1\},							& 	&&	i \in N, p \in P_i 				\label{eq:23}	\\[8pt]
+    	b_{vs} \in \{0, 1\},							& 	&&	v \in V, s \in S 				\label{eq:24}	\\[8pt]
+    	y_i \in \{0, 1\},							& 	&&	i \in N^P 					\label{eq:25}	\\[8pt]
+    	x_{ijv} \in \{0, 1\},							&	&&	v \in V, (i, j) \in E_v 			\label{eq:26}
 \end{alignat} 
 \endgroup
 
