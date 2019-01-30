@@ -37,7 +37,7 @@ Another classical problem is the PDPTW, Pickup and Delivery Problem with Time Wi
 \cite{dror89} Properties and solution framework
 \cite{christiansen02} Robust ship scheduling with multiple time windows
 \cite{christiansen04} Ship routing and scheduling 
-\cite{hemmati14} Bechmark suite for industrial and tramp ship routing and scheduling
+\cite{hemmati14} Consider a class of cargo ship routing and scheduling problems from tramp and industrial shipping industry. They provide solutions to a wide range of benchmark instances both optimal for smaller instances, using a commercial mixed-integer programming solver. And they present adaptice large neighbourhood search heuristics to larger instances.  They also provide the benchmark instances and an instance generator.
 \cite{hemmati16} A iterative two-phase hybrid metaheuristic for multi-product short sea inventory routing problem
 \cite{ferreira18} variable neighbourhood search for vehicle routing problem with multiple time windows
 \cite{desrosiers95} Time constrained routing and scheduling
@@ -96,7 +96,7 @@ At a given point in time (could be delivery for one day or a week) we consider a
     $N^D  $ &-& delivery Nodes 					\\
     $F    $ &-& factories 					\\
     $N_f  $ &-& delivery nodes for factory $f$ 			\\
-    $A    $ &-& set of pairs $(\alpha, \beta)$, repr. cost matrix	\\
+    $A    $ &-& set of pairs $(\alpha, \beta)$, repr. elements in cost matrix	\\
     $P_i  $ &-& time windows at node $i$, $\{1,..,\pi_i \}$	\\
     $T_{i}$ &-& timewindows at node $i$ $[ \underline{T_{ip}},  
 		\overline{T_{ip}} ]$ where $p \in P_i$		\\
@@ -126,9 +126,10 @@ The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the ver
 	$\pi_i	$	&-& amount of time windows at node $i\in N$			\\ 
 $\overline{T_{ip}} $	&-& upper bound time of time window $p\in P_i$ at node $i\in N$ \\
 $\underline{T_{ip}}$	&-& lower bound time of time window $p\in P_i$ at node $i\in N$ \\
-	$C^km_{v}	$	&-& cost per distance unit (km) in cost matrix element (\alpha, \beta) for vehicle $v$	\\
-	$C^kg_{v}	$	&-& cost per weight unit (kg) in cost matrix element (\alpha, \beta) for vehicle $v$	\\
-	$C^km_{v}	$	&-& fixed cost in index (\alpha, \beta) for vehicle $v$	\\
+	$C^{km}_{v\alpha\beta}	$	&-& cost per distance unit (km) in cost matrix element $(\alpha, \beta)$ for vehicle $v$	\\
+	$C^{kg}_{v\alpha\beta}	$	&-& cost per weight unit (kg) in cost matrix element $(\alpha, \beta)$ for vehicle $v$	\\
+	$C^{km}_{v\alpha\beta}	$	&-& fixed cost in index $(\alpha, \beta)$ for vehicle $v$	\\
+	$C^{stop}_i $	&-& costs of making a stop at node i 	\\
 	$C_i	$	&-& cost of not transporting order at node $i\in N^P$ 		\\
 	$D_{ij}	$ 	&-& distance between node $i\in N$ and  $j\in N$			\\
     	$B_s 	$	&-& distance for interval $s\in S$ in cost structure		\\
