@@ -169,7 +169,7 @@ The cost of not transporting an order will be represented by $C_i$ for each node
 
 \begin{equation}
 \label{eq:1}
-	min\sum_{v\epsilon V} \sum_{(\alpha, \beta) \epsilon A} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{i\in N^P}C_iy_i
+	min\sum_{v\epsilon V} \sum_{(\alpha, \beta) \epsilon A} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v \epsilon V} \sum_{(i,j)\epsilon E_v, i \epsilon L{s}, j \notin  +  \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 
@@ -201,13 +201,14 @@ subject to:
 	B_{(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
 	B_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta) \in A			\label{eq:19}	\\[8pt]
  	Z_{(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
-	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta \in A 			\label{eq:19}	\\[8pt]   	
-	\sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} = 1,			& 	&&	v \in V						\label{eq:20}	\\[4pt]
-    	h_{i} \geq 0,								& 	&&	i \in N 					\label{eq:21}	\\[8pt]
-    	u_{ip} \in \{0, 1\},							& 	&&	i \in N, p \in P_i 				\label{eq:22}	\\[8pt]
-    	b_{vs} \in \{0, 1\},							& 	&&	v \in V, s \in S 				\label{eq:23}	\\[8pt]
-    	y_i \in \{0, 1\},							& 	&&	i \in N^P 					\label{eq:24}	\\[8pt]
-    	x_{ijv} \in \{0, 1\},							&	&&	v \in V, (i, j) \in E_v 			\label{eq:25}
+	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta \in A 			\label{eq:20}	\\[8pt]   	
+	\sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} = 1,			& 	&&	v \in V						\label{eq:21}	\\[4pt]
+	C^{stop}_{total} = \sum{(i,j)\in
+    	h_{i} \geq 0,								& 	&&	i \in N 					\label{eq:22}	\\[8pt]
+    	u_{ip} \in \{0, 1\},							& 	&&	i \in N, p \in P_i 				\label{eq:23}	\\[8pt]
+    	b_{vs} \in \{0, 1\},							& 	&&	v \in V, s \in S 				\label{eq:24}	\\[8pt]
+    	y_i \in \{0, 1\},							& 	&&	i \in N^P 					\label{eq:25}	\\[8pt]
+    	x_{ijv} \in \{0, 1\},							&	&&	v \in V, (i, j) \in E_v 			\label{eq:26}
 \end{alignat} 
 \endgroup
 
