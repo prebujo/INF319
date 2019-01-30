@@ -126,8 +126,9 @@ The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the ver
 	$\pi_i	$	&-& amount of time windows at node $i\in N$			\\ 
 $\overline{T_{ip}} $	&-& upper bound time of time window $p\in P_i$ at node $i\in N$ \\
 $\underline{T_{ip}}$	&-& lower bound time of time window $p\in P_i$ at node $i\in N$ \\
-	$C_{vs}	$	&-& cost per distance unit in structure interval $s \in S$ for 
-			    vehicle $v$ 						\\
+	$C^km_{v}	$	&-& cost per distance unit (km) in cost matrix element (\alpha, \beta) for vehicle $v$	\\
+	$C^kg_{v}	$	&-& cost per weight unit (kg) in cost matrix element (\alpha, \beta) for vehicle $v$	\\
+	$C^km_{v}	$	&-& fixed cost in index (\alpha, \beta) for vehicle $v$	\\
 	$C_i	$	&-& cost of not transporting order at node $i\in N^P$ 		\\
 	$D_{ij}	$ 	&-& distance between node $i\in N$ and  $j\in N$			\\
     	$B_s 	$	&-& distance for interval $s\in S$ in cost structure		\\
@@ -164,8 +165,10 @@ Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the dis
 	$t_i 	$	&-&	time of visit at node $i\in N$							\\
     	$w_i	$ 	&-& 	waiting time at node i								\\ 
 	$u_{ip}	$	&-&	binary indicating usage of time window $p\in P_i$ at node $i$			\\
-    	$d_{vs} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval $s\in S$	\\
-	$b_{vs} $	&-&	binary indicating correct interval $s\in S$ for vehicle $v\in V$		\\
+    	$d_{v\alpha\beta} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval $s\in S$	\\
+	$b_{v\alpha\beta} $	&-&	binary indicating correct interval $s\in S$ for vehicle $v\in V$		\\
+	$l_{v\alpha\beta}$ &-&	maximum weight carried by vehicle $v in V$				\\
+
 \end{tabular}
 \linebreak
 \linebreak
@@ -207,7 +210,7 @@ subject to:
 	B_{(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
 	B_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta) \in A			\label{eq:19}	\\[8pt]
  	Z_{(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
-	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta \in A 			\label{eq:20}	\\[8pt]   	
+	Z_\alpha b_{v\alpha\beta},						& 	&&	v \in V, (\alpha, \beta) \in A 			\label{eq:20}	\\[8pt]   	
 	\sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} = 1,			& 	&&	v \in V						\label{eq:21}	\\[4pt]
     	h_{i} \geq 0,								& 	&&	i \in N 					\label{eq:22}	\\[8pt]
     	u_{ip} \in \{0, 1\},							& 	&&	i \in N, p \in P_i 				\label{eq:23}	\\[8pt]
