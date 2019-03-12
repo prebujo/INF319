@@ -30,7 +30,7 @@ public class ObjectiveFunction {
         int[][] stopCostMatrix = dataSet.getStopCostMatrix();
         int[][] travelDistance = dataSet.getTravelDistance();
         int[] orderWeights = dataSet.getOrderWeights();
-        List<Collection<Integer>> locations = dataSet.getLocations();
+        int[] locations = dataSet.getLocations();
 
 
         int i = 0;
@@ -43,7 +43,7 @@ public class ObjectiveFunction {
             int vehiclePosition = vehicleStartingLocations[v];
             int currentStop = 0;
             boolean[] visited = new boolean[orders];
-            boolean[] visitedStop = new boolean[stops];
+            boolean[] visitedStop = new boolean[stops+1];
             while (i < solution.length) {
                 solutionElement = solution[i];
                 if (solutionElement == 0) {
@@ -53,10 +53,11 @@ public class ObjectiveFunction {
 
 
                 currentStop = 1;
-                if(!visitedStop[currentStop])
-                vehicleCost += stopCostMatrix[v][solutionElement];
-                vehicleTotalDistance += travelDistance[vehiclePosition][solutionElement];
-
+                if(!visitedStop[locations[currentStop]]){
+					visitedStop[locations[currentStop]] = true;
+					vehicleCost += stopCostMatrix[v][solutionElement];
+					vehicleTotalDistance += travelDistance[vehiclePosition][solutionElement];
+				}
                 if(!visited[solutionElement]) {
                     visited[solutionElement] = true;
                     vehicleCost += stopCostMatrix[v][solutionElement];

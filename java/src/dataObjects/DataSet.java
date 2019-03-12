@@ -12,7 +12,7 @@ public class DataSet implements IData{
     private int distanceDimension;
     private int[] factories;
     private int[] factoryStopCapacities;
-    private List<Collection<Integer>> locations;
+    private int[] locations;
     private List<Collection<Integer>> vehicleNodes;
     private List<Collection<Integer>> vehiclePickupNodes;
     private int[] vehicleStartingLocations;
@@ -89,12 +89,12 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addLocations(List<Collection<Integer>> locationCollection) {
-        this.locations = locationCollection;
+    public void addLocations(int[] locations) {
+        this.locations = locations;
     }
 
     @Override
-    public List<Collection<Integer>> getLocations() {
+    public int[] getLocations() {
         return locations;
     }
 

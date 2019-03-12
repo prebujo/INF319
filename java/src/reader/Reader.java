@@ -29,7 +29,7 @@ public class Reader implements IReader {
 
         int[] stopCapacity = getIntegerList(fileScanner, factoryAmount);
 
-        List<Collection<Integer>> locationSet = getListCollection(fileScanner, stopAmount);
+        int[] locationSet = getSetList(fileScanner, stopAmount, 2*orderAmount);
 
         List<Collection<Integer>> vehicleNodeSet = getListCollection(fileScanner, vehicleAmount);
 
