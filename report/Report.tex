@@ -106,8 +106,8 @@ At a given point in time (could be delivery for one day or a week) we consider a
     $N^D    $ &-& delivery Nodes 				        \\
     $F      $ &-& factories 					        \\
     $N_f    $ &-& delivery nodes for factory $f$ 		        \\
-    $A_v    $ &-& set of pairs $(\alpha, \beta)$, repr. 
-                  index of elements in the cost matrix of vehicle $v$   \\
+    $A      $ &-& set of pairs $(\alpha, \beta)$, repr. 
+                  index of elements in the cost matrix                 \\
     $P_i    $ &-& set of time windows at node $i$, $\{1,..,\pi_i \}$	\\
     $T_{i}  $ &-& set of time parameters $[ \underline{T_{ip}},  
 		  \overline{T_{ip}} ]$ at node $i$ where $p \in P_i$	\\
@@ -164,12 +164,17 @@ Each vehicle has a set of Nodes it can travel to represented by $N_v$.
 This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. 
 The factory docking limit is denoted by $H_f$. 
 Each vehicle has a given amount of docks per factory it wants to deliver to represented by $h_{f}$. \par 
-Each node has a set $T_{i}$ of time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in P_i=\{0,1,...,\pi_i\}$ and all nodes should be picked up and delivered after time 0 and before time T. 
+Each node has a set $T_{i}$ of time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in P_i=\{0,1,...,\pi_i\}$ and all nodes should be picked up and delivered after time 0 and before time T.
 Each node has a current time based on when its being served, denoted by $t_{i}$ and where $i \in N$. 
-The distance from node $i$ to node $j$ is denoted by $D_{ij}$. 
-The cost per distance unit of vehicle $v$ for a cost structure interval $s$ is represented by $C_{vs}$ and the corresponding time between the nodes $T_{ijv}$. 
-The total distance travelled by vehicle $v$ will be denoted by the variables $d_{vs}$ for each $s\in S$, where only one variable will have the value equal to the total distance of vehicle. 
-Which $d_{vs}$ has a value will be determined by the binary $b_{vs}$ and the distance insterval parameter $B_s$, where $B_s$ indicated which distance interval we are in which again results in a different $C_{vs}$. 
+The distance from node $i$ to node $j$ is denoted by $D_{ij}$ and the time for each vehicle $v$ to travel between them is represented by $T_{ijv}$. \par 
+Each time a vehicle $v$ makes a stop and a node $i$ there will be a stop cost represented by $C_i^{stop}$. 
+The costs of vehicle $v$ depends on the total distance of that vehicle and the maximum weight transported. 
+Each possible interval of weight and distance is represented by an index pair $(\alpha,\beta)$, where $\alpha$ is the distance interval and $\beta$ is the weight interval. 
+Together these pairs make a matrix we refer to in this paper as a cost matrix. 
+Each type of cost has a matrix, including distance, weight, and fix costs and the cost in a certain interval ($\alpha$,$\beta$) is represented by $C_{v\alpha\beta}^{cost-type}$. 
+The total distance travelled by vehicle $v$ will be denoted by the variables $d_{v\alpha\beta}$ for each $(\alpha,\beta)\in A$, where only one variable per vehicle will have the value equal to the total distance of that vehicle. 
+The maximum weight transported by a vehicle is represented by $l_{v\alpha\beta}$ and also only one of these variables per vehicle will have a the corresponding value.
+Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined by the binary variable $b_{v\alpha\beta}$ and the distance insterval parameter $B_\alpha$ and the weight interval parameter $Z_\beta$.  
 \linebreak
 
 \begin{tabular} {l c l}
@@ -212,8 +217,8 @@ subject to:
     l_{iv} - Q_j - l_{(j+n)v} \leq K_v(1-x_{i(j+n)v}),	        	& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8pt]
     0 \leq l_{iv} \leq K_v,						& 	&&	v \in V, i \in N^P_v 				\label{eq:9}	\\[8pt]
     h_{i} + 1 - h_{j} \leq (H_f+1)(1-x_{ijv}),				& 	&&	v \in V, f\in F,  i \in N_f, j \in N_f, j\neq i	\label{eq:10}	\\[4pt]
-    h_{j} \leq H_f\sum_{i\in N_v}(x_{ijv}),				& 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:11}	\\[4pt]
-    h_{j} = \sum_{\substack{i\in N_v\\i{\notin} N_f}}(x_{ijv}),	        & 	&&	v \in V, j \in N_f                      	\label{eq:12}	\\[4pt]
+    h_{j} \leq H_f,                                                     & 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:11}	\\[4pt]
+    h_{j} \geq \sum_{\substack{i\in N_v\\i{\notin} N_f}}(x_{ijv}),	        & 	&&	v \in V, j \in N_f                      	\label{eq:12}	\\[4pt]
     \sum_{p\in P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:13}	\\[4pt]
     \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},		& 	&&	i \in N 					\label{eq:14}	\\[4pt]
     \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:15}	\\[4pt]
@@ -244,23 +249,27 @@ Constraint \ref{eq:2} secures that a load is either picked up or not, ie. either
 \ref{eq:3} makes certain that if a load at a node j is travelled to it is also left. This is not the case for origin and final destination node.
 Then \ref{eq:4} makes sure that origin is only left once by each vehicle, 
 and \ref{eq:5} ensures that desination is only arrived to once.
-Finally \ref{eq:6} is there to say if a load is picked up it is also delivered. \par
+Finally \ref{eq:6} is there to say if a load is picked up it must also be delivered. \par
 
 Regarding weight, constraint \ref{eq:7} ensures that if a load at node $j$ is picked up, the weight before plus the weight of the load at node $j$ minus the weight leaving the node is equal to zero. If not the summation cannot exceed the capacity of the vehicle.
 Also \ref{eq:8} makes certain that at delivery of node $j$ the weight before delivery minus the weight of the load at $j$ minus the weight after, is equal to zero, ie. the weight of the vehicle after is lighter than before by exactly the weight of the load at $j$. The final weight constraint \ref{eq:9} says that weight leaving node $i$ always has to be between $0$ and the capacity of the vehicle. \par
 
-It follows from constrain \ref{eq:10} that within a certain factory, if you travel between two nodes, the amount of stops you have made should always be iterated by one. If you are not travelling between them, the summation cannot be bigger than the limitation of the factory-stops.
+It follows from constrain \ref{eq:10} that within a certain factory, if you travel between two nodes, the amount of stops you have made should always be iterated by one. 
+If you are not travelling between them, the summation cannot be bigger than one plus the limitation corresponding to that factory.
 The next constraint on factories \ref{eq:11}, ensures that any node visited in a factory cannot exceed the docking limit.
-Then \ref{eq:12} makes sure that when a vehicle enters a factory from outside, the docking amount gets an initial value of 1. \par
+Then \ref{eq:12} makes sure that when a vehicle enters a factory from outside, the docking amount gets an initial value of 1, and if one is not travelling from $i$ to $j$ the value has to be greater than or equal to 0. \par
 
-In \ref{eq:13} 
+Constraint \ref{eq:13} ensures only one timewindow is used per node, and \ref{eq:14} says that the time a node $i$ is visited has to exceed a lower timewindow limit.
+\ref{eq:15} ensures the same upper bound timewindow is used. 
+Then constraint \ref{eq:16} ensures that the travel from one node to the next is appropriately increased by the travel time between them and for any other two nodes the values cannot exceed a large constant.
+Finally \ref{eq:17} ensures that the time a vehicle visits the delivery of an order must always be after the pickup of that order. \par
 
-
--\ref{eq:6} makes sure that all orders that are picked up are also delivered and that orders has to either be picked up or not. They also make sure that nodes that are visited are also left except for the starting and finishing nodes.
-\ref{eq:7}-\ref{eq:9} are weight capacity constraints.
-Constraint \ref{eq:10}-\ref{eq:12} are dock constraints making sure no vehicle visits more than the allowed amount of docks per visit.
-Then \ref{eq:13}-\ref{eq:16} are handeling the multiple time windows to make sure an order is picked up within a given time window with regards to waiting time.
-Constraint \ref{eq:17}-\ref{eq:10} are deciding which interval the total distance is in which in return determines the calculation of the objective function. \newline
+From \ref{eq:18} we have that for each vehicle, the sum of the total distance variables has to be equal to the total travel distance of that vehicle.
+Then regarding weight \ref{eq:19} ensures that the sum of the max weight of a vehicle $v$ is greater than or equal to the weight at all nodes visited by that vehicle.
+Constraint \ref{eq:20} ensures that for each vehicle $v$ the total distance variable can only exist in the appropriate distance interval.
+The same is the case in \ref{eq:21} for maximum weight in the appropriate weight interval.
+Finally \ref{eq:22} says that if a vehicle is not leaving its origin node, there cannot be a cost interval binary for that vehicle, which in turn ensures that we dont calculate the fixed costs of said vehicle. \par
+Constraints \ref{eq:23} to \ref{eq:28} are ensuring positive and binary variables where appropriate.  \par
 
 \section{Final Remarks}
 The model presented in this paper is ready for testing in a solver software such as AMPL. Making a small instance to test the model would then be the next step before adapting the model to an even more complex version of itsself and developing a heuristic to solve the problem. 

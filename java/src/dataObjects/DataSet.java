@@ -69,7 +69,7 @@ public class DataSet implements IData{
     public int getDistanceDimension() { return distanceDimension; }
 
     @Override
-    public void addFactories(int[] factories){
+    public void setFactories(int[] factories){
         this.factories = factories;
     }
 
@@ -79,7 +79,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addFactoryStopCapacities(int[] factoryStopCapacities) {
+    public void setFactoryStopCapacities(int[] factoryStopCapacities) {
         this.factoryStopCapacities = factoryStopCapacities;
     }
 
@@ -89,7 +89,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addLocations(int[] locations) {
+    public void setLocations(int[] locations) {
         this.locations = locations;
     }
 
@@ -99,7 +99,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addVehicleNodes(List<Collection<Integer>> vehicleNodeCollection) {
+    public void setVehicleNodes(List<Collection<Integer>> vehicleNodeCollection) {
         this.vehicleNodes = vehicleNodeCollection;
     }
 
@@ -109,7 +109,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addVehiclePickupNodes(List<Collection<Integer>> vehiclePickupNodes) {
+    public void setVehiclePickupNodes(List<Collection<Integer>> vehiclePickupNodes) {
         this.vehiclePickupNodes = vehiclePickupNodes;
     }
 
@@ -119,7 +119,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addVehicleStartingLocations(int[] vehicleStartingLocations) {
+    public void setVehicleStartingLocations(int[] vehicleStartingLocations) {
         this.vehicleStartingLocations = vehicleStartingLocations;
     }
 
@@ -129,7 +129,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addVehicleDestinationLocations(int[] vehicleDestinationLocations) {
+    public void setVehicleDestinationLocations(int[] vehicleDestinationLocations) {
         this.vehicleDestinationLocations = vehicleDestinationLocations;
     }
 
@@ -139,7 +139,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addVehicleCapacities(int[] vehicleCapacities) {
+    public void setVehicleCapacities(int[] vehicleCapacities) {
         this.vehicleCapacties = vehicleCapacities;
     }
 
@@ -149,7 +149,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addOrderWeights(int[] orderWeights) {
+    public void setOrderWeights(int[] orderWeights) {
         this.orderWeights = orderWeights;
     }
 
@@ -159,7 +159,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addOrderPenalties(int[] orderPenalties) {
+    public void setOrderPenalties(int[] orderPenalties) {
         this.orderPenalties = orderPenalties;
     }
 
@@ -169,7 +169,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addDistanceIntervals(int[] distanceIntervals) {
+    public void setDistanceIntervals(int[] distanceIntervals) {
         this.distanceIntervals = distanceIntervals;
     }
 
@@ -179,7 +179,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addWeightIntervals(int[] weightIntervals) {
+    public void setWeightIntervals(int[] weightIntervals) {
         this.weightIntervals = weightIntervals;
     }
 
@@ -189,7 +189,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addKmCostMatrix(int[][][] kmCostMatrix) {
+    public void setKmCostMatrix(int[][][] kmCostMatrix) {
         this.kmCostMatrix = kmCostMatrix;
 
     }
@@ -200,7 +200,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addKgCostMatrix(int[][][] kgCostMatrix) {
+    public void setKgCostMatrix(int[][][] kgCostMatrix) {
         this.kgCostMatrix = kgCostMatrix;
     }
 
@@ -210,7 +210,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addFixCostMatrix(int[][][] fixCostMatrix) {
+    public void setFixCostMatrix(int[][][] fixCostMatrix) {
         this.fixCostMatrix = fixCostMatrix;
     }
 
@@ -220,7 +220,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addStopCostMatrix(int[][] stopCosts) {
+    public void setStopCostMatrix(int[][] stopCosts) {
         this.stopCosts = stopCosts;
     }
 
@@ -230,7 +230,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addTimeWindowAmounts(int[] timeWindowAmounts) {
+    public void setTimeWindowAmounts(int[] timeWindowAmounts) {
         this.timeWindowAmounts = timeWindowAmounts;
     }
 
@@ -240,7 +240,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addLowerTimeWindows(int[][] lowerTimeWindows) {
+    public void setLowerTimeWindows(int[][] lowerTimeWindows) {
         this.lowerTimeWindows = lowerTimeWindows;
     }
 
@@ -250,7 +250,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addUpperTimeWindows(int[][] upperTimeWindows) {
+    public void setUpperTimeWindows(int[][] upperTimeWindows) {
         this.upperTimeWindows = upperTimeWindows;
     }
 
@@ -260,7 +260,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addTravelTime(int[][][] travelTimes) {
+    public void setTravelTime(int[][][] travelTimes) {
         this.travelTimes = travelTimes;
     }
 
@@ -270,7 +270,7 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void addTravelDistance(int[][] travelDistances) {
+    public void setTravelDistance(int[][] travelDistances) {
         this.travelDistances = travelDistances;
     }
 

@@ -13,15 +13,13 @@ public class Reader implements IReader {
 
         File file = new File("/home/preben/repo/master/java/res/"+fileName);
         Scanner fileScanner = new Scanner(file);
-
-        int vehicleAmount = getIntFromLine(fileScanner,1);
-        int orderAmount = getIntFromLine(fileScanner,1);
-        int factoryAmount = getIntFromLine(fileScanner,1);
-        int stopAmount = getIntFromLine(fileScanner,1);
-        int distanceDimension = getIntFromLine(fileScanner,1);
-        int weightDimension = getIntFromLine(fileScanner,1);
-
         nextSection(fileScanner);
+        int vehicleAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
+        int orderAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
+        int factoryAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
+        int stopAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
+        int distanceDimension = getIntFromLineAndMoveToNextSection(fileScanner,1);
+        int weightDimension = getIntFromLineAndMoveToNextSection(fileScanner,1);
 
 //        List<Collection<Integer>> factorySet = getListCollection(fileScanner, factoryAmount);
 
@@ -70,31 +68,37 @@ public class Reader implements IReader {
         int[][] travelDistance = getInteger2DList(fileScanner, 2*orderAmount, 2*orderAmount);
 
         result = new DataSet(vehicleAmount,orderAmount,factoryAmount,stopAmount,distanceDimension,weightDimension);
-        result.addFactories(factorySet);
-        result.addFactoryStopCapacities(stopCapacity);
-        result.addLocations(locationSet);
-        result.addVehicleNodes(vehicleNodeSet);
-        result.addVehiclePickupNodes(vehiclePickupNodeSet);
-        result.addVehicleStartingLocations(vehicleStartingLocation);
-        result.addVehicleDestinationLocations(vehicleDestinationLocation);
-        result.addVehicleCapacities(vehicleCapacity);
-        result.addOrderWeights(orderWeight);
-        result.addOrderPenalties(orderPenalty);
-        result.addDistanceIntervals(distanceInterval);
-        result.addWeightIntervals(weightInterval);
-        result.addKmCostMatrix(kmCostMatrix);
-        result.addKgCostMatrix(kgCostMatrix);
-        result.addFixCostMatrix(fixCostMatrix);
-        result.addStopCostMatrix(stopCosts);
-        result.addTimeWindowAmounts(timeWindowAmounts);
-        result.addLowerTimeWindows(lowerTimeWindows);
-        result.addUpperTimeWindows(upperTimeWindows);
-        result.addTravelTime(travelTime);
-        result.addTravelDistance(travelDistance);
+        result.setFactories(factorySet);
+        result.setFactoryStopCapacities(stopCapacity);
+        result.setLocations(locationSet);
+        result.setVehicleNodes(vehicleNodeSet);
+        result.setVehiclePickupNodes(vehiclePickupNodeSet);
+        result.setVehicleStartingLocations(vehicleStartingLocation);
+        result.setVehicleDestinationLocations(vehicleDestinationLocation);
+        result.setVehicleCapacities(vehicleCapacity);
+        result.setOrderWeights(orderWeight);
+        result.setOrderPenalties(orderPenalty);
+        result.setDistanceIntervals(distanceInterval);
+        result.setWeightIntervals(weightInterval);
+        result.setKmCostMatrix(kmCostMatrix);
+        result.setKgCostMatrix(kgCostMatrix);
+        result.setFixCostMatrix(fixCostMatrix);
+        result.setStopCostMatrix(stopCosts);
+        result.setTimeWindowAmounts(timeWindowAmounts);
+        result.setLowerTimeWindows(lowerTimeWindows);
+        result.setUpperTimeWindows(upperTimeWindows);
+        result.setTravelTime(travelTime);
+        result.setTravelDistance(travelDistance);
 
 
 
 
+        return result;
+    }
+
+    private int getIntFromLineAndMoveToNextSection(Scanner fileScanner, int i) {
+        int result = getIntFromLine(fileScanner,i);
+        nextSection(fileScanner);
         return result;
     }
 
@@ -111,7 +115,6 @@ public class Reader implements IReader {
         return result;
     }
 
-    //TODO: error when running nextsection in this method. find out why.
     private int[][] getInteger2DList(Scanner fileScanner, int x, int y) {
         int[][] result = new int[x][y];
         fileScanner.nextLine();
