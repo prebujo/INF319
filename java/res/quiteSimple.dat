@@ -4,7 +4,7 @@ param nv := 2 ;
 #amount of orders = orders + amount of vehicles
 param nn := 4 ;
 
-#amount of factories
+#amount of factory
 param nf := 1 ;
 
 #amount of distance instervals in cost structure

@@ -95,9 +95,36 @@ The parts, or orders (typically named transport orders but we refer to orders he
 At a given point in time (could be delivery for one day or a week) we consider a planning problem with a demand for orders that should be satisfied with the given suppliers using vehicles provided by different logistic carriers.
 \linebreak
 
+
+\begin{tabular}{l c l }
+              &Indices          			        	\\ 
+    $v      $ &-& vehicle index used in vehicle sets                    \\
+    $i      $ &-& node index used in node sets                          \\
+    $f      $ &-& factory index used in factory sets                    \\
+    $p      $ &-& timewindow index used in Timewindow Sets              \\
+    $s      $ &-& stop location index used in location sets             \\
+    $\alpha $ &-& distance interval index used in cost structure to 
+                    determine costs                                     \\
+    $\beta  $ &-& weight interval index used in cost structure to 
+                    determine costs                                     \\
+\end{tabular}
+\linebreak
+\linebreak
+\par
+
+The vehicles have different capacities(kg and volume), cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not relevant to the manufacturer).
+The cost structure depend on the total distance a vehicle is driving, the maximum weight transported by that vehicle, and a fix cost. There is also a cost for stopping at a node. \par
+When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock.
+The docks (each reperesented by a different node) in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can unload at per visit to the factory. \par
+Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
+The mathematical formulation of the problem will now follow. 
+The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the verticies and $n$ is the number of orders in the problem, and $E=\{(i,j): i,j \in N, i \neq j\}$ represent the edges in the graph.
+\linebreak
+
+
 \begin{tabular}{l c l }
               &Sets 					        	\\ 
-    $N      $ &-& nodes $\{1,..,2n\}$ where $n$ is amout of orders      \\
+    $N      $ &-& nodes $\{1,..,2n\}$ where $n$ is number of orders     \\
     $V      $ &-& vehicles  					        \\
     $E      $ &-& edges 					        \\
     $E_v    $ &-& edges visitable by vehicle $v$ 		        \\
@@ -106,73 +133,72 @@ At a given point in time (could be delivery for one day or a week) we consider a
     $N^D    $ &-& delivery Nodes 				        \\
     $F      $ &-& factories 					        \\
     $N_f    $ &-& delivery nodes for factory $f$ 		        \\
-    $A      $ &-& set of pairs $(\alpha, \beta)$, repr. 
-                  index of elements in the cost matrix                 \\
-    $P_i    $ &-& set of time windows at node $i$, $\{1,..,\pi_i \}$	\\
-    $T_{i}  $ &-& set of time parameters $[ \underline{T_{ip}},  
+    $A_v    $ &-& index pair $(\alpha,\beta)$ of elements in the cost 
+                  structure where $\alpha$ goes                         \\
+              & & from $(1,..,\gamma_v)$ and $\beta$ from $(1,..,\mu_v)$\\
+    $P_i    $ &-& set of time window indecies from $\{1,..,\pi_i\}$     \\
+    $T_{i}  $ &-& set of time windows $[ \underline{T_{ip}},  
 		  \overline{T_{ip}} ]$ at node $i$ where $p \in P_i$	\\
     $S      $ &-& set of stops indicating a pickup/delivery location    \\
-    $L_s    $ &-& Sets of nodes sharing a stop location 
+    $L_s    $ &-& subsets of nodes sharing a stop location 
                   $s \in S$ 	                                        \\
 \end{tabular}
 \linebreak
 \linebreak
 \par
-
-The vehicles have different capacities, cost structures, incompatabilities and start at the first pickup location at the first pickup time (ie. costs to get from start to first pickup are not relevant to the manufacturer).
-The cost structure depend on the total distance a vehicle is driving and is calculated per km. \par
-When a delivery is assigned to a vehicle, the vehicle must load the delivery from the supplier, and deliver the delivery at the factory dock.
-The docks (each reperesented by a different node) in each factory can differ according to which order is being delivered and there is a limit to how many docks each vehicle can unload at per visit to the factory. \par
-Each delivery/pickup can have several time windows, lapsing sometimes over several days. If a car arrives before a time window it has to wait. \par
-The mathematical formulation of the problem will now follow. 
-The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the verticies and $n$ is the number of orders in the problem, and $E=\{(i,j): i,j \in N, i \neq j\}$ represent the edges in the graph.
-\linebreak
-
-\begin{tabular}{l c l }
-    			        &Parameters 							\\ 
-    $n    	            $   &-& amount of orders     					\\
-    $K_v  	            $   &-& weight limit of vehicle $v\in V$	 			\\
-    $o(v)                   $   &-& starting node of vehicle $v$                                \\
-    $d(v)                   $   &-& ending node of vehicle $v$                                  \\
-    $Q_i  	            $	&-& weight of order at node $i\in N$				\\
-    $H_f  	            $	&-& docking limit at factory $f\in F$				\\
-    $T_{ijv}                $ 	&-& travel time for vehicle $v\in V$ over edge $(i,j)\in E_v$	\\
-    $\pi_i	            $	&-& amount of time windows at node $i\in N$			\\ 
-    $\overline{T_{ip}}      $   &-& upper bound time of time window $p\in P_i$ at node $i\in N$ \\
-    $\underline{T_{ip}}     $	&-& lower bound time of time window $p\in P_i$ at node $i\in N$ \\
-    $C^{km}_{v\alpha\beta}  $	&-& cost per distance unit (km) in cost matrix element 
-                                    $(\alpha, \beta) \in A$ for vehicle $v$	                        \\
-    $C^{kg}_{v\alpha\beta}  $	&-& cost per weight unit (kg) in cost matrix element 
-                                    $(\alpha, \beta) \in A$ for vehicle $v$	                        \\
-    $C^{fix}_{v\alpha\beta}  $	&-& fixed cost in index $(\alpha, \beta) \in A$ for vehicle $v$	\\
-    $C^{stop}_i             $   &-& costs of making a stop at node $i$ 	                        \\
-    $C_i	            $   &-& cost of not transporting order at node $i\in N^P$ 		\\
-    $D_{ij}	            $   &-& distance between node $i\in N$ and  $j\in N$		\\
-    $B_\alpha               $   &-& distance for interval $\alpha$ in cost matrix $A$ column index\\
-    $Z_\beta                $   &-& weight for interval $\beta$ in cost matrix $A$ row index    \\ 
-\end{tabular}
-\linebreak
-\linebreak
-\par
-The set of vehicles used is denoted by $V$ and capacity of each vehicle $v \in V$ is denoted by $K_v$.
+The set of vehicles used is denoted by $V$ and weight capacity of each vehicle $v \in V$ is denoted by $K_v^{kg}$ and volume capacity is denoted $K_v^{vol}$.
 The set of Edges that each vehicle can traverse is represented by $E_v$. 
 Since $n$ is the number of orders in the problem, then if $i$ is a specific pickup-node then $i+n$ corresponds to the delivery node for the same order.
 The set of pickup Nodes (supplier docks) we denote using $N^P$ and each delivery node (Factory dock) is denoted by $N^D$. 
 All nodes are therefore equivalent to $N = N^P \cup N^D$. 
 Each Factory, $f \in F$, also has a set of Nodes belonging to the same factory wich we denote $N_f$. Since all factories are delivery nodes these sets only include delivery nodes.
 Each vehicle has a set of Nodes it can travel to represented by $N_v$.
-This set also includes an origin node, $o(v)$ and a destination node $d(v)$ corresponding to the first pickup and the last delivery of vehicle $v$. 
+This set also includes an origin node, $o(v)$ and a destination node $d(v)$ which is a fictive start and ending point unique to each vehicle $v$. 
+The distance and costs from here to the first pickup is zero.
 The factory docking limit is denoted by $H_f$. 
-Each vehicle has a given amount of docks per factory it wants to deliver to represented by $h_{f}$. \par 
-Each node has a set $T_{i}$ of time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in P_i=\{0,1,...,\pi_i\}$ and all nodes should be picked up and delivered after time 0 and before time T.
+\begin{tabular}{l c l }
+    			        &Parameters 							\\ 
+    $n    	            $   &-& number of orders     					\\
+    $K_v^{kg}  	            $   &-& weight capacity of vehicle $v\in V$	 			\\
+    $K_v^{vol} 	            $   &-& volume capacity of vehicle $v\in V$	 			\\
+    $o(v)                   $   &-& starting node of vehicle $v$                                \\
+    $d(v)                   $   &-& ending node of vehicle $v$                                  \\
+    $Q_i^{kg}  	            $	&-& weight of order at node $i\in N$				\\
+    $Q_i^{vol} 	            $	&-& volume of order at node $i\in N$				\\
+    $H_f  	            $	&-& docking limit at factory $f\in F$				\\
+    $T_{ijv}                $ 	&-& travel time for vehicle $v\in V$ over edge $(i,j)\in E_v$	\\
+    $\pi_i	            $	&-& number of time windows at node $i\in N$			\\ 
+    $\overline{T_{ip}}      $   &-& upper bound time of time window $p\in P_i$ at node $i\in N$ \\
+    $\underline{T_{ip}}     $	&-& lower bound time of time window $p\in P_i$ at node $i\in N$ \\
+    $\gamma_v               $   &-& number of distance intervals for vehicle $v$                \\
+    $\mu_v                  $   &-& number of weight intervals for vehicle $v$                  \\                   
+    $C^{km}_{v\alpha\beta}  $	&-& cost per distance unit (km) in cost matrix element 
+                                    $(\alpha, \beta) \in A_v$ for vehicle $v$	                \\
+    $C^{kg}_{v\alpha\beta}  $	&-& cost per weight unit (kg) in cost matrix element 
+                                    $(\alpha, \beta) \in A_v$ for vehicle $v$	                \\
+    $C^{fix}_{v\alpha\beta} $	&-& fixed cost in index $(\alpha, \beta) \in A_v$ for vehicle $v$	\\
+    $C^{stop}_i             $   &-& costs of making a stop at node $i$ 	                        \\
+    $C_i                    $   &-& cost of not transporting order $i\in N^P$                   \\
+    $D_{ij}	            $   &-& distance between node $i\in N$ and  $j\in N$		\\
+    $B_{v\alpha}            $   &-& upper limit distance in interval $\alpha$ for vehicle $v$ 
+                                    in cost matrix index pair $(\alpha,\beta)$ in $A_v$         \\
+    $Z_{v\beta}             $   &-& upper limit weight in interval $\beta$ for vehicle $v$ in  
+                                    cost matrix index pair $(\alpha,\beta)$ in $A_v$            \\ 
+\end{tabular}
+\linebreak
+\linebreak
+\par
+Each delivery node has a variable $h_{i}$ indicating how many docks have been visited including the node $i$. \par 
+Each pickup node has a weight $Q_i^{kg}$ and a volume $Q_i^{vol}$ parameter indicating the weight and volume of the order at that node.
+Each node has a set $T_{i}$ of time windows represented by $[ \underline{T_{ip}},  \overline{T_{ip}} ] \in [0,T]$ where $p \in P_i=\{0,1,...,\pi_i\}$ and all nodes should be picked up and delivered within given timewindows.
 Each node has a current time based on when its being served, denoted by $t_{i}$ and where $i \in N$. 
 The distance from node $i$ to node $j$ is denoted by $D_{ij}$ and the time for each vehicle $v$ to travel between them is represented by $T_{ijv}$. \par 
 Each time a vehicle $v$ makes a stop and a node $i$ there will be a stop cost represented by $C_i^{stop}$. 
 The costs of vehicle $v$ depends on the total distance of that vehicle and the maximum weight transported. 
-Each possible interval of weight and distance is represented by an index pair $(\alpha,\beta)$, where $\alpha$ is the distance interval and $\beta$ is the weight interval. 
+Each possible interval of weight and distance is represented by an index pair $(\alpha,\beta)$, where $\alpha$ is the distance interval index ranging $(1..\gamma_v$ and $\beta$ is the weight interval ranging from $(1..\mu_v)$. 
 Together these pairs make a matrix we refer to in this paper as a cost matrix. 
 Each type of cost has a matrix, including distance, weight, and fix costs and the cost in a certain interval ($\alpha$,$\beta$) is represented by $C_{v\alpha\beta}^{cost-type}$. 
-The total distance travelled by vehicle $v$ will be denoted by the variables $d_{v\alpha\beta}$ for each $(\alpha,\beta)\in A$, where only one variable per vehicle will have the value equal to the total distance of that vehicle. 
+The total distance travelled by vehicle $v$ will be denoted by the variables $d_{v\alpha\beta}$ for each $(\alpha,\beta)\in A_v$, where only one variable per vehicle will have the value equal to the total distance of that vehicle. 
 The maximum weight transported by a vehicle is represented by $l_{v\alpha\beta}$ and also only one of these variables per vehicle will have a the corresponding value.
 Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined by the binary variable $b_{v\alpha\beta}$ and the distance insterval parameter $B_\alpha$ and the weight interval parameter $Z_\beta$.  
 \linebreak
@@ -180,26 +206,28 @@ Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined b
 \begin{tabular} {l c l}
     			&Variables										\\
 	$x_{ijv}$	&-& 	binary indicating travel from node $i\in N$ to $j\in N$ of vehicle $v\in V$	\\
-    	$y_i    $ 	&-& 	binary indicating no pickup of order at node $i\in N^P$				\\
-	$l_{iv}	$	&-&	load of vehicle $v$ at node $i$							\\ 
-	$h_i	$	&-&	docking times in factory at node $i\in N_f$					\\
-	$t_i 	$	&-&	time of visit at node $i\in N$							\\
+	$y_i$	        &-& 	binary indicating that an order $i\in N^P$ is not picked up             	\\
+        $l_{iv}^{kg} $ 	&-& 	weight of vehicle $v$ after visiting node $i$        				\\
+        $l_{iv}^{vol}$	&-&	volume of vehicle $v$ after visiting node $i$  					\\ 
+	$h_i	$	&-&	docking times in factory after visiting node $i\in N_f$				\\
+	$t_i 	$	&-&	time after visiting node $i\in N$						\\
 	$u_{ip}	$	&-&	binary indicating usage of time window $p\in P_i$ at node $i$			\\
-        $d_{v\alpha\beta} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval $(\alpha, \beta) \in A_v$	\\
-        $b_{v\alpha\beta} $	&-&	binary indicating interval $(\alpha, \beta) \in A_v$ for vehicle $v\in V$		\\
-        $l_{v\alpha\beta}$ &-&	maximum weight carried by vehicle $v \in V$ for interval $(\alpha,\beta) \in A$			\\
+        $d_{v\alpha\beta} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval
+                                                                                    $(\alpha, \beta) \in A_v$	\\
+        $b_{v\alpha\beta} $	&-&	binary indicating interval $(\alpha, \beta) \in A_v$ for vehicle $v\in V$	\\
+        $l_{v\alpha\beta}$ &-&	the largest weight trasported by vehicle $v \in V$ for interval $(\alpha,\beta) \in A_v$	\\
 
 \end{tabular}
 \linebreak
 \linebreak
 \par
 
-$l_{iv}$ is the load of vehicle $v$ leaving node $i$ and $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. 
-The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$ indicating if an order is not picked up.
+$l_{iv}^{kg}$ is the weight and $l_{iv}^{vol}$ is the volume on the vehicle $v$ leaving node $i$. $x_{ijv}$ is a binary vairable indicating if vehicle $v$ is travelling between $i$ and $j$ node. 
+The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$, indicating that an order is not picked up.
 
 \begin{equation}
 \label{eq:1}
-	min\sum_{v\in V} \sum_{(\alpha, \beta) \in A} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
+        min\sum_{v\in V} \sum_{(\alpha, \beta) \in A_v} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 
@@ -213,63 +241,69 @@ subject to:
     \sum_{j\in N_v}x_{o(v)jv} = 1,				        & 	&&	v \in V 					\label{eq:4}	\\[4pt]
     \sum_{j\in N_v}x_{j d(v)v} = 1,					& 	&&	v \in V 					\label{eq:5}	\\[4pt]
     \sum_{j\in N_v}x_{ijv} - \sum_{j\in N_v}x_{(i+n)jv} = 0,  	        & 	&&	v \in V, i\in N^P_v 				\label{eq:6}	\\[4pt]
-    l_{iv} + Q_j - l_{jv} \leq K_v(1-x_{ijv}),			        & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:7} 	\\[8pt]
-    l_{iv} - Q_j - l_{(j+n)v} \leq K_v(1-x_{i(j+n)v}),	        	& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8pt]
-    0 \leq l_{iv} \leq K_v,						& 	&&	v \in V, i \in N^P_v 				\label{eq:9}	\\[8pt]
-    h_{i} + 1 - h_{j} \leq (H_f+1)(1-x_{ijv}),				& 	&&	v \in V, f\in F,  i \in N_f, j \in N_f, j\neq i	\label{eq:10}	\\[4pt]
-    h_{j} \leq H_f,                                                     & 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:11}	\\[4pt]
-    h_{j} \geq \sum_{\substack{i\in N_v\\i{\notin} N_f}}(x_{ijv}),	        & 	&&	v \in V, j \in N_f                      	\label{eq:12}	\\[4pt]
-    \sum_{p\in P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:13}	\\[4pt]
-    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},		& 	&&	i \in N 					\label{eq:14}	\\[4pt]
-    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:15}	\\[4pt]
+    l_{iv}^{kg} + Q_j^{kg} - l_{jv}^{kg} \leq K_v^{kg}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:7} 	\\[8pt]
+    l_{iv}^{kg} - Q_j^{kg} - l_{(j+n)v}^{kg} \leq K_v^{kg}(1-x_{i(j+n)v}),& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8pt]
+    0 \leq l_{iv}^{kg} \leq K_v^{kg},					& 	&&	v \in V, i \in N^P_v 				\label{eq:9}	\\[8pt]
+    l_{iv}^{vol} + Q_j^{vol} - l_{jv}^{vol} \leq K_v^{vol}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:10} 	\\[8pt]
+    l_{iv}^{vol} - Q_j^{vol} - l_{(j+n)v}^{vol} \leq K_v^{vol}(1-x_{i(j+n)v}),&	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:11}	\\[8pt]
+    0 \leq l_{iv}^{vol} \leq K_v^{vol},					& 	&&	v \in V, i \in N^P_v 				\label{eq:12}	\\[8pt]
+    h_{i} + 1 - h_{j} \leq (H_f+1)(1-x_{ijv}),				& 	&&	v \in V, f\in F,  i \in N_f, j \in N_f, j\neq i	\label{eq:13}	\\[4pt]
+    h_{j} \leq H_f,                                                     & 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:14}	\\[4pt]
+    h_{j} \geq \sum_{\substack{i\in N_v\\i{\notin} N_f}}(x_{ijv})       & 	&&	v \in V, j \in N_f                      	\label{eq:15}	\\[4pt]
+    \sum_{p\in P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:16}	\\[4pt]
+    \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},		& 	&&	i \in N 					\label{eq:17}	\\[4pt]
+    \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:18}	\\[4pt]
     t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + 		& 	&&						\nonumber\\
-    T_{ijv})(1 - x_{ijv}),						& 	&& 	v \in V, (i,j) \in E_v				\label{eq:16}	\\[8pt]
-    t_{i} + T_{i(i+n)v} - t_{(i+n)} \leq 0,				& 	&& 	v \in V, i \in N_v^P				\label{eq:17}	\\[8pt]
-    \sum_{(\alpha,\beta)\in A}d_{v\alpha\beta} = 
-    \sum_{(i,j) \in E_v} x_{ijv}D_{ij},					& 	&&	v \in V						\label{eq:18}	\\[4pt]
-    \sum_{(\alpha,\beta) \in A} l_{v\alpha\beta} \geq l_{iv}		&	&& 	v \in V, i \in N_v				\label{eq:19}	\\[4pt]
+    T_{ijv})(1 - x_{ijv}),						& 	&& 	v \in V, (i,j) \in E_v				\label{eq:19}	\\[8pt]
+    t_{i} + T_{i(i+n)v} - t_{(i+n)} \leq 0,				& 	&& 	v \in V, i \in N_v^P				\label{eq:20}	\\[8pt]
+    \sum_{(\alpha,\beta)\in A_v}d_{v\alpha\beta} = 
+    \sum_{(i,j) \in E_v} x_{ijv}D_{ij},					& 	&&	v \in V						\label{eq:21}	\\[4pt]
+    \sum_{(\alpha,\beta) \in A_v} l_{v\alpha\beta} \geq l_{iv}^{kg}	&	&& 	v \in V, i \in N_v				\label{eq:22}	\\[4pt]
     B_{(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
-    B_\alpha b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A			\label{eq:20}	\\[8pt]
+    B_\alpha b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:23}	\\[8pt]
     Z_{(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
-    Z_\beta b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A 			\label{eq:21}	\\[8pt]   	
-    \sum_{(\alpha, \beta) \in A} b_{v\alpha\beta} \leq		
-    \sum_{j\in N_v}x_{o(v)jv},                                          & 	&&	v \in V						\label{eq:22}	\\[4pt]
-    h_i, t_i \geq 0,							& 	&&	i \in N 					\label{eq:23}	\\[8pt]
-    u_{ip} \in \{0, 1\},						& 	&&	i \in N, p \in P_i 				\label{eq:24}	\\[8pt]
-    b_{v\alpha\beta} \in \{0, 1\},					& 	&&	v \in V, (\alpha,\beta) \in A 			\label{eq:25}	\\[8pt]
-    d_{v\alpha\beta}, l_{v\alpha\beta} \geq 0                           &       &&      v \in V, (\alpha,\beta) \in A 			\label{eq:26}	\\[8pt]
-    y_i \in \{0, 1\},						        & 	&&	i \in N^P 					\label{eq:27}	\\[8pt]
-    x_{ijv} \in \{0, 1\},						&	&&	v \in V, (i, j) \in E_v 			\label{eq:28}
+    Z_\beta b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:24}	\\[8pt]   	
+    \sum_{(\alpha, \beta) \in A_v} b_{v\alpha\beta} \leq		
+    \sum_{j\in N_v}x_{o(v)jv},                                          & 	&&	v \in V						\label{eq:25}	\\[4pt]
+    h_i, t_i \geq 0,							& 	&&	i \in N 					\label{eq:26}	\\[8pt]
+    u_{ip} \in \{0, 1\},						& 	&&	i \in N, p \in P_i 				\label{eq:27}	\\[8pt]
+    b_{v\alpha\beta} \in \{0, 1\},					& 	&&	v \in V, (\alpha,\beta) \in A_v 		\label{eq:28}	\\[8pt]
+    d_{v\alpha\beta}, l_{v\alpha\beta} \geq 0                           &       &&      v \in V, (\alpha,\beta) \in A_v 		\label{eq:29}	\\[8pt]
+    y_i \in \{0, 1\},                                                   &       &&      i \in N^P                                       \label{eq:30}   \\[8pt]
+    x_{ijv} \in \{0, 1\},						&	&&	v \in V, (i, j) \in E_v 			\label{eq:31}
 \end{alignat} 
 \endgroup
 
 \par
 The objective function (\ref{eq:1}) sums up to the cost of all vehicles given corresponding costs from their cost matrix. Costs could be variable per distance, weight, fixed and/or related to stops made. Loads not transported will be penilized with costs and the aim is to minimize the sum of all these costs.
-Constraint \ref{eq:2} secures that a load is either picked up or not, ie. either $x_{ijv}$ has a value of 1 or $y_i$.
+Constraint \ref{eq:2} secures that a load is picked up once and only by one vehicle or not picked up at all. 
 \ref{eq:3} makes certain that if a load at a node j is travelled to it is also left. This is not the case for origin and final destination node.
 Then \ref{eq:4} makes sure that origin is only left once by each vehicle, 
 and \ref{eq:5} ensures that desination is only arrived to once.
 Finally \ref{eq:6} is there to say if a load is picked up it must also be delivered. \par
 
 Regarding weight, constraint \ref{eq:7} ensures that if a load at node $j$ is picked up, the weight before plus the weight of the load at node $j$ minus the weight leaving the node is equal to zero. If not the summation cannot exceed the capacity of the vehicle.
-Also \ref{eq:8} makes certain that at delivery of node $j$ the weight before delivery minus the weight of the load at $j$ minus the weight after, is equal to zero, ie. the weight of the vehicle after is lighter than before by exactly the weight of the load at $j$. The final weight constraint \ref{eq:9} says that weight leaving node $i$ always has to be between $0$ and the capacity of the vehicle. \par
+Also \ref{eq:8} makes certain that at delivery of node $j$ the weight before delivery minus the weight of the load at $j$ minus the weight after, is equal to zero, ie. the weight of the vehicle after is lighter than before by exactly the weight of the load at $j$. 
+The final weight constraint \ref{eq:9} says that weight leaving node $i$ always has to be between $0$ and the capacity of the vehicle. \par
 
-It follows from constrain \ref{eq:10} that within a certain factory, if you travel between two nodes, the amount of stops you have made should always be iterated by one. 
+The next constraints \ref{eq:10}-\ref{eq:12}, ensures the same as for the weight but for volume, that each load is increased by the volume of the order, that the volume is decreased once delivered and that the volume at any node is between $0$ and the volume capacity of that vehicle.
+
+It follows from constrain \ref{eq:13} that within a certain factory, if you travel between two nodes, the number of stops you have made should always be iterated by one. 
 If you are not travelling between them, the summation cannot be bigger than one plus the limitation corresponding to that factory.
-The next constraint on factories \ref{eq:11}, ensures that any node visited in a factory cannot exceed the docking limit.
-Then \ref{eq:12} makes sure that when a vehicle enters a factory from outside, the docking amount gets an initial value of 1, and if one is not travelling from $i$ to $j$ the value has to be greater than or equal to 0. \par
+The next constraint on factories \ref{eq:14}, ensures that any node visited in a factory cannot exceed the docking limit.
+Then \ref{eq:15} makes sure that when a vehicle enters a factory from outside, the docking amount gets an initial value of 1, and if one is not travelling from $i$ to $j$ the value has to be greater than or equal to 0. \par
 
-Constraint \ref{eq:13} ensures only one timewindow is used per node, and \ref{eq:14} says that the time a node $i$ is visited has to exceed a lower timewindow limit.
-\ref{eq:15} ensures the same upper bound timewindow is used. 
-Then constraint \ref{eq:16} ensures that the travel from one node to the next is appropriately increased by the travel time between them and for any other two nodes the values cannot exceed a large constant.
-Finally \ref{eq:17} ensures that the time a vehicle visits the delivery of an order must always be after the pickup of that order. \par
+Constraint \ref{eq:16} ensures only one timewindow is used per node, and \ref{eq:17} says that the time a node $i$ is visited has to exceed a lower timewindow limit.
+\ref{eq:18} ensures the same upper bound timewindow is used. 
+Then constraint \ref{eq:19} ensures that the travel from one node to the next is appropriately increased by the travel time between them and for any other two nodes the values cannot exceed a large constant.
+Finally \ref{eq:20} ensures that the time a vehicle visits the delivery of an order must always be after the pickup of that order. \par
 
-From \ref{eq:18} we have that for each vehicle, the sum of the total distance variables has to be equal to the total travel distance of that vehicle.
-Then regarding weight \ref{eq:19} ensures that the sum of the max weight of a vehicle $v$ is greater than or equal to the weight at all nodes visited by that vehicle.
-Constraint \ref{eq:20} ensures that for each vehicle $v$ the total distance variable can only exist in the appropriate distance interval.
-The same is the case in \ref{eq:21} for maximum weight in the appropriate weight interval.
-Finally \ref{eq:22} says that if a vehicle is not leaving its origin node, there cannot be a cost interval binary for that vehicle, which in turn ensures that we dont calculate the fixed costs of said vehicle. \par
-Constraints \ref{eq:23} to \ref{eq:28} are ensuring positive and binary variables where appropriate.  \par
+From \ref{eq:21} we have that for each vehicle, the sum of the total distance variables has to be equal to the total travel distance of that vehicle.
+Then regarding weight \ref{eq:22} ensures that the sum of the max weight of a vehicle $v$ is greater than or equal to the weight at all nodes visited by that vehicle.
+Constraint \ref{eq:23} ensures that for each vehicle $v$ the total distance variable can only exist in the appropriate distance interval.
+The same is the case in \ref{eq:24} for maximum weight in the appropriate weight interval.
+Finally \ref{eq:25} says that if a vehicle is not leaving its origin node, there cannot be a cost interval binary for that vehicle, which in turn ensures that we dont calculate the fixed costs of said vehicle. \par
+Constraints \ref{eq:26} to \ref{eq:31} are ensuring positive and binary variables where appropriate.  \par
 
 \section{Final Remarks}
 The model presented in this paper is ready for testing in a solver software such as AMPL. Making a small instance to test the model would then be the next step before adapting the model to an even more complex version of itsself and developing a heuristic to solve the problem. 

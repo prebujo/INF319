@@ -18,10 +18,9 @@ public class Reader implements IReader {
         int orderAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
         int factoryAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
         int stopAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);
-        int distanceDimension = getIntFromLineAndMoveToNextSection(fileScanner,1);
-        int weightDimension = getIntFromLineAndMoveToNextSection(fileScanner,1);
 
-//        List<Collection<Integer>> factorySet = getListCollection(fileScanner, factoryAmount);
+        int[] distanceDimension = getIntegerList(fileScanner,vehicleAmount);
+        int[] weightDimension = getIntegerList(fileScanner,vehicleAmount);
 
         int[] factorySet = getSetList(fileScanner, factoryAmount, 2*orderAmount);
 
@@ -37,21 +36,28 @@ public class Reader implements IReader {
 
         int[] vehicleDestinationLocation = getIntegerList(fileScanner, vehicleAmount);
 
-        int[] vehicleCapacity = getIntegerList(fileScanner,vehicleAmount);
+        int[] vehicleWeightCapacity = getIntegerList(fileScanner,vehicleAmount);
 
         int[] orderWeight = getIntegerList(fileScanner,orderAmount);
 
+        int[] vehicleVolumeCapacity = getIntegerList(fileScanner,vehicleAmount);
+
+        int[] orderVolume = getIntegerList(fileScanner,orderAmount);
+
         int[] orderPenalty = getIntegerList(fileScanner,orderAmount);
 
-        int[] distanceInterval = getIntegerList(fileScanner,distanceDimension+1);
+        int maxDistanceDimension = getMaxValue(distanceDimension);
+        int maxWeightDimension = getMaxValue(weightDimension);
 
-        int[] weightInterval = getIntegerList(fileScanner, weightDimension+1);
+        int[][] distanceInterval = getInteger2DList(fileScanner,vehicleAmount,maxDistanceDimension+1);
 
-        int[][][] kmCostMatrix = getInteger3DList(fileScanner, vehicleAmount, distanceDimension, weightDimension);
+        int[][] weightInterval = getInteger2DList(fileScanner, vehicleAmount, maxWeightDimension+1);
 
-        int[][][] kgCostMatrix = getInteger3DList(fileScanner, vehicleAmount, distanceDimension, weightDimension);
+        int[][][] kmCostMatrix = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);
 
-        int[][][] fixCostMatrix = getInteger3DList(fileScanner, vehicleAmount, distanceDimension, weightDimension);
+        int[][][] kgCostMatrix = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
+
+        int[][][] fixCostMatrix = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
 
         int[][] stopCosts = getInteger2DList(fileScanner, vehicleAmount, 2*orderAmount);
 
@@ -67,32 +73,32 @@ public class Reader implements IReader {
 
         int[][] travelDistance = getInteger2DList(fileScanner, 2*orderAmount, 2*orderAmount);
 
-        result = new DataSet(vehicleAmount,orderAmount,factoryAmount,stopAmount,distanceDimension,weightDimension);
-        result.setFactories(factorySet);
-        result.setFactoryStopCapacities(stopCapacity);
-        result.setLocations(locationSet);
-        result.setVehicleNodes(vehicleNodeSet);
-        result.setVehiclePickupNodes(vehiclePickupNodeSet);
-        result.setVehicleStartingLocations(vehicleStartingLocation);
-        result.setVehicleDestinationLocations(vehicleDestinationLocation);
-        result.setVehicleCapacities(vehicleCapacity);
-        result.setOrderWeights(orderWeight);
-        result.setOrderPenalties(orderPenalty);
-        result.setDistanceIntervals(distanceInterval);
-        result.setWeightIntervals(weightInterval);
+        result = new DataSet(vehicleAmount,orderAmount,factoryAmount,stopAmount);
+        result.setWeightDimension(weightDimension);
+        result.setDistanceDimension(distanceDimension);
+        result.setFactory(factorySet);
+        result.setFactoryStopCapacity(stopCapacity);
+        result.setLocation(locationSet);
+        result.setVehicleNode(vehicleNodeSet);
+        result.setVehiclePickupNode(vehiclePickupNodeSet);
+        result.setVehicleStartingLocation(vehicleStartingLocation);
+        result.setVehicleDestinationLocation(vehicleDestinationLocation);
+        result.setVehicleWeightCapacity(vehicleWeightCapacity);
+        result.setOrderWeight(orderWeight);
+        result.setVehicleVolumeCapacity(vehicleVolumeCapacity);
+        result.setOrderVolume(orderVolume);
+        result.setOrderPenalty(orderPenalty);
+        result.setDistanceInterval(distanceInterval);
+        result.setWeightInterval(weightInterval);
         result.setKmCostMatrix(kmCostMatrix);
         result.setKgCostMatrix(kgCostMatrix);
         result.setFixCostMatrix(fixCostMatrix);
         result.setStopCostMatrix(stopCosts);
-        result.setTimeWindowAmounts(timeWindowAmounts);
-        result.setLowerTimeWindows(lowerTimeWindows);
-        result.setUpperTimeWindows(upperTimeWindows);
+        result.setTimeWindowAmount(timeWindowAmounts);
+        result.setLowerTimeWindow(lowerTimeWindows);
+        result.setUpperTimeWindow(upperTimeWindows);
         result.setTravelTime(travelTime);
         result.setTravelDistance(travelDistance);
-
-
-
-
         return result;
     }
 

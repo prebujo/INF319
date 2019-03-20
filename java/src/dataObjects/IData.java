@@ -8,45 +8,57 @@ public interface IData {
     int getOrderAmount();
     int getFactoryAmount();
     int getStopAmount();
-    int getWeightDimension();
-    int getDistanceDimension();
 
-    void setFactories(int[] factoryList);
-    int[] getFactories();
+    void setWeightDimension(int[] weightDimension);
+    int[] getWeightDimension();
 
-    void setFactoryStopCapacities(int[] factoryStopCapacities);
-    int[] getFactoryStopCapacities();
+    void setDistanceDimension(int[] distanceDimension);
+    int[] getDistanceDimension();
 
-    void setLocations(int[] locationCollection);
-    int[] getLocations();
+    void setFactory(int[] factoryList);
+    int[] getFactory();
 
-    void setVehicleNodes(List<Collection<Integer>> locationCollection);
-    List<Collection<Integer>> getVehicleNodes();
+    void setFactoryStopCapacity(int[] factoryStopCapacity);
+    int[] getFactoryStopCapacity();
 
-    void setVehiclePickupNodes(List<Collection<Integer>> locationCollection);
-    List<Collection<Integer>> getVehiclePickupNodes();
+    void setLocation(int[] locationCollection);
+    int[] getLocation();
 
-    void setVehicleStartingLocations(int[] vehicleStartingLocations);
-    int[] getVehicleStartingLocations();
+    void setVehicleNode(List<Collection<Integer>> locationCollection);
+    List<Collection<Integer>> getVehicleNode();
 
-    void setVehicleDestinationLocations(int[] vehicleDestinationLocations);
-    int[] getVehicleDestinationLocations();
+    void setVehiclePickupNode(List<Collection<Integer>> locationCollection);
+    List<Collection<Integer>> getVehiclePickupNode();
+
+    void setVehicleStartingLocation(int[] vehicleStartingLocation);
+    int[] getVehicleStartingLocation();
+
+    void setVehicleDestinationLocation(int[] vehicleDestinationLocation);
+    int[] getVehicleDestinationLocation();
 
 
-    void setVehicleCapacities(int[] vehicleCapacities);
-    int[] getVehicleCapacities();
+    void setVehicleWeightCapacity(int[] vehicleCapacities);
+    int[] getVehicleWeightCapacity();
 
-    void setOrderWeights(int[] orderWeights);
-    int[] getOrderWeights();
+    void setOrderWeight(int[] orderWeight);
+    int[] getOrderWeight();
 
-    void setOrderPenalties(int[] orderPenalties);
-    int[] getOrderPenalties();
+    void setVehicleVolumeCapacity(int[] vehicleVolumeCapacity);
 
-    void setDistanceIntervals(int[] distanceIntervals);
-    int[] getDistanceIntervals();
+    int[] getVehicleVolumeCapacity();
 
-    void setWeightIntervals(int[] weightIntervals);
-    int[] getWeightIntervals();
+    void setOrderVolume(int[] orderVolume);
+
+    int[] getOrderVolume();
+
+    void setOrderPenalty(int[] orderPenalty);
+    int[] getOrderPenalty();
+
+    void setDistanceInterval(int[][] distanceInterval);
+    int[][] getDistanceInterval();
+
+    void setWeightInterval(int[][] weightInterval);
+    int[][] getWeightInterval();
 
     void setKmCostMatrix(int[][][] kmCostMatrix);
     int[][][] getKmCostMatrix();
@@ -61,14 +73,14 @@ public interface IData {
     void setStopCostMatrix(int[][] stopCosts);
     int[][] getStopCostMatrix();
 
-    void setTimeWindowAmounts(int[] timeWindowAmounts);
-    int[] getTimeWindowAmounts();
+    void setTimeWindowAmount(int[] timeWindowAmount);
+    int[] getTimeWindowAmount();
 
-    void setLowerTimeWindows(int[][] lowerTimeWindows);
-    int[][] getLowerTimeWindows();
+    void setLowerTimeWindow(int[][] lowerTimeWindow);
+    int[][] getLowerTimeWindow();
 
-    void setUpperTimeWindows(int[][] upperTimeWindows);
-    int[][] getUpperTimeWindows();
+    void setUpperTimeWindow(int[][] upperTimeWindow);
+    int[][] getUpperTimeWindow();
 
     void setTravelTime(int[][][] travelTime);
     int[][][] getTravelTime();

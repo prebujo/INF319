@@ -8,39 +8,41 @@ public class DataSet implements IData{
     private int orderAmount;
     private int factoryAmount;
     private int stopAmount;
-    private int weightDimension;
-    private int distanceDimension;
-    private int[] factories;
-    private int[] factoryStopCapacities;
-    private int[] locations;
-    private List<Collection<Integer>> vehicleNodes;
-    private List<Collection<Integer>> vehiclePickupNodes;
-    private int[] vehicleStartingLocations;
-    private int[] vehicleDestinationLocations;
-    private int[] vehicleCapacties;
-    private int[] orderWeights;
-    private int[] orderPenalties;
-    private int[] distanceIntervals;
-    private int[] weightIntervals;
+    private int[] weightDimension;
+    private int[] distanceDimension;
+    private int[] factory;
+    private int[] factoryStopCapacity;
+    private int[] location;
+    private List<Collection<Integer>> vehicleNode;
+    private List<Collection<Integer>> vehiclePickupNode;
+    private int[] vehicleStartingLocation;
+    private int[] vehicleDestinationLocation;
+    private int[] vehicleWeightCapacity;
+    private int[] vehicleVolumeCapacity;
+    private int[] orderWeight;
+    private int[] orderVolume;
+    private int[] orderPenalty;
+    private int[][] distanceInterval;
+    private int[][] weightInterval;
     private int[][][] kmCostMatrix;
     private int[][][] kgCostMatrix;
     private int[][][] fixCostMatrix;
-    private int[][] stopCosts;
-    private int[] timeWindowAmounts;
-    private int[][] lowerTimeWindows;
-    private int[][] upperTimeWindows;
-    private int[][][] travelTimes;
-    private int[][] travelDistances;
+    private int[][] stopCost;
+    private int[] timeWindowAmount;
+    private int[][] lowerTimeWindow;
+    private int[][] upperTimeWindow;
+    private int[][][] travelTime;
+    private int[][] travelDistance;
 
 
-    public DataSet(int vehicleAmount, int orderAmount, int factoryAmount, int stopAmount, int distanceDimension, int weightDimension){
+    public DataSet(int vehicleAmount, int orderAmount, int factoryAmount, int stopAmount){
         this.vehicleAmount = vehicleAmount;
         this.orderAmount = orderAmount;
         this.factoryAmount = factoryAmount;
         this.stopAmount = stopAmount;
-        this.distanceDimension = distanceDimension;
-        this.weightDimension = weightDimension;
     }
+
+
 
     @Override
     public int getOrderAmount() {
@@ -55,143 +57,173 @@ public class DataSet implements IData{
     @Override
     public int getStopAmount() { return stopAmount; }
 
+
     @Override
     public int getVehicleAmount() {
         return vehicleAmount;
     }
 
     @Override
-    public int getWeightDimension() {
+    public void setWeightDimension(int[] weightDimension) {
+        this.weightDimension = weightDimension;
+    }
+
+    @Override
+    public int[] getWeightDimension() {
         return weightDimension;
     }
 
     @Override
-    public int getDistanceDimension() { return distanceDimension; }
-
-    @Override
-    public void setFactories(int[] factories){
-        this.factories = factories;
+    public void setDistanceDimension(int[] distanceDimension) {
+        this.distanceDimension = distanceDimension;
     }
 
     @Override
-    public int[] getFactories() {
-        return factories;
+    public int[] getDistanceDimension() { return distanceDimension; }
+
+    @Override
+    public void setFactory(int[] factory){
+        this.factory = factory;
     }
 
     @Override
-    public void setFactoryStopCapacities(int[] factoryStopCapacities) {
-        this.factoryStopCapacities = factoryStopCapacities;
+    public int[] getFactory() {
+        return factory;
     }
 
     @Override
-    public int[] getFactoryStopCapacities() {
-        return factoryStopCapacities;
+    public void setFactoryStopCapacity(int[] factoryStopCapacity) {
+        this.factoryStopCapacity = factoryStopCapacity;
     }
 
     @Override
-    public void setLocations(int[] locations) {
-        this.locations = locations;
+    public int[] getFactoryStopCapacity() {
+        return factoryStopCapacity;
     }
 
     @Override
-    public int[] getLocations() {
-        return locations;
+    public void setLocation(int[] location) {
+        this.location = location;
     }
 
     @Override
-    public void setVehicleNodes(List<Collection<Integer>> vehicleNodeCollection) {
-        this.vehicleNodes = vehicleNodeCollection;
+    public int[] getLocation() {
+        return location;
     }
 
     @Override
-    public List<Collection<Integer>> getVehicleNodes() {
-        return vehicleNodes;
+    public void setVehicleNode(List<Collection<Integer>> vehicleNodeCollection) {
+        this.vehicleNode = vehicleNodeCollection;
     }
 
     @Override
-    public void setVehiclePickupNodes(List<Collection<Integer>> vehiclePickupNodes) {
-        this.vehiclePickupNodes = vehiclePickupNodes;
+    public List<Collection<Integer>> getVehicleNode() {
+        return vehicleNode;
     }
 
     @Override
-    public List<Collection<Integer>> getVehiclePickupNodes() {
-        return vehiclePickupNodes;
+    public void setVehiclePickupNode(List<Collection<Integer>> vehiclePickupNode) {
+        this.vehiclePickupNode = vehiclePickupNode;
     }
 
     @Override
-    public void setVehicleStartingLocations(int[] vehicleStartingLocations) {
-        this.vehicleStartingLocations = vehicleStartingLocations;
+    public List<Collection<Integer>> getVehiclePickupNode() {
+        return vehiclePickupNode;
     }
 
     @Override
-    public int[] getVehicleStartingLocations() {
-        return vehicleStartingLocations;
+    public void setVehicleStartingLocation(int[] vehicleStartingLocation) {
+        this.vehicleStartingLocation = vehicleStartingLocation;
     }
 
     @Override
-    public void setVehicleDestinationLocations(int[] vehicleDestinationLocations) {
-        this.vehicleDestinationLocations = vehicleDestinationLocations;
+    public int[] getVehicleStartingLocation() {
+        return vehicleStartingLocation;
     }
 
     @Override
-    public int[] getVehicleDestinationLocations() {
-        return vehicleDestinationLocations;
+    public void setVehicleDestinationLocation(int[] vehicleDestinationLocation) {
+        this.vehicleDestinationLocation = vehicleDestinationLocation;
     }
 
     @Override
-    public void setVehicleCapacities(int[] vehicleCapacities) {
-        this.vehicleCapacties = vehicleCapacities;
+    public int[] getVehicleDestinationLocation() {
+        return vehicleDestinationLocation;
     }
 
     @Override
-    public int[] getVehicleCapacities() {
-        return vehicleCapacties;
+    public void setVehicleWeightCapacity(int[] vehicleWeightCapacity) {
+        this.vehicleWeightCapacity = vehicleWeightCapacity;
     }
 
     @Override
-    public void setOrderWeights(int[] orderWeights) {
-        this.orderWeights = orderWeights;
+    public int[] getVehicleWeightCapacity() {
+        return vehicleWeightCapacity;
     }
 
     @Override
-    public int[] getOrderWeights() {
-        return orderWeights;
+    public void setOrderWeight(int[] orderWeight) {
+        this.orderWeight = orderWeight;
     }
 
     @Override
-    public void setOrderPenalties(int[] orderPenalties) {
-        this.orderPenalties = orderPenalties;
+    public int[] getOrderWeight() {
+        return orderWeight;
     }
 
     @Override
-    public int[] getOrderPenalties() {
-        return orderPenalties;
+    public void setVehicleVolumeCapacity(int[] vehicleVolumeCapacity) {
+        this.vehicleVolumeCapacity = vehicleVolumeCapacity;
     }
 
     @Override
-    public void setDistanceIntervals(int[] distanceIntervals) {
-        this.distanceIntervals = distanceIntervals;
+    public int[] getVehicleVolumeCapacity() {
+        return vehicleVolumeCapacity;
     }
 
     @Override
-    public int[] getDistanceIntervals() {
-        return distanceIntervals;
+    public void setOrderVolume(int[] orderVolume) {
+        this.orderVolume = orderVolume;
     }
 
     @Override
-    public void setWeightIntervals(int[] weightIntervals) {
-        this.weightIntervals = weightIntervals;
+    public int[] getOrderVolume() {
+        return orderVolume;
     }
 
     @Override
-    public int[] getWeightIntervals() {
-        return weightIntervals;
+    public void setOrderPenalty(int[] orderPenalty) {
+        this.orderPenalty = orderPenalty;
+    }
+
+    @Override
+    public int[] getOrderPenalty() {
+        return orderPenalty;
+    }
+
+    @Override
+    public void setDistanceInterval(int[][] distanceInterval) {
+        this.distanceInterval = distanceInterval;
+    }
+
+    @Override
+    public int[][] getDistanceInterval() {
+        return distanceInterval;
+    }
+
+    @Override
+    public void setWeightInterval(int[][] weightInterval) {
+        this.weightInterval = weightInterval;
+    }
+
+    @Override
+    public int[][] getWeightInterval() {
+        return weightInterval;
     }
 
     @Override
     public void setKmCostMatrix(int[][][] kmCostMatrix) {
         this.kmCostMatrix = kmCostMatrix;
-
     }
 
     @Override
@@ -221,62 +253,62 @@ public class DataSet implements IData{
 
     @Override
     public void setStopCostMatrix(int[][] stopCosts) {
-        this.stopCosts = stopCosts;
+        this.stopCost = stopCosts;
     }
 
     @Override
     public int[][] getStopCostMatrix() {
-        return stopCosts;
+        return stopCost;
     }
 
     @Override
-    public void setTimeWindowAmounts(int[] timeWindowAmounts) {
-        this.timeWindowAmounts = timeWindowAmounts;
+    public void setTimeWindowAmount(int[] timeWindowAmount) {
+        this.timeWindowAmount = timeWindowAmount;
     }
 
     @Override
-    public int[] getTimeWindowAmounts() {
-        return timeWindowAmounts;
+    public int[] getTimeWindowAmount() {
+        return timeWindowAmount;
     }
 
     @Override
-    public void setLowerTimeWindows(int[][] lowerTimeWindows) {
-        this.lowerTimeWindows = lowerTimeWindows;
+    public void setLowerTimeWindow(int[][] lowerTimeWindow) {
+        this.lowerTimeWindow = lowerTimeWindow;
     }
 
     @Override
-    public int[][] getLowerTimeWindows() {
-        return lowerTimeWindows;
+    public int[][] getLowerTimeWindow() {
+        return lowerTimeWindow;
     }
 
     @Override
-    public void setUpperTimeWindows(int[][] upperTimeWindows) {
-        this.upperTimeWindows = upperTimeWindows;
+    public void setUpperTimeWindow(int[][] upperTimeWindow) {
+        this.upperTimeWindow = upperTimeWindow;
     }
 
     @Override
-    public int[][] getUpperTimeWindows() {
-        return upperTimeWindows;
+    public int[][] getUpperTimeWindow() {
+        return upperTimeWindow;
     }
 
     @Override
     public void setTravelTime(int[][][] travelTimes) {
-        this.travelTimes = travelTimes;
+        this.travelTime = travelTimes;
     }
 
     @Override
     public int[][][] getTravelTime() {
-        return travelTimes;
+        return travelTime;
     }
 
     @Override
     public void setTravelDistance(int[][] travelDistances) {
-        this.travelDistances = travelDistances;
+        this.travelDistance = travelDistances;
     }
 
     @Override
     public int[][] getTravelDistance() {
-        return travelDistances;
+        return travelDistance;
     }
 
 }

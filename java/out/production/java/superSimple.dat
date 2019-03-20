@@ -6,7 +6,7 @@ param nv :=
 param nn :=
 2 ;
 
-# 3 amount of factories
+# 3 amount of factory
 param nf :=
 1 ;
 
