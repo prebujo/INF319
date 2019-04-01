@@ -1,5 +1,7 @@
 package main;
 
+import Heuristic.IHeuristic;
+import Heuristic.RandomHeuristic;
 import dataObjects.IData;
 import functions.*;
 import functions.feasibility.*;
@@ -129,17 +131,17 @@ public class Main {
 
             dummySolution = solutionGenerator.randomize(dummySolution);
         }
-        int i = 0;
+        int i = 5;
         IFeasibility feasible5 = new CollectiveCheck(dataset);
         IFeasibility feasib = new Feasible(dataset);
 
-        while(i<100){
+        while(i>0){
             System.out.println("Randomly assigned Solution: ");
-            dummySolution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount()-dataset.getVehicleAmount());
+            dummySolution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
             for (int j = 0; j < dummySolution.length; j++) {
                 System.out.print(dummySolution[j] + " ");
             }
-            i++;
+            i--;
             System.out.println();
             System.out.println("Solution is feasible? -> "+ feasible5.check(dummySolution));
             System.out.println("Solution is feasible? -> "+ feasib.check(dummySolution));
@@ -162,6 +164,18 @@ public class Main {
         System.out.println("Solution is Factory Dock feasible-> "+ feasible2.check(solutionRepresentation) );
         System.out.println("Solution is Time feasible-> "+ feasible3.check(solutionRepresentation) );
         System.out.println("Solution is Order feasible-> "+ feasible4.check(solutionRepresentation) );
+
+        IHeuristic heuristic = new RandomHeuristic(dataset);
+
+        System.out.println("Best solution: ");
+
+        dummySolution = heuristic.optimize(solutionGenerator.createDummySolution(dataset.getVehicleAmount(),dataset.getOrderAmount()));
+        for (int j = 0; j < dummySolution.length; j++) {
+            System.out.print(dummySolution[j] + " ");
+        }
+        System.out.println();
+        System.out.println("Solution objective: "+objectiveFunction.calculateSolution(dummySolution));
+        System.out.println("Solution feasible? ->"+feasible5.check(dummySolution));
 
 
     }

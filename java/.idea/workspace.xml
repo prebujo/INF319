@@ -1,58 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/Main.java" line="149" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/Main.java" line="151" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/feasibility/BasicFeasible.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/utility/ISolutionGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TODO-list.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../TODO-list.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ampl/quickCostCalc.ods" beforeDir="false" afterPath="$PROJECT_DIR$/../ampl/quickCostCalc.ods" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/INode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IVehicle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/Vehicle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/FactoryDockFeasible.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/IFeasibility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/TimeFeasible.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/WeightAndVolumeFeasible.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/RandomHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/Heuristic/RandomHeuristic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/BasicFeasible.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SolutionGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/SolutionGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/quiteSimple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/quiteSimple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/simple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/simple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/superSimple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/superSimple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/quiteSimple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/quiteSimple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/simple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/simple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/superSimple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/superSimple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/IData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/INode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/IVehicle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/Vehicle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/FactoryDockFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/IFeasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/IFeasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/TimeFeasible.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/WeightAndVolumeFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.tex" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            <state relative-caret-position="360">
+              <caret line="98" column="30" lean-forward="true" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="135" column="18" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="18" />
+            <state relative-caret-position="150">
+              <caret line="118" column="64" selection-start-line="118" selection-start-column="64" selection-end-line="118" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/functions/feasibility/BasicFeasible.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functions/feasibility/Feasible.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="71" column="37" lean-forward="true" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+              <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -127,7 +87,19 @@
         <entry file="file://$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
-              <caret line="44" column="61" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="44" selection-end-column="61" />
+              <caret line="44" column="61" selection-start-line="31" selection-start-column="16" selection-end-line="44" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,10 +155,11 @@
         <option value="$PROJECT_DIR$/src/functions/Randomize.java" />
         <option value="$PROJECT_DIR$/src/functions/utility/ISolutionGenerator.java" />
         <option value="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" />
-        <option value="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" />
-        <option value="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/Main.java" />
         <option value="$PROJECT_DIR$/src/functions/feasibility/BasicFeasible.java" />
+        <option value="$PROJECT_DIR$/src/functions/feasibility/Feasible.java" />
+        <option value="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" />
+        <option value="$PROJECT_DIR$/src/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" />
       </list>
     </option>
   </component>
@@ -248,6 +221,12 @@
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Heuristic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -267,7 +246,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554149055421" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554151083456" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -335,12 +314,12 @@
       <workItem from="1553250939171" duration="6055000" />
       <workItem from="1553676393371" duration="25308000" />
       <workItem from="1553860188478" duration="2577000" />
-      <workItem from="1554109258736" duration="12761000" />
+      <workItem from="1554109258736" duration="14791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170884000" />
+    <option name="totallyTimeSpent" value="172914000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-18" width="1920" height="1079" extended-state="0" />
@@ -416,15 +395,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>163</line>
+          <line>165</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java</url>
-          <line>75</line>
+          <line>76</line>
           <properties />
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java</url>
+          <line>101</line>
+          <properties />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -538,16 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Objects.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -559,16 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="195" selection-start-line="195" selection-end-line="195" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -593,16 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="135" column="18" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -613,17 +568,47 @@
     <entry file="file://$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="44" column="61" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="44" selection-end-column="61" />
+          <caret line="44" column="61" selection-start-line="31" selection-start-column="16" selection-end-line="44" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/feasibility/BasicFeasible.java">
+    <entry file="file://$PROJECT_DIR$/src/functions/feasibility/Feasible.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="71" column="37" lean-forward="true" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+          <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="118" column="64" selection-start-line="118" selection-start-column="64" selection-end-line="118" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="98" column="30" lean-forward="true" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

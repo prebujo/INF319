@@ -29,6 +29,7 @@ public class SolutionGenerator implements ISolutionGenerator {
 
     @Override
     public int[] randomlyAssignOrders(int vehicles, int orders) {
+        orders -= vehicles;
         List<List<Integer>> assignedOrders = new ArrayList<>(vehicles+1);
 
         for (int i = 0; i<vehicles+1;i++){
@@ -89,12 +90,16 @@ public class SolutionGenerator implements ISolutionGenerator {
         }
     }
 
-
     @Override
     public int[] createDummySolution(int vehicles, int orders) {
+        orders -= vehicles;
         int[] result = new int[vehicles+2*orders];
         int index = vehicles;
-        for (int i = 1;i<=2*orders;i++){
+        for (int i = 1;i<=orders;i++){
+            result[index] = i;
+            index++;
+        }
+        for (int i = orders+vehicles+1;i<=2*orders+vehicles;i++){
             result[index] = i;
             index++;
         }

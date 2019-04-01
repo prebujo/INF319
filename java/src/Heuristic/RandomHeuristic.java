@@ -3,6 +3,7 @@ package Heuristic;
 import dataObjects.IData;
 import functions.ObjectiveFunction;
 import functions.feasibility.CollectiveCheck;
+import functions.feasibility.Feasible;
 import functions.feasibility.IFeasibility;
 import functions.utility.ISolutionGenerator;
 import functions.utility.SolutionGenerator;
@@ -13,12 +14,13 @@ public class RandomHeuristic implements IHeuristic{
     private final int vehicleAmount;
     private final int orderAmount;
     private final IFeasibility feasibilityCheck;
+    private int[] bestSolution;
 
     public RandomHeuristic(IData dataSet){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
-        this.feasibilityCheck = new CollectiveCheck(dataSet);
+        this.feasibilityCheck = new Feasible(dataSet);
     }
 
     @Override
@@ -28,7 +30,7 @@ public class RandomHeuristic implements IHeuristic{
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int currentObjective = objectiveFunction.calculateSolution(startSolution);
         int bestObjective = currentObjective;
-        int[] bestSolution = startSolution;
+        bestSolution = startSolution;
         int[] currentSolution;
         ISolutionGenerator solutionGenerator = new SolutionGenerator(1);
 
