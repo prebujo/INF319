@@ -1,10 +1,10 @@
 package main;
 
 import dataObjects.IData;
-import functions.FactoryDockFeasible;
-import functions.IFeasibility;
-import functions.ObjectiveFunction;
-import functions.WeightAndVolumeFeasible;
+import functions.*;
+import functions.feasibility.*;
+import functions.utility.ISolutionGenerator;
+import functions.utility.SolutionGenerator;
 import reader.IReader;
 import reader.Reader;
 
@@ -31,83 +31,121 @@ public class Main {
 
         System.out.println("Amount of stops: " +dataset.getStopAmount());
 
-        System.out.println("Amount of weight Dimension: "+dataset.getWeightDimension()[0]);
+        System.out.println("Amount of weight Dimension: "+dataset.getWeightDimensions()[0]);
 
-        System.out.println("Amount of distance Dimension: "+dataset.getDistanceDimension()[0]);
+        System.out.println("Amount of distance Dimension: "+dataset.getDistanceDimensions()[0]);
 
-        System.out.println("Factory Node 8: "+dataset.getFactory()[7]);
-        System.out.println("Factory Node 2: "+dataset.getFactory()[1]);
-        System.out.println("Factory Node 9: "+dataset.getFactory()[8]);
-        System.out.println("Factory Node 10: "+dataset.getFactory()[9]);
-        System.out.println("Factory Node 11: "+dataset.getFactory()[10]);
+        System.out.println("Factory Node 8: "+dataset.getFactories()[7]);
+        System.out.println("Factory Node 2: "+dataset.getFactories()[1]);
+        System.out.println("Factory Node 9: "+dataset.getFactories()[8]);
+        System.out.println("Factory Node 10: "+dataset.getFactories()[9]);
+        System.out.println("Factory Node 11: "+dataset.getFactories()[10]);
 
 //        System.out.println("Factory Set 2: " + dataset.getFactorySet(1));
 //        System.out.println("Factory Set 3: " + dataset.getFactorySet(2));
 
-        System.out.println("Factory Stop Capacity 1: " + dataset.getFactoryStopCapacity()[0]);
-//        System.out.println("Factory Stop Capacity 2: " + dataset.getFactoryStopCapacity()[1]);
-//        System.out.println("Factory Stop Capacity 3: " + dataset.getFactoryStopCapacity()[2]);
+        System.out.println("Factory Stop Capacity 1: " + dataset.getFactoryStopCapacities()[0]);
+//        System.out.println("Factory Stop Capacity 2: " + dataset.getFactoryStopCapacities()[1]);
+//        System.out.println("Factory Stop Capacity 3: " + dataset.getFactoryStopCapacities()[2]);
 
-        System.out.println("Location Node 2: "+dataset.getLocation()[1]);
-//        System.out.println("Location Node 8: "+dataset.getLocation()[7]);
-//        System.out.println("Location Node 9: "+dataset.getLocation()[8]);
-//        System.out.println("Location Node 9: "+dataset.getLocation()[5]);
+        System.out.println("Location Node 2: "+dataset.getLocations()[1]);
+//        System.out.println("Location Node 8: "+dataset.getLocations()[7]);
+//        System.out.println("Location Node 9: "+dataset.getLocations()[8]);
+//        System.out.println("Location Node 9: "+dataset.getLocations()[5]);
 
-        System.out.println("Vehicle Node Collection: "+dataset.getVehicleNode());
+        System.out.println("Vehicle 1 can visit Node 8: "+dataset.getVehicleCanVisitNode()[0][8]);
+        System.out.println("Vehicle 2 can visit Node 2: "+dataset.getVehicleCanVisitNode()[1][2]);
+        System.out.println("Vehicle 1 can visit Node 6: "+dataset.getVehicleCanVisitNode()[0][6]);
 
-        System.out.println("Vehicle Pickup Node Collection: "+dataset.getVehiclePickupNode());
+        System.out.println("Vehicle 1 can Pickup Node 1: "+dataset.getVehicleCanPickupNode()[0][1]);
+        System.out.println("Vehicle 2 can Pickup Node 2: "+dataset.getVehicleCanPickupNode()[1][2]);
+        System.out.println("Vehicle 2 can Pickup Node 4: "+dataset.getVehicleCanPickupNode()[1][4]);
 
-        System.out.println("Vehicle 1 Starting Node: " + dataset.getVehicleStartingLocation()[0] + " and ending Node: " + dataset.getVehicleDestinationLocation()[0]);
+        System.out.println("Vehicle 1 Starting Node: " + dataset.getVehicleStartingLocations()[0] + " and ending Node: " + dataset.getVehicleDestinationLocations()[0]);
 
-//        System.out.println("Vehicle 2 Starting Node: " + dataset.getVehicleStartingLocation()[1] + " and ending Node: " + dataset.getVehicleDestinationLocation()[1]);
+//        System.out.println("Vehicle 2 Starting Node: " + dataset.getVehicleStartingLocations()[1] + " and ending Node: " + dataset.getVehicleDestinationLocations()[1]);
 
-        System.out.println("Vehicle 1 Capacity: " + dataset.getVehicleWeightCapacity()[0]);
-//        System.out.println("Vehicle 2 Capacity: " + dataset.getVehicleWeightCapacity()[1]);
+        System.out.println("Vehicle 1 Capacity: " + dataset.getVehicleWeightCapacities()[0]);
+//        System.out.println("Vehicle 2 Capacity: " + dataset.getVehicleWeightCapacities()[1]);
 
-        System.out.println("Order 1 Weight: " + dataset.getOrderWeight()[0]);
-//        System.out.println("Order 3 Weight: " + dataset.getOrderWeight()[2]);
+        System.out.println("Order 1 Weight: " + dataset.getOrderWeights()[0]);
+//        System.out.println("Order 3 Weight: " + dataset.getOrderWeights()[2]);
 
-        System.out.println("Order 1 Penalty: " + dataset.getOrderPenalty()[0]);
-//        System.out.println("Order 3 Penalty: " + dataset.getOrderPenalty()[2]);
+        System.out.println("Order 1 Penalty: " + dataset.getOrderPenalties()[0]);
+//        System.out.println("Order 3 Penalty: " + dataset.getOrderPenalties()[2]);
 
-        System.out.println("Distance interval 0: " + dataset.getDistanceInterval()[0][0]);
-//        System.out.println("Distance interval 2: " + dataset.getDistanceInterval()[2]);
+        System.out.println("Distance interval 0: " + dataset.getDistanceIntervals()[0][0]);
+//        System.out.println("Distance interval 2: " + dataset.getDistanceIntervals()[2]);
 
-        System.out.println("Weight interval 0: " + dataset.getWeightInterval()[0][0]);
-//        System.out.println("Weight interval 2: " + dataset.getWeightInterval()[2]);
+        System.out.println("Weight interval 0: " + dataset.getWeightIntervals()[0][0]);
+//        System.out.println("Weight interval 2: " + dataset.getWeightIntervals()[2]);
 
-        System.out.println("Cost per km 1 1 1: " + dataset.getKmCostMatrix()[0][0][0]);
-//        System.out.println("Cost per km 2 1 2: " + dataset.getKmCostMatrix()[1][0][1]);
+        System.out.println("Cost per km 1 1 1: " + dataset.getKmCostMatrices()[0][0][0]);
+//        System.out.println("Cost per km 2 1 2: " + dataset.getKmCostMatrices()[1][0][1]);
 
-        System.out.println("Cost per kg 1 1 1: " + dataset.getKgCostMatrix()[0][0][0]);
-//        System.out.println("Cost per kg 2 1 1: " + dataset.getKgCostMatrix()[1][0][0]);
+        System.out.println("Cost per kg 1 1 1: " + dataset.getKgCostMatrices()[0][0][0]);
+//        System.out.println("Cost per kg 2 1 1: " + dataset.getKgCostMatrices()[1][0][0]);
 
-        System.out.println("Cost fixed 1 1 1: " + dataset.getFixCostMatrix()[0][0][0]);
-//        System.out.println("Cost fixed 2 1 2: " + dataset.getFixCostMatrix()[1][0][1]);
+        System.out.println("Cost fixed 1 1 1: " + dataset.getFixCostMatrices()[0][0][0]);
+//        System.out.println("Cost fixed 2 1 2: " + dataset.getFixCostMatrices()[1][0][1]);
 
-        System.out.println("Cost per stop 1 3 : " + dataset.getStopCostMatrix()[0][2]);
-        System.out.println("Cost per stop 1 1: " + dataset.getStopCostMatrix()[0][0]);
+        System.out.println("Cost per stop 1 3 : " + dataset.getStopCosts()[0][2]);
+        System.out.println("Cost per stop 1 1: " + dataset.getStopCosts()[0][0]);
 
-        System.out.println("Amount of timewindows node 3: " + dataset.getTimeWindowAmount()[2]);
-//        System.out.println("Amount of timewindows node 8: " + dataset.getTimeWindowAmount()[7]);
+        System.out.println("Amount of timewindows node 3: " + dataset.getTimeWindowAmounts()[2]);
+//        System.out.println("Amount of timewindows node 8: " + dataset.getTimeWindowAmounts()[7]);
 
-        System.out.println("lower TimeWindow 1 4 : " + dataset.getLowerTimeWindow()[0][3]);
-        System.out.println("lower Timewindow 1 1: " + dataset.getLowerTimeWindow()[0][0]);
+        System.out.println("lower TimeWindow 1 4 : " + dataset.getLowerTimeWindows()[0][3]);
+        System.out.println("lower Timewindow 1 1: " + dataset.getLowerTimeWindows()[0][0]);
 
-        System.out.println("upper TimeWindow 1 4 : " + dataset.getUpperTimeWindow()[0][3]);
-        System.out.println("upper Timewindow 2 2: " + dataset.getUpperTimeWindow()[0][0]);
+        System.out.println("upper TimeWindow 1 4 : " + dataset.getUpperTimeWindows()[0][3]);
+        System.out.println("upper Timewindow 2 2: " + dataset.getUpperTimeWindows()[0][0]);
 
-//        System.out.println("Travel Time 1 8 9 : " + dataset.getTravelTime()[0][7][8]);
-        System.out.println("Travel Time 1 2 3 : " + dataset.getTravelTime()[0][0][2]);
+//        System.out.println("Travel Time 1 8 9 : " + dataset.getTravelTimes()[0][7][8]);
+        System.out.println("Travel Time 1 2 3 : " + dataset.getTravelTimes()[0][0][2]);
 
-//        System.out.println("Travel Distance 8 9 : " + dataset.getTravelDistance()[7][8]);
-        System.out.println("Travel Distance 2 3 : " + dataset.getTravelDistance()[0][2]);
+//        System.out.println("Travel Distance 8 9 : " + dataset.getTravelDistances()[7][8]);
+        System.out.println("Travel Distance 2 3 : " + dataset.getTravelDistances()[0][2]);
 
         //superSimple possible solution
 //        int[] solutionRepresentation = {0,1,3};
 
         //simple possible solution
-        int[] solutionRepresentation = {0,0,0,2,9,3,4,11,10,1,8};
+        int[] solutionRepresentation = {1,2,8,9,0,4,11,0,3,10,0};
+
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(2);
+        int[] dummySolution = solutionGenerator.createDummySolution(dataset.getVehicleAmount(),dataset.getOrderAmount());
+
+        for (int i = 0;i<5;i++) {
+
+
+            System.out.println("Dummy Solution: ");
+            for (int j = 0; j < dummySolution.length; j++) {
+                System.out.print(dummySolution[j] + " ");
+            }
+            System.out.println();
+
+            System.out.println("Randomized dummy solution: ");
+
+            dummySolution = solutionGenerator.randomize(dummySolution);
+        }
+        int i = 0;
+        IFeasibility feasible5 = new CollectiveCheck(dataset);
+        IFeasibility feasib = new Feasible(dataset);
+
+        while(i<100){
+            System.out.println("Randomly assigned Solution: ");
+            dummySolution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount()-dataset.getVehicleAmount());
+            for (int j = 0; j < dummySolution.length; j++) {
+                System.out.print(dummySolution[j] + " ");
+            }
+            i++;
+            System.out.println();
+            System.out.println("Solution is feasible? -> "+ feasible5.check(dummySolution));
+            System.out.println("Solution is feasible? -> "+ feasib.check(dummySolution));
+        }
+
+
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataset);
 
@@ -117,9 +155,13 @@ public class Main {
 
         IFeasibility feasible1 = new WeightAndVolumeFeasible(dataset);
         IFeasibility feasible2 = new FactoryDockFeasible(dataset);
+        IFeasibility feasible3 = new TimeFeasible(dataset);
+        IFeasibility feasible4 = new OrderVehicleAndOccuranceFeasibility(dataset);
 
         System.out.println("Solution is Weight and Volume feasible-> "+ feasible1.check(solutionRepresentation) );
         System.out.println("Solution is Factory Dock feasible-> "+ feasible2.check(solutionRepresentation) );
+        System.out.println("Solution is Time feasible-> "+ feasible3.check(solutionRepresentation) );
+        System.out.println("Solution is Order feasible-> "+ feasible4.check(solutionRepresentation) );
 
 
     }

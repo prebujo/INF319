@@ -9,82 +9,82 @@ public interface IData {
     int getFactoryAmount();
     int getStopAmount();
 
-    void setWeightDimension(int[] weightDimension);
-    int[] getWeightDimension();
+    void setWeightDimensions(int[] weightDimensions);
+    int[] getWeightDimensions();
 
-    void setDistanceDimension(int[] distanceDimension);
-    int[] getDistanceDimension();
+    void setDistanceDimensions(int[] distanceDimensions);
+    int[] getDistanceDimensions();
 
-    void setFactory(int[] factoryList);
-    int[] getFactory();
+    void setFactories(int[] factoryList);
+    int[] getFactories();
 
-    void setFactoryStopCapacity(int[] factoryStopCapacity);
-    int[] getFactoryStopCapacity();
+    void setFactoryStopCapacities(int[] factoryStopCapacities);
+    int[] getFactoryStopCapacities();
 
-    void setLocation(int[] locationCollection);
-    int[] getLocation();
+    void setLocations(int[] locationCollection);
+    int[] getLocations();
 
-    void setVehicleNode(List<Collection<Integer>> locationCollection);
-    List<Collection<Integer>> getVehicleNode();
+    void setVehicleCanVisitNode(boolean[][] vehicleNodes);
+    boolean[][] getVehicleCanVisitNode();
 
-    void setVehiclePickupNode(List<Collection<Integer>> locationCollection);
-    List<Collection<Integer>> getVehiclePickupNode();
+    void setVehicleCanPickupNode(boolean[][] vehicleCanPickupNode);
+    boolean[][] getVehicleCanPickupNode();
 
-    void setVehicleStartingLocation(int[] vehicleStartingLocation);
-    int[] getVehicleStartingLocation();
+    void setVehicleStartingLocations(int[] vehicleStartingLocations);
+    int[] getVehicleStartingLocations();
 
-    void setVehicleDestinationLocation(int[] vehicleDestinationLocation);
-    int[] getVehicleDestinationLocation();
-
-
-    void setVehicleWeightCapacity(int[] vehicleCapacities);
-    int[] getVehicleWeightCapacity();
-
-    void setOrderWeight(int[] orderWeight);
-    int[] getOrderWeight();
-
-    void setVehicleVolumeCapacity(int[] vehicleVolumeCapacity);
-
-    int[] getVehicleVolumeCapacity();
-
-    void setOrderVolume(int[] orderVolume);
-
-    int[] getOrderVolume();
-
-    void setOrderPenalty(int[] orderPenalty);
-    int[] getOrderPenalty();
-
-    void setDistanceInterval(int[][] distanceInterval);
-    int[][] getDistanceInterval();
-
-    void setWeightInterval(int[][] weightInterval);
-    int[][] getWeightInterval();
-
-    void setKmCostMatrix(int[][][] kmCostMatrix);
-    int[][][] getKmCostMatrix();
-
-    void setKgCostMatrix(int[][][] kgCostMatrix);
-    int[][][] getKgCostMatrix();
-
-    void setFixCostMatrix(int[][][] fixCostMatrix);
-    int[][][] getFixCostMatrix();
+    void setVehicleDestinationLocations(int[] vehicleDestinationLocations);
+    int[] getVehicleDestinationLocations();
 
 
-    void setStopCostMatrix(int[][] stopCosts);
-    int[][] getStopCostMatrix();
+    void setVehicleWeightCapacities(int[] vehicleCapacities);
+    int[] getVehicleWeightCapacities();
 
-    void setTimeWindowAmount(int[] timeWindowAmount);
-    int[] getTimeWindowAmount();
+    void setOrderWeights(int[] orderWeights);
+    int[] getOrderWeights();
 
-    void setLowerTimeWindow(int[][] lowerTimeWindow);
-    int[][] getLowerTimeWindow();
+    void setVehicleVolumeCapacities(int[] vehicleVolumeCapacities);
 
-    void setUpperTimeWindow(int[][] upperTimeWindow);
-    int[][] getUpperTimeWindow();
+    int[] getVehicleVolumeCapacities();
 
-    void setTravelTime(int[][][] travelTime);
-    int[][][] getTravelTime();
+    void setOrderVolumes(int[] orderVolumes);
 
-    void setTravelDistance(int[][] travelDistance);
-    int[][] getTravelDistance();
+    int[] getOrderVolumes();
+
+    void setOrderPenalties(int[] orderPenalties);
+    int[] getOrderPenalties();
+
+    void setDistanceIntervals(int[][] distanceIntervals);
+    int[][] getDistanceIntervals();
+
+    void setWeightIntervals(int[][] weightIntervals);
+    int[][] getWeightIntervals();
+
+    void setKmCostMatrices(int[][][] kmCostMatrices);
+    int[][][] getKmCostMatrices();
+
+    void setKgCostMatrices(int[][][] kgCostMatrices);
+    int[][][] getKgCostMatrices();
+
+    void setFixCostMatrices(int[][][] fixCostMatrices);
+    int[][][] getFixCostMatrices();
+
+
+    void setStopCosts(int[][] stopCosts);
+    int[][] getStopCosts();
+
+    void setTimeWindowAmounts(int[] timeWindowAmounts);
+    int[] getTimeWindowAmounts();
+
+    void setLowerTimeWindows(int[][] lowerTimeWindow);
+    int[][] getLowerTimeWindows();
+
+    void setUpperTimeWindows(int[][] upperTimeWindow);
+    int[][] getUpperTimeWindows();
+
+    void setTravelTimes(int[][][] travelTime);
+    int[][][] getTravelTimes();
+
+    void setTravelDistances(int[][] travelDistance);
+    int[][] getTravelDistances();
 }

@@ -1,6 +1,7 @@
-package functions;
+package functions.feasibility;
 
 import dataObjects.IData;
+import functions.feasibility.IFeasibility;
 
 public class FactoryDockFeasible implements IFeasibility {
 
@@ -11,9 +12,9 @@ public class FactoryDockFeasible implements IFeasibility {
 
     public FactoryDockFeasible(IData dataSet) {
         this.vehicleAmount = dataSet.getVehicleAmount();
-        this.factory = dataSet.getFactory();
+        this.factory = dataSet.getFactories();
         this.factoryAmount = dataSet.getFactoryAmount();
-        this.factoryStopCapacity = dataSet.getFactoryStopCapacity();
+        this.factoryStopCapacity = dataSet.getFactoryStopCapacities();
     }
 
     @Override

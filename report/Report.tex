@@ -98,15 +98,13 @@ At a given point in time (could be delivery for one day or a week) we consider a
 
 \begin{tabular}{l c l }
               &Indices          			        	\\ 
-    $v      $ &-& vehicle index used in vehicle sets                    \\
-    $i      $ &-& node index used in node sets                          \\
-    $f      $ &-& factory index used in factory sets                    \\
-    $p      $ &-& timewindow index used in Timewindow Sets              \\
-    $s      $ &-& stop location index used in location sets             \\
-    $\alpha $ &-& distance interval index used in cost structure to 
-                    determine costs                                     \\
-    $\beta  $ &-& weight interval index used in cost structure to 
-                    determine costs                                     \\
+    $v      $ &-& vehicle     					        \\
+    $i      $ &-& node 	        				        \\
+    $f      $ &-& factory 		                                \\
+    $p      $ &-& timewindow                    		        \\
+    $s      $ &-& stop location 				        \\
+    $\alpha $ &-& distance interval in cost structure		        \\
+    $\beta  $ &-& weight interval in cost structure		        \\
 \end{tabular}
 \linebreak
 \linebreak
@@ -133,14 +131,13 @@ The problem can be viewed as a graph $G(E,N)$ where $N=\{0,...,2n\}$ are the ver
     $N^D    $ &-& delivery Nodes 				        \\
     $F      $ &-& factories 					        \\
     $N_f    $ &-& delivery nodes for factory $f$ 		        \\
-    $A_v    $ &-& index pair $(\alpha,\beta)$ of elements in the cost 
-                  structure where $\alpha$ goes                         \\
+    $A_v    $ &-& index of elements in the cost where $\alpha$ goes     \\
               & & from $(1,..,\gamma_v)$ and $\beta$ from $(1,..,\mu_v)$\\
-    $P_i    $ &-& set of time window indecies from $\{1,..,\pi_i\}$     \\
-    $T_{i}  $ &-& set of time windows $[ \underline{T_{ip}},  
+    $P_i    $ &-& set of time windows at node $i$, $\{1,..,\pi_i \}$	\\
+    $T_{i}  $ &-& set of time parameters $[ \underline{T_{ip}},  
 		  \overline{T_{ip}} ]$ at node $i$ where $p \in P_i$	\\
     $S      $ &-& set of stops indicating a pickup/delivery location    \\
-    $L_s    $ &-& subsets of nodes sharing a stop location 
+    $L_s    $ &-& Sets of nodes sharing a stop location 
                   $s \in S$ 	                                        \\
 \end{tabular}
 \linebreak
@@ -158,7 +155,7 @@ The distance and costs from here to the first pickup is zero.
 The factory docking limit is denoted by $H_f$. 
 \begin{tabular}{l c l }
     			        &Parameters 							\\ 
-    $n    	            $   &-& number of orders     					\\
+    $n    	            $   &-& amount of orders     					\\
     $K_v^{kg}  	            $   &-& weight capacity of vehicle $v\in V$	 			\\
     $K_v^{vol} 	            $   &-& volume capacity of vehicle $v\in V$	 			\\
     $o(v)                   $   &-& starting node of vehicle $v$                                \\
@@ -167,11 +164,11 @@ The factory docking limit is denoted by $H_f$.
     $Q_i^{vol} 	            $	&-& volume of order at node $i\in N$				\\
     $H_f  	            $	&-& docking limit at factory $f\in F$				\\
     $T_{ijv}                $ 	&-& travel time for vehicle $v\in V$ over edge $(i,j)\in E_v$	\\
-    $\pi_i	            $	&-& number of time windows at node $i\in N$			\\ 
+    $\pi_i	            $	&-& amount of time windows at node $i\in N$			\\ 
     $\overline{T_{ip}}      $   &-& upper bound time of time window $p\in P_i$ at node $i\in N$ \\
     $\underline{T_{ip}}     $	&-& lower bound time of time window $p\in P_i$ at node $i\in N$ \\
-    $\gamma_v               $   &-& number of distance intervals for vehicle $v$                \\
-    $\mu_v                  $   &-& number of weight intervals for vehicle $v$                  \\                   
+    $\gamma_v               $   &-& amount of distance intervals for vehicle $v$                \\
+    $\mu_v                  $   &-& amount of weight intervals for vehicle $v$                  \\                   
     $C^{km}_{v\alpha\beta}  $	&-& cost per distance unit (km) in cost matrix element 
                                     $(\alpha, \beta) \in A_v$ for vehicle $v$	                \\
     $C^{kg}_{v\alpha\beta}  $	&-& cost per weight unit (kg) in cost matrix element 
@@ -180,10 +177,10 @@ The factory docking limit is denoted by $H_f$.
     $C^{stop}_i             $   &-& costs of making a stop at node $i$ 	                        \\
     $C_i                    $   &-& cost of not transporting order $i\in N^P$                   \\
     $D_{ij}	            $   &-& distance between node $i\in N$ and  $j\in N$		\\
-    $B_{v\alpha}            $   &-& upper limit distance in interval $\alpha$ for vehicle $v$ 
-                                    in cost matrix index pair $(\alpha,\beta)$ in $A_v$         \\
-    $Z_{v\beta}             $   &-& upper limit weight in interval $\beta$ for vehicle $v$ in  
-                                    cost matrix index pair $(\alpha,\beta)$ in $A_v$            \\ 
+    $B_{v\alpha}            $   &-& distance for interval $\alpha$ and vehicle $v$ in cost 
+                                    matrix $A_v$ column index                                   \\
+    $Z_{v\beta}             $   &-& weight for interval $\beta$ for vehicle $v$ in cost matrix 
+                                    $A_v$ row index                                             \\ 
 \end{tabular}
 \linebreak
 \linebreak
@@ -200,7 +197,7 @@ Together these pairs make a matrix we refer to in this paper as a cost matrix.
 Each type of cost has a matrix, including distance, weight, and fix costs and the cost in a certain interval ($\alpha$,$\beta$) is represented by $C_{v\alpha\beta}^{cost-type}$. 
 The total distance travelled by vehicle $v$ will be denoted by the variables $d_{v\alpha\beta}$ for each $(\alpha,\beta)\in A_v$, where only one variable per vehicle will have the value equal to the total distance of that vehicle. 
 The maximum weight transported by a vehicle is represented by $l_{v\alpha\beta}$ and also only one of these variables per vehicle will have a the corresponding value.
-Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined by the binary variable $b_{v\alpha\beta}$ and the distance insterval parameter $B_\alpha$ and the weight interval parameter $Z_\beta$.  
+Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined by the binary variable $b_{v\alpha\beta}$ and the distance insterval parameter $B_{v\alpha}$ and the weight interval parameter $Z_{v\beta}$.  
 \linebreak
 
 \begin{tabular} {l c l}
@@ -215,7 +212,7 @@ Which $d_{v\alpha\beta}$ and $l_{v\alpha\beta}$ has a value will be determined b
         $d_{v\alpha\beta} $	&-& 	total distance travelled of vehicle $v\in V$ if it fits in interval
                                                                                     $(\alpha, \beta) \in A_v$	\\
         $b_{v\alpha\beta} $	&-&	binary indicating interval $(\alpha, \beta) \in A_v$ for vehicle $v\in V$	\\
-        $l_{v\alpha\beta}$ &-&	the largest weight trasported by vehicle $v \in V$ for interval $(\alpha,\beta) \in A_v$	\\
+        $l_{v\alpha\beta}$ &-&	the highest weight trasported by vehicle $v \in V$ for interval $(\alpha,\beta) \in A_v$	\\
 
 \end{tabular}
 \linebreak
@@ -259,10 +256,10 @@ subject to:
     \sum_{(\alpha,\beta)\in A_v}d_{v\alpha\beta} = 
     \sum_{(i,j) \in E_v} x_{ijv}D_{ij},					& 	&&	v \in V						\label{eq:21}	\\[4pt]
     \sum_{(\alpha,\beta) \in A_v} l_{v\alpha\beta} \geq l_{iv}^{kg}	&	&& 	v \in V, i \in N_v				\label{eq:22}	\\[4pt]
-    B_{(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
-    B_\alpha b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:23}	\\[8pt]
-    Z_{(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
-    Z_\beta b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:24}	\\[8pt]   	
+    B_{v(\alpha-1)}b_{v\alpha\beta} \leq d_{v\alpha\beta} \leq 
+    B_{v\alpha} b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:23}	\\[8pt]
+    Z_{v(\beta-1)}b_{v\alpha\beta} \leq l_{v\alpha\beta} \leq 
+    Z_{v\beta} b_{v\alpha\beta},				        	& 	&&	v \in V, (\alpha, \beta) \in A_v		\label{eq:24}	\\[8pt]   	
     \sum_{(\alpha, \beta) \in A_v} b_{v\alpha\beta} \leq		
     \sum_{j\in N_v}x_{o(v)jv},                                          & 	&&	v \in V						\label{eq:25}	\\[4pt]
     h_i, t_i \geq 0,							& 	&&	i \in N 					\label{eq:26}	\\[8pt]
@@ -288,7 +285,7 @@ The final weight constraint \ref{eq:9} says that weight leaving node $i$ always 
 
 The next constraints \ref{eq:10}-\ref{eq:12}, ensures the same as for the weight but for volume, that each load is increased by the volume of the order, that the volume is decreased once delivered and that the volume at any node is between $0$ and the volume capacity of that vehicle.
 
-It follows from constrain \ref{eq:13} that within a certain factory, if you travel between two nodes, the number of stops you have made should always be iterated by one. 
+It follows from constrain \ref{eq:13} that within a certain factory, if you travel between two nodes, the amount of stops you have made should always be iterated by one. 
 If you are not travelling between them, the summation cannot be bigger than one plus the limitation corresponding to that factory.
 The next constraint on factories \ref{eq:14}, ensures that any node visited in a factory cannot exceed the docking limit.
 Then \ref{eq:15} makes sure that when a vehicle enters a factory from outside, the docking amount gets an initial value of 1, and if one is not travelling from $i$ to $j$ the value has to be greater than or equal to 0. \par

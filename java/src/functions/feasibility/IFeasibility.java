@@ -1,4 +1,4 @@
-package functions;
+package functions.feasibility;
 
 public interface IFeasibility {
     /**

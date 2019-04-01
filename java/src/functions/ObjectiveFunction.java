@@ -24,16 +24,16 @@ public class ObjectiveFunction {
         this.vehicles = dataSet.getVehicleAmount();
         this.orders = dataSet.getOrderAmount();
         this.stops = dataSet.getStopAmount();
-        this.vehicleStartingLocations = dataSet.getVehicleStartingLocation();
-        this.vehicleDestinationLocations = dataSet.getVehicleDestinationLocation();
-        this.stopCostMatrix = dataSet.getStopCostMatrix();
-        this.travelDistance = dataSet.getTravelDistance();
-        this.orderWeights = dataSet.getOrderWeight();
-        this.locations = dataSet.getLocation();
-        this.kgCostMatrix = dataSet.getKgCostMatrix();
-        this.kmCostMatrix = dataSet.getKmCostMatrix();
-        this.orderPenalties = dataSet.getOrderPenalty();
-        this.fixCostMatrix = dataSet.getFixCostMatrix();
+        this.vehicleStartingLocations = dataSet.getVehicleStartingLocations();
+        this.vehicleDestinationLocations = dataSet.getVehicleDestinationLocations();
+        this.stopCostMatrix = dataSet.getStopCosts();
+        this.travelDistance = dataSet.getTravelDistances();
+        this.orderWeights = dataSet.getOrderWeights();
+        this.locations = dataSet.getLocations();
+        this.kgCostMatrix = dataSet.getKgCostMatrices();
+        this.kmCostMatrix = dataSet.getKmCostMatrices();
+        this.orderPenalties = dataSet.getOrderPenalties();
+        this.fixCostMatrix = dataSet.getFixCostMatrices();
     }
 
 
@@ -122,12 +122,12 @@ public class ObjectiveFunction {
     }
 
     private int determineWeightDimension(int vehicleMaxWeight, int v) {
-        int[][] weightIntervals = dataSet.getWeightInterval();
+        int[][] weightIntervals = dataSet.getWeightIntervals();
         return findDimension(vehicleMaxWeight, weightIntervals, v);
     }
 
     private int determineDistanceDimension(int vehicleTotalDistance, int v) {
-        int[][] distanceIntervals = dataSet.getDistanceInterval();
+        int[][] distanceIntervals = dataSet.getDistanceIntervals();
         return findDimension(vehicleTotalDistance, distanceIntervals, v);
     }
 
