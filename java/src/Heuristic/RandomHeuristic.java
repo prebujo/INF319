@@ -14,7 +14,6 @@ public class RandomHeuristic implements IHeuristic{
     private final int vehicleAmount;
     private final int orderAmount;
     private final IFeasibility feasibilityCheck;
-    private int[] bestSolution;
 
     public RandomHeuristic(IData dataSet){
         this.dataSet = dataSet;
@@ -30,7 +29,7 @@ public class RandomHeuristic implements IHeuristic{
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int currentObjective = objectiveFunction.calculateSolution(startSolution);
         int bestObjective = currentObjective;
-        bestSolution = startSolution;
+        int[] bestSolution = startSolution;
         int[] currentSolution;
         ISolutionGenerator solutionGenerator = new SolutionGenerator(1);
 
@@ -41,16 +40,12 @@ public class RandomHeuristic implements IHeuristic{
                 continue;
             }
             currentObjective = objectiveFunction.calculateSolution(currentSolution);
-            if(currentObjective>bestObjective){
+            if(currentObjective<bestObjective){
                 bestSolution = currentSolution;
                 bestObjective = currentObjective;
             }
             i--;
         }
-
-
-
-
         return bestSolution;
     }
 }
