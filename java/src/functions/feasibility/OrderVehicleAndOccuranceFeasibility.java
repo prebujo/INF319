@@ -1,7 +1,6 @@
 package functions.feasibility;
 
-import dataObjects.IData;
-import functions.feasibility.IFeasibility;
+import dataObjects.IDataSet;
 
 public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
 
@@ -10,10 +9,10 @@ public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
     private final boolean[][] vehicleCanPickupNode;
     private final int orderAmount;
 
-    public OrderVehicleAndOccuranceFeasibility(IData dataset) {
+    public OrderVehicleAndOccuranceFeasibility(IDataSet dataset) {
         this.vehicleAmount = dataset.getVehicleAmount();
         this.vehicleCanVisitNode = dataset.getVehicleCanVisitNode();
-        this.vehicleCanPickupNode = dataset.getVehicleCanPickupNode();
+        this.vehicleCanPickupNode = dataset.getVehicleCanPickupOrder();
         this.orderAmount = dataset.getOrderAmount();
 
     }

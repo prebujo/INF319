@@ -1,17 +1,20 @@
 package dataObjects;
 
-public class DataSet implements IData{
+public class DataSet implements IDataSet {
     private int vehicleAmount;
     private int orderAmount;
+    private int locationsAmount;
     private int factoryAmount;
     private int stopAmount;
+    private int[] orderPickupLocation;
+    private int[] orderDeliveryLocation;
     private int[] weightDimensions;
     private int[] distanceDimensions;
     private int[] factories;
     private int[] factoryStopCapacities;
     private int[] locations;
     private boolean[][] vehicleCanVisitNode;
-    private boolean[][] vehicleCanPickupNode;
+    private boolean[][] vehicleCanPickupOrder;
     private int[] vehicleStartingLocations;
     private int[] vehicleDestinationLocations;
     private int[] vehicleWeightCapacities;
@@ -32,9 +35,10 @@ public class DataSet implements IData{
     private int[][] travelDistances;
 
 
-    public DataSet(int vehicleAmount, int orderAmount, int factoryAmount, int stopAmount){
+    public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount, int stopAmount){
         this.vehicleAmount = vehicleAmount;
         this.orderAmount = orderAmount;
+        this.locationsAmount = locationsAmount;
         this.factoryAmount = factoryAmount;
         this.stopAmount = stopAmount;
     }
@@ -119,13 +123,13 @@ public class DataSet implements IData{
     }
 
     @Override
-    public void setVehicleCanPickupNode(boolean[][] vehicleCanPickupNode) {
-        this.vehicleCanPickupNode = vehicleCanPickupNode;
+    public void setVehicleCanPickupOrder(boolean[][] vehicleCanPickupOrder) {
+        this.vehicleCanPickupOrder = vehicleCanPickupOrder;
     }
 
     @Override
-    public boolean[][] getVehicleCanPickupNode() {
-        return vehicleCanPickupNode;
+    public boolean[][] getVehicleCanPickupOrder() {
+        return vehicleCanPickupOrder;
     }
 
     @Override

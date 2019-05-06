@@ -1,6 +1,6 @@
 package functions.feasibility;
 
-import dataObjects.IData;
+import dataObjects.IDataSet;
 
 public class CollectiveCheck implements IFeasibility {
 
@@ -9,7 +9,7 @@ public class CollectiveCheck implements IFeasibility {
     private final WeightAndVolumeFeasible weightAndVolumeFeasible;
     private final FactoryDockFeasible factoryDockFeasible;
 
-    public CollectiveCheck(IData dataSet){
+    public CollectiveCheck(IDataSet dataSet){
         this.factoryDockFeasible = new FactoryDockFeasible(dataSet);
         this.weightAndVolumeFeasible = new WeightAndVolumeFeasible(dataSet);
         this.orderVehicleAndOccuranceFeasibility = new OrderVehicleAndOccuranceFeasibility(dataSet);

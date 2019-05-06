@@ -1,7 +1,6 @@
 package functions.feasibility;
 
-import dataObjects.IData;
-import functions.feasibility.IFeasibility;
+import dataObjects.IDataSet;
 
 public class TimeFeasible implements IFeasibility {
 
@@ -12,7 +11,7 @@ public class TimeFeasible implements IFeasibility {
     private final int[][] upperTimeWindows;
     private final int[] timeWindowAmounts;
 
-    public TimeFeasible(IData dataSet){
+    public TimeFeasible(IDataSet dataSet){
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.travelTime = dataSet.getTravelTimes();
         this.vehicleStartingLocation = dataSet.getVehicleStartingLocations();

@@ -1,10 +1,9 @@
 package functions.feasibility;
 
-import dataObjects.IData;
-import functions.feasibility.IFeasibility;
+import dataObjects.IDataSet;
 
 public class WeightAndVolumeFeasible implements IFeasibility {
-    private final IData dataset;
+    private final IDataSet dataset;
     private final int vehicleAmount;
     private final int[] vehicleWeightCapacity;
     private final int orderAmount;
@@ -12,7 +11,7 @@ public class WeightAndVolumeFeasible implements IFeasibility {
     private final int[] orderVolume;
     private final int[] vehicleVolumeCapacity;
 
-    public WeightAndVolumeFeasible(IData dataSet) {
+    public WeightAndVolumeFeasible(IDataSet dataSet) {
         this.dataset = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.vehicleWeightCapacity = dataSet.getVehicleWeightCapacities();

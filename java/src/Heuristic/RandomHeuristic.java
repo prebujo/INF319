@@ -1,37 +1,44 @@
 package Heuristic;
 
-import dataObjects.IData;
+import dataObjects.DataResult;
+import dataObjects.IDataResult;
+import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
-import functions.feasibility.CollectiveCheck;
-import functions.feasibility.Feasible;
+import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.ISolutionGenerator;
 import functions.utility.SolutionGenerator;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class RandomHeuristic implements IHeuristic{
 
-    private final IData dataSet;
+    private final IDataSet dataSet;
     private final int vehicleAmount;
     private final int orderAmount;
     private final IFeasibility feasibilityCheck;
+    private final Random random;
 
-    public RandomHeuristic(IData dataSet){
+    public RandomHeuristic(IDataSet dataSet, Random random){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
-        this.feasibilityCheck = new Feasible(dataSet);
+        this.feasibilityCheck = new Feasibility(dataSet);
+        this.random = random;
     }
 
     @Override
-    public int[] optimize(int[] startSolution) {
+    public IDataResult optimize() {
 
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(),dataSet.getOrderAmount());
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int currentObjective = objectiveFunction.calculateSolution(startSolution);
         int bestObjective = currentObjective;
         int[] bestSolution = startSolution;
         int[] currentSolution;
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(1);
 
         int i = 10000;
         while (i>0){
@@ -46,6 +53,8 @@ public class RandomHeuristic implements IHeuristic{
             }
             i--;
         }
-        return bestSolution;
+        IDataResult dataResult = new DataResult(new ArrayList<>(), 1000,10000,0  );
+        dataResult.setBestSolution(bestSolution);
+        return dataResult;
     }
 }

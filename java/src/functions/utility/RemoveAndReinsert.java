@@ -1,6 +1,6 @@
 package functions.utility;
 
-import dataObjects.IData;
+import dataObjects.IDataSet;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -15,21 +15,28 @@ public class RemoveAndReinsert implements IOperator {
     private final int orderAmount;
     private final IFeasibility feasibilityCheck;
     private Random random;
+    private Throwable IllegalArgumentException;
+    private int lowerLimit;
+    private int upperLimit;
+    private String name;
 
-    public RemoveAndReinsert(IData dataSet, int seed, IFeasibility feasibilityCheck){
+    public RemoveAndReinsert(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name){
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.feasibilityCheck = feasibilityCheck;
-
-        random = new Random(seed);
-
+        this.IllegalArgumentException = new IllegalArgumentException("Trying to reinsert more orders than contained in solution..");
+        this.random = random;
+        this.lowerLimit = lowerLimit;
+        this.upperLimit = upperLimit;
+        this.name = name;
     }
     @Override
-    public int[] apply(int[] solution) {
+    public int[] apply(int[] solution) throws Throwable {
         int[] result;
-        HashSet<Integer> elementsToRemove = getElementsToRemove(1,solution);
+        int amount = lowerLimit + random.nextInt(upperLimit-lowerLimit+1);
+        HashSet<Integer> elementsToRemove = getElementsToRemove(amount,solution);
 
-        result = insert(1,solution, elementsToRemove);
+        result = insert(solution, elementsToRemove);
 
         if (feasibilityCheck.check(result)) {
             return result;
@@ -38,13 +45,18 @@ public class RemoveAndReinsert implements IOperator {
         }
     }
 
-    private int[] insert(int n, int[] solution, HashSet<Integer> elementsToRemove) {
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    private int[] insert(int[] solution, HashSet<Integer> elementsToRemove) {
         int[] result = new int[solution.length];
 
         //arranges which vehicle should recieve which order
         List<List<Integer>> orderAssignment = new ArrayList<>(vehicleAmount);
 
-        for (int i = 0;i<orderAssignment.size();i++){
+        for (int i = 0;i<vehicleAmount+1;i++){
             orderAssignment.add(new ArrayList<>());
         }
         for(Integer element:elementsToRemove){
@@ -53,54 +65,70 @@ public class RemoveAndReinsert implements IOperator {
         }
 
 
-
         int resultIndex = 0;
         int solutionElement;
         int vehicle = 0;
 
         for (int i = 0; i<solution.length;i++){
             solutionElement = solution[i];
-            if (elementsToRemove.contains(solutionElement)){
-                continue;
+            //TODO: Continue here and add all choices for each vehicle in lists, then select either new element or old element.
+            int assignedElementsSize;
+            if(vehicle<vehicleAmount){
+                assignedElementsSize = orderAssignment.get(vehicle).size();
+            } else{
+                assignedElementsSize =0;
             }
-            if(solutionElement==0){
+            if(solutionElement==0&&assignedElementsSize==0){
                 resultIndex++;
                 vehicle++;
                 continue;
             }
-            //TODO: Continue here and add all choices for each vehicle in lists, then select either new element or old element.
-            int assignedElementsSize = orderAssignment.get(vehicle).size();
             if(assignedElementsSize>0) {
                 List<Integer> possibilities = new ArrayList<>();
-                possibilities.add(solutionElement);
-                int lastAssignedOrder = removeRandomElement(orderAssignment, vehicle, assignedElementsSize);
+                if((!elementsToRemove.contains(solutionElement)&&!elementsToRemove.contains(solutionElement-orderAmount))&&solutionElement!=0) {
+                    possibilities.add(solutionElement);
+                }
+                int lastAssignedOrder = removeRandomElement(orderAssignment, vehicle);
                 possibilities.add(lastAssignedOrder);
                 while(possibilities.size()>0) {
                     int size = possibilities.size();
                     int choiceIndex = random.nextInt(size);
                     int elementChoice = possibilities.get(choiceIndex);
-                    if (elementChoice<orderAmount){
-                        possibilities.add(elementChoice+orderAmount);
-                    }
-                    int temp = possibilities.remove(size-1);
-                    if (choiceIndex!=size-1){
-                        possibilities.set(choiceIndex,temp);
-                    }
-                    if (orderAssignment.get(vehicle).size()>0&&elementChoice==lastAssignedOrder){
-                        possibilities.add(removeRandomElement(orderAssignment, vehicle, assignedElementsSize));
-                        lastAssignedOrder = elementChoice;
-                    }
+                    //If I choose the solution element and solution element is not an element to remove
                     if (elementChoice==solutionElement){
                         i++;
                         solutionElement = solution[i];
-                        if (solutionElement!=0){
+                        while (elementsToRemove.contains(solutionElement)||elementsToRemove.contains(solutionElement-orderAmount)) {
+                            i++;
+                            solutionElement = solution[i];
+                        }
+                        if(solutionElement!=0){
                             possibilities.add(solutionElement);
                         }
+                    }
+                    //if I am picking up an assignedorder I have to be able to deliver it after
+                    if (elementChoice<orderAmount&&elementsToRemove.contains(elementChoice)){
+                        possibilities.add(elementChoice+orderAmount);
+                    }
+                    //removing chosen order from possibilities
+                    int temp = possibilities.remove(possibilities.size()-1);
+                    if (choiceIndex!=possibilities.size()){
+                        possibilities.set(choiceIndex,temp);
+                    }
+                    //if I still have orders to assign and I chose an Assigned order as element to insert I have to add
+                    //the next orderAssignment.
+                    if (orderAssignment.get(vehicle).size()>0&&elementChoice==lastAssignedOrder){
+                        possibilities.add(removeRandomElement(orderAssignment, vehicle));
+                        lastAssignedOrder = elementChoice;
                     }
                     result[resultIndex] = elementChoice;
                     resultIndex++;
                 }
-            } else {
+                if(solutionElement==0) {
+                    vehicle++;
+                    resultIndex++;
+                }
+            } else if(!elementsToRemove.contains(solutionElement)&&!elementsToRemove.contains(solutionElement-orderAmount)){
                 result[resultIndex] = solutionElement;
                 resultIndex++;
             }
@@ -108,8 +136,9 @@ public class RemoveAndReinsert implements IOperator {
     return result;
     }
 
-    private int removeRandomElement(List<List<Integer>> orderAssignment, int vehicle, int assignedElementsSize) {
+    private int removeRandomElement(List<List<Integer>> orderAssignment, int vehicle) {
         int result;
+        int assignedElementsSize = orderAssignment.get(vehicle).size();
         int j = random.nextInt(assignedElementsSize);
         result = orderAssignment.get(vehicle).get(j);
         int temp = orderAssignment.get(vehicle).remove(orderAssignment.get(vehicle).size()-1);
@@ -119,13 +148,17 @@ public class RemoveAndReinsert implements IOperator {
         return result;
     }
 
-    private HashSet<Integer> getElementsToRemove(int n, int[] solution) {
+    private HashSet<Integer> getElementsToRemove(int n, int[] solution) throws Throwable {
+        if(n>(solution.length-vehicleAmount)/2){
+            throw (Throwable) IllegalArgumentException;
+        }
         HashSet<Integer> result = new HashSet<>(n);
 
         int vehicle = 0;
         List<Integer> possibilities = new ArrayList<>();
+
         for (int i = 0; i<solution.length;i++){
-            if(vehicle>vehicleAmount&&possibilities.size()>=n){
+            if(vehicle>=vehicleAmount&&possibilities.size()>=n){
                 break;
             }
             int solutionElement = solution[i];

@@ -9,8 +9,8 @@ public class SolutionGenerator implements ISolutionGenerator {
 
     private final Random random;
 
-    public SolutionGenerator(int seed){
-        this.random = new Random(seed);
+    public SolutionGenerator(Random random){
+        this.random = random;
     }
 
     @Override

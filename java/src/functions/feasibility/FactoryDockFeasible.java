@@ -1,7 +1,6 @@
 package functions.feasibility;
 
-import dataObjects.IData;
-import functions.feasibility.IFeasibility;
+import dataObjects.IDataSet;
 
 public class FactoryDockFeasible implements IFeasibility {
 
@@ -10,7 +9,7 @@ public class FactoryDockFeasible implements IFeasibility {
     private final int vehicleAmount;
     private final int factoryAmount;
 
-    public FactoryDockFeasible(IData dataSet) {
+    public FactoryDockFeasible(IDataSet dataSet) {
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.factory = dataSet.getFactories();
         this.factoryAmount = dataSet.getFactoryAmount();

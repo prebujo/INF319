@@ -1,15 +1,15 @@
 package reader;
 
 import dataObjects.DataSet;
-import dataObjects.IData;
+import dataObjects.IDataSet;
 
 import java.io.File;
 import java.util.*;
 
 public class Reader implements IReader {
     @Override
-    public IData readDataFromFile(String fileName) throws Exception {
-        IData result;
+    public IDataSet readDataFromFile(String fileName) throws Exception {
+        IDataSet result;
 
         File file = new File("/home/preben/repo/master/java/res/"+fileName);
         Scanner fileScanner = new Scanner(file);
@@ -80,7 +80,7 @@ public class Reader implements IReader {
         result.setFactoryStopCapacities(stopCapacities);
         result.setLocations(locations);
         result.setVehicleCanVisitNode(vehicleCanVisitNode);
-        result.setVehicleCanPickupNode(vehicleCanPickupNode);
+        result.setVehicleCanPickupOrder(vehicleCanPickupNode);
         result.setVehicleStartingLocations(vehicleStartingLocations);
         result.setVehicleDestinationLocations(vehicleDestinationLocations);
         result.setVehicleWeightCapacities(vehicleWeightCapacities);

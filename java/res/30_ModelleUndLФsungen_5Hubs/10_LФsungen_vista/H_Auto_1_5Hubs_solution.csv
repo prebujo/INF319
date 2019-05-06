@@ -1,0 +1,36 @@
+
+#created_on;31.07.2014 at 11:27 
+$language;de
+$model;H_Auto_1
+$minimal_frequency;1,00/w
+
+#dist_factor;vista
+
+#basis_for_loading_meter_calculation;tbd
+#basis_for_distance_calculation;tbd
+$solution_name;5Hubs
+$total_costs;330.626,7033556447
+$transport_costs;313.704,2680527140
+$handling_costs;16.922,4353029307
+$storage_costs;0,0000000000
+
+$solution-status;feasible
+#$solver;4flow vista
+#$scenIndex;null
+#+lsa;null
+#$localsearch-time;tbd
+
+$paths;H_Auto_1_5Hubs_paths.csv
+$transports;H_Auto_1_5Hubs_transports.csv
+$worstcase_scenario;wSc_MIP_pg2;5,503267e+05;H_Auto_1_5Hubs_wSc_MIP_pg2.csv
+$worstcase_scenario;wSc_MIP_pg2;5,503267e+05;H_Auto_1_5Hubs_wSc_MIP_pg2.csv
+$worstcase_scenario;wSc_MIP_pg4;6,260983e+05;H_Auto_1_5Hubs_wSc_MIP_pg4.csv
+$worstcase_scenario;wSc_MIP_pg8;7,102836e+05;H_Auto_1_5Hubs_wSc_MIP_pg8.csv
+$worstcase_scenario;wSc_MIP_pg4;6,260983e+05;H_Auto_1_5Hubs_wSc_MIP_pg4.csv
+$worstcase_scenario;wSc_MIP_pg8;7,102836e+05;H_Auto_1_5Hubs_wSc_MIP_pg8.csv
+$worstcase_scenario;wSc_MIP_pg16;7,739595e+05;H_Auto_1_5Hubs_wSc_MIP_pg16.csv
+$worstcase_scenario;wSc_MIP_pg32;8,445570e+05;H_Auto_1_5Hubs_wSc_MIP_pg32.csv
+$average_integer_costs;3,544519e+05
+$worstcase_scenario;wSc_MIP_pg16;7,739595e+05;H_Auto_1_5Hubs_wSc_MIP_pg16.csv
+$worstcase_scenario;wSc_MIP_pg32;8,445570e+05;H_Auto_1_5Hubs_wSc_MIP_pg32.csv
+$average_integer_costs;3,544519e+05

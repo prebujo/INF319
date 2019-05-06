@@ -1,7 +1,7 @@
 package Heuristic;
 
-import dataObjects.IData;
+import dataObjects.IDataResult;
 
 public interface IHeuristic {
-    int[] optimize(int[] solution);
+    IDataResult optimize() throws Throwable;
 }

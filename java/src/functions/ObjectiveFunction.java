@@ -1,10 +1,10 @@
 package functions;
 
-import dataObjects.IData;
+import dataObjects.IDataSet;
 
 public class ObjectiveFunction {
     private final int vehicles;
-    private final IData dataSet;
+    private final IDataSet dataSet;
     private int[] solution;
     private final int orders;
     private final int stops;
@@ -19,7 +19,7 @@ public class ObjectiveFunction {
     private int[] orderPenalties;
     private final int[][][] fixCostMatrix;
 
-    public ObjectiveFunction(IData dataSet){
+    public ObjectiveFunction(IDataSet dataSet){
         this.dataSet = dataSet;
         this.vehicles = dataSet.getVehicleAmount();
         this.orders = dataSet.getOrderAmount();

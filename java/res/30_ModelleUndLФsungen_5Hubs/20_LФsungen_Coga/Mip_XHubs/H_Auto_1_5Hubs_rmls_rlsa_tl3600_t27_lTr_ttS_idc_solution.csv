@@ -1,0 +1,61 @@
+#this file contains a solution for RobuNet Instances comments are marked with '#';
+### BEGIN:comments from parsed instance file ###
+#created_on;17.07.2014 at 11:52
+#vista_project;H_Auto_1
+#network;05_00_Modell
+#basis_for_loading_meter_calculation;Mega
+#basis_for_distance_calculation;air distance
+#distance_factor;120,0%
+#File-specifier;Scenario-name;CSV File;#description
+### END: comments from parsed instance file ###
+
+#time of solution creation
+#$date;Thu Nov 27 21:25:56 2014
+
+$solution_name;H_Auto_1_5Hubs_rmls_rlsa_tl3600_t27_lTr_ttS_idc
+#number encoding (default should be de)
+$language;de
+$model;H_Auto_1_5Hubs
+$minimal_frequency;1,0/w
+
+#
+#$linearize;True
+
+#solution status (infeasible, feasible,  unknown)
+$solution_status;feasible
+
+#computed costs of this solution 
+$handling_costs;1,16416656977484e+04
+$storage_costs;0,00000000000000e+00
+$fix_costs;0,00000000000000e+00
+$transport_costs;3,19766496150244e+05
+$total_costs;3,31408161847992e+05
+#$linear_costs;3,31408161847992e+05
+#$integer_costs;3,68546604342208e+05
+#solver that created this solution (should be uniqe when comparing to other solvers)
+$solver;rmls_rlsa_tl3600_t27_lTr_ttS_idc
+$time;4,94680000000000e+02
+#
+$paths;H_Auto_1_5Hubs_rmls_rlsa_tl3600_t27_lTr_ttS_idc_paths.csv
+#
+$transports;H_Auto_1_5Hubs_rmls_rlsa_tl3600_t27_lTr_ttS_idc_transports.csv
+#
+### ALGORITHM STEPS ###
+#;step name ;runtime ;total cost (lin.) ;total cost (int.) ;transport cost (int.) ;transport cost (int.) ;handling cost ;storage cost 
+# $step;parsing;1,67600000000000e+01;-;-;-;-;-;-
+# $step;aggregate commodities;1,00000000000000e-01;-;-;-;-;-;-
+# $step;preprocess direct connections;0,00000000000000e+00;-;-;-;-;-;-
+# $step;compute flow bounds;2,71100000000000e+01;-;-;-;-;-;-
+# $step;compute property flow bounds;8,00000000000000e-02;-;-;-;-;-;-
+# $step;compute incremental tariff representation;8,53000000000000e+00;-;-;-;-;-;-
+# $step;augmental init solver dummy on partition 0 from [ 0 ];3,13210000000000e+02;-;-;-;-;-;-
+# $step;improvement solver rlsa on full instance;0,00000000000000e+00;-;-;-;-;-;-
+# $step;improvement solver rlsa on full instance;1,28890000000000e+02;-;-;-;-;-;-
+#
+### USED HUBS ###
+# $hub; Hub_81;2
+# $hub; Hub_82;70
+# $hub; Hub_83;225
+# $hub; Hub_85;497
+$hubs_used;4
+$average_integer_costs;3,553475e+05

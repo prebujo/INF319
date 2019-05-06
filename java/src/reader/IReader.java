@@ -1,7 +1,7 @@
 package reader;
 
-import dataObjects.IData;
+import dataObjects.IDataSet;
 
 public interface IReader {
-    IData readDataFromFile(String fileName) throws Exception;
+    IDataSet readDataFromFile(String fileName) throws Exception;
 }

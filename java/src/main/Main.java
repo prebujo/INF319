@@ -2,19 +2,19 @@ package main;
 
 import Heuristic.IHeuristic;
 import Heuristic.RandomHeuristic;
-import dataObjects.IData;
+import dataObjects.IDataSet;
 import functions.*;
 import functions.feasibility.*;
-import functions.utility.ISolutionGenerator;
-import functions.utility.SolutionGenerator;
+import functions.utility.*;
 import reader.IReader;
 import reader.Reader;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         System.out.println("Welcome to Preben's PDP solver! Please enter the name of the file you would like to read: ");
         Scanner scan = new Scanner(System.in);
         String fileName = scan.nextLine();
@@ -22,7 +22,7 @@ public class Main {
         IReader reader = new Reader();
 
         //creates a dataset from file
-        IData dataset = reader.readDataFromFile(fileName);
+        IDataSet dataset = reader.readDataFromFile(fileName);
 
         System.out.println("Amount of Vehicles: "+dataset.getVehicleAmount());
 
@@ -59,9 +59,9 @@ public class Main {
         System.out.println("Vehicle 2 can visit Node 2: "+dataset.getVehicleCanVisitNode()[1][2]);
         System.out.println("Vehicle 1 can visit Node 6: "+dataset.getVehicleCanVisitNode()[0][6]);
 
-        System.out.println("Vehicle 1 can Pickup Node 1: "+dataset.getVehicleCanPickupNode()[0][1]);
-        System.out.println("Vehicle 2 can Pickup Node 2: "+dataset.getVehicleCanPickupNode()[1][2]);
-        System.out.println("Vehicle 2 can Pickup Node 4: "+dataset.getVehicleCanPickupNode()[1][4]);
+        System.out.println("Vehicle 1 can Pickup Node 1: "+dataset.getVehicleCanPickupOrder()[0][1]);
+        System.out.println("Vehicle 2 can Pickup Node 2: "+dataset.getVehicleCanPickupOrder()[1][2]);
+        System.out.println("Vehicle 2 can Pickup Node 4: "+dataset.getVehicleCanPickupOrder()[1][4]);
 
         System.out.println("Vehicle 1 Starting Node: " + dataset.getVehicleStartingLocations()[0] + " and ending Node: " + dataset.getVehicleDestinationLocations()[0]);
 
@@ -112,10 +112,17 @@ public class Main {
         //superSimple possible solution
 //        int[] solutionRepresentation = {0,1,3};
 
+        IFeasibility feasible5 = new CollectiveCheck(dataset);
+        IFeasibility feasibility = new Feasibility(dataset);
         //simple possible solution
-        int[] solutionRepresentation = {1,2,8,9,0,4,11,0,3,10,0};
+        int[] solutionRepresentation = {1,2,9,8,0,0,0,0,0,0,0};
 
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(2);
+        System.out.println("Is strange solution feasible? -> "+feasibility.check(solutionRepresentation));
+        System.out.println("Is strange solution feasible? -> "+feasible5.check(solutionRepresentation));
+
+        Random random = new Random(2);
+
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
         int[] dummySolution = solutionGenerator.createDummySolution(dataset.getVehicleAmount(),dataset.getOrderAmount());
 
         for (int i = 0;i<5;i++) {
@@ -132,8 +139,6 @@ public class Main {
             dummySolution = solutionGenerator.randomize(dummySolution);
         }
         int i = 5;
-        IFeasibility feasible5 = new CollectiveCheck(dataset);
-        IFeasibility feasib = new Feasible(dataset);
 
         while(i>0){
             System.out.println("Randomly assigned Solution: ");
@@ -144,7 +149,7 @@ public class Main {
             i--;
             System.out.println();
             System.out.println("Solution is feasible? -> "+ feasible5.check(dummySolution));
-            System.out.println("Solution is feasible? -> "+ feasib.check(dummySolution));
+            System.out.println("Solution is feasible? -> "+ feasibility.check(dummySolution));
         }
 
 
@@ -165,17 +170,71 @@ public class Main {
         System.out.println("Solution is Time feasible-> "+ feasible3.check(solutionRepresentation) );
         System.out.println("Solution is Order feasible-> "+ feasible4.check(solutionRepresentation) );
 
-        IHeuristic heuristic = new RandomHeuristic(dataset);
+        IHeuristic heuristic = new RandomHeuristic(dataset, random);
 
         System.out.println("Best solution: ");
 
-        dummySolution = heuristic.optimize(solutionGenerator.createDummySolution(dataset.getVehicleAmount(),dataset.getOrderAmount()));
+        dummySolution = heuristic.optimize().getBestSolution();
         for (int j = 0; j < dummySolution.length; j++) {
             System.out.print(dummySolution[j] + " ");
         }
         System.out.println();
-        System.out.println("Solution objective: "+objectiveFunction.calculateSolution(dummySolution));
+        int resultCost = objectiveFunction.calculateSolution(dummySolution);
+        int best = resultCost;
+        System.out.println("Solution objective: "+ resultCost);
         System.out.println("Solution feasible? ->"+feasible5.check(dummySolution));
+
+        IOperator swap2 = new SwapTwo(dataset,random,feasibility, "swap2");
+        IOperator removeAndReinsert = new RemoveAndReinsert(dataset,random,feasibility, 2,2, "r&r2_2");
+
+        int counter = 0;
+
+        while(resultCost==best){
+            dummySolution = swap2.apply(dummySolution);
+            resultCost = objectiveFunction.calculateSolution(dummySolution);
+            counter++;
+        }
+
+        System.out.println("Performing successful 2-swap: ");
+
+        for (int j = 0; j < dummySolution.length; j++) {
+            System.out.print(dummySolution[j] + " ");
+        }
+
+        System.out.println();
+
+        System.out.println("Took " + counter + " iterations..");
+
+        int k = 10;
+
+        System.out.println(dummySolution.toString());
+
+        while(k>0) {
+            do {
+                dummySolution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(), dataset.getOrderAmount());
+            }while(!feasibility.check(dummySolution));
+            System.out.println("Solution before ReInsert: ");
+            for (int j = 0; j < dummySolution.length; j++) {
+                System.out.print(dummySolution[j] + " ");
+            }
+            System.out.println();
+            resultCost = objectiveFunction.calculateSolution(dummySolution);
+            counter = 0;
+            best = resultCost;
+            while (resultCost == best) {
+                dummySolution = removeAndReinsert.apply(dummySolution);
+                resultCost = objectiveFunction.calculateSolution(dummySolution);
+                counter++;
+            }
+            System.out.println("Performing successful remove and reinsert: ");
+            for (int j = 0; j < dummySolution.length; j++) {
+                System.out.print(dummySolution[j] + " ");
+            }
+            System.out.println();
+            System.out.println("Took " + counter + " iterations..");
+
+            k--;
+        }
 
 
     }
