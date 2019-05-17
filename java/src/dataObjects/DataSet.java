@@ -6,8 +6,8 @@ public class DataSet implements IDataSet {
     private int locationsAmount;
     private int factoryAmount;
     private int stopAmount;
-    private int[] orderPickupLocation;
-    private int[] orderDeliveryLocation;
+    private int[] orderPickupLocations;
+    private int[] orderDeliveryLocations;
     private int[] weightDimensions;
     private int[] distanceDimensions;
     private int[] factories;
@@ -18,21 +18,22 @@ public class DataSet implements IDataSet {
     private int[] vehicleStartingLocations;
     private int[] vehicleDestinationLocations;
     private int[] vehicleWeightCapacities;
-    private int[] vehicleVolumeCapacities;
-    private int[] orderWeights;
-    private int[] orderVolumes;
-    private int[] orderPenalties;
+    private double[] vehicleVolumeCapacities;
+    private double[] orderWeights;
+    private double[] orderVolumes;
+    private double[] orderPenalties;
     private int[][] distanceIntervals;
     private int[][] weightIntervals;
-    private int[][][] kmCostMatrices;
-    private int[][][] kgCostMatrices;
-    private int[][][] fixCostMatrices;
-    private int[][] stopCosts;
+    private double[][][] kmCostMatrices;
+    private double[][][] kgCostMatrices;
+    private double[][][] fixCostMatrices;
+    private double[][] stopCosts;
     private int[] timeWindowAmounts;
-    private int[][] lowerTimeWindows;
-    private int[][] upperTimeWindows;
-    private int[][][] travelTimes;
-    private int[][] travelDistances;
+    private double[][] lowerTimeWindows;
+    private double[][] upperTimeWindows;
+    private double[][][] travelTimes;
+    private double[][] travelDistances;
+    private int[] orderDeliveryDock;
 
 
     public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount, int stopAmount){
@@ -163,42 +164,42 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setOrderWeights(int[] orderWeights) {
+    public void setOrderWeights(double[] orderWeights) {
         this.orderWeights = orderWeights;
     }
 
     @Override
-    public int[] getOrderWeights() {
+    public double[] getOrderWeights() {
         return orderWeights;
     }
 
     @Override
-    public void setVehicleVolumeCapacities(int[] vehicleVolumeCapacities) {
+    public void setVehicleVolumeCapacities(double[] vehicleVolumeCapacities) {
         this.vehicleVolumeCapacities = vehicleVolumeCapacities;
     }
 
     @Override
-    public int[] getVehicleVolumeCapacities() {
+    public double[] getVehicleVolumeCapacities() {
         return vehicleVolumeCapacities;
     }
 
     @Override
-    public void setOrderVolumes(int[] orderVolumes) {
+    public void setOrderVolumes(double[] orderVolumes) {
         this.orderVolumes = orderVolumes;
     }
 
     @Override
-    public int[] getOrderVolumes() {
+    public double[] getOrderVolumes() {
         return orderVolumes;
     }
 
     @Override
-    public void setOrderPenalties(int[] orderPenalties) {
+    public void setOrderPenalties(double[] orderPenalties) {
         this.orderPenalties = orderPenalties;
     }
 
     @Override
-    public int[] getOrderPenalties() {
+    public double[] getOrderPenalties() {
         return orderPenalties;
     }
 
@@ -223,42 +224,42 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setKmCostMatrices(int[][][] kmCostMatrices) {
+    public void setKmCostMatrices(double[][][] kmCostMatrices) {
         this.kmCostMatrices = kmCostMatrices;
     }
 
     @Override
-    public int[][][] getKmCostMatrices() {
+    public double[][][] getKmCostMatrices() {
         return kmCostMatrices;
     }
 
     @Override
-    public void setKgCostMatrices(int[][][] kgCostMatrices) {
+    public void setKgCostMatrices(double[][][] kgCostMatrices) {
         this.kgCostMatrices = kgCostMatrices;
     }
 
     @Override
-    public int[][][] getKgCostMatrices() {
+    public double[][][] getKgCostMatrices() {
         return kgCostMatrices;
     }
 
     @Override
-    public void setFixCostMatrices(int[][][] fixCostMatrices) {
+    public void setFixCostMatrices(double[][][] fixCostMatrices) {
         this.fixCostMatrices = fixCostMatrices;
     }
 
     @Override
-    public int[][][] getFixCostMatrices() {
+    public double[][][] getFixCostMatrices() {
         return fixCostMatrices;
     }
 
     @Override
-    public void setStopCosts(int[][] stopCosts) {
+    public void setStopCosts(double[][] stopCosts) {
         this.stopCosts = stopCosts;
     }
 
     @Override
-    public int[][] getStopCosts() {
+    public double[][] getStopCosts() {
         return stopCosts;
     }
 
@@ -273,43 +274,72 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setLowerTimeWindows(int[][] lowerTimeWindows) {
+    public void setLowerTimeWindows(double[][] lowerTimeWindows) {
         this.lowerTimeWindows = lowerTimeWindows;
     }
 
     @Override
-    public int[][] getLowerTimeWindows() {
+    public double[][] getLowerTimeWindows() {
         return lowerTimeWindows;
     }
 
     @Override
-    public void setUpperTimeWindows(int[][] upperTimeWindows) {
+    public void setUpperTimeWindows(double[][] upperTimeWindows) {
         this.upperTimeWindows = upperTimeWindows;
     }
 
     @Override
-    public int[][] getUpperTimeWindows() {
+    public double[][] getUpperTimeWindows() {
         return upperTimeWindows;
     }
 
     @Override
-    public void setTravelTimes(int[][][] travelTimes) {
+    public void setTravelTimes(double[][][] travelTimes) {
         this.travelTimes = travelTimes;
     }
 
     @Override
-    public int[][][] getTravelTimes() {
+    public double[][][] getTravelTimes() {
         return travelTimes;
     }
 
     @Override
-    public void setTravelDistances(int[][] travelDistances) {
+    public void setTravelDistances(double[][] travelDistances) {
         this.travelDistances = travelDistances;
     }
 
     @Override
-    public int[][] getTravelDistances() {
+    public double[][] getTravelDistances() {
         return travelDistances;
     }
 
+    @Override
+    public int[] getOrderPickupLocations() {
+        return orderPickupLocations;
+    }
+
+    @Override
+    public void setOrderPickupLocation(int[] orderPickupLocations) {
+        this.orderPickupLocations = orderPickupLocations;
+    }
+
+    @Override
+    public int[] getOrderDeliveryLocations() {
+        return orderDeliveryLocations;
+    }
+
+    @Override
+    public void setOrderDeliveryLocations(int[] orderDeliveryLocations) {
+        this.orderDeliveryLocations = orderDeliveryLocations;
+    }
+
+    @Override
+    public int[] getOrderDeliveryDock() {
+        return orderDeliveryDock;
+    }
+
+    @Override
+    public void setOrderDeliveryDocks(int[] orderDeliveryDock) {
+        this.orderDeliveryDock = orderDeliveryDock;
+    }
 }

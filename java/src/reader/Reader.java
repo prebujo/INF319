@@ -38,13 +38,13 @@ public class Reader implements IReader {
 
         int[] vehicleWeightCapacities = getIntegerList(fileScanner,vehicleAmount);
 
-        int[] orderWeights = getIntegerList(fileScanner,orderAmount);
+        double[] orderWeights = getDoubleList(fileScanner,orderAmount);
 
-        int[] vehicleVolumeCapacities = getIntegerList(fileScanner,vehicleAmount);
+        double[] vehicleVolumeCapacities = getDoubleList(fileScanner,vehicleAmount);
 
-        int[] orderVolumes = getIntegerList(fileScanner,orderAmount);
+        double[] orderVolumes = getDoubleList(fileScanner,orderAmount);
 
-        int[] orderPenalties = getIntegerList(fileScanner,orderAmount);
+        double[] orderPenalties = getDoubleList(fileScanner,orderAmount);
 
         int maxDistanceDimension = getMaxValue(distanceDimensions);
         int maxWeightDimension = getMaxValue(weightDimensions);
@@ -53,27 +53,28 @@ public class Reader implements IReader {
 
         int[][] weightIntervals = getInteger2DList(fileScanner, vehicleAmount, maxWeightDimension+1);
 
-        int[][][] kmCostMatrices = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);
+        double[][][] kmCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);
 
-        int[][][] kgCostMatrices = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
+        double[][][] kgCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
 
-        int[][][] fixCostMatrices = getInteger3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
+        double[][][] fixCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);
 
-        int[][] stopCosts = getInteger2DList(fileScanner, vehicleAmount, 2*orderAmount);
+        double[][] stopCosts = getDouble2DList(fileScanner, vehicleAmount, 2*orderAmount);
 
         int[] timeWindowAmounts = getIntegerList(fileScanner,2*orderAmount);
 
         int timeWindowMax = getMaxValue(timeWindowAmounts);
 
-        int[][] lowerTimeWindows = getInteger2DList(fileScanner, timeWindowMax, 2*orderAmount);
+        double[][] lowerTimeWindows = getDouble2DList(fileScanner, timeWindowMax, 2*orderAmount);
 
-        int[][] upperTimeWindows = getInteger2DList(fileScanner, timeWindowMax, 2*orderAmount);
+        double[][] upperTimeWindows = getDouble2DList(fileScanner, timeWindowMax, 2*orderAmount);
 
-        int[][][] travelTimes = getInteger3DList(fileScanner, vehicleAmount, 2*orderAmount, 2*orderAmount);
+        double[][][] travelTimes = getDouble3DList(fileScanner, vehicleAmount, 2*orderAmount, 2*orderAmount);
 
-        int[][] travelDistances = getInteger2DList(fileScanner, 2*orderAmount, 2*orderAmount);
+        double[][] travelDistances = getDouble2DList(fileScanner, 2*orderAmount, 2*orderAmount);
 
-        result = new DataSet(vehicleAmount,orderAmount,factoryAmount,stopAmount);
+        int locationsAmount = 0;
+        result = new DataSet(vehicleAmount,orderAmount,locationsAmount, factoryAmount,stopAmount);
         result.setWeightDimensions(weightDimensions);
         result.setDistanceDimensions(distanceDimensions);
         result.setFactories(factories);
@@ -100,6 +101,43 @@ public class Reader implements IReader {
         result.setTravelTimes(travelTimes);
         result.setTravelDistances(travelDistances);
         return result;
+    }
+
+    private double[][] getDouble2DList(Scanner fileScanner, int x, int y) {
+        double[][] result = new double[x][y];
+        fileScanner.nextLine();
+        for (int i = 0;i<x;i++){
+            for (int j = 0;j<y;j++){
+                result[i][j] = getDoubleFromLine(fileScanner, 3);
+            }
+        }
+        nextSection(fileScanner);
+        return result;
+    }
+
+    private double[] getDoubleList(Scanner fileScanner, int lineAmount) {
+        double[] result = new double[lineAmount];
+        fileScanner.nextLine();
+        for (int i = 0; i<lineAmount ;i++){
+            result[i] = getDoubleFromLine(fileScanner, 2);
+        }
+        nextSection(fileScanner);
+        return result;
+    }
+
+    private double getDoubleFromLine(Scanner fileScanner, int i) {
+        moveToNextInt(fileScanner);
+        for (int j = 0;j<(i-1);j++) {
+            fileScanner.nextInt();
+        }
+        if(fileScanner.hasNextInt()) {
+            return (double) fileScanner.nextDouble();
+        }
+        //if input is no int ie. "." return 0
+        else{
+            fileScanner.next();
+            return 0;
+        }
     }
 
     private boolean[][] getBooleanList(Scanner fileScanner, int i, int j) {
@@ -165,6 +203,20 @@ public class Reader implements IReader {
      */
     private int[][][] getInteger3DList(Scanner fileScanner, int x, int y, int z) {
         int[][][] result = new int[x][y][z];
+        fileScanner.nextLine();
+        for (int i = 0;i<x;i++){
+            for (int j = 0;j<y;j++){
+                for (int k = 0; k<z;k++){
+                    result[i][j][k] = getIntFromLine(fileScanner, 4);
+                }
+            }
+        }
+        nextSection(fileScanner);
+        return result;
+    }
+
+    private double[][][] getDouble3DList(Scanner fileScanner, int x, int y, int z) {
+        double[][][] result = new double[x][y][z];
         fileScanner.nextLine();
         for (int i = 0;i<x;i++){
             for (int j = 0;j<y;j++){

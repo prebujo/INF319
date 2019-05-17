@@ -1,8 +1,5 @@
 package dataObjects;
 
-import java.util.Collection;
-import java.util.List;
-
 public interface IDataSet {
     int getVehicleAmount();
     int getOrderAmount();
@@ -40,19 +37,19 @@ public interface IDataSet {
     void setVehicleWeightCapacities(int[] vehicleCapacities);
     int[] getVehicleWeightCapacities();
 
-    void setOrderWeights(int[] orderWeights);
-    int[] getOrderWeights();
+    void setOrderWeights(double[] orderWeights);
+    double[] getOrderWeights();
 
-    void setVehicleVolumeCapacities(int[] vehicleVolumeCapacities);
+    void setVehicleVolumeCapacities(double[] vehicleVolumeCapacities);
 
-    int[] getVehicleVolumeCapacities();
+    double[] getVehicleVolumeCapacities();
 
-    void setOrderVolumes(int[] orderVolumes);
+    void setOrderVolumes(double[] orderVolumes);
 
-    int[] getOrderVolumes();
+    double[] getOrderVolumes();
 
-    void setOrderPenalties(int[] orderPenalties);
-    int[] getOrderPenalties();
+    void setOrderPenalties(double[] orderPenalties);
+    double[] getOrderPenalties();
 
     void setDistanceIntervals(int[][] distanceIntervals);
     int[][] getDistanceIntervals();
@@ -60,31 +57,44 @@ public interface IDataSet {
     void setWeightIntervals(int[][] weightIntervals);
     int[][] getWeightIntervals();
 
-    void setKmCostMatrices(int[][][] kmCostMatrices);
-    int[][][] getKmCostMatrices();
+    void setKmCostMatrices(double[][][] kmCostMatrices);
+    double[][][] getKmCostMatrices();
 
-    void setKgCostMatrices(int[][][] kgCostMatrices);
-    int[][][] getKgCostMatrices();
+    void setKgCostMatrices(double[][][] kgCostMatrices);
+    double[][][] getKgCostMatrices();
 
-    void setFixCostMatrices(int[][][] fixCostMatrices);
-    int[][][] getFixCostMatrices();
+    void setFixCostMatrices(double[][][] fixCostMatrices);
+    double[][][] getFixCostMatrices();
 
 
-    void setStopCosts(int[][] stopCosts);
-    int[][] getStopCosts();
+    void setStopCosts(double[][] stopCosts);
+    double[][] getStopCosts();
 
     void setTimeWindowAmounts(int[] timeWindowAmounts);
     int[] getTimeWindowAmounts();
 
-    void setLowerTimeWindows(int[][] lowerTimeWindow);
-    int[][] getLowerTimeWindows();
+    void setLowerTimeWindows(double[][] lowerTimeWindow);
+    double[][] getLowerTimeWindows();
 
-    void setUpperTimeWindows(int[][] upperTimeWindow);
-    int[][] getUpperTimeWindows();
+    void setUpperTimeWindows(double[][] upperTimeWindow);
+    double[][] getUpperTimeWindows();
 
-    void setTravelTimes(int[][][] travelTime);
-    int[][][] getTravelTimes();
+    void setTravelTimes(double[][][] travelTime);
+    double[][][] getTravelTimes();
 
-    void setTravelDistances(int[][] travelDistance);
-    int[][] getTravelDistances();
+    void setTravelDistances(double[][] travelDistance);
+    double[][] getTravelDistances();
+
+    int[] getOrderPickupLocations();
+
+    void setOrderPickupLocation(int[] orderPickupLocations);
+
+    int[] getOrderDeliveryLocations();
+
+    void setOrderDeliveryLocations(int[] orderDeliveryLocations);
+
+    int[] getOrderDeliveryDock();
+
+    void setOrderDeliveryDocks(int[] orderDeliveryDocks);
+
 }

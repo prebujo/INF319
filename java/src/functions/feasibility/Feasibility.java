@@ -6,18 +6,18 @@ public class Feasibility implements IFeasibility{
 
 
     private final int vehicleAmount;
-    private final int[][][] travelTime;
+    private final double[][][] travelTime;
     private final int[] vehicleStartingLocation;
-    private final int[][] lowerTimeWindows;
-    private final int[][] upperTimeWindows;
+    private final double[][] lowerTimeWindows;
+    private final double[][] upperTimeWindows;
     private final int[] timeWindowAmounts;
     private final int orderAmount;
     private final int factoryAmount;
     private final int[] factoryStopCapacity;
-    private final int[] orderVolume;
-    private final int[] orderWeights;
+    private final double[] orderVolume;
+    private final double[] orderWeights;
     private final int[] vehicleWeightCapacities;
-    private final int[] vehicleVolumeCapacities;
+    private final double[] vehicleVolumeCapacities;
     private final int[] factory;
     private final boolean[][] vehicleCanVisitNode;
     private boolean[][] vehicleCanPickupNode;
@@ -51,7 +51,7 @@ public class Feasibility implements IFeasibility{
             int volumeOnVehicle = 0;
             int vehicleLocation = vehicleStartingLocation[v];
             solutionElement = solution[i];
-            int currentVehicleTime = 0;
+            double currentVehicleTime = 0;
             int factoryStopCounter = 1;
             while(solutionElement!=0){
 
@@ -115,7 +115,7 @@ public class Feasibility implements IFeasibility{
         }
         return true;
     }
-    private int getVolumeDifference(int solutionElement) {
+    private double getVolumeDifference(int solutionElement) {
         if(solutionElement<=orderAmount){
             return orderVolume[solutionElement-1];
         }
@@ -124,7 +124,7 @@ public class Feasibility implements IFeasibility{
         }
     }
 
-    private int getWeightDifference(int solutionElement) {
+    private double getWeightDifference(int solutionElement) {
         if(solutionElement<=orderAmount){
             return orderWeights[solutionElement-1];
         }

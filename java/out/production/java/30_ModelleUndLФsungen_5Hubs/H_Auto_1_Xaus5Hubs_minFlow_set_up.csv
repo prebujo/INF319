@@ -1,0 +1,51 @@
+$model;H_Auto_1_5Hubs_minFlow;;
+#created_on;17.07.2014 at 11:52 ;;
+#vista_project;H_Auto_1;;
+#network;05_00_Modell;;
+$minimal_frequency;1,0/w;;
+$max_hub;5;;
+#basis_for_loading_meter_calculation;Mega;;
+#basis_for_distance_calculation;air distance;;
+#distance_factor;120,00%;;
+$interest_on_capital;0,00%;;
+$language;DE;;
+;;;
+;;;
+#File-specifier;Scenario-name;CSV File;#description
+$properties;$all;H_Auto_1_5Hubs_properties.csv;#commodity properties
+$locations;$all;H_Auto_1_5Hubs_locations.csv;#location data
+$location_costs;$all;H_Auto_1_5Hubs_location_costs.csv;#handling and storage costs
+$location_restrs;$all;H_Auto_1_5Hubs_minFlow_location_restrs.csv;#capacity and minimal flow restrictions
+$commodities;$all;H_Auto_1_5Hubs_commodities.csv;#commodities
+$tariffs_LTL;$all;H_Auto_1_5Hubs_tariffs_LTL.csv;#LTL tariffs
+$tariffs_FTL;$all;H_Auto_1_5Hubs_tariffs_FTL.csv;#FTL tariffs
+$tariffs_assignment;$all;H_Auto_1_5Hubs_tariffs_assignment.csv;#tariff assignment
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW2;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW2.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW3;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW3.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW4;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW4.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW5;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW5.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW6;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW6.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW7;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW7.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW8;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW8.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW9;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW9.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW10;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW10.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW11;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW11.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW12;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW12.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW13;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW13.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW14;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW14.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW15;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW15.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW16;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW16.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW17;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW17.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW18;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW18.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW19;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW19.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW20;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW20.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW21;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW21.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW22;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW22.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW23;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW23.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW24;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW24.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW25;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW25.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW26;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW26.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW27;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW27.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW28;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW28.csv;#supply_relations
+$supply_relations;SR_Jan-Juli_Artikelbasis_CW29;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW29.csv;#supply_relations
+$supply_relations;$base;H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_base.csv;#supply_relations

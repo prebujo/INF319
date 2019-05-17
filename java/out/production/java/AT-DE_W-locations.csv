@@ -1,0 +1,6 @@
+#Locations,Stopcosts,Factory,Factory Docking limit,Timewindows,Lower_1,Upper_1,Lower_2,Upper_2,Lower_3,Upper_3,Lower_4,Upper_4,Lower_5,Upper_5
+Supplier_264,0,,,5,0,360,420,540,1440,1800,1860,1980,2880,3240
+Supplier_175,0,,,2,60,420,1500,1860,,,,,,
+Supplier_251,0,,,2,120,420,1560,1860,,,,,,
+Plant_15,0,1,2,3,120,360,420,480,1560,1800,,,,
+Plant_4,0,2,3,5,120,240,360,480,1560,1680,1800,1920,3000,3120

@@ -7,9 +7,9 @@ public class WeightAndVolumeFeasible implements IFeasibility {
     private final int vehicleAmount;
     private final int[] vehicleWeightCapacity;
     private final int orderAmount;
-    private final int[] orderWeights;
-    private final int[] orderVolume;
-    private final int[] vehicleVolumeCapacity;
+    private final double[] orderWeights;
+    private final double[] orderVolume;
+    private final double[] vehicleVolumeCapacity;
 
     public WeightAndVolumeFeasible(IDataSet dataSet) {
         this.dataset = dataSet;
@@ -48,7 +48,7 @@ public class WeightAndVolumeFeasible implements IFeasibility {
         return result;
     }
 
-    private int getVolumeDifference(int solutionElement) {
+    private double getVolumeDifference(int solutionElement) {
         if(solutionElement<=orderAmount){
             return orderVolume[solutionElement-1];
         }
@@ -57,7 +57,7 @@ public class WeightAndVolumeFeasible implements IFeasibility {
         }
     }
 
-    private int getWeightDifference(int solutionElement) {
+    private double getWeightDifference(int solutionElement) {
         if(solutionElement<=orderAmount){
             return orderWeights[solutionElement-1];
         }

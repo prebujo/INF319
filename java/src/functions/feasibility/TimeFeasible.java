@@ -5,10 +5,10 @@ import dataObjects.IDataSet;
 public class TimeFeasible implements IFeasibility {
 
     private final int vehicleAmount;
-    private final int[][][] travelTime;
+    private final double[][][] travelTime;
     private final int[] vehicleStartingLocation;
-    private final int[][] lowerTimeWindows;
-    private final int[][] upperTimeWindows;
+    private final double[][] lowerTimeWindows;
+    private final double[][] upperTimeWindows;
     private final int[] timeWindowAmounts;
 
     public TimeFeasible(IDataSet dataSet){
@@ -27,7 +27,7 @@ public class TimeFeasible implements IFeasibility {
         for (int v = 0; v<vehicleAmount;v++) {
             int vehicleLocation = vehicleStartingLocation[v];
             solutionElement = solution[i];
-            int currentVehicleTime = 0;
+            double currentVehicleTime = 0;
             while(solutionElement!=0){
                 currentVehicleTime +=travelTime[v][vehicleLocation-1][solutionElement-1];
                 for (int tw = 0;tw<timeWindowAmounts[solutionElement-1];tw++){

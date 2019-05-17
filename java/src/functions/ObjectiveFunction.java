@@ -10,14 +10,14 @@ public class ObjectiveFunction {
     private final int stops;
     private final int[] vehicleStartingLocations;
     private final int[] vehicleDestinationLocations;
-    private final int[][] stopCostMatrix;
-    private final int[][] travelDistance;
-    private final int[] orderWeights;
+    private final double[][] stopCostMatrix;
+    private final double[][] travelDistance;
+    private final double[] orderWeights;
     private final int[] locations;
-    private int[][][] kgCostMatrix;
-    private int[][][] kmCostMatrix;
-    private int[] orderPenalties;
-    private final int[][][] fixCostMatrix;
+    private double[][][] kgCostMatrix;
+    private double[][][] kmCostMatrix;
+    private double[] orderPenalties;
+    private final double[][][] fixCostMatrix;
 
     public ObjectiveFunction(IDataSet dataSet){
         this.dataSet = dataSet;
@@ -80,7 +80,7 @@ public class ObjectiveFunction {
         return result;
     }
 
-    private int weightDifference(int orders, int[] orderWeights, int solutionElement) {
+    private double weightDifference(int orders, double[] orderWeights, int solutionElement) {
         if(solutionElement<=orders) {
             return orderWeights[solutionElement-1];
         }
@@ -89,8 +89,8 @@ public class ObjectiveFunction {
         }
     }
 
-    private int getStopCost(boolean[] visitedStop, int v, int solutionElement) {
-        int result=0;
+    private double getStopCost(boolean[] visitedStop, int v, int solutionElement) {
+        double result=0;
         int currentStop= locations[solutionElement-1];
         if(!visitedStop[currentStop]){
             visitedStop = new boolean[stops+1];
@@ -100,10 +100,10 @@ public class ObjectiveFunction {
         return result;
     }
 
-    private int getVehicleCosts(int v, int vehicleTotalDistance, int vehicleMaxWeight) {
+    private double getVehicleCosts(int v, int vehicleTotalDistance, int vehicleMaxWeight) {
         int distanceDimension = determineDistanceDimension(vehicleTotalDistance, v);
         int weightDimension = determineWeightDimension(vehicleMaxWeight, v);
-        int result = vehicleMaxWeight*kgCostMatrix[v][weightDimension][distanceDimension] + vehicleTotalDistance*kmCostMatrix[v][weightDimension][distanceDimension] +fixCostMatrix[v][weightDimension][distanceDimension];
+        double result = vehicleMaxWeight*kgCostMatrix[v][weightDimension][distanceDimension] + vehicleTotalDistance*kmCostMatrix[v][weightDimension][distanceDimension] +fixCostMatrix[v][weightDimension][distanceDimension];
         return result;
     }
 
