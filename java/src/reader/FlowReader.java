@@ -4,7 +4,6 @@ import dataObjects.DataSet;
 import dataObjects.IDataSet;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class FlowReader implements IReader {
@@ -99,9 +98,9 @@ public class FlowReader implements IReader {
         int kmDimension=0;
         int kgDimension=0;
         HashMap<String, Integer> kmInterval = new HashMap<>();
-        HashMap<Integer, Integer> kgInterval = new HashMap<>();
-        ArrayList<Integer> kmIntervalList = new ArrayList<>();
-        ArrayList<Integer> kgIntervalList = new ArrayList<>();
+        HashMap<Double, Integer> kgInterval = new HashMap<>();
+        ArrayList<Double> kmIntervalList = new ArrayList<>();
+        ArrayList<Double> kgIntervalList = new ArrayList<>();
         ArrayList<Double> volIntervalList = new ArrayList<>();
         ArrayList<ArrayList<Double>> tariffMatrix = new ArrayList<>();
 
@@ -116,13 +115,13 @@ public class FlowReader implements IReader {
                 kmInterval.put(km, kmDimension);
                 String inf = "inf";
                 if(!km.equals(inf)) {
-                    kmIntervalList.add(Integer.parseInt(km));
+                    kmIntervalList.add(Double.parseDouble(km));
                 } else {
-                    kmIntervalList.add(Integer.MAX_VALUE);
+                    kmIntervalList.add(Double.MAX_VALUE);
                 }
                 kmDimension++;
             }
-            Integer kg = Integer.parseInt(splitLine[3]);
+            Double kg = Double.parseDouble(splitLine[3]);
             if(!kgInterval.containsKey(kg)){
                 kgInterval.put(kg, kgDimension);
                 kgIntervalList.add(kg);
@@ -135,10 +134,10 @@ public class FlowReader implements IReader {
         //adding same fixed cost matrix for all vehicles:
         double[][][] fixCostMatrices = twoDimensionTo3DDoubleArray(tariffMatrix,vehicleCounter);
 
-        int[][] distanceIntervals = oneDimensionTo2DIntArray(kmIntervalList, vehicleCounter);
-        int[][] weightIntervals = oneDimensionTo2DIntArray(kgIntervalList,vehicleCounter);
+        double[][] distanceIntervals = oneDimensionTo2DDoubleArray(kmIntervalList, vehicleCounter);
+        double[][] weightIntervals = oneDimensionTo2DDoubleArray(kgIntervalList,vehicleCounter);
         double[][] volIntervals = oneDimensionTo2DDoubleArray(volIntervalList,vehicleCounter);
-        int[] vehicleKGCapacities = createArrayOfSingleElement(weightIntervals[0][weightIntervals[0].length-1], vehicleCounter);
+        double[] vehicleKGCapacities = createArrayOfSingleElement(weightIntervals[0][weightIntervals[0].length-1], vehicleCounter);
         double[] vehicleVOLCapacities = createArrayOfSingleElement(volIntervals[0][volIntervals[0].length-1],vehicleCounter);
         int[] distanceDimensions = createArrayOfSingleElement(distanceIntervals[0].length, vehicleCounter);
         int[] weightDimensions = createArrayOfSingleElement(weightIntervals[0].length,vehicleCounter);
@@ -197,11 +196,11 @@ public class FlowReader implements IReader {
         System.out.println("travel times:");
         printList(travelTimes);
 
-        double[][] stopCosts = new double[vehicleCounter][locationCounter+1];
-        double[][] lowerTimeWindows = new double[locationCounter+1][5];
-        double[][] upperTimeWindows = new double[locationCounter+1][5];
-        int[] timeWindowAmounts = new int[locationCounter+1];
-        int[] factoryStopCapacity = new int[factoryCounter+1];
+        double[][] stopCosts = new double[vehicleCounter][locationCounter];
+        double[][] lowerTimeWindows = new double[locationCounter][5];
+        double[][] upperTimeWindows = new double[locationCounter][5];
+        int[] timeWindowAmounts = new int[locationCounter];
+        int[] factoryStopCapacity = new int[factoryCounter];
 
         File locationsFile = new File("res/"+fileName+"-locations.csv");
         Scanner locationsScan = new Scanner(locationsFile);
@@ -210,10 +209,10 @@ public class FlowReader implements IReader {
         while(locationsScan.hasNext()) {
             String line = locationsScan.nextLine();
             String[] splitLine = line.split(",");
-            Integer location = locationIndexMap.get(splitLine[0]);
+            Integer location = locationIndexMap.get(splitLine[0])-1;
             stopCosts[0][location] = Double.parseDouble(splitLine[1]);
-            if(factories.contains(location)){
-                factoryStopCapacity[factoryList[location]] = Integer.parseInt(splitLine[3]);
+            if(factories.contains(location+1)){
+                factoryStopCapacity[factoryList[location]-1] = Integer.parseInt(splitLine[3]);
             }
             timeWindowAmounts[location] = Integer.parseInt(splitLine[4]);
             for (int i = 0;i<timeWindowAmounts[location];i++){
@@ -269,14 +268,14 @@ public class FlowReader implements IReader {
         result.setFactories(factoryList);
         result.setFactoryStopCapacities(factoryStopCapacity);
 
-        return null;
+        return result;
     }
 
     private int[] createSetList(HashSet<Integer> factories, int size) {
-        int[] result = new int[size+1];
+        int[] result = new int[size];
         int counter = 1;
         for (Integer i:factories) {
-            result[i] = counter;
+            result[i-1] = counter;
             counter++;
         }
         return result;
@@ -339,7 +338,7 @@ public class FlowReader implements IReader {
     private void printList(int[][] list) {
         for (int i = 0; i<list.length;i++) {
             for (int j = 0; j < list[0].length; j++) {
-                System.out.println(i + " " + j + " " + list[i][j]);
+                System.out.println((i+1) + " " + (j+1) + " " + list[i][j]);
             }
         }
     }
@@ -359,7 +358,7 @@ public class FlowReader implements IReader {
         for (int i = 0; i<threeDimensionList.length;i++){
             for(int j = 0; j<threeDimensionList[0].length;j++){
                 for (int k = 0; k<threeDimensionList[0][0].length; k++){
-                    System.out.println((i+1)+" "+(j+1)+" "+(k+1)+": "+ threeDimensionList[i][j][k]);
+                    System.out.println((i+1)+" "+(j+1)+" "+(k+1)+" "+ threeDimensionList[i][j][k]);
                 }
             }
         }

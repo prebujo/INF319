@@ -34,8 +34,8 @@ public interface IDataSet {
     int[] getVehicleDestinationLocations();
 
 
-    void setVehicleWeightCapacities(int[] vehicleCapacities);
-    int[] getVehicleWeightCapacities();
+    void setVehicleWeightCapacities(double[] vehicleCapacities);
+    double[] getVehicleWeightCapacities();
 
     void setOrderWeights(double[] orderWeights);
     double[] getOrderWeights();
@@ -51,11 +51,11 @@ public interface IDataSet {
     void setOrderPenalties(double[] orderPenalties);
     double[] getOrderPenalties();
 
-    void setDistanceIntervals(int[][] distanceIntervals);
-    int[][] getDistanceIntervals();
+    void setDistanceIntervals(double[][] distanceIntervals);
+    double[][] getDistanceIntervals();
 
-    void setWeightIntervals(int[][] weightIntervals);
-    int[][] getWeightIntervals();
+    void setWeightIntervals(double[][] weightIntervals);
+    double[][] getWeightIntervals();
 
     void setKmCostMatrices(double[][][] kmCostMatrices);
     double[][][] getKmCostMatrices();

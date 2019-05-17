@@ -36,7 +36,7 @@ public class Reader implements IReader {
 
         int[] vehicleDestinationLocations = getIntegerList(fileScanner, vehicleAmount);
 
-        int[] vehicleWeightCapacities = getIntegerList(fileScanner,vehicleAmount);
+        double[] vehicleWeightCapacities = getDoubleList(fileScanner,vehicleAmount);
 
         double[] orderWeights = getDoubleList(fileScanner,orderAmount);
 
@@ -49,9 +49,9 @@ public class Reader implements IReader {
         int maxDistanceDimension = getMaxValue(distanceDimensions);
         int maxWeightDimension = getMaxValue(weightDimensions);
 
-        int[][] distanceIntervals = getInteger2DList(fileScanner,vehicleAmount,maxDistanceDimension+1);
+        double[][] distanceIntervals = getDouble2DList(fileScanner,vehicleAmount,maxDistanceDimension+1);
 
-        int[][] weightIntervals = getInteger2DList(fileScanner, vehicleAmount, maxWeightDimension+1);
+        double[][] weightIntervals = getDouble2DList(fileScanner, vehicleAmount, maxWeightDimension+1);
 
         double[][][] kmCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);
 

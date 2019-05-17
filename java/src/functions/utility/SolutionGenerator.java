@@ -18,7 +18,7 @@ public class SolutionGenerator implements ISolutionGenerator {
         int index, temporary;
         for (int i = solution.length-1; i>0;i--){
             index = random.nextInt(i+1);
-            if(index != 1){
+            if(index != i){
                 temporary = solution[index];
                 solution[index] = solution[i];
                 solution[i] = temporary;
@@ -29,7 +29,6 @@ public class SolutionGenerator implements ISolutionGenerator {
 
     @Override
     public int[] randomlyAssignOrders(int vehicles, int orders) {
-        orders -= vehicles;
         List<List<Integer>> assignedOrders = new ArrayList<>(vehicles+1);
 
         for (int i = 0; i<vehicles+1;i++){
@@ -56,20 +55,23 @@ public class SolutionGenerator implements ISolutionGenerator {
             if(vehicleOrders.size()>0) {
                 addPossibilityFromAssignedOrders(possibilities, vehicleOrders);
                 Integer temp;
+                boolean[] pickedUp = new boolean[orders];
                 while (possibilities.size() > 0) {
                     int choice = random.nextInt(possibilities.size());
                     result[index] = possibilities.get(choice);
-                    if(result[index]<=orders){
-                        possibilities.add(result[index]+orders+vehicles);
+                    if(!pickedUp[result[index]-1]){
+                        pickedUp[result[index]-1] = true;
                         if(vehicleOrders.size()>0){
                             addPossibilityFromAssignedOrders(possibilities,vehicleOrders);
                         }
-                    }
-                    temp = possibilities.remove(possibilities.size() - 1);
-                    if(choice!=possibilities.size()) {
-                        possibilities.set(choice, temp);
+                    } else {
+                        temp = possibilities.remove(possibilities.size() - 1);
+                        if (choice != possibilities.size()) {
+                            possibilities.set(choice, temp);
+                        }
                     }
                     index++;
+
                 }
             }
 
@@ -92,14 +94,11 @@ public class SolutionGenerator implements ISolutionGenerator {
 
     @Override
     public int[] createDummySolution(int vehicles, int orders) {
-        orders -= vehicles;
         int[] result = new int[vehicles+2*orders];
         int index = vehicles;
         for (int i = 1;i<=orders;i++){
             result[index] = i;
             index++;
-        }
-        for (int i = orders+vehicles+1;i<=2*orders+vehicles;i++){
             result[index] = i;
             index++;
         }

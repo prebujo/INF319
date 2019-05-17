@@ -35,8 +35,8 @@ public class RandomHeuristic implements IHeuristic{
         int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(),dataSet.getOrderAmount());
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
-        int currentObjective = objectiveFunction.calculateSolution(startSolution);
-        int bestObjective = currentObjective;
+        double currentObjective = objectiveFunction.calculateSolution(startSolution);
+        double bestObjective = currentObjective;
         int[] bestSolution = startSolution;
         int[] currentSolution;
 

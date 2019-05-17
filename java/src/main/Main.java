@@ -156,7 +156,7 @@ public class Main {
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataset);
 
-        int solution = objectiveFunction.calculateSolution(solutionRepresentation);
+        double solution = objectiveFunction.calculateSolution(solutionRepresentation);
 
         System.out.println("Solution:" + solution);
 
@@ -179,8 +179,8 @@ public class Main {
             System.out.print(dummySolution[j] + " ");
         }
         System.out.println();
-        int resultCost = objectiveFunction.calculateSolution(dummySolution);
-        int best = resultCost;
+        double resultCost = objectiveFunction.calculateSolution(dummySolution);
+        double best = resultCost;
         System.out.println("Solution objective: "+ resultCost);
         System.out.println("Solution feasible? ->"+feasible5.check(dummySolution));
 

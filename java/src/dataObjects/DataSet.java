@@ -17,13 +17,13 @@ public class DataSet implements IDataSet {
     private boolean[][] vehicleCanPickupOrder;
     private int[] vehicleStartingLocations;
     private int[] vehicleDestinationLocations;
-    private int[] vehicleWeightCapacities;
+    private double[] vehicleWeightCapacities;
     private double[] vehicleVolumeCapacities;
     private double[] orderWeights;
     private double[] orderVolumes;
     private double[] orderPenalties;
-    private int[][] distanceIntervals;
-    private int[][] weightIntervals;
+    private double[][] distanceIntervals;
+    private double[][] weightIntervals;
     private double[][][] kmCostMatrices;
     private double[][][] kgCostMatrices;
     private double[][][] fixCostMatrices;
@@ -154,12 +154,12 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setVehicleWeightCapacities(int[] vehicleWeightCapacities) {
+    public void setVehicleWeightCapacities(double[] vehicleWeightCapacities) {
         this.vehicleWeightCapacities = vehicleWeightCapacities;
     }
 
     @Override
-    public int[] getVehicleWeightCapacities() {
+    public double[] getVehicleWeightCapacities() {
         return vehicleWeightCapacities;
     }
 
@@ -204,22 +204,22 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setDistanceIntervals(int[][] distanceIntervals) {
+    public void setDistanceIntervals(double[][] distanceIntervals) {
         this.distanceIntervals = distanceIntervals;
     }
 
     @Override
-    public int[][] getDistanceIntervals() {
+    public double[][] getDistanceIntervals() {
         return distanceIntervals;
     }
 
     @Override
-    public void setWeightIntervals(int[][] weightIntervals) {
+    public void setWeightIntervals(double[][] weightIntervals) {
         this.weightIntervals = weightIntervals;
     }
 
     @Override
-    public int[][] getWeightIntervals() {
+    public double[][] getWeightIntervals() {
         return weightIntervals;
     }
 

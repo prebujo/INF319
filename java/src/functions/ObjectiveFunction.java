@@ -5,8 +5,10 @@ import dataObjects.IDataSet;
 public class ObjectiveFunction {
     private final int vehicles;
     private final IDataSet dataSet;
+    private final int[] orderPickupLocations;
+    private final int[] orderDeliveryLocations;
     private int[] solution;
-    private final int orders;
+    private final int orderAmount;
     private final int stops;
     private final int[] vehicleStartingLocations;
     private final int[] vehicleDestinationLocations;
@@ -22,7 +24,7 @@ public class ObjectiveFunction {
     public ObjectiveFunction(IDataSet dataSet){
         this.dataSet = dataSet;
         this.vehicles = dataSet.getVehicleAmount();
-        this.orders = dataSet.getOrderAmount();
+        this.orderAmount = dataSet.getOrderAmount();
         this.stops = dataSet.getStopAmount();
         this.vehicleStartingLocations = dataSet.getVehicleStartingLocations();
         this.vehicleDestinationLocations = dataSet.getVehicleDestinationLocations();
@@ -34,19 +36,21 @@ public class ObjectiveFunction {
         this.kmCostMatrix = dataSet.getKmCostMatrices();
         this.orderPenalties = dataSet.getOrderPenalties();
         this.fixCostMatrix = dataSet.getFixCostMatrices();
+        this.orderPickupLocations = dataSet.getOrderPickupLocations();
+        this.orderDeliveryLocations = dataSet.getOrderDeliveryLocations();
     }
 
 
-    public int calculateSolution(int[] solution) {
+    public double calculateSolution(int[] solution) {
         this.solution = solution;
         return calculateSolution();
     }
 
-    private int calculateSolution() {
+    private double calculateSolution() {
         return getTravelCosts() + getPenaltyCosts();
     }
 
-    private int getTravelCosts() {
+    private double getTravelCosts() {
         int result = 0;
         int i = 0;
         for (int v = 0; v < vehicles; v++) {
@@ -54,20 +58,30 @@ public class ObjectiveFunction {
             int vehicleTotalDistance = 0;
             int vehicleWeight = 0;
             int vehicleMaxWeight = 0;
-            int vehiclePosition = vehicleStartingLocations[v];
+            int vehiclePosition = 0;
             int solutionElement = solution[i];
 
 
 
-            boolean[] visitedStop = new boolean[stops+1];
+            int previousStop = vehiclePosition;
+            boolean[] pickedUp = new boolean[orderAmount];
             while (solutionElement!=0) {
-                vehicleCost += getStopCost(visitedStop, v, solutionElement);
-                vehicleTotalDistance += travelDistance[vehiclePosition-1][solutionElement-1];
-                vehicleWeight += weightDifference(orders, orderWeights, solutionElement);
-                if(vehicleWeight > vehicleMaxWeight) {
-                        vehicleMaxWeight = vehicleWeight;
+                if(vehiclePosition!=0) {
+                    vehicleTotalDistance += travelDistance[vehiclePosition - 1][solutionElement - 1];
                 }
-                vehiclePosition = solutionElement;
+                vehicleWeight += weightDifference(pickedUp[solutionElement-1],orderWeights, solutionElement);
+                if(vehicleWeight > vehicleMaxWeight) {
+                    vehicleMaxWeight = vehicleWeight;
+                }
+                int solutionElementPosition;
+                if(!pickedUp[solutionElement-1]) {
+                    solutionElementPosition = orderPickupLocations[solutionElement-1];
+                    pickedUp[solutionElement-1] = true;
+                } else {
+                    solutionElementPosition = orderDeliveryLocations[solutionElement-1];
+                }
+                vehicleCost += getStopCost(vehiclePosition,solutionElementPosition, v );
+                vehiclePosition = solutionElementPosition;
                 i++;
                 solutionElement = solution[i];
             }
@@ -80,22 +94,19 @@ public class ObjectiveFunction {
         return result;
     }
 
-    private double weightDifference(int orders, double[] orderWeights, int solutionElement) {
-        if(solutionElement<=orders) {
-            return orderWeights[solutionElement-1];
+    private double weightDifference(boolean pickedUp, double[] orderWeights, int solutionElement) {
+        if(pickedUp) {
+            return -orderWeights[solutionElement-1];
         }
         else{
-            return -orderWeights[solutionElement-orders-1];
+            return orderWeights[solutionElement-1];
         }
     }
 
-    private double getStopCost(boolean[] visitedStop, int v, int solutionElement) {
+    private double getStopCost(int previousStop, int solutionElementPosition, int v ) {
         double result=0;
-        int currentStop= locations[solutionElement-1];
-        if(!visitedStop[currentStop]){
-            visitedStop = new boolean[stops+1];
-            visitedStop[currentStop] = true;
-            result = stopCostMatrix[v][solutionElement-1];
+        if(previousStop!=solutionElementPosition){
+            result = stopCostMatrix[v][solutionElementPosition-1];
         }
         return result;
     }
@@ -107,13 +118,15 @@ public class ObjectiveFunction {
         return result;
     }
 
-    private int getPenaltyCosts() {
-        int result = 0;
+    private double getPenaltyCosts() {
+        double result = 0;
         int i = solution.length-1;
         int solutionElement = solution[i];
+        boolean[] calculatedOrder = new boolean[orderAmount];
         while(solutionElement!=0){
-            if (solutionElement<=dataSet.getOrderAmount()){
-                result += orderPenalties[solutionElement-1];
+            if (!calculatedOrder[solutionElement-1]) {
+                result += orderPenalties[solutionElement - 1];
+                calculatedOrder[solutionElement - 1] = true;
             }
             i--;
             solutionElement = solution[i];
@@ -122,16 +135,16 @@ public class ObjectiveFunction {
     }
 
     private int determineWeightDimension(int vehicleMaxWeight, int v) {
-        int[][] weightIntervals = dataSet.getWeightIntervals();
+        double[][] weightIntervals = dataSet.getWeightIntervals();
         return findDimension(vehicleMaxWeight, weightIntervals, v);
     }
 
     private int determineDistanceDimension(int vehicleTotalDistance, int v) {
-        int[][] distanceIntervals = dataSet.getDistanceIntervals();
+        double[][] distanceIntervals = dataSet.getDistanceIntervals();
         return findDimension(vehicleTotalDistance, distanceIntervals, v);
     }
 
-    private int findDimension(int element, int[][] intervals, int vehicle) {
+    private int findDimension(int element, double[][] intervals, int vehicle) {
         for (int i = 0; i < intervals.length - 1; i++) {
             if (element >= intervals[vehicle][i] && element < intervals[vehicle][i + 1]) {
                 return i;

@@ -16,7 +16,7 @@ public class Feasibility implements IFeasibility{
     private final int[] factoryStopCapacity;
     private final double[] orderVolume;
     private final double[] orderWeights;
-    private final int[] vehicleWeightCapacities;
+    private final double[] vehicleWeightCapacities;
     private final double[] vehicleVolumeCapacities;
     private final int[] factory;
     private final boolean[][] vehicleCanVisitNode;

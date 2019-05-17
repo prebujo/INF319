@@ -5,7 +5,7 @@ import dataObjects.IDataSet;
 public class WeightAndVolumeFeasible implements IFeasibility {
     private final IDataSet dataset;
     private final int vehicleAmount;
-    private final int[] vehicleWeightCapacity;
+    private final double[] vehicleWeightCapacity;
     private final int orderAmount;
     private final double[] orderWeights;
     private final double[] orderVolume;
