@@ -2,6 +2,8 @@ package main;
 
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
+import functions.feasibility.Feasibility;
+import functions.feasibility.IFeasibility;
 import functions.utility.ISolutionGenerator;
 import functions.utility.SolutionGenerator;
 import reader.FlowReader;
@@ -39,6 +41,16 @@ public class TestMain {
         double solutionObjective = objective.calculateSolution(solution);
 
         System.out.println("Solution Objective: "+solutionObjective);
+
+        solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+
+        IFeasibility feasibility = new Feasibility(dataset);
+
+        while(!feasibility.check(solution)){
+            solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+        }
+
+
 
 
     }

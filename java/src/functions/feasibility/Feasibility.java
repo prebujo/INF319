@@ -20,13 +20,17 @@ public class Feasibility implements IFeasibility{
     private final double[] vehicleVolumeCapacities;
     private final int[] factory;
     private final boolean[][] vehicleCanVisitNode;
-    private boolean[][] vehicleCanPickupNode;
+    private final int[] orderPickupLocations;
+    private final int[] orderDeliveryLocations;
+    private boolean[][] vehicleCanPickupOrder;
 
     public Feasibility(IDataSet dataSet){
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.travelTime = dataSet.getTravelTimes();
         this.vehicleStartingLocation = dataSet.getVehicleStartingLocations();
+        this.orderPickupLocations = dataSet.getOrderPickupLocations();
+        this.orderDeliveryLocations = dataSet.getOrderDeliveryLocations();
         this.lowerTimeWindows = dataSet.getLowerTimeWindows();
         this.upperTimeWindows = dataSet.getUpperTimeWindows();
         this.timeWindowAmounts = dataSet.getTimeWindowAmounts();
@@ -38,18 +42,20 @@ public class Feasibility implements IFeasibility{
         this.factoryAmount = dataSet.getFactoryAmount();
         this.factoryStopCapacity = dataSet.getFactoryStopCapacities();
         this.vehicleCanVisitNode = dataSet.getVehicleCanVisitNode();
-        this.vehicleCanPickupNode = dataSet.getVehicleCanPickupOrder();
+        this.vehicleCanPickupOrder = dataSet.getVehicleCanPickupOrder();
     }
 
     @Override
     public boolean check(int[] solution) {
         int i = 0;
         int solutionElement;
-        int[] pickedUpOrDeliveredBy = new int[2*orderAmount+1];
+        int[] pickedUpBy = new int[orderAmount+1];
+        int[] deliveredBy = new int[orderAmount+1];
         for (int v = 0; v<vehicleAmount;v++) {
             int weightOnVehicle = 0;
             int volumeOnVehicle = 0;
             int vehicleLocation = vehicleStartingLocation[v];
+            int solutionLocation = 0;
             solutionElement = solution[i];
             double currentVehicleTime = 0;
             int factoryStopCounter = 1;
@@ -59,45 +65,47 @@ public class Feasibility implements IFeasibility{
                     return false;
                 }
 
-                if(solutionElement>orderAmount){
-                    if(pickedUpOrDeliveredBy[solutionElement]>0||pickedUpOrDeliveredBy[solutionElement-orderAmount]!=(v+1)){
+                if(pickedUpBy[solutionElement]>0){
+                    if(deliveredBy[solutionElement]>0||pickedUpBy[solutionElement]!=(v+1)){
                         return false;
                     }
+                    deliveredBy[solutionElement] = v+1;
+                    solutionLocation = orderDeliveryLocations[solutionElement-1];
+                } else {
+                    if (!vehicleCanPickupOrder[v][solutionElement]){
+                        return false;
+                    }
+                    if(pickedUpBy[solutionElement]>0){
+                        return false;
+                    }
+                    pickedUpBy[solutionElement] = v+1;
+                    solutionLocation = orderPickupLocations[solutionElement-1];
                 }
-                else {
-                    if (!vehicleCanPickupNode[v][solutionElement]){
-                        return false;
-                    }
-                    if(pickedUpOrDeliveredBy[solutionElement]>0){
-                        return false;
-                    }
+                if(vehicleLocation!= vehicleStartingLocation[v]) {
+                    currentVehicleTime += travelTime[v][vehicleLocation - 1][solutionLocation - 1];
                 }
-                pickedUpOrDeliveredBy[solutionElement] = v+1;
-
-                currentVehicleTime +=travelTime[v][vehicleLocation-1][solutionElement-1];
-                for (int timewindow = 0;timewindow<timeWindowAmounts[solutionElement-1];timewindow++){
-                    if(currentVehicleTime<lowerTimeWindows[timewindow][solutionElement-1]){
-                        currentVehicleTime = lowerTimeWindows[timewindow][solutionElement-1];
+                for (int timewindow = 0; timewindow < timeWindowAmounts[solutionLocation-1]; timewindow++) {
+                    if (currentVehicleTime < lowerTimeWindows[timewindow][solutionLocation - 1]) {
+                        currentVehicleTime = lowerTimeWindows[timewindow][solutionLocation - 1];
                     }
-                    if(currentVehicleTime>=lowerTimeWindows[timewindow][solutionElement-1] && currentVehicleTime<=upperTimeWindows[timewindow][solutionElement-1]) {
+                    if (currentVehicleTime >= lowerTimeWindows[timewindow][solutionLocation - 1] && currentVehicleTime <= upperTimeWindows[timewindow][solutionLocation - 1]) {
                         break;
                     }
-                    if (timewindow==timeWindowAmounts[solutionElement-1]-1){
+                    if (timewindow == timeWindowAmounts[solutionLocation- 1] - 1) {
                         return false;
                     }
                 }
 
-                weightOnVehicle += getWeightDifference(solutionElement);
-                volumeOnVehicle += getVolumeDifference(solutionElement);
+                weightOnVehicle += getWeightDifference(solutionElement, pickedUpBy[solutionElement]>0);
+                volumeOnVehicle += getVolumeDifference(solutionElement, pickedUpBy[solutionElement]>0);
                 if (weightOnVehicle > vehicleWeightCapacities[v]||volumeOnVehicle> vehicleVolumeCapacities[v]) {
                     return false;
                 }
 
                 if(i>0) {
-                    int previousSolutionElement = solution[i - 1];
-                    if (previousSolutionElement != 0) {
+                    if (vehicleLocation != 0) {
 
-                        if (factory[solutionElement - 1] != factory[previousSolutionElement - 1] || factory[solutionElement - 1] == 0) {
+                        if (factory[solutionLocation - 1] != factory[vehicleLocation - 1] || factory[solutionLocation - 1] == 0) {
                             factoryStopCounter = 1;
                         } else {
                             factoryStopCounter++;
@@ -107,7 +115,7 @@ public class Feasibility implements IFeasibility{
                         }
                     }
                 }
-                vehicleLocation = solutionElement;
+                vehicleLocation = solutionLocation;
                 i++;
                 solutionElement = solution[i];
             }
@@ -115,21 +123,21 @@ public class Feasibility implements IFeasibility{
         }
         return true;
     }
-    private double getVolumeDifference(int solutionElement) {
-        if(solutionElement<=orderAmount){
+    private double getVolumeDifference(int solutionElement, boolean pickedUp) {
+        if(!pickedUp){
             return orderVolume[solutionElement-1];
         }
         else {
-            return -orderVolume[solutionElement-orderAmount-1];
+            return -orderVolume[solutionElement-1];
         }
     }
 
-    private double getWeightDifference(int solutionElement) {
-        if(solutionElement<=orderAmount){
+    private double getWeightDifference(int solutionElement, boolean pickedUp) {
+        if(!pickedUp){
             return orderWeights[solutionElement-1];
         }
         else {
-            return -orderWeights[solutionElement-orderAmount-1];
+            return -orderWeights[solutionElement-1];
         }
     }
 }
