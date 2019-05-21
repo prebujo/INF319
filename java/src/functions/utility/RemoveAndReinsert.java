@@ -71,7 +71,6 @@ public class RemoveAndReinsert implements IOperator {
 
         for (int i = 0; i<solution.length;i++){
             solutionElement = solution[i];
-            //TODO: Continue here and add all choices for each vehicle in lists, then select either new element or old element.
             int assignedElementsSize;
             if(vehicle<vehicleAmount){
                 assignedElementsSize = orderAssignment.get(vehicle).size();

@@ -46,7 +46,6 @@ public class FlowReader implements IReader {
                 locationCounter++;
                 locationIndexMap.put(splitLine[0], locationCounter);
             }
-            orderPickupLocation.add(locationIndexMap.get(splitLine[0]));
 
             if(!locationIndexMap.containsKey(splitLine[1])){
                 locationCounter++;
@@ -54,11 +53,11 @@ public class FlowReader implements IReader {
                 factoryCounter++;
                 locationIndexMap.put(splitLine[1],locationCounter);
             }
-            orderDeliveryLocation.add(locationIndexMap.get(splitLine[1]));
-
-            orderDeliveryDock.add(Integer.parseInt(splitLine[11]));
 
             for(int i = 0; i< Integer.parseInt(splitLine[10]);i++){
+                orderDeliveryDock.add(Integer.parseInt(splitLine[11]));
+                orderPickupLocation.add(locationIndexMap.get(splitLine[0]));
+                orderDeliveryLocation.add(locationIndexMap.get(splitLine[1]));
                 orderWeight.add(Double.parseDouble(splitLine[8]));
                 orderVolume.add(Double.parseDouble(splitLine[9]));
                 orderCounter++;

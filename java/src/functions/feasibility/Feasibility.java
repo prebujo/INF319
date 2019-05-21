@@ -52,8 +52,8 @@ public class Feasibility implements IFeasibility{
         int[] pickedUpBy = new int[orderAmount+1];
         int[] deliveredBy = new int[orderAmount+1];
         for (int v = 0; v<vehicleAmount;v++) {
-            int weightOnVehicle = 0;
-            int volumeOnVehicle = 0;
+            double weightOnVehicle = 0;
+            double volumeOnVehicle = 0;
             int vehicleLocation = vehicleStartingLocation[v];
             int solutionLocation = 0;
             solutionElement = solution[i];
@@ -61,10 +61,12 @@ public class Feasibility implements IFeasibility{
             int factoryStopCounter = 1;
             while(solutionElement!=0){
 
-                if (!vehicleCanVisitNode[v][solutionElement]) {
+
+                weightOnVehicle += getWeightDifference(solutionElement, pickedUpBy[solutionElement]>0);
+                volumeOnVehicle += getVolumeDifference(solutionElement, pickedUpBy[solutionElement]>0);
+                if (weightOnVehicle > vehicleWeightCapacities[v]||volumeOnVehicle> vehicleVolumeCapacities[v]) {
                     return false;
                 }
-
                 if(pickedUpBy[solutionElement]>0){
                     if(deliveredBy[solutionElement]>0||pickedUpBy[solutionElement]!=(v+1)){
                         return false;
@@ -72,7 +74,7 @@ public class Feasibility implements IFeasibility{
                     deliveredBy[solutionElement] = v+1;
                     solutionLocation = orderDeliveryLocations[solutionElement-1];
                 } else {
-                    if (!vehicleCanPickupOrder[v][solutionElement]){
+                    if (!vehicleCanPickupOrder[v][solutionElement-1]){
                         return false;
                     }
                     if(pickedUpBy[solutionElement]>0){
@@ -81,14 +83,17 @@ public class Feasibility implements IFeasibility{
                     pickedUpBy[solutionElement] = v+1;
                     solutionLocation = orderPickupLocations[solutionElement-1];
                 }
+                if (!vehicleCanVisitNode[v][solutionLocation-1]) {
+                    return false;
+                }
                 if(vehicleLocation!= vehicleStartingLocation[v]) {
                     currentVehicleTime += travelTime[v][vehicleLocation - 1][solutionLocation - 1];
                 }
                 for (int timewindow = 0; timewindow < timeWindowAmounts[solutionLocation-1]; timewindow++) {
-                    if (currentVehicleTime < lowerTimeWindows[timewindow][solutionLocation - 1]) {
-                        currentVehicleTime = lowerTimeWindows[timewindow][solutionLocation - 1];
+                    if (currentVehicleTime < lowerTimeWindows[solutionLocation - 1][timewindow]) {
+                        currentVehicleTime = lowerTimeWindows[solutionLocation - 1][timewindow];
                     }
-                    if (currentVehicleTime >= lowerTimeWindows[timewindow][solutionLocation - 1] && currentVehicleTime <= upperTimeWindows[timewindow][solutionLocation - 1]) {
+                    if (currentVehicleTime >= lowerTimeWindows[solutionLocation - 1][timewindow] && currentVehicleTime <= upperTimeWindows[solutionLocation - 1][timewindow]) {
                         break;
                     }
                     if (timewindow == timeWindowAmounts[solutionLocation- 1] - 1) {
@@ -96,11 +101,6 @@ public class Feasibility implements IFeasibility{
                     }
                 }
 
-                weightOnVehicle += getWeightDifference(solutionElement, pickedUpBy[solutionElement]>0);
-                volumeOnVehicle += getVolumeDifference(solutionElement, pickedUpBy[solutionElement]>0);
-                if (weightOnVehicle > vehicleWeightCapacities[v]||volumeOnVehicle> vehicleVolumeCapacities[v]) {
-                    return false;
-                }
 
                 if(i>0) {
                     if (vehicleLocation != 0) {
@@ -109,7 +109,7 @@ public class Feasibility implements IFeasibility{
                             factoryStopCounter = 1;
                         } else {
                             factoryStopCounter++;
-                            if (factoryStopCounter > factoryStopCapacity[factory[solutionElement - 1] - 1]) {
+                            if (factoryStopCounter > factoryStopCapacity[factory[solutionLocation - 1] - 1]) {
                                 return false;
                             }
                         }

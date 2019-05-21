@@ -4,8 +4,7 @@ import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
-import functions.utility.ISolutionGenerator;
-import functions.utility.SolutionGenerator;
+import functions.utility.*;
 import reader.FlowReader;
 import reader.IReader;
 
@@ -24,7 +23,7 @@ public class TestMain {
         //creates a dataset from file
         IDataSet dataset = reader.readDataFromFile("AT-DE_W");
 
-        Random random = new Random(2);
+        Random random = new Random(4);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
 
         int[] solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
@@ -45,10 +44,24 @@ public class TestMain {
         solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
 
         IFeasibility feasibility = new Feasibility(dataset);
-
+        int iterations = 0;
         while(!feasibility.check(solution)){
             solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+            iterations++;
         }
+        System.out.println("Solution found after "+iterations+" iterations:");
+        printArray(solution);
+
+        solutionObjective = objective.calculateSolution(solution);
+        System.out.println("Solution objective: "+solutionObjective);
+
+        IOperator swap = new SwapTwo(dataset,random,feasibility,"swap2");
+        solution = checkOperator(swap,solution,solutionObjective,objective);
+
+        IOperator exchangeThree = new ExchangeThree(dataset,random,feasibility,"exchange3");
+        solution = checkOperator(exchangeThree,solution,solutionObjective,objective);
+
+
 
 
 
@@ -60,5 +73,23 @@ public class TestMain {
             System.out.printf(array[i]+" ");
         }
         System.out.println();
+    }
+
+    private static int[] checkOperator(IOperator operator, int[] solution, double solutionObjective, ObjectiveFunction objective) throws Throwable {
+        int iterations = 0;
+        System.out.println("performing operator "+ operator.getName());
+        double currentObjective = solutionObjective;
+        while(currentObjective == solutionObjective){
+            solution = operator.apply(solution);
+            currentObjective = objective.calculateSolution(solution);
+            iterations++;
+        }
+
+        System.out.println("Solution found after "+iterations+" iterations:");
+        printArray(solution);
+
+        solutionObjective = objective.calculateSolution(solution);
+        System.out.println("Solution objective: "+solutionObjective);
+        return solution;
     }
 }

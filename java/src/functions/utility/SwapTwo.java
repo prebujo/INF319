@@ -30,11 +30,11 @@ public class SwapTwo implements IOperator {
 
         int[] result = solution;
 
-        int choice1 = 1+random.nextInt(orderAmount - vehicleAmount);
+        int choice1 = 1+random.nextInt(orderAmount );
         int choice2 = choice1;
 
         while (choice1 == choice2) {
-            choice2 = 1+random.nextInt(orderAmount - vehicleAmount);
+            choice2 = 1+random.nextInt(orderAmount);
         }
 
         for (int i = 0; i < solution.length; i++) {
@@ -42,10 +42,6 @@ public class SwapTwo implements IOperator {
                 result[i] = choice2;
             } else if (result[i] == choice2) {
                 result[i] = choice1;
-            } else if (result[i] == choice1 + orderAmount) {
-                result[i] = choice2 + orderAmount;
-            } else if (result[i] == choice2 + orderAmount) {
-                result[i] = choice1 + orderAmount;
             }
         }
 
