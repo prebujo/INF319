@@ -6,10 +6,10 @@ import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.*;
 import reader.FlowReader;
+import reader.FlowReaderPrint;
 import reader.IReader;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class TestMain {
 
@@ -18,20 +18,20 @@ public class TestMain {
         //Scanner scan = new Scanner(System.in);
         //String fileName = scan.nextLine();
 
-        IReader reader = new FlowReader();
+        IReader reader = new FlowReaderPrint();
 
         //creates a dataset from file
         IDataSet dataset = reader.readDataFromFile("AT-DE_W");
 
-        Random random = new Random(4);
+        Random random = new Random(101);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
 
-        int[] solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+        int[] solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(), dataset.getOrderAmount());
 
         System.out.println("Solution: ");
         printArray(solution);
 
-        solution = solutionGenerator.createDummySolution(dataset.getVehicleAmount(),dataset.getOrderAmount());
+        solution = solutionGenerator.createDummySolution(dataset.getVehicleAmount(), dataset.getOrderAmount());
 
         System.out.println("Solution: ");
         printArray(solution);
@@ -39,27 +39,59 @@ public class TestMain {
         ObjectiveFunction objective = new ObjectiveFunction(dataset);
         double solutionObjective = objective.calculateSolution(solution);
 
-        System.out.println("Solution Objective: "+solutionObjective);
+        System.out.println("Solution Objective: " + solutionObjective);
 
-        solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+        solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(), dataset.getOrderAmount());
 
         IFeasibility feasibility = new Feasibility(dataset);
         int iterations = 0;
-        while(!feasibility.check(solution)){
-            solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(),dataset.getOrderAmount());
+        while (!feasibility.check(solution)) {
+            solution = solutionGenerator.randomlyAssignOrders(dataset.getVehicleAmount(), dataset.getOrderAmount());
             iterations++;
         }
-        System.out.println("Solution found after "+iterations+" iterations:");
+        System.out.println("Solution found after " + iterations + " iterations:");
         printArray(solution);
 
         solutionObjective = objective.calculateSolution(solution);
-        System.out.println("Solution objective: "+solutionObjective);
+        System.out.println("Solution objective: " + solutionObjective);
 
-        IOperator swap = new SwapTwo(dataset,random,feasibility,"swap2");
-        solution = checkOperator(swap,solution,solutionObjective,objective);
+        IOperator swap = new SwapTwo(dataset, random, feasibility, "swap2");
+        solution = checkOperator(swap, solution, solutionObjective, objective);
 
-        IOperator exchangeThree = new ExchangeThree(dataset,random,feasibility,"exchange3");
-        solution = checkOperator(exchangeThree,solution,solutionObjective,objective);
+        solutionObjective = objective.calculateSolution(solution);
+
+        IOperator exchangeThree = new ExchangeThree(dataset, random, feasibility, "exchange3");
+        solution = checkOperator(exchangeThree, solution, solutionObjective, objective);
+
+        solutionObjective = objective.calculateSolution(solution);
+
+        IOperator reinsertTwoOrThree = new RemoveAndReinsert(dataset, random, feasibility, 2, 3, "reinsert");
+        solution = checkOperator(reinsertTwoOrThree, solution, solutionObjective, objective);
+        solutionObjective = objective.calculateSolution(solution);
+
+        IOperator reinsertRandomTwoOrThree = new RemoveAndReinsertRandom(dataset, random, feasibility, 2, 3, "reinsertRandom");
+        solution = checkOperator(reinsertRandomTwoOrThree, solution, solutionObjective, objective);
+        solutionObjective = objective.calculateSolution(solution);
+
+        int i = 10000;
+        while (i > 0) {
+            int[] newSolution = reinsertRandomTwoOrThree.apply(solution);
+            double objec = objective.calculateSolution(newSolution);
+            if (objec < solutionObjective) {
+                solution = newSolution;
+                solutionObjective = objec;
+            }
+            i--;
+        }
+
+        System.out.println("best objective after 1000 iter: " + solutionObjective);
+        System.out.println("solution: ");
+        printArray(solution);
+
+    solution = new int[]{3,3,0, 0, 8, 13, 11, 13, 8, 11, 0, 10, 14, 6, 10, 6, 14, 0, 5, 19, 18, 19, 18, 5, 17, 15, 17, 15, 0, 0, 0, 0, 16, 9, 9, 16, 12, 7, 7, 12, 0, 2, 2, 1, 1,4,4 };
+        System.out.println("is solution feasible: "+ feasibility.check(solution));
+
+
 
 
 
@@ -68,14 +100,14 @@ public class TestMain {
 
     }
 
-    private static void printArray(int[] array) {
+    public static void printArray(int[] array) {
         for (int i = 0; i<array.length;i++){
             System.out.printf(array[i]+" ");
         }
         System.out.println();
     }
 
-    private static int[] checkOperator(IOperator operator, int[] solution, double solutionObjective, ObjectiveFunction objective) throws Throwable {
+    public static int[] checkOperator(IOperator operator, int[] solution, double solutionObjective, ObjectiveFunction objective) throws Throwable {
         int iterations = 0;
         System.out.println("performing operator "+ operator.getName());
         double currentObjective = solutionObjective;
@@ -88,8 +120,7 @@ public class TestMain {
         System.out.println("Solution found after "+iterations+" iterations:");
         printArray(solution);
 
-        solutionObjective = objective.calculateSolution(solution);
-        System.out.println("Solution objective: "+solutionObjective);
+        System.out.println("Solution objective: "+currentObjective);
         return solution;
     }
 }

@@ -24,7 +24,7 @@ public class Main2 {
         Random random = new Random(1);
 
         System.out.println("Optimizing with ALNS");
-        IHeuristic alns = new AdaptiveLargeNeighbourhoodSearch(dataset, random);
+        IHeuristic alns = new AdaptiveLargeNeighbourhoodSearch(dataset, random, "alns");
         IDataResult dataResults = alns.optimize();
 
         dataResults.printData();

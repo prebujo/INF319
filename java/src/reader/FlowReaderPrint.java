@@ -6,7 +6,7 @@ import dataObjects.IDataSet;
 import java.io.File;
 import java.util.*;
 
-public class FlowReader implements IReader {
+public class FlowReaderPrint implements IReader {
 
     /**
      * function reads data from files on format *input*-demand.csv/tariffs_LTL.csv etc..
@@ -34,6 +34,7 @@ public class FlowReader implements IReader {
         ArrayList<Integer> orderPickupLocation = new ArrayList<>();
         ArrayList<Integer> orderDeliveryLocation = new ArrayList<>();
         ArrayList<Integer> orderDeliveryDock = new ArrayList<>();
+        ArrayList<Integer> factoryArray = new ArrayList<>();
         HashSet<Integer> factories = new HashSet<>();
         HashMap<String,Integer> locationIndexMap = new HashMap<>();
 
@@ -70,6 +71,22 @@ public class FlowReader implements IReader {
         double[] orderVolumes = toDoubleArray(orderVolume);
         double[] orderWeights = toDoubleArray(orderWeight);
         int[] orderDeliveryDocks = toIntArray(orderDeliveryDock);
+        System.out.println("OrderAmount: "+orderCounter);
+        System.out.println("LocationAmount: "+locationCounter);
+        System.out.println("Factory Amount: "+factoryCounter);
+        System.out.println("Factories:");
+        printList(factoryList);
+        System.out.println("PickupLocations: ");
+        printList(orderPickupLocations);
+        System.out.println("DeliveryLocations: ");
+        printList(orderDeliveryLocations);
+        System.out.println("Weights:");
+        printList(orderWeights);
+        System.out.println("Volumes:");
+        printList(orderVolumes);
+        System.out.println("Delivery Docks:");
+        printList(orderDeliveryDocks);
+
         int vehicleCounter = orderCounter/2;
         int stopCounter = locationCounter;
 
@@ -129,6 +146,25 @@ public class FlowReader implements IReader {
 
         double[] orderPenalties = createArrayOfSingleElement(fixCostMatrices[0][weightIntervals[0].length-1][distanceIntervals[0].length-1]*2, orderCounter);
 
+
+        System.out.println("Tariff List: ");
+        printList(fixCostMatrices);
+
+        System.out.println("Weight Intervals:");
+        printList(weightIntervals);
+
+        System.out.println("distance Intervals:");
+        printList(distanceIntervals);
+
+        System.out.println("distance Dimensions:");
+        printList(distanceDimensions);
+
+        System.out.println("weight dimensions: ");
+        printList(weightDimensions);
+
+        System.out.println("order penalties");
+        printList(orderPenalties);
+
         boolean[][] vehicleCanPickupOrder = createAllTrueArray(vehicleCounter, orderCounter);
         boolean[][] vehicleCanVisitNodes = createAllTrueArray(vehicleCounter,locationCounter);
         int[] vehicleStartingLocations = createArrayOfSingleElement(0,vehicleCounter);
@@ -151,7 +187,14 @@ public class FlowReader implements IReader {
             }
         }
 
+        System.out.println("travel Distance:");
+        printList(travelDistance);
+
         double[][][] travelTimes = twoDimensionTo3DDoubleArray(travelDistance,vehicleCounter);
+
+        System.out.println("travel times:");
+        printList(travelTimes);
+
         double[][] stopCosts = new double[vehicleCounter][locationCounter];
         double[][] lowerTimeWindows = new double[locationCounter][5];
         double[][] upperTimeWindows = new double[locationCounter][5];
@@ -176,6 +219,22 @@ public class FlowReader implements IReader {
                 upperTimeWindows[location][i] = Double.parseDouble(splitLine[6+2*i]);
             }
         }
+
+        System.out.println("stop costs:");
+        printList(stopCosts);
+
+        System.out.println("factory Stop Capacities: ");
+        printList(factoryStopCapacity);
+
+        System.out.println("Timewindow amounts: ");
+        printList(timeWindowAmounts);
+
+        System.out.println("lower timewindows:");
+        printList(lowerTimeWindows);
+
+        System.out.println("upper timewindows: ");
+        printList(upperTimeWindows);
+
 
         result = new DataSet(vehicleCounter, orderCounter, locationCounter, factoryCounter, stopCounter);
 
@@ -219,6 +278,15 @@ public class FlowReader implements IReader {
             counter++;
         }
         return result;
+    }
+
+    private void printList(double[][] twoDimensionList) {
+        for (int i = 0; i<twoDimensionList.length;i++){
+            for(int j = 0; j<twoDimensionList[0].length;j++){
+                System.out.println((i+1)+" "+(j+1)+" "+ twoDimensionList[i][j]);
+            }
+        }
+
     }
 
     private boolean[][] createAllTrueArray(int firstDimension, int secondDimension) {
@@ -266,6 +334,35 @@ public class FlowReader implements IReader {
         return result;
     }
 
+    private void printList(int[][] list) {
+        for (int i = 0; i<list.length;i++) {
+            for (int j = 0; j < list[0].length; j++) {
+                System.out.println((i+1) + " " + (j+1) + " " + list[i][j]);
+            }
+        }
+    }
+
+    private int[][] oneDimensionTo2DIntArray(ArrayList<Integer> list, int firstDimensionSize) {
+        int[][] result = new int[firstDimensionSize][list.size()];
+        for (int i = 0; i<list.size();i++){
+            result[0][i]=list.get(i);
+        }
+        for (int i = 0;i<firstDimensionSize;i++){
+            result[i] = result[0];
+        }
+        return result;
+    }
+
+    private void printList(double[][][] threeDimensionList) {
+        for (int i = 0; i<threeDimensionList.length;i++){
+            for(int j = 0; j<threeDimensionList[0].length;j++){
+                for (int k = 0; k<threeDimensionList[0][0].length; k++){
+                    System.out.println((i+1)+" "+(j+1)+" "+(k+1)+" "+ threeDimensionList[i][j][k]);
+                }
+            }
+        }
+    }
+
     private double[][][] twoDimensionTo3DDoubleArray(ArrayList<ArrayList<Double>> array, int firstDimensionSize) {
         int secondDimensionSize = array.get(0).size();   //X different weight intervals
         int thirdDimensionSize = array.size();           //Y different km intervals
@@ -297,6 +394,20 @@ public class FlowReader implements IReader {
             result[i] = result[0];
         }
         return result;
+    }
+
+    private void printList(double[] list) {
+        for (double i:list){
+            System.out.print(i+" ");
+        }
+        System.out.println();
+    }
+
+    private void printList(int[] list) {
+        for (int i:list){
+            System.out.print(i+" ");
+        }
+        System.out.println();
     }
 
     private double[] toDoubleArray(ArrayList<Double> orderVolume) {

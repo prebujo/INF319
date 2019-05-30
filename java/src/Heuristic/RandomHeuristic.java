@@ -53,8 +53,13 @@ public class RandomHeuristic implements IHeuristic{
             }
             i--;
         }
-        IDataResult dataResult = new DataResult(new ArrayList<>(), 1000,10000,0  );
+        IDataResult dataResult = new DataResult(new ArrayList<>(), 1000,10000,0, "random"  );
         dataResult.setBestSolution(bestSolution);
         return dataResult;
+    }
+
+    @Override
+    public String getName() {
+        return "randomHeuristic";
     }
 }

@@ -15,5 +15,13 @@ public interface IDataResult {
 
     void setSolutions(HashSet<String> solutions);
 
+    void setRunningTime(double runningTime);
+
     int[] getBestSolution();
+
+    String getHeuristicName();
+
+    void setInitialObjective(double currentObjective);
+
+    void setBestObjective(double bestObjective);
 }

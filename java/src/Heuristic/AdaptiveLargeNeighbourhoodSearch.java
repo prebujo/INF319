@@ -22,13 +22,15 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     private final int lowScore = 1;
     private final int mediumScore = 2;
     private final int highScore = 4;
+    private String heuristicName;
 
-    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, Random random){
+    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, Random random, String heuristicName){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.feasibilityCheck = new Feasibility(dataSet);
         this.random = random;
+        this.heuristicName = heuristicName;
     }
 
     @Override
@@ -41,7 +43,8 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
         //Hashset to store solutions
         HashSet<String> solutions = new HashSet<>();
-        solutions.add(startSolution.toString());
+        solutions.add(toString(startSolution));
+        System.out.println(toString(startSolution));
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int[] bestSolution = startSolution;
@@ -53,10 +56,11 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
         List<IOperator> operators = new ArrayList<>();
 
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibilityCheck, 2, 4, "r&r2_4"));
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibilityCheck, 1, 1, "r&r1_1"));
+        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibilityCheck, 2, 4, "r&r2_4"));
+        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibilityCheck, 1, 1, "r&r1_1"));
         operators.add(new SwapTwo(dataSet, random, feasibilityCheck, "swap2"));
-        int amountOfOperators = 3;
+        operators.add(new ExchangeThree(dataSet,random,feasibilityCheck,"exch3"));
+        int amountOfOperators = operators.size();
         //int iteration = 0;
         int i = 10000;
         double temperature = 1000;
@@ -70,35 +74,34 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
         //Initializing weights and scores
         double[] weight = new double[amountOfOperators];
-        int segments = 100;
+        int segmentLength = 100;
         int currentSegment = 0;
-        double[][] weightData = new double[i/segments][amountOfOperators];
-        double weightSum = 0;
-        double[] probability;
+        double[][] weightData = new double[i/segmentLength][amountOfOperators+1];
         double[] score = new double[amountOfOperators];
         int[] runTimes = new int[amountOfOperators];
 
         weight[0] = 1;
-        for (int m = 1; i < weight.length; i++) {
-            weight[m] = weight[m-1]+1;
+        for (int m = 1; m < weight.length; m++) {
+            weight[m] = weight[m-1]+1.0;
         }
 
-
+        IDataResult data = new DataResult(operators,i/segmentLength,i,operators.size(), heuristicName);
+        data.setInitialObjective(currentObjective);
         while (i > 0) {
-            int j = segments;
+            int j = segmentLength;
             for (int m = 0;m<score.length;m++) {
                 score[m] = 0;
                 runTimes[m] = 0;
             }
 
-            //segments
+            //segmentLength
             while (j > 0) {
                 currentSolution = acceptedSolution;
 
                 //choosing operator based on probabilities of this segment
                 double choice = random.nextDouble()*weight[weight.length-1];
                 int operator = 0;
-                for (int k = 0; k < operators.size(); k++) {
+                for (int k = 0; k < amountOfOperators; k++) {
                     if (choice < weight[k]) {
                         operator = k;
                         break;
@@ -108,7 +111,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
                 currentSolution = operators.get(operator).apply(currentSolution);
 
-                if(!solutions.contains(currentSolution)) {
+                if(!solutions.contains(toString(currentSolution))) {
                     currentObjective = objectiveFunction.calculateSolution(currentSolution);
                     if (currentObjective < bestObjective) {
                         score[operator] += (highScore - mediumScore);
@@ -120,7 +123,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
                     int result = accept(currentObjective, acceptedObjective, temperature);
                     if (result > 0) {
-                        solutions.add(currentSolution.toString());
+                        solutions.add(toString(currentSolution));
                         score[operator] += result;
                         acceptedObjective = currentObjective;
                         acceptedSolution = currentSolution;
@@ -134,11 +137,30 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
             weightData[currentSegment++] = weight;
             weight = getWeights(weight,score,runTimes,historyWeight);
         }
-        IDataResult data = new DataResult(operators,segments,i,operators.size());
         data.setWeightData(weightData);
         data.setBestSolution(bestSolution);
         data.setSolutions(solutions);
+        data.setBestObjective(bestObjective);
         return data;
+    }
+
+    private void printArray(double[] weight) {
+        for (int i = 0;i<weight.length;i++){
+            System.out.println(" "+weight[i]);
+        }
+    }
+
+    private String toString(int[] solution){
+        String result = "";
+        for (int i = 0;i<solution.length;i++){
+            result += Integer.toString(solution[i]);
+        }
+        return result;
+    }
+
+    @Override
+    public String getName() {
+        return heuristicName;
     }
 
     /**
@@ -174,9 +196,20 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
     private double[] getWeights(double[] weight, double[] score, int[] runTimes, double historyWeight) {
         double[] result = new double[weight.length];
-        result[0] = weight[0]* historyWeight+score[0]/runTimes[0]*(1-historyWeight);
+        double scoredWeight;
+        if (runTimes[0]==0){
+            scoredWeight=0;
+        } else {
+            scoredWeight = score[0]/runTimes[0];
+        }
+        result[0] = weight[0]* historyWeight+scoredWeight*(1-historyWeight);
         for (int k = 1;k<weight.length;k++){
-            result[k] = weight[k-1] + (weight[k]* historyWeight+score[k]/runTimes[k]*(1-historyWeight));
+            if(runTimes[k]==0){
+                scoredWeight=0;
+            } else{
+                scoredWeight = score[k]/runTimes[k]*(1-historyWeight);
+            }
+            result[k] = weight[k-1] + ((weight[k]-weight[k-1])* historyWeight+scoredWeight);
         }
         return result;
     }

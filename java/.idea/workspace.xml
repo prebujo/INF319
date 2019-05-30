@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/dataObjects/DataResult.java" line="49" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/dataObjects/DataResult.java" line="56" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/functions/utility/ExchangeThree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reader/FlowReaderPrint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/writer/IPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/writer/Printer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/AT-DE_W-demand.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/AT-DE_W-demand.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/.~lock.AT-DE_W-locations.csv#" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/.~lock.AT-DE_W-locations.csv#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/30_ModelleUndLФsungen_5Hubs/.~lock.H_Auto_1_5Hubs_fix_locations.csv#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/Heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/IHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/Heuristic/IHeuristic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/RandomHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/Heuristic/RandomHeuristic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IDataResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IDataResult.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/Main2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/Main2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/TestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/AT-DE_W-demand.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/AT-DE_W-demand.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/IDataResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IDataResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/SwapTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/SwapTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reader/FlowReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/FlowReader.java" afterDir="false" />
     </list>
@@ -41,19 +51,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/ObjectiveFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="57" column="30" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+            <state relative-caret-position="240">
+              <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6173#6174#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/TestHeuristicMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,72 +76,71 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/utility/SwapTwo.java">
+        <entry file="file://$PROJECT_DIR$/src/dataObjects/DataResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="72" column="60" selection-start-line="72" selection-start-column="60" selection-end-line="72" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1437#1438#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1545">
-              <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#3202#3203#0" expanded="true" />
+                <element signature="e#3247#3248#0" expanded="true" />
+                <element signature="e#3436#3437#0" expanded="true" />
+                <element signature="e#3491#3492#0" expanded="true" />
+                <element signature="e#3550#3551#0" expanded="true" />
+                <element signature="e#3595#3596#0" expanded="true" />
+                <element signature="e#2520#2521#0" expanded="true" />
+                <element signature="e#2547#2548#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/functions/utility/ExchangeThree.java">
+        <entry file="file://$PROJECT_DIR$/RESULTS_AT-DE_W.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/AT-DE_W-demand.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2529#2530#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="140" lean-forward="true" selection-start-column="140" selection-end-column="140" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/TestMain.java">
+        <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Formatter.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="208">
+              <caret line="1037" selection-start-line="1037" selection-end-line="1037" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/feasibility/Feasibility.java">
+        <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="60">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reader/FlowReader.java">
+        <entry file="file://$PROJECT_DIR$/src/writer/Printer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -135,22 +148,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+            <state relative-caret-position="465">
+              <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2189#2190#0" expanded="true" />
+                <element signature="e#2216#2217#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,12 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Vehicle.java" />
-        <option value="$PROJECT_DIR$/src/dataObjects/Node.java" />
-        <option value="$PROJECT_DIR$/src/dataObjects/IVehicle.java" />
-        <option value="$PROJECT_DIR$/src/dataObjects/INode.java" />
-        <option value="$PROJECT_DIR$/src/reader/IReader.java" />
         <option value="$PROJECT_DIR$/src/reader/FileReader.java" />
         <option value="$PROJECT_DIR$/src/dataObjects/Vehicle.java" />
         <option value="$PROJECT_DIR$/res/quiteSimple.dat" />
@@ -211,11 +208,6 @@
         <option value="$PROJECT_DIR$/src/dataObjects/DataObject.java" />
         <option value="$PROJECT_DIR$/src/dataObjects/IDataObject.java" />
         <option value="$PROJECT_DIR$/src/dataObjects/WeightTable.java" />
-        <option value="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" />
-        <option value="$PROJECT_DIR$/src/main/Main2.java" />
-        <option value="$PROJECT_DIR$/src/dataObjects/IDataResult.java" />
-        <option value="$PROJECT_DIR$/src/dataObjects/DataResult.java" />
-        <option value="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" />
         <option value="$PROJECT_DIR$/res/simple.dat" />
         <option value="$PROJECT_DIR$/src/dataObjects/IDataSet.java" />
         <option value="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" />
@@ -223,15 +215,26 @@
         <option value="$PROJECT_DIR$/src/reader/Reader.java" />
         <option value="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" />
         <option value="$PROJECT_DIR$/src/functions/utility/SolutionGenerator.java" />
-        <option value="$PROJECT_DIR$/src/reader/FlowReader.java" />
         <option value="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" />
         <option value="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" />
-        <option value="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" />
         <option value="$PROJECT_DIR$/src/functions/utility/SwapTwo.java" />
-        <option value="$PROJECT_DIR$/src/main/TestMain.java" />
         <option value="$PROJECT_DIR$/src/functions/utility/ExchangeThree.java" />
+        <option value="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertNonDummy.java" />
+        <option value="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" />
+        <option value="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java" />
+        <option value="$PROJECT_DIR$/src/reader/FlowReaderPrint.java" />
+        <option value="$PROJECT_DIR$/src/reader/FlowReader.java" />
+        <option value="$PROJECT_DIR$/src/main/TestMain.java" />
+        <option value="$PROJECT_DIR$/src/writer/IPrinter.java" />
+        <option value="$PROJECT_DIR$/src/main/Main2.java" />
+        <option value="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" />
+        <option value="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" />
+        <option value="$PROJECT_DIR$/src/writer/Printer.java" />
+        <option value="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" />
+        <option value="$PROJECT_DIR$/src/dataObjects/IDataResult.java" />
+        <option value="$PROJECT_DIR$/src/main/TestHeuristicMain.java" />
+        <option value="$PROJECT_DIR$/src/dataObjects/DataResult.java" />
       </list>
     </option>
   </component>
@@ -246,7 +249,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -313,12 +315,13 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558474348418" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559258267803" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -338,7 +341,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMain">
+  <component name="RunManager" selected="Application.TestHeuristicMain">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="java" />
@@ -351,6 +354,19 @@
     </configuration>
     <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main2" />
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestHeuristicMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.TestHeuristicMain" />
       <module name="java" />
       <extension name="coverage">
         <pattern>
@@ -377,6 +393,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestHeuristicMain" />
         <item itemvalue="Application.TestMain" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main2" />
@@ -442,16 +459,20 @@
       <workItem from="1558353195305" duration="12097000" />
       <workItem from="1558375255635" duration="5969000" />
       <workItem from="1558421371421" duration="6718000" />
+      <workItem from="1559075562543" duration="3396000" />
+      <workItem from="1559119618671" duration="10294000" />
+      <workItem from="1559219467432" duration="23292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395671000" />
+    <option name="totallyTimeSpent" value="432653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-18" width="1920" height="1079" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768874" visible="true" weight="0.15495208" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49768874" visible="true" weight="0.13844515" />
       <window_info id="Structure" order="1" sideWeight="0.5023112" side_tool="true" weight="0.12779553" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -460,8 +481,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32988626" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.327818" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5139607" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.327818" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.5139607" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -469,7 +490,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005325" side_tool="true" weight="0.5139607" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32988626" />
       <window_info anchor="bottom" id="Duplicate detector" order="13" weight="0.32988626" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -519,6 +540,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -535,18 +559,16 @@
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/functions/utility/ExchangeThree.java</url>
-          <line>48</line>
+          <url>file://$PROJECT_DIR$/src/main/TestMain.java</url>
+          <line>91</line>
           <properties />
-          <option name="timeStamp" value="69" />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/functions/utility/ExchangeThree.java</url>
-          <line>26</line>
-          <properties class="functions.utility.ExchangeThree" method="apply">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="70" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -556,39 +578,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources.properties" />
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/IVehicle.java" />
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/INode.java" />
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/Node.java" />
-    <entry file="file://$PROJECT_DIR$/res/quiteSimple.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/Vehicle.java" />
-    <entry file="file://$PROJECT_DIR$/res/superSimple.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/feasibility/IFeasibility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/utility/ISolutionGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -620,13 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataObjects/WeightTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -642,20 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/DataResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reader/IReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -667,23 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2085">
           <caret line="167" selection-start-line="167" selection-end-line="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heuristic/IHeuristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -705,24 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="1333" column="19" selection-start-line="1333" selection-start-column="19" selection-end-line="1333" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-          <folding>
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/AT-DE_W-demand.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -757,16 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reader/Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -815,39 +738,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataObjects/DataSet.java">
+    <entry file="file://$PROJECT_DIR$/src/functions/ObjectiveFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="212" selection-start-line="212" selection-end-line="212" />
-          <folding>
-            <element signature="e#5610#5611#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1410">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/feasibility/Feasibility.java">
+    <entry file="file://$PROJECT_DIR$/src/functions/utility/SwapTwo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reader/FlowReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+        <state relative-caret-position="615">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -862,31 +767,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
+    <entry file="file://$PROJECT_DIR$/src/functions/utility/ExchangeThree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="57" column="30" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+        <state relative-caret-position="-105">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2502#2503#0" expanded="true" />
+            <element signature="e#2529#2530#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/utility/SwapTwo.java">
+    <entry file="file://$PROJECT_DIR$/src/functions/utility/ISolutionGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1437#1438#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/AT-DE_W-distances.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1545">
-          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+        <state relative-caret-position="140">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/feasibility/Feasibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -895,31 +818,180 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/TestMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+        <state relative-caret-position="15">
+          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/ObjectiveFunction.java">
+    <entry file="file://$PROJECT_DIR$/src/dataObjects/DataSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="212" selection-start-line="212" selection-end-line="212" />
+          <folding>
+            <element signature="e#5610#5611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reader/Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reader/FlowReaderPrint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reader/FlowReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3330">
+          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/writer/IPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/utility/ExchangeThree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <caret line="26" column="85" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2529#2530#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heuristic/IHeuristic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2189#2190#0" expanded="true" />
+            <element signature="e#2216#2217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/writer/Printer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Formatter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="1037" selection-start-line="1037" selection-end-line="1037" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Object.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+          <folding>
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#750#751#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/AT-DE_W-demand.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="140" lean-forward="true" selection-start-column="140" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataObjects/IDataResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RESULTS_RESULTS_AT-DE_W.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6173#6174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/TestHeuristicMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataObjects/DataResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="72" column="60" selection-start-line="72" selection-start-column="60" selection-end-line="72" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3202#3203#0" expanded="true" />
+            <element signature="e#3247#3248#0" expanded="true" />
+            <element signature="e#3436#3437#0" expanded="true" />
+            <element signature="e#3491#3492#0" expanded="true" />
+            <element signature="e#3550#3551#0" expanded="true" />
+            <element signature="e#3595#3596#0" expanded="true" />
+            <element signature="e#2520#2521#0" expanded="true" />
+            <element signature="e#2547#2548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RESULTS_AT-DE_W.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
