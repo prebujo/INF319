@@ -24,11 +24,11 @@ public class Main2 {
         Random random = new Random(1);
 
         System.out.println("Optimizing with ALNS");
-        IHeuristic alns = new AdaptiveLargeNeighbourhoodSearch(dataset, random, "alns");
-        IDataResult dataResults = alns.optimize();
-
-        dataResults.printData();
-        dataResults.printDataToFile("alns_results.txt");
+//        IHeuristic alns = new AdaptiveLargeNeighbourhoodSearch(dataset, random, "alns");
+//        IDataResult dataResults = alns.optimize();
+//
+//        dataResults.printData();
+//        dataResults.printDataToFile("alns_results.txt");
 
     }
 }

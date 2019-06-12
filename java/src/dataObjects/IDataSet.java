@@ -97,4 +97,7 @@ public interface IDataSet {
 
     void setOrderDeliveryDocks(int[] orderDeliveryDocks);
 
+    int getLocationsAmount();
+
+    void setLocationsAmount(int locationsAmount);
 }

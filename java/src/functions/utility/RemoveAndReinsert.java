@@ -14,13 +14,14 @@ public class RemoveAndReinsert implements IOperator {
     private final int vehicleAmount;
     protected final int orderAmount;
     private final IFeasibility feasibilityCheck;
+    private final String description;
     protected Random random;
     private Throwable IllegalArgumentException;
     private int lowerLimit;
     private int upperLimit;
     private String name;
 
-    public RemoveAndReinsert(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name){
+    public RemoveAndReinsert(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name, String description){
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.feasibilityCheck = feasibilityCheck;
@@ -29,6 +30,7 @@ public class RemoveAndReinsert implements IOperator {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
         this.name = name;
+        this.description = description;
     }
     @Override
     public int[] apply(int[] solution) throws Throwable {
@@ -41,13 +43,18 @@ public class RemoveAndReinsert implements IOperator {
         if (feasibilityCheck.check(result)) {
             return result;
         } else {
-            return solution;
+            return solution.clone();
         }
     }
 
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 
     private int[] reinsert(int[] solution, HashSet<Integer> elementsToRemove) {

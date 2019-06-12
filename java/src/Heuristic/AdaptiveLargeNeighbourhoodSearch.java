@@ -4,7 +4,7 @@ import dataObjects.DataResult;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
-import functions.feasibility.Feasibility;
+import functions.feasibility.IFeasibility;
 import functions.utility.*;
 
 import java.util.ArrayList;
@@ -17,33 +17,37 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     private final IDataSet dataSet;
     private final int vehicleAmount;
     private final int orderAmount;
-    private final Feasibility feasibilityCheck;
+    private final IFeasibility feasibilityCheck;
     private final Random random;
     private final int lowScore = 1;
-    private final int mediumScore = 2;
-    private final int highScore = 4;
+    private final int mediumScore = 4;
+    private final int highScore = 8;
+    private final int ITERATIONS = 10000;
     private String heuristicName;
+    private int SEGMENT_LENGTH = 100;
 
-    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, Random random, String heuristicName){
+    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, IFeasibility feasibility, Random random, String heuristicName){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
-        this.feasibilityCheck = new Feasibility(dataSet);
+        this.feasibilityCheck = feasibility;
         this.random = random;
         this.heuristicName = heuristicName;
     }
 
-    @Override
     public IDataResult optimize() throws Throwable {
+        return optimize(new ArrayList<>());
+    }
+    public IDataResult optimize(List<IOperator> operators) throws Throwable {
 
         //Generating start solution
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
 
         int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
 
-        //Hashset to store solutions
-        HashSet<String> solutions = new HashSet<>();
-        solutions.add(toString(startSolution));
+        //Hashset to store acceptedSolutions
+        HashSet<String> acceptedSolutions = new HashSet<>();
+        acceptedSolutions.add(toString(startSolution));
         System.out.println(toString(startSolution));
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
@@ -54,94 +58,168 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         double bestObjective = currentObjective;
         double acceptedObjective = currentObjective;
 
-        List<IOperator> operators = new ArrayList<>();
 
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibilityCheck, 2, 4, "r&r2_4"));
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibilityCheck, 1, 1, "r&r1_1"));
-        operators.add(new SwapTwo(dataSet, random, feasibilityCheck, "swap2"));
-        operators.add(new ExchangeThree(dataSet,random,feasibilityCheck,"exch3"));
         int amountOfOperators = operators.size();
         //int iteration = 0;
-        int i = 10000;
+        int i = 0;
+        int bestIteration = 0;
         double temperature = 1000;
         double decreasePercentage = 0.995;
         double historyWeight = 0.80;
-        int[][] operatorWeight;
-        double[][] operatorTime;
+        double[] operatorTime = new double[amountOfOperators];
+        int[] operatorRunningTimes = new int[amountOfOperators];
+        int currentSegment = 0;
 
-        //Need to make a section here to decide initial temperature, basically same algorithm with fixed temperature and
-        //80% chance of accepting a solution.
+        //TODO: Need to make a section here to decide initial temperature, basically same algorithm with fixed temperature and
+        // 80% chance of accepting a solution.
 
         //Initializing weights and scores
-        double[] weight = new double[amountOfOperators];
-        int segmentLength = 100;
-        int currentSegment = 0;
-        double[][] weightData = new double[i/segmentLength][amountOfOperators+1];
-        double[] score = new double[amountOfOperators];
+        Double[] weight = assignEqualStartWeights(amountOfOperators);
+        Double[][] weightData = new Double[ITERATIONS/SEGMENT_LENGTH][amountOfOperators];
+        Double[] score = new Double[amountOfOperators];
+        Double[] accumulatedTotalScore;
+        Double[][] scoreData = new Double[ITERATIONS][amountOfOperators+1];
         int[] runTimes = new int[amountOfOperators];
 
-        weight[0] = 1;
-        for (int m = 1; m < weight.length; m++) {
-            weight[m] = weight[m-1]+1.0;
-        }
-
-        IDataResult data = new DataResult(operators,i/segmentLength,i,operators.size(), heuristicName);
+        IDataResult data = new DataResult(operators,heuristicName,ITERATIONS/ SEGMENT_LENGTH,ITERATIONS, operators.size(), orderAmount,vehicleAmount,dataSet.getLocationsAmount());
         data.setInitialObjective(currentObjective);
-        while (i > 0) {
-            int j = segmentLength;
+
+        double heuristicRunningTime = 0;
+        long heuristicStartTimer = System.nanoTime();
+
+
+        
+
+        while (i < ITERATIONS) {
+            int segmentIteration = 0;
             for (int m = 0;m<score.length;m++) {
-                score[m] = 0;
+                score[m] = 0.0;
                 runTimes[m] = 0;
             }
 
-            //segmentLength
-            while (j > 0) {
-                currentSolution = acceptedSolution;
+            weightData[currentSegment++] = weight.clone(); //saving weights used in current run.
+
+            while (segmentIteration < SEGMENT_LENGTH) {
+
+                currentSolution = acceptedSolution.clone();
 
                 //choosing operator based on probabilities of this segment
-                double choice = random.nextDouble()*weight[weight.length-1];
+                double choice = random.nextDouble();
                 int operator = 0;
+                double sum = 0.0;
                 for (int k = 0; k < amountOfOperators; k++) {
-                    if (choice < weight[k]) {
+                    sum += weight[k];
+                    if (choice < sum) {
                         operator = k;
                         break;
                     }
                 }
+
+
                 runTimes[operator]++;
+                operatorRunningTimes[operator]+=1;
 
+                long operatorStartTimer = System.nanoTime();
                 currentSolution = operators.get(operator).apply(currentSolution);
+                operatorTime[operator] += (double)(System.nanoTime() - operatorStartTimer)/1_000_000_000;
 
-                if(!solutions.contains(toString(currentSolution))) {
+                if(!acceptedSolutions.contains(toString(currentSolution))) {
                     currentObjective = objectiveFunction.calculateSolution(currentSolution);
                     if (currentObjective < bestObjective) {
                         score[operator] += (highScore - mediumScore);
-                        bestSolution = currentSolution;
+                        bestSolution = currentSolution.clone();
                         bestObjective = currentObjective;
+                        bestIteration = i + 1;
                         //TODO: Save data to print
                         //iteration = i;
                     }
 
                     int result = accept(currentObjective, acceptedObjective, temperature);
                     if (result > 0) {
-                        solutions.add(toString(currentSolution));
+                        acceptedSolutions.add(toString(currentSolution));
                         score[operator] += result;
                         acceptedObjective = currentObjective;
-                        acceptedSolution = currentSolution;
+                        acceptedSolution = currentSolution.clone();
                     }
                 }
                 temperature = temperature * decreasePercentage;
-                i--;
-                j--;
+                scoreData[i++] = score.clone();
+                segmentIteration++;
             }
 
-            weightData[currentSegment++] = weight;
-            weight = getWeights(weight,score,runTimes,historyWeight);
+
+            accumulatedTotalScore= updateAccumulatedTotalScore(amountOfOperators, score, runTimes);
+            weight = updateWeights(weight,accumulatedTotalScore,historyWeight);
         }
+        heuristicRunningTime = (double)(System.nanoTime() - heuristicStartTimer)/1_000_000_000;
+
+        data.setOperatorTime(operatorTime);
+        data.setOperatorRunningTimes(operatorRunningTimes);
         data.setWeightData(weightData);
+        data.setScoreData(scoreData);
         data.setBestSolution(bestSolution);
-        data.setSolutions(solutions);
+        data.setSolutions(acceptedSolutions);
         data.setBestObjective(bestObjective);
+        data.setBestIteration(bestIteration);
+        data.setRunningTime(heuristicRunningTime);
+
         return data;
+    }
+
+    private Double[] updateAccumulatedTotalScore(int amountOfOperators, Double[] score, int[] runTimes) {
+        Double[] tempResult = new Double[amountOfOperators];
+        Double totalScore;
+        int zeroAmounts=0;
+        if(runTimes[0]>0) {
+            totalScore = score[0] / runTimes[0];
+        } else {
+            totalScore = 0.0;
+        }
+        if (totalScore==0.0){
+            zeroAmounts++;
+        }
+        tempResult[0] = totalScore;
+
+
+        for (int o = 1;o<amountOfOperators;o++){
+            if(runTimes[o]>0) {
+                totalScore = score[o] / runTimes[o];
+            } else {
+                totalScore = 0.0;
+            }
+            if(totalScore==0.0){
+                zeroAmounts++;
+            }
+            tempResult[o] = tempResult[o-1] + totalScore;
+        }
+
+        //ensuring minimum weight of 5 % for operators without scores
+        Double[] result = new Double[amountOfOperators];
+        if(zeroAmounts>0){
+            double minScore = (0.05*tempResult[tempResult.length-1])/(1-0.05*zeroAmounts);
+            if(tempResult[0] == 0.0){
+                result[0] = minScore;
+            } else {
+                result[0] = tempResult[0];
+            }
+            for (int o = 1;o<amountOfOperators;o++){
+                if(tempResult[o]-tempResult[o-1] == 0.0){
+                    result[o] = result[o-1] + minScore;
+                } else {
+                    result[o] = result[o-1] + tempResult[o]-tempResult[o-1];
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private Double[] assignEqualStartWeights(int operatorAmount) {
+        Double[] result = new Double[operatorAmount];
+        for (int m = 0; m < result.length; m++) {
+            result[m] = 1.0/operatorAmount;
+        }
+        return result;
     }
 
     private void printArray(double[] weight) {
@@ -194,22 +272,11 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         return false;
     }
 
-    private double[] getWeights(double[] weight, double[] score, int[] runTimes, double historyWeight) {
-        double[] result = new double[weight.length];
-        double scoredWeight;
-        if (runTimes[0]==0){
-            scoredWeight=0;
-        } else {
-            scoredWeight = score[0]/runTimes[0];
-        }
-        result[0] = weight[0]* historyWeight+scoredWeight*(1-historyWeight);
+    private Double[] updateWeights(Double[] weight, Double[] accumulatedTotalScore, double historyWeight) {
+        Double[] result = new Double[weight.length];
+        result[0] = weight[0]*historyWeight + accumulatedTotalScore[0]/accumulatedTotalScore[accumulatedTotalScore.length-1]*(1-historyWeight);
         for (int k = 1;k<weight.length;k++){
-            if(runTimes[k]==0){
-                scoredWeight=0;
-            } else{
-                scoredWeight = score[k]/runTimes[k]*(1-historyWeight);
-            }
-            result[k] = weight[k-1] + ((weight[k]-weight[k-1])* historyWeight+scoredWeight);
+            result[k] = weight[k]*historyWeight + (accumulatedTotalScore[k]-accumulatedTotalScore[k-1])/accumulatedTotalScore[accumulatedTotalScore.length-1]*(1.0-historyWeight);
         }
         return result;
     }

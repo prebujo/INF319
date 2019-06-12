@@ -13,14 +13,16 @@ public class ExchangeThree implements IOperator {
     private final int vehicleAmount;
     private final int orderAmount;
     private final IFeasibility feasibility;
+    private final String description;
 
-    public ExchangeThree(IDataSet dataSet, Random random, IFeasibility feasibility, String name  ){
+    public ExchangeThree(IDataSet dataSet, Random random, IFeasibility feasibility, String name, String description){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.random = random;
         this.feasibility = feasibility;
         this.name = name;
+        this.description = description;
     }
 
     @Override
@@ -76,5 +78,10 @@ public class ExchangeThree implements IOperator {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 }

@@ -13,16 +13,18 @@ public class SwapTwo implements IOperator {
     private final int vehicleAmount;
     private final Random random;
     private final IFeasibility feasibility;
+    private final String description;
     private String name;
 
 
-    public SwapTwo(IDataSet dataSet, Random random, IFeasibility feasibility, String name){
+    public SwapTwo(IDataSet dataSet, Random random, IFeasibility feasibility, String name, String description){
         this.dataSet = dataSet;
         this.orderAmount = dataSet.getOrderAmount();
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.random = random;
         this.feasibility = feasibility;
         this.name = name;
+        this.description = description;
     }
 
     @Override
@@ -55,5 +57,10 @@ public class SwapTwo implements IOperator {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 }

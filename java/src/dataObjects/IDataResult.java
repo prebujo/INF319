@@ -9,7 +9,7 @@ public interface IDataResult {
 
     void addObjectData(IDataObject object);
 
-    void setWeightData(double[][] weightData);
+    void setWeightData(Double[][] weightData);
 
     void setBestSolution(int[] solution);
 
@@ -24,4 +24,12 @@ public interface IDataResult {
     void setInitialObjective(double currentObjective);
 
     void setBestObjective(double bestObjective);
+
+    void setBestIteration(int bestIteration);
+
+    void setScoreData(Double[][] scoreData);
+
+    void setOperatorTime(double[] operatorTime);
+
+    void setOperatorRunningTimes(int[] operatorRunningTimes);
 }

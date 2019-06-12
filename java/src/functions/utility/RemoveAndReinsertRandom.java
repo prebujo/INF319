@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class RemoveAndReinsertRandom extends RemoveAndReinsert {
 
-    public RemoveAndReinsertRandom(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name) {
-        super(dataSet, random, feasibilityCheck, lowerLimit, upperLimit, name);
+    public RemoveAndReinsertRandom(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name, String description) {
+        super(dataSet, random, feasibilityCheck, lowerLimit, upperLimit, name, description);
     }
 
     @Override

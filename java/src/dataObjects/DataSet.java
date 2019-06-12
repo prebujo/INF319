@@ -342,4 +342,14 @@ public class DataSet implements IDataSet {
     public void setOrderDeliveryDocks(int[] orderDeliveryDock) {
         this.orderDeliveryDock = orderDeliveryDock;
     }
+
+    @Override
+    public int getLocationsAmount() {
+        return locationsAmount;
+    }
+
+    @Override
+    public void setLocationsAmount(int locationsAmount) {
+        this.locationsAmount = locationsAmount;
+    }
 }

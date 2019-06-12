@@ -53,7 +53,7 @@ public class RandomHeuristic implements IHeuristic{
             }
             i--;
         }
-        IDataResult dataResult = new DataResult(new ArrayList<>(), 1000,10000,0, "random"  );
+        IDataResult dataResult = new DataResult(new ArrayList<>(), "random",1000,10000, 0, orderAmount, vehicleAmount, dataSet.getLocationsAmount());
         dataResult.setBestSolution(bestSolution);
         return dataResult;
     }
