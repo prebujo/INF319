@@ -7,7 +7,6 @@ public class Feasibility implements IFeasibility{
 
     private final int vehicleAmount;
     private final double[][][] travelTime;
-    private final int[] vehicleStartingLocation;
     private final double[][] lowerTimeWindows;
     private final double[][] upperTimeWindows;
     private final int[] timeWindowAmounts;
@@ -28,7 +27,6 @@ public class Feasibility implements IFeasibility{
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
         this.travelTime = dataSet.getTravelTimes();
-        this.vehicleStartingLocation = dataSet.getVehicleStartingLocations();
         this.orderPickupLocations = dataSet.getOrderPickupLocations();
         this.orderDeliveryLocations = dataSet.getOrderDeliveryLocations();
         this.lowerTimeWindows = dataSet.getLowerTimeWindows();
@@ -54,8 +52,8 @@ public class Feasibility implements IFeasibility{
         for (int v = 0; v<vehicleAmount;v++) {
             double weightOnVehicle = 0;
             double volumeOnVehicle = 0;
-            int vehicleLocation = vehicleStartingLocation[v];
-            int solutionLocation = 0;
+            int vehicleLocation = 0;
+            int solutionLocation;
             solutionElement = solution[i];
             double currentVehicleTime = 0;
             int factoryStopCounter = 1;
@@ -86,7 +84,7 @@ public class Feasibility implements IFeasibility{
                 if (!vehicleCanVisitNode[v][solutionLocation-1]) {
                     return false;
                 }
-                if(vehicleLocation!= vehicleStartingLocation[v]) {
+                if(vehicleLocation!= 0) {
                     currentVehicleTime += travelTime[v][vehicleLocation - 1][solutionLocation - 1];
                 }
                 for (int timewindow = 0; timewindow < timeWindowAmounts[solutionLocation-1]; timewindow++) {

@@ -36,12 +36,11 @@ public class DataSet implements IDataSet {
     private int[] orderDeliveryDock;
 
 
-    public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount, int stopAmount){
+    public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount){
         this.vehicleAmount = vehicleAmount;
         this.orderAmount = orderAmount;
         this.locationsAmount = locationsAmount;
         this.factoryAmount = factoryAmount;
-        this.stopAmount = stopAmount;
     }
 
 
@@ -55,10 +54,6 @@ public class DataSet implements IDataSet {
     public int getFactoryAmount() {
         return factoryAmount;
     }
-
-    @Override
-    public int getStopAmount() { return stopAmount; }
-
 
     @Override
     public int getVehicleAmount() {
@@ -319,7 +314,7 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setOrderPickupLocation(int[] orderPickupLocations) {
+    public void setOrderPickupLocations(int[] orderPickupLocations) {
         this.orderPickupLocations = orderPickupLocations;
     }
 
@@ -334,11 +329,6 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public int[] getOrderDeliveryDock() {
-        return orderDeliveryDock;
-    }
-
-    @Override
     public void setOrderDeliveryDocks(int[] orderDeliveryDock) {
         this.orderDeliveryDock = orderDeliveryDock;
     }
@@ -348,8 +338,4 @@ public class DataSet implements IDataSet {
         return locationsAmount;
     }
 
-    @Override
-    public void setLocationsAmount(int locationsAmount) {
-        this.locationsAmount = locationsAmount;
-    }
 }

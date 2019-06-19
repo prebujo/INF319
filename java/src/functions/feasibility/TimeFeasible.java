@@ -31,10 +31,10 @@ public class TimeFeasible implements IFeasibility {
             while(solutionElement!=0){
                 currentVehicleTime +=travelTime[v][vehicleLocation-1][solutionElement-1];
                 for (int tw = 0;tw<timeWindowAmounts[solutionElement-1];tw++){
-                    if(currentVehicleTime<lowerTimeWindows[tw][solutionElement-1]){
-                        currentVehicleTime = lowerTimeWindows[tw][solutionElement-1];
+                    if(currentVehicleTime<lowerTimeWindows[solutionElement-1][tw]){
+                        currentVehicleTime = lowerTimeWindows[solutionElement-1][tw];
                     }
-                    if(currentVehicleTime>=lowerTimeWindows[tw][solutionElement-1] && currentVehicleTime<=upperTimeWindows[tw][solutionElement-1]) {
+                    if(currentVehicleTime>=lowerTimeWindows[solutionElement-1][tw] && currentVehicleTime<=upperTimeWindows[solutionElement-1][tw]) {
                         break;
                     }
                     if (tw==timeWindowAmounts[solutionElement-1]-1){

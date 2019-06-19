@@ -11,7 +11,6 @@ public class ObjectiveFunction {
     private final double[][] weightIntervals;
     private int[] solution;
     private final int orderAmount;
-    private final int stops;
     private final int[] vehicleStartingLocations;
     private final int[] vehicleDestinationLocations;
     private final double[][] stopCostMatrix;
@@ -27,7 +26,6 @@ public class ObjectiveFunction {
         this.dataSet = dataSet;
         this.vehicles = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
-        this.stops = dataSet.getStopAmount();
         this.vehicleStartingLocations = dataSet.getVehicleStartingLocations();
         this.vehicleDestinationLocations = dataSet.getVehicleDestinationLocations();
         this.stopCostMatrix = dataSet.getStopCosts();
@@ -85,8 +83,8 @@ public class ObjectiveFunction {
                 }
                 vehicleCost += getStopCost(vehicleLocation,solutionElementLocation, v );
                 vehicleLocation = solutionElementLocation;
-                i++;
-                solutionElement = solution[i];
+
+                solutionElement = solution[++i];
             }
             if(vehicleTotalDistance>0) {
                 vehicleCost += getVehicleCosts(v, vehicleTotalDistance, vehicleMaxWeight);
@@ -139,7 +137,7 @@ public class ObjectiveFunction {
 
     private int findDimension(double element, double[][] intervals, int vehicle) {
         double previousInterval = 0;
-        for (int i = 0; i < intervals[vehicle].length - 1; i++) {
+        for (int i = 0; i < intervals[vehicle].length; i++) {
             if (element <= intervals[vehicle][i] && element >= previousInterval) {
                 return i;
             }

@@ -4,7 +4,7 @@ public interface IDataSet {
     int getVehicleAmount();
     int getOrderAmount();
     int getFactoryAmount();
-    int getStopAmount();
+    int getLocationsAmount();
 
     void setWeightDimensions(int[] weightDimensions);
     int[] getWeightDimensions();
@@ -87,17 +87,12 @@ public interface IDataSet {
 
     int[] getOrderPickupLocations();
 
-    void setOrderPickupLocation(int[] orderPickupLocations);
+    void setOrderPickupLocations(int[] orderPickupLocations);
 
     int[] getOrderDeliveryLocations();
 
     void setOrderDeliveryLocations(int[] orderDeliveryLocations);
 
-    int[] getOrderDeliveryDock();
 
     void setOrderDeliveryDocks(int[] orderDeliveryDocks);
-
-    int getLocationsAmount();
-
-    void setLocationsAmount(int locationsAmount);
 }

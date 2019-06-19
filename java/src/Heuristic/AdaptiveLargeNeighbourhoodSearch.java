@@ -14,6 +14,8 @@ import java.util.Random;
 
 public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
+    private final int INITIAL_SEGMENT_LENGTH = 100;
+    private final double INITIAL_ACCEPTANCE_PROBABILITY = 0.8;
     private final IDataSet dataSet;
     private final int vehicleAmount;
     private final int orderAmount;
@@ -48,7 +50,6 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         //Hashset to store acceptedSolutions
         HashSet<String> acceptedSolutions = new HashSet<>();
         acceptedSolutions.add(toString(startSolution));
-        System.out.println(toString(startSolution));
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int[] bestSolution = startSolution;
@@ -70,9 +71,6 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         int[] operatorRunningTimes = new int[amountOfOperators];
         int currentSegment = 0;
 
-        //TODO: Need to make a section here to decide initial temperature, basically same algorithm with fixed temperature and
-        // 80% chance of accepting a solution.
-
         //Initializing weights and scores
         Double[] weight = assignEqualStartWeights(amountOfOperators);
         Double[][] weightData = new Double[ITERATIONS/SEGMENT_LENGTH][amountOfOperators];
@@ -84,14 +82,77 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         IDataResult data = new DataResult(operators,heuristicName,ITERATIONS/ SEGMENT_LENGTH,ITERATIONS, operators.size(), orderAmount,vehicleAmount,dataSet.getLocationsAmount());
         data.setInitialObjective(currentObjective);
 
-        double heuristicRunningTime = 0;
+        //STEP 1: SELECTING THE INITIAL TEMPERATURE SECTION:
+        double heuristicRunningTime;
         long heuristicStartTimer = System.nanoTime();
 
+        for (int m = 0;m<score.length;m++) {
+            score[m] = 0.0;
+            runTimes[m] = 0;
+        }
 
-        
+        weightData[currentSegment++] = weight.clone(); //saving weights used in current run.
+        int segmentIteration = 0;
+        Double objectiveDifference = 0.0;
+        int objectiveCounter = 0;
+        while (segmentIteration < INITIAL_SEGMENT_LENGTH) {
 
+            currentSolution = acceptedSolution.clone();
+
+            //choosing operator based on probabilities of this segment
+            int operator = getOperator(amountOfOperators, weight, random.nextDouble());
+
+            runTimes[operator]++;
+            operatorRunningTimes[operator]+=1;
+
+            //applying operator and saving time spent
+            long operatorStartTimer = System.nanoTime();
+            currentSolution = operators.get(operator).apply(currentSolution);
+            operatorTime[operator] += (double)(System.nanoTime() - operatorStartTimer)/1_000_000_000;
+
+            if(!acceptedSolutions.contains(toString(currentSolution))) {
+                currentObjective = objectiveFunction.calculateSolution(currentSolution);
+                if (currentObjective < bestObjective) {
+                    score[operator] += (highScore - mediumScore);
+                    bestSolution = currentSolution.clone();
+                    bestObjective = currentObjective;
+                    bestIteration = i + 1;
+                }
+
+
+                int result = 0;
+                if(currentObjective<acceptedObjective){
+                    result = mediumScore;
+                } else if (random.nextDouble()<INITIAL_ACCEPTANCE_PROBABILITY){
+                    result = lowScore;
+                }
+                if(result<mediumScore) {
+                    objectiveDifference += Math.abs(acceptedObjective - currentObjective);
+                    objectiveCounter++;
+                }
+                if (result > 0) {
+                    acceptedSolutions.add(toString(currentSolution));
+                    score[operator] += result;
+                    acceptedObjective = currentObjective;
+                    acceptedSolution = currentSolution.clone();
+                }
+            }
+            scoreData[i++] = score.clone();
+            segmentIteration++;
+        }
+
+
+        accumulatedTotalScore= updateAccumulatedTotalScore(amountOfOperators, score, runTimes);
+        weight = updateWeights(weight,accumulatedTotalScore,historyWeight);
+
+        temperature = -(objectiveDifference/objectiveCounter)/Math.log(INITIAL_ACCEPTANCE_PROBABILITY);
+
+        //INITIAL TEMPERATURE SELECTED
+
+
+        //STEP 2: STARTING THE ALNS ALGORITHM WITH THE CHOSEN TEMPERATURE
         while (i < ITERATIONS) {
-            int segmentIteration = 0;
+            segmentIteration = 0;
             for (int m = 0;m<score.length;m++) {
                 score[m] = 0.0;
                 runTimes[m] = 0;
@@ -104,16 +165,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                 currentSolution = acceptedSolution.clone();
 
                 //choosing operator based on probabilities of this segment
-                double choice = random.nextDouble();
-                int operator = 0;
-                double sum = 0.0;
-                for (int k = 0; k < amountOfOperators; k++) {
-                    sum += weight[k];
-                    if (choice < sum) {
-                        operator = k;
-                        break;
-                    }
-                }
+                int operator = getOperator(amountOfOperators, weight, random.nextDouble());
 
 
                 runTimes[operator]++;
@@ -130,8 +182,6 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         bestSolution = currentSolution.clone();
                         bestObjective = currentObjective;
                         bestIteration = i + 1;
-                        //TODO: Save data to print
-                        //iteration = i;
                     }
 
                     int result = accept(currentObjective, acceptedObjective, temperature);
@@ -153,17 +203,34 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         }
         heuristicRunningTime = (double)(System.nanoTime() - heuristicStartTimer)/1_000_000_000;
 
+        //ALNS DONE
+
+        //SAVING DATA
         data.setOperatorTime(operatorTime);
         data.setOperatorRunningTimes(operatorRunningTimes);
-        data.setWeightData(weightData);
+        data.setOperatorWeightData(weightData);
         data.setScoreData(scoreData);
         data.setBestSolution(bestSolution);
         data.setSolutions(acceptedSolutions);
         data.setBestObjective(bestObjective);
         data.setBestIteration(bestIteration);
         data.setRunningTime(heuristicRunningTime);
+        //DONE SAVING DATA, returning
 
         return data;
+    }
+
+    private int getOperator(int amountOfOperators, Double[] weight, double choice) {
+        int operator = 0;
+        double sum = 0.0;
+        for (int k = 0; k < amountOfOperators; k++) {
+            sum += weight[k];
+            if (choice < sum) {
+                operator = k;
+                break;
+            }
+        }
+        return operator;
     }
 
     private Double[] updateAccumulatedTotalScore(int amountOfOperators, Double[] score, int[] runTimes) {
@@ -195,19 +262,20 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
         //ensuring minimum weight of 5 % for operators without scores
         Double[] result = new Double[amountOfOperators];
+        double minScore = 0;
         if(zeroAmounts>0){
-            double minScore = (0.05*tempResult[tempResult.length-1])/(1-0.05*zeroAmounts);
-            if(tempResult[0] == 0.0){
-                result[0] = minScore;
+            minScore = (0.05*tempResult[tempResult.length-1])/(1-0.05*zeroAmounts);
+        }
+        if(tempResult[0] == 0.0){
+            result[0] = minScore;
+        } else {
+            result[0] = tempResult[0];
+        }
+        for (int o = 1;o<amountOfOperators;o++){
+            if(tempResult[o]-tempResult[o-1] == 0.0){
+                result[o] = result[o-1] + minScore;
             } else {
-                result[0] = tempResult[0];
-            }
-            for (int o = 1;o<amountOfOperators;o++){
-                if(tempResult[o]-tempResult[o-1] == 0.0){
-                    result[o] = result[o-1] + minScore;
-                } else {
-                    result[o] = result[o-1] + tempResult[o]-tempResult[o-1];
-                }
+                result[o] = result[o-1] + tempResult[o]-tempResult[o-1];
             }
         }
 
@@ -274,10 +342,15 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
     private Double[] updateWeights(Double[] weight, Double[] accumulatedTotalScore, double historyWeight) {
         Double[] result = new Double[weight.length];
-        result[0] = weight[0]*historyWeight + accumulatedTotalScore[0]/accumulatedTotalScore[accumulatedTotalScore.length-1]*(1-historyWeight);
-        for (int k = 1;k<weight.length;k++){
-            result[k] = weight[k]*historyWeight + (accumulatedTotalScore[k]-accumulatedTotalScore[k-1])/accumulatedTotalScore[accumulatedTotalScore.length-1]*(1.0-historyWeight);
+        if(accumulatedTotalScore[0]!=0) {
+            result[0] = weight[0] * historyWeight + accumulatedTotalScore[0] / accumulatedTotalScore[accumulatedTotalScore.length - 1] * (1 - historyWeight);
+            for (int k = 1; k < weight.length; k++) {
+                result[k] = weight[k] * historyWeight + (accumulatedTotalScore[k] - accumulatedTotalScore[k - 1]) / accumulatedTotalScore[accumulatedTotalScore.length - 1] * (1.0 - historyWeight);
+            }
+            return result;
         }
-        return result;
+        else{
+            return weight;
+        }
     }
 }

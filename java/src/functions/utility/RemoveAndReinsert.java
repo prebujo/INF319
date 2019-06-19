@@ -63,10 +63,10 @@ public class RemoveAndReinsert implements IOperator {
         //arranges which vehicle should recieve which order
         List<List<Integer>> orderAssignment = new ArrayList<>(vehicleAmount);
 
-        for (int i = 0;i<vehicleAmount+1;i++){
+        for (int i = 0; i < vehicleAmount + 1; i++) {
             orderAssignment.add(new ArrayList<>());
         }
-        for(Integer element:elementsToRemove){
+        for (Integer element : elementsToRemove) {
             int vehicleChoice = random.nextInt(vehicleAmount);
             orderAssignment.get(vehicleChoice).add(element);
         }
@@ -75,76 +75,80 @@ public class RemoveAndReinsert implements IOperator {
         int resultIndex = 0;
         int solutionElement;
         int vehicle = 0;
-        boolean[] pickedUp = new boolean[orderAmount+1];
+        boolean[] pickedUp = new boolean[orderAmount + 1];
 
-        for (int i = 0; i<solution.length;i++){
+        for (int i = 0; i < solution.length; i++) {
             solutionElement = solution[i];
-            if(pickedUp[solutionElement]){
+            if (pickedUp[solutionElement]) {
                 continue;
             }
             int assignedElementsSize;
-            if(vehicle<vehicleAmount){
+            if (vehicle < vehicleAmount) {
                 assignedElementsSize = orderAssignment.get(vehicle).size();
-            } else{
-                assignedElementsSize =0;
+            } else {
+                assignedElementsSize = 0;
             }
-            if(solutionElement==0&&assignedElementsSize==0){
+            if (solutionElement == 0 && assignedElementsSize == 0) {
                 resultIndex++;
                 vehicle++;
                 continue;
             }
-            if(assignedElementsSize>0) {
+            if (assignedElementsSize > 0) {
                 List<Integer> possibilities = new ArrayList<>();
-                if((!elementsToRemove.contains(solutionElement))&&solutionElement!=0) {
+                if ((!elementsToRemove.contains(solutionElement)) && solutionElement != 0) {
                     possibilities.add(solutionElement);
                 }
                 int lastAssignedOrder = removeRandomElement(orderAssignment, vehicle);
                 possibilities.add(lastAssignedOrder);
-                while(possibilities.size()>0) {
+                while (possibilities.size() > 0) {
                     int choiceIndex = random.nextInt(possibilities.size());
                     int elementChoice = possibilities.get(choiceIndex);
                     //If I choose the solution element and solution element is not an element to remove
-                    if (elementChoice==solutionElement){
+                    if (elementChoice == solutionElement) {
                         i++;
                         solutionElement = solution[i];
                         while (elementsToRemove.contains(solutionElement)) {
                             i++;
                             solutionElement = solution[i];
                         }
-                        if(solutionElement!=0&&!pickedUp[solutionElement]) {
-                            if (!possibilities.contains(solutionElement)){
+                        if (solutionElement != 0 && !pickedUp[solutionElement]) {
+                            if (!possibilities.contains(solutionElement)) {
                                 possibilities.add(solutionElement);
                             }
                         }
                     }
                     //if I have already picked up the chosen element I remove it as an option
-                    if (pickedUp[elementChoice]){
-                        int temp = possibilities.remove(possibilities.size()-1);
-                        if (choiceIndex!=possibilities.size()){
-                            possibilities.set(choiceIndex,temp);
+                    if (pickedUp[elementChoice]) {
+                        int temp = possibilities.remove(possibilities.size() - 1);
+                        if (choiceIndex != possibilities.size()) {
+                            possibilities.set(choiceIndex, temp);
                         }
                     } else {
                         pickedUp[elementChoice] = true;
                     }
                     //if I still have orders to assign and I chose an Assigned order as element to reinsert I have to add
                     //the next orderAssignment.
-                    if (orderAssignment.get(vehicle).size()>0&&elementChoice==lastAssignedOrder){
+                    if (orderAssignment.get(vehicle).size() > 0 && elementChoice == lastAssignedOrder) {
                         possibilities.add(removeRandomElement(orderAssignment, vehicle));
                         lastAssignedOrder = elementChoice;
                     }
                     result[resultIndex] = elementChoice;
                     resultIndex++;
                 }
-                if(solutionElement==0) {
+                if (solutionElement == 0) {
                     vehicle++;
                     resultIndex++;
                 }
-            } else if(!elementsToRemove.contains(solutionElement)){
+            } else if (!elementsToRemove.contains(solutionElement)) {
                 result[resultIndex] = solutionElement;
                 resultIndex++;
             }
         }
-    return result;
+        if (feasibilityCheck.check(result)) {
+            return result;
+        } else {
+            return solution;
+        }
     }
 
     private int removeRandomElement(List<List<Integer>> orderAssignment, int vehicle) {

@@ -1,152 +1,125 @@
-# 1 amount of vehicles
-param nv :=
+# amount of vehicles
+param nv := 
 1 ;
 
-# 2 amount of orders = orders + amount of vehicles
-param nn :=
+# amount of orders = orders + amount of vehicles
+param no := 
+1 ;
+
+# 3 amount of unique locations (ficticious start and end location will be added in AMPL)
+param nl := 
 2 ;
 
-# 3 amount of factories
-param nf :=
+# amount of factories
+param nf := 
 1 ;
 
-# 4 amount of unique stop positions
-param ns :=
-2 ;
-
-# 5 amount of distance instervals in cost structure
-param na :=
-1 ;
-
-# 6 amount of weight intervals in cost structure
-param nb :=
-1 ;
-
-# 7 Factory sets
-set N_f[1] := 3 ;
-
-# 8 Factorystops capacities
-param H :=
+# amount of distance instervals in cost structure
+param na := 
 1 1 ;
 
-# 9 Location sets
-set L[1] := 1 ;
-set L[2] := 3 ;
+# amount of weight intervals in cost structure
+param nb := 
+1 1 ;
 
-# 10 dataObjects.Vehicle node sets
-set N_v[1] := 1 2 3 4 ;
+# Factory sets
+set N_f_2[1] := 2 ;
+ 
+# Hubstops capacities
+param H := 
+1 1 ;
 
-# 11 pickup nodes
-set N_vp[1] := 1 2 ;
+# 9.1 Order pickup Location, have to create
+param L_pd :=
+1 1 ;
 
-# 12 Origin and destination of vehicles all
-param o_v :=
+# 9.2 Order delivery Location, have to create
+param L_dd :=
 1 2 ;
 
-# 13 destination nodes
-param d_v :=
-1 4 ;
+# Location sets
+set L_2[1] := 1 ;
+set L_2[2] := 1 ;
 
-# 14 Capacity of each vehicle
-param K :=
+# Weight of each Order
+param Q_kg_2 := 
+1 15 ;
+
+# Volume of each Order
+param Q_vol_2 := 
+1 5 ;
+
+# No pickup penalty cost
+param C_2 := 
+1 2000 ;
+
+# Vehicle node sets
+set N_v_2[1] := 1 2 ;
+
+# pickup nodes
+set N_vp[1] := 1 ;
+
+# Capacity of each vehicle
+param K_kg := 
 1 25 ;
 
-# 15 Weight of each Order
-param Q :=
-1 15
-2 0 ;
-
-# 16 No pickup penalty cost
-param C :=
-1 2000
-2 0 ;
+# Capacity of each vehicle
+param K_vol := 
+1 15 ;
 
 # Distance interval for cost matrix
-param B:=
-0 0
-1 200 ;
+param B_2:=  
+1 1 200 ;
 
 # Weight interval for cost matrix
-param Z:=
-0 0
-1 25 ;
+param Z_2:= 
+1 1 25 ;
 
 # Costs per km
-param C_km :=
+param C_km := 
 	1	1	1 	10	;
-
+			
 # Costs per kg
-param C_kg :=
-	1 1 1 2	;
+param C_kg := 
+	1 	1	1 	2	;
 
 # Costs fixed
-param C_fix :=
-	1 1 1 50 ;
-
+param C_fix := 
+	1 	1	1 	50	;
+	
 # Costs to make a stop
-param C_stop :=
-1 1 10
-1 2	0
-1 3	10
-1 4	0 ;
+param C_stop_2 :=	
+1 	1	10
+1	2	10	;	
 
 # Time window sets
-param pi :=
-1 1
-2 1
-3 1
-4 1 ;
+param pi_2 := 
+1 1	 
+2 1 ;
 
 # Time window lower bounds
-param T_l:=
-	1 1	0
-	1 2 0
-	1 3 0
-	1 4 0 ;
+param T_l_2:=
+	1	1	0
+	2	1	0 ;
 
 # Time window upper bounds
-param T_u:=
+param T_u_2:=
 	1	1	10
-	1	2	10
-	1	3	20
-	1	4	20 ;
+	2	1	20 ;
 
-# Travel time
-param T:=
-			1 1 1 .
-			1 1 2 0
-			1 1 3 15
-			1 1 4 0
-			1 2 1 0
-			1 2 2 .
-			1 2 3 0
-			1 2 4 0
-			1 3 1 15
-			1 3 2 50
-			1 3 3 .
-			1 3 4 0
-			1 4 1 50
-			1 4 2 50
-			1 4 3 50
-			1 4 4 50 ;
+# 26 Travel time
+param T_2:=
+	1 1 1 .
+	1 1 2 15
+	1 2 1 15
+	1 2 2 . ;
 
 # Travel Distance
-param D:=
-			 1 1 .
-			 1 2 0
-			 1 3 15
-			 1 4 0
-			 2 1 0
-			 2 2 .
-			 2 3 0
-			 2 4 0
-			 3 1 15
-			 3 2 50
-			 3 3 .
-			 3 4 0
-			 4 1 50
-			 4 2 50
-			 4 3 50
-			 4 4 50 ;
+param D_2:=
+1 1 .
+1 2 15
+2 1 15
+2 2 . ;
 
 
+			

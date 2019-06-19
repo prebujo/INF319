@@ -1,0 +1,152 @@
+# 1 amount of vehicles
+param nv :=
+1 ;
+
+# 2 amount of orders = orders + amount of vehicles
+param nn :=
+2 ;
+
+# 3 amount of factories
+param nf :=
+1 ;
+
+# 4 amount of unique stop positions
+param ns :=
+2 ;
+
+# 5 amount of distance instervals in cost structure
+param na :=
+1 ;
+
+# 6 amount of weight intervals in cost structure
+param nb :=
+1 ;
+
+# 7 Factory sets
+set N_f[1] := 3 ;
+
+# 8 Factorystops capacities
+param H :=
+1 1 ;
+
+# 9 Location sets
+set L[1] := 1 ;
+set L[2] := 3 ;
+
+# 10 dataObjects.Vehicle node sets
+set N_v[1] := 1 2 3 4 ;
+
+# 11 pickup nodes
+set N_vp[1] := 1 2 ;
+
+# 12 Origin and destination of vehicles all
+param o_v :=
+1 2 ;
+
+# 13 destination nodes
+param d_v :=
+1 4 ;
+
+# 14 Capacity of each vehicle
+param K :=
+1 25 ;
+
+# 15 Weight of each Order
+param Q :=
+1 15
+2 0 ;
+
+# 16 No pickup penalty cost
+param C :=
+1 2000
+2 0 ;
+
+# Distance interval for cost matrix
+param B:=
+0 0
+1 200 ;
+
+# Weight interval for cost matrix
+param Z:=
+0 0
+1 25 ;
+
+# Costs per km
+param C_km :=
+	1	1	1 	10	;
+
+# Costs per kg
+param C_kg :=
+	1 1 1 2	;
+
+# Costs fixed
+param C_fix :=
+	1 1 1 50 ;
+
+# Costs to make a stop
+param C_stop :=
+1 1 10
+1 2	0
+1 3	10
+1 4	0 ;
+
+# Time window sets
+param pi :=
+1 1
+2 1
+3 1
+4 1 ;
+
+# Time window lower bounds
+param T_l:=
+	1 1	0
+	1 2 0
+	1 3 0
+	1 4 0 ;
+
+# Time window upper bounds
+param T_u:=
+	1	1	10
+	1	2	10
+	1	3	20
+	1	4	20 ;
+
+# Travel time
+param T:=
+			1 1 1 .
+			1 1 2 0
+			1 1 3 15
+			1 1 4 0
+			1 2 1 0
+			1 2 2 .
+			1 2 3 0
+			1 2 4 0
+			1 3 1 15
+			1 3 2 50
+			1 3 3 .
+			1 3 4 0
+			1 4 1 50
+			1 4 2 50
+			1 4 3 50
+			1 4 4 50 ;
+
+# Travel Distance
+param D:=
+			 1 1 .
+			 1 2 0
+			 1 3 15
+			 1 4 0
+			 2 1 0
+			 2 2 .
+			 2 3 0
+			 2 4 0
+			 3 1 15
+			 3 2 50
+			 3 3 .
+			 3 4 0
+			 4 1 50
+			 4 2 50
+			 4 3 50
+			 4 4 50 ;
+
+

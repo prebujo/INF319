@@ -5,11 +5,9 @@ import java.util.HashSet;
 public interface IDataResult {
     void printData();
 
-    void printDataToFile(String filename);
-
     void addObjectData(IDataObject object);
 
-    void setWeightData(Double[][] weightData);
+    void setOperatorWeightData(Double[][] weightData);
 
     void setBestSolution(int[] solution);
 
@@ -32,4 +30,20 @@ public interface IDataResult {
     void setOperatorTime(double[] operatorTime);
 
     void setOperatorRunningTimes(int[] operatorRunningTimes);
+
+    double getInitialObjective();
+
+    double getBestObjective();
+
+    double getRunningTime();
+
+    int getBestIteration();
+
+    double[] getOperatorTime();
+
+    int[] getOperatorRunningTimes();
+
+    Double[][] getOperatorWeightData();
+
+    Double[][] getScoreData();
 }

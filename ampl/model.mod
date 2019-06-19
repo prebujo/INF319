@@ -6,20 +6,29 @@ param nf;
 param nv;
 
 #amount of orders
-param nn;
+param no;
+
+#amount of nodes
+param nn=no+nv;
+
+#amount of locations
+param nl;
 
 #Amount of distinktive stops
-param ns;
+param ns = nl;
 
 #Section of sets
 set N = 1 .. (2 * nn) ;
 set N_p = 1 .. nn;
 set N_d = nn + 1 .. (2 * nn);
+set O = 1 .. no;
 set F = 1 .. nf;
 set N_f {f in F};
 set V = 1 .. nv;
 set S = 1 .. ns;
 set L{s in S};
+set L_pd{o in O};
+set L_dd{o in O};
 set N_v {v in V};
 set N_vp {v in V};
 set E {v in V} = {i in N_v[v],j in N_v[v]: j <> i};

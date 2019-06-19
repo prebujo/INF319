@@ -30,7 +30,7 @@ public class SwapTwo implements IOperator {
     @Override
     public int[] apply(int[] solution) {
 
-        int[] result = solution;
+        int[] result = solution.clone();
 
         int choice1 = 1+random.nextInt(orderAmount );
         int choice2 = choice1;

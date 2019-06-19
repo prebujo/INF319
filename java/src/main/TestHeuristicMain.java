@@ -1,17 +1,17 @@
 package main;
 
 import Heuristic.AdaptiveLargeNeighbourhoodSearch;
-import Heuristic.IHeuristic;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.*;
+import printer.IPrinter;
+import printer.Printer;
 import reader.FlowReader;
 import reader.IReader;
-import writer.IPrinter;
-import writer.Printer;
+import reader.Reader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,14 @@ public class TestHeuristicMain {
     public static void main(String[] args) throws Throwable {
         System.out.println("Welcome to Preben's PDP solver! Please enter the name of the file you would like to read: ");
         //Scanner scan = new Scanner(System.in);
-        String fileName = "AT-DE_W";
+        String fileName = "simple";
 
-        IReader reader = new FlowReader();
+        //reads data from 4flow file
+//        IReader reader = new FlowReader();
+//        IDataSet dataSet = reader.readDataFromFile(fileName);
 
-        //creates a dataSet from file
+        //reads data from .dat file
+        IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile(fileName);
 
         Random random = new Random(101);
@@ -42,17 +45,17 @@ public class TestHeuristicMain {
         String exchangeDescription="exchanges the order of 3 orders a delivery schedule of a";
         operators.add(new ExchangeThree(dataSet,random,feasibility,"exch3", exchangeDescription));
         String removeAndReinsertTwoToFourDescription="remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 4, "r&R1_4", removeAndReinsertTwoToFourDescription));
+        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 3, "r&R1_4", removeAndReinsertTwoToFourDescription));
         String removeAndReinsertOneDescription="remove and reinsert operator that removes between 1-1 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 4, "r&r1_4", removeAndReinsertOneDescription));
+        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 3, "r&r1_4", removeAndReinsertOneDescription));
         String returnSame = "return the same solution";
         operators.add(new ReturnSameSolution("retSame", returnSame));
 
         IDataResult results = alns.optimize(operators);
 
-        results.printData();
+        IPrinter printer = new Printer();
 
-        results.printDataToFile(fileName);
+        printer.printDataToFile(fileName,dataSet,results,operators);
     }
     private static void printArray(int[] array) {
         for (int i = 0; i<array.length;i++){

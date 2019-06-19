@@ -236,11 +236,11 @@ public class FlowReaderPrint implements IReader {
         printList(upperTimeWindows);
 
 
-        result = new DataSet(vehicleCounter, orderCounter, locationCounter, factoryCounter, stopCounter);
+        result = new DataSet(vehicleCounter, orderCounter, locationCounter, factoryCounter);
 
         result.setOrderVolumes(orderVolumes);
         result.setOrderWeights(orderWeights);
-        result.setOrderPickupLocation(orderPickupLocations);
+        result.setOrderPickupLocations(orderPickupLocations);
         result.setOrderDeliveryLocations(orderDeliveryLocations);
         result.setOrderDeliveryDocks(orderDeliveryDocks);
         result.setLocations(locations);
