@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/java/generators/IInstanceGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/IInstanceGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/TestInstanceGeneratorMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestInstanceGeneratorMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/8_Ord_3_Veh_5_Loc.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generators/IInstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/IInstanceGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/TestInstanceGeneratorMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestInstanceGeneratorMain.java" afterDir="false" />
@@ -69,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generators/InstanceGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -83,10 +84,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/simple.dat">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2805">
+            <state relative-caret-position="2850">
               <caret line="205" column="9" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
             </state>
           </provider>
@@ -210,9 +211,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-18" />
-    <option name="width" value="1920" />
-    <option name="height" value="1079" />
+    <option name="x" value="8" />
+    <option name="y" value="-10" />
+    <option name="width" value="948" />
+    <option name="height" value="1063" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -417,18 +419,17 @@
       <workItem from="1560707416445" duration="4573000" />
       <workItem from="1560765589270" duration="8187000" />
       <workItem from="1560937916151" duration="1323000" />
-      <workItem from="1560960664541" duration="10928000" />
+      <workItem from="1560960664541" duration="11719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="537949000" />
+    <option name="totallyTimeSpent" value="538740000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-18" width="1920" height="1079" extended-state="0" />
-    <editor active="true" />
+    <frame x="8" y="-10" width="948" height="1063" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49768874" visible="true" weight="0.30670926" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49768874" visible="true" weight="0.6357616" />
       <window_info id="Structure" order="1" sideWeight="0.5023112" side_tool="true" weight="0.12779553" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -437,7 +438,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32988626" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.327818" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33333334" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.5139607" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -967,13 +968,6 @@
     <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/simple.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="205" column="9" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/generators/InstanceGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -983,6 +977,13 @@
             <element signature="e#229#230#0" expanded="true" />
             <element signature="e#273#274#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/simple.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2850">
+          <caret line="205" column="9" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
         </state>
       </provider>
     </entry>
