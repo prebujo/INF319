@@ -8,5 +8,5 @@ public interface IInstanceGenerator {
      * @param locationAmount
      * @param instanceType is the type of instance, 1 = international (europe), 2= local (germany), 3 = uniform distribution
      */
-    void makeInstance(int orderAmount, int vehicleAmount, int locationAmount, int instanceType);
+    void makeInstance(int orderAmount, int vehicleAmount, int pickupLocationAmount, int deliveryLocationAmount, int factoryAmount, int instanceID, int instanceType);
 }

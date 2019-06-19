@@ -7,7 +7,7 @@ public class TestInstanceGeneratorMain {
     public static void main(String[] args) throws Throwable {
 
         IInstanceGenerator generator = new InstanceGenerator();
-        generator.makeInstance(8,3,5, 3);
+        generator.makeInstance(4,3,3,4, 3, 1, 3);
 
     }
 

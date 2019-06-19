@@ -1,0 +1,33 @@
+# 1 amount of Vehicles
+param nv :=
+3 ;
+
+# 2 amount of Orders
+param no :=
+4 ;
+
+# 3 amount of locations
+param nl :=
+7 ;
+
+# 4 amount of factories
+param nf :=
+3 ;
+
+# 5 amount of distance intervals
+param na :=
+1 4
+2 2
+3 7 ;
+
+# 6 amount of weight intervals
+param nb :=
+1 5
+2 5
+3 4 ;
+
+# 7 amount of weight intervals
+set N_f_2[1] :=  4 ;
+set N_f_2[2] :=  5 6 ;
+set N_f_2[3] :=  7 ;
+
