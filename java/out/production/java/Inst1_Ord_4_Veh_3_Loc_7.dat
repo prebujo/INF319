@@ -16,18 +16,68 @@ param nf :=
 
 # 5 amount of distance intervals
 param na :=
-1 4
-2 2
+1 6
+2 6
 3 7 ;
 
 # 6 amount of weight intervals
 param nb :=
-1 5
-2 5
+1 6
+2 3
 3 4 ;
 
-# 7 amount of weight intervals
-set N_f_2[1] :=  4;
-set N_f_2[2] :=  5 6;
-set N_f_2[3] :=  7;
+# 7 factory sets
+set N_f_2[1] :=  4 ;
+set N_f_2[2] :=  5 6 ;
+set N_f_2[3] :=  7 ;
+
+# 8 factory stop capacities
+param H :=
+1 1
+2 2
+3 1 ;
+
+# 9 pickup locations for each order
+param L_pd :=
+1 3
+2 1
+3 2
+4 3 ;
+
+# 10 delivery locations for each order
+param L_dd :=
+1 7
+2 6
+3 5
+4 4 ;
+
+# 11 location sets
+set L_2[1] :=  2 ;
+set L_2[2] :=  3 ;
+set L_2[3] :=  1 4 ;
+set L_2[4] :=  4 ;
+set L_2[5] :=  3 ;
+set L_2[6] :=  2 ;
+set L_2[7] :=  1 ;
+
+# 12 order weights
+param Q_kg_2 :=
+1 296.25711803717905
+2 703.1255147693694
+3 1804.3707894398601
+4 12390.97816029303 ;
+
+# 13 order volumes
+param Q_vol_2 :=
+1 1.1975441835584961
+2 4.421046056164216
+3 21.384856838256336
+4 64.07863531908403 ;
+
+# 14 cost of no transport
+param C_2 :=
+1 2.608001641558502
+2 3.6551112652448974
+3 6.8198332308624074
+4 2.056952220143309 ;
 
