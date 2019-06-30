@@ -3,13 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/8_Ord_3_Veh_5_Loc.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/.~lock.AT-DE_W-tariffs_LTL.csv#" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/.~lock.AT-DE_W-tariffs_LTL.csv#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/.~lock.H_Auto_1_5Hubs_supply_relations_SR_Jan-Juli_Artikelbasis_CW2.xlsx#" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/Inst1_Ord_4_Veh_3_Loc_7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/Inst1_Ord_4_Veh_3_Loc_7.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/model.mod" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/model.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/model.mod" beforeDir="false" afterPath="$PROJECT_DIR$/res/model.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/simple.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/simple.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generators/IInstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/IInstanceGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/simple_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/simple_RESULTS.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/RESULTS_AT-DE_W.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/RESULTS_AT-DE_W.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,24 +36,15 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="java" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/printer/Printer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functions/ObjectiveFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="565">
               <caret line="138" selection-start-line="138" selection-end-line="138" />
               <folding>
                 <element signature="e#2082#2083#0" expanded="true" />
@@ -60,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generators/InstanceGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="198">
+              <caret line="394" column="98" selection-start-line="394" selection-start-column="98" selection-end-line="394" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1385">
+            <state relative-caret-position="15">
               <caret line="183" column="46" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -81,20 +78,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/simple.dat">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+            <state relative-caret-position="1185">
+              <caret line="190" column="8" lean-forward="true" selection-start-line="190" selection-end-line="190" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/simple.dat">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="64" column="7" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
+            <state relative-caret-position="-1676" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/RESULTS_simple.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-45" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reader/Reader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1195">
+              <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generators/IInstanceGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state>
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -111,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/TestInstanceGeneratorMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="120">
               <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -123,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="90">
               <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -201,11 +215,11 @@
         <option value="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" />
         <option value="$PROJECT_DIR$/src/printer/Printer.java" />
         <option value="$PROJECT_DIR$/src/functions/ObjectiveFunction.java" />
-        <option value="$PROJECT_DIR$/src/reader/Reader.java" />
         <option value="$PROJECT_DIR$/src/main/TestHeuristicMain.java" />
         <option value="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" />
         <option value="$PROJECT_DIR$/src/generators/IInstanceGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/TestInstanceGeneratorMain.java" />
+        <option value="$PROJECT_DIR$/src/reader/Reader.java" />
         <option value="$PROJECT_DIR$/res/simple.dat" />
         <option value="$PROJECT_DIR$/src/generators/InstanceGenerator.java" />
       </list>
@@ -251,12 +265,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="printer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="reader" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -438,25 +458,28 @@
       <workItem from="1560937916151" duration="1323000" />
       <workItem from="1560960664541" duration="11719000" />
       <workItem from="1561117955705" duration="21238000" />
+      <workItem from="1561524546531" duration="14834000" />
+      <workItem from="1561730653292" duration="20046000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="559978000" />
+    <option name="totallyTimeSpent" value="594858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-18" width="1920" height="1079" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49768874" visible="true" weight="0.14483494" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976744" visible="true" weight="0.14802982" />
       <window_info id="Structure" order="1" sideWeight="0.5023112" side_tool="true" weight="0.12779553" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" sideWeight="0.5023256" side_tool="true" visible="true" weight="0.14802982" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32988626" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33298862" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33298862" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.5139607" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -565,12 +588,6 @@
           <line>24</line>
           <properties />
           <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/generators/InstanceGenerator.java</url>
-          <line>104</line>
-          <properties />
-          <option name="timeStamp" value="122" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -812,9 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/RESULTS_simple.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -884,16 +898,6 @@
     <entry file="file://$PROJECT_DIR$/res/AT-DE_W_RESULTS.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reader/Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="175" column="22" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/simple_RESULTS.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -908,22 +912,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_10.dat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_12.dat">
+    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_10.dat" />
+    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_12.dat" />
+    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_15.dat" />
+    <entry file="file://$PROJECT_DIR$/src/printer/Printer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191" />
+        <state relative-caret-position="1125">
+          <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_15_Veh_6_Loc_15.dat">
+    <entry file="file://$PROJECT_DIR$/src/generators/IInstanceGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-861" />
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/TestInstanceGeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="120">
           <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -933,7 +944,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="90">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -941,26 +952,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/generators/IInstanceGenerator.java">
+    <entry file="file://$PROJECT_DIR$/res/RESULTS_simple.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1385">
-          <caret line="183" column="46" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-45" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/ObjectiveFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="565">
           <caret line="138" selection-start-line="138" selection-end-line="138" />
           <folding>
             <element signature="e#2082#2083#0" expanded="true" />
@@ -969,10 +968,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/printer/Printer.java">
+    <entry file="file://$PROJECT_DIR$/src/reader/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+        <state relative-caret-position="1195">
+          <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="183" column="46" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generators/InstanceGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="394" column="98" selection-start-line="394" selection-start-column="98" selection-end-line="394" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -981,25 +1000,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/Inst1_Ord_4_Veh_3_Loc_7.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generators/InstanceGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1676" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/simple.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="64" column="7" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
+        <state relative-caret-position="1185">
+          <caret line="190" column="8" lean-forward="true" selection-start-line="190" selection-end-line="190" selection-end-column="8" />
         </state>
       </provider>
     </entry>
