@@ -33,32 +33,32 @@ public class Reader implements IReader {
 
         double[] orderVolumes = getDoubleList(fileScanner,orderAmount); //#11
 
-        double[] orderPenalties = getDoubleList(fileScanner,orderAmount);   //#12
+        boolean[][] vehicleCanVisitNode = getBooleanList(fileScanner,vehicleAmount, locationsAmount); //#12
 
-        boolean[][] vehicleCanVisitNode = getBooleanList(fileScanner,vehicleAmount, locationsAmount); //#13
+        boolean[][] vehicleCanPickupNode = getBooleanList(fileScanner, vehicleAmount, orderAmount);   //#13
 
-        boolean[][] vehicleCanPickupNode = getBooleanList(fileScanner, vehicleAmount, orderAmount);   //#14
+        double[] vehicleWeightCapacities = getDoubleList(fileScanner,vehicleAmount);    //#14
 
-        double[] vehicleWeightCapacities = getDoubleList(fileScanner,vehicleAmount);    //#15
+        double[] vehicleVolumeCapacities = getDoubleList(fileScanner,vehicleAmount);    //#15
 
-        double[] vehicleVolumeCapacities = getDoubleList(fileScanner,vehicleAmount);    //#16
-
-        int[] distanceDimensions = getIntegerList(fileScanner,vehicleAmount); //#17
-        int[] weightDimensions = getIntegerList(fileScanner,vehicleAmount); //#18
+        int[] distanceDimensions = getIntegerList(fileScanner,vehicleAmount); //#16
+        int[] weightDimensions = getIntegerList(fileScanner,vehicleAmount); //#17
         int maxDistanceDimension = getMaxValue(distanceDimensions);
         int maxWeightDimension = getMaxValue(weightDimensions);
 
-        double[][] distanceIntervals = getDouble2DList(fileScanner,vehicleAmount,maxDistanceDimension); //#19
+        double[][] distanceIntervals = getDouble2DList(fileScanner,vehicleAmount,maxDistanceDimension); //#18
 
-        double[][] weightIntervals = getDouble2DList(fileScanner, vehicleAmount, maxWeightDimension); //#20
+        double[][] weightIntervals = getDouble2DList(fileScanner, vehicleAmount, maxWeightDimension); //#19
 
-        double[][][] kmCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);     //#21
+        double[][][] kmCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension,maxWeightDimension);     //#20
 
-        double[][][] kgCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);    //#22
+        double[][][] kgCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);    //#21
 
-        double[][][] fixCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);   //#23
+        double[][][] fixCostMatrices = getDouble3DList(fileScanner, vehicleAmount, maxDistanceDimension, maxWeightDimension);   //#22
 
-        double[][] stopCosts = getDouble2DList(fileScanner, vehicleAmount, locationsAmount);    //#24
+        double[][] stopCosts = getDouble2DList(fileScanner, vehicleAmount, locationsAmount);    //#23
+
+        double[] orderPenalties = getDoubleList(fileScanner,orderAmount);   //#24
 
         int[] timeWindowAmounts = getIntegerList(fileScanner,locationsAmount);  //#25
 

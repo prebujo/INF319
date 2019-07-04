@@ -62,48 +62,41 @@ param Q_vol_2 :=
     3 60
     4 60 ;
 
-# 12 No pickup penalty cost
-param C_2 :=
-    1 2000
-    2 2000
-    3 2000
-    4 2000 ;
-
-# 13 Vehicle node sets
+# 12 Vehicle node sets
 set N_v_2[1] := 1 2 3 4 5 6 7 ;
 set N_v_2[2] := 1 3 4 6 7 ;
 set N_v_2[3] := 1 2 3 4 5 6 7 ;
 
-# 14 pickup orders
+# 13 pickup orders
 set N_vp[1] := 1 2 3 4 ;
 set N_vp[2] := 1 3 4 ;
 set N_vp[3] := 1 2 3 4 ;
 
-# 15 Weight capacity of each vehicle
+# 14 Weight capacity of each vehicle
 param K_kg :=
     1 25
     2 25
     3 15 ;
 
-# 16 Volume capacity of each vehicle
+# 15 Volume capacity of each vehicle
 param K_vol :=
     1 150
     2 100
     3 100 ;
 
-# 17 amount of distance intervals in cost structure
+# 16 amount of distance intervals in cost structure
 param na :=
     1 2
     2 2
-    3 3 ;
+    3 2 ;
 
-# 18 amount of weight intervals in cost structure
+# 17 amount of weight intervals in cost structure
 param nb :=
     1 2
     2 2
     3 2 ;
 
-# 19 Distance interval for cost matrix
+# 18 Distance interval for cost matrix
 param B_2:=
     1 1 15
     1 2 200
@@ -112,7 +105,7 @@ param B_2:=
     3 1 15
     3 2 200 ;
 
-# 20 Weight interval for cost matrix
+# 19 Weight interval for cost matrix
 param Z_2:=
     1 1 10
     1 2 25
@@ -121,7 +114,7 @@ param Z_2:=
     3 1 10
     3 2 25 ;
 
-# 21 Costs per km
+# 20 Costs per km
 param C_km := 
 	1 1 1 0
 	1 1 2 8
@@ -136,7 +129,7 @@ param C_km :=
 	3 2 1 0
 	3 2 2 30 ;
 
-# 22 Costs per kg
+# 21 Costs per kg
 param C_kg :=
 	1 1 1 35
 	1 1 2 0
@@ -151,7 +144,7 @@ param C_kg :=
 	3 2 1 50
 	3 2 2 0 ;
 
-# 23 Costs fixed
+# 22 Costs fixed
 param C_fix :=
 	1 1 1 150
 	1 1 2 100
@@ -166,7 +159,7 @@ param C_fix :=
 	3 2 1 200
 	3 2 2 200 ;
 
-# 24 Costs to make a stop
+# 23 Costs to make a stop
 param C_stop_2:=
 1 1 10
 1 2 10
@@ -189,6 +182,13 @@ param C_stop_2:=
 3 5 40
 3 6 40
 3 7 40 ;
+
+# 24 No pickup penalty cost
+param C_2 :=
+    1 2000
+    2 2000
+    3 2000
+    4 2000 ;
 
 # 25 Time window amounts
 param pi_2 :=
