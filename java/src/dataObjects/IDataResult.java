@@ -31,7 +31,7 @@ public interface IDataResult {
 
     void setOperatorRunningTimes(int[] operatorRunningTimes);
 
-    double getInitialObjective();
+    double getNoTransportObjective();
 
     double getBestObjective();
 
@@ -49,5 +49,25 @@ public interface IDataResult {
 
     String getName();
 
-    int getBestSolutions();
+    double[] getBestSolutions();
+
+    void setBestSolutions(double[] bestSolutions);
+
+    double getInitialSolutionAverageObjective();
+
+    double getInitialSolutionRunningTime();
+
+    double getInitialSolutionAverageImprovement();
+
+    double getAverageObjective();
+
+    double getAverageImprovement();
+
+    double getBestImprovement();
+
+    void setInitialSolutionAverageObjective(double initialSolutionAverageObjective);
+
+    void setInitialSolutionRunningTime(double initialSolutionRunningTime);
+
+    void setInitialSolutionAverageImprovement(double initialSolutionAverageImprovement);
 }

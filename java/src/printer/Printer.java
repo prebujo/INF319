@@ -21,7 +21,7 @@ public class Printer implements IPrinter {
 
             fileWriter.write(line);
 
-            line = filename+"_"+dataSet.getOrderAmount()+"_Ord_"+dataSet.getVehicleAmount()+"_Veh_"+dataSet.getLocationsAmount()+"_Loc_"+","+dataResult.getInitialObjective()+","+dataResult.getBestObjective()+","+dataResult.getRunningTime()+"\n";
+            line = filename+"_"+dataSet.getOrderAmount()+"_Ord_"+dataSet.getVehicleAmount()+"_Veh_"+dataSet.getLocationsAmount()+"_Loc_"+","+dataResult.getNoTransportObjective()+","+dataResult.getBestObjective()+","+dataResult.getRunningTime()+"\n";
             fileWriter.write(line);
 
             fileWriter.write("\n");
@@ -79,11 +79,12 @@ public class Printer implements IPrinter {
     }
 
     @Override
-    public void printDataToFile(String filename, IDataSet dataSet, List<IDataResult> result, List<IOperator> operators) {
+    public void printDataToFile(String outputFileName, List<String> instanceSizes, List<IDataResult> results, List<IOperator> operators) {
         //TODO: Finish printer of several runs
 
         try {
-            FileWriter fileWriter = new FileWriter("res/"+filename+"_RESULTS.csv");
+
+            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"_RESULTS.csv");
 
             String line = ",Best objective found \n";
             fileWriter.write(line);
@@ -91,77 +92,24 @@ public class Printer implements IPrinter {
             line = "Instance,Run 1,Run 2, Run 3, Run 4, Run 5, Run 6, Run 7, Run 8, Run 9, Run 10 \n ";
             fileWriter.write(line);
 
-            for (int i = 0; i < result.size(); i++) {
-                fileWriter.write(result.get(i).getName());
-                for (int j = 0; j < result.get(i).getBestSolutions(); j++) {
-
+            //printing each run's results for each instance
+            for (int i = 0; i < results.size(); i++) {
+                fileWriter.write(instanceSizes.get(i)+",");
+                double[] bestSolutions = results.get(i).getBestSolutions();
+                for (int j = 0; j < bestSolutions.length; j++) {
+                    fileWriter.write(","+bestSolutions[j]);
                 }
-            }
-
-            for (int i = 0; i < result.size(); i++) {
-
-                IDataResult dataResult = result.get(i);
-                line = "Results from runnning " + dataResult.getHeuristicName() + " on input file instance " + filename + "\n";
-                fileWriter.write(line);
                 fileWriter.write("\n");
-
-                line = "Instance,Initial_Obj,Best_Obj,Run_Time\n";
-
-                fileWriter.write(line);
-
-                line = filename + "_" + dataSet.getOrderAmount() + "_Ord_" + dataSet.getVehicleAmount() + "_Veh_" + dataSet.getLocationsAmount() + "_Loc_" + "," + dataResult.getInitialObjective() + "," + dataResult.getBestObjective() + "," + dataResult.getRunningTime() + "\n";
-                fileWriter.write(line);
-
-                fileWriter.write("\n");
-
-                line = "Best Solution found";
-
-                int[] bestSolution = dataResult.getBestSolution();
-                for (int j = 0; j< bestSolution.length; j++){
-                    line+=","+bestSolution[j];
-                }
-                line+="\n"+"Iteration found:,"+dataResult.getBestIteration();
-
-                fileWriter.write(line);
-                fileWriter.write("\n\n");
-
             }
+            fileWriter.write("\n");
 
-//
-//            line = "Operator,Operator Time, Operator Running Time, Average operator Running Time\n";
-//            fileWriter.write(line);
-//
-//
-//
-//            double[] operatorTime = dataResult.getOperatorTime();
-//            int[] operatorRunningTimes = dataResult.getOperatorRunningTimes();
-//            for (int i = 0; i<operators.size(); i++){
-//                line = operators.get(i).getName()+ "," +operatorTime[i]+","+operatorRunningTimes[i]+","+operatorTime[i]/operatorRunningTimes[i];
-//                fileWriter.write(line+"\n");
-//            }
-//            fileWriter.write("\n");
-//
-//            Double[][] operatorWeightData = dataResult.getOperatorWeightData();
-//            line = "Segments";
-//            for (int i = 0; i<operatorWeightData.length;i++){
-//                line+=","+(i+1);
-//            }
-//            line+="\n";
-//            fileWriter.write(line);
-//
-//            writeOperatorTableHorizontal(operatorWeightData, fileWriter, "weight", operators);
-//
-//            Double[][] scoreData = dataResult.getScoreData();
-//
-//            line = "\n";
-//            line += "Operator";
-//            for (int i = 0; i<scoreData[0].length; i++){
-//                line += ","+ operators.get(i).getName()+" score" ;
-//            }
-//            line+="\n";
-//            fileWriter.write(line);
-//
-//            writeOperatorTableVertical(scoreData,fileWriter,"score");
+            fileWriter.write("Instance, No transport Objective, Initial Solution Average Objective, Initial Solution Average Imporvement, Average Objective, Average Improvement, Best Objective, Best Improvement, Initial Solution Average Run Time, Average Total Run Time \n");
+            for (int i = 0; i < results.size(); i++) {
+                fileWriter.write(instanceSizes.get(i)+",");
+                IDataResult result = results.get(i);
+                fileWriter.write(result.getNoTransportObjective()+","+result.getInitialSolutionAverageObjective()+","+result.getInitialSolutionAverageImprovement()+","+result.getAverageObjective()+","+result.getAverageImprovement()+","+result.getBestObjective()+","+result.getBestImprovement()+","+result.getInitialSolutionRunningTime()+","+result.getRunningTime()+"\n");
+            }
+            fileWriter.write("\n");
 
             fileWriter.close();
         } catch (IOException e) {

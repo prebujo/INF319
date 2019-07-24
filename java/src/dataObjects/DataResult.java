@@ -28,6 +28,13 @@ public class DataResult implements IDataResult {
     private Double[][] scoreData;
     private double[] operatorTime;
     private int[] operatorRunningTimes;
+    private double[] bestSolutions;
+    private double initialSolutionAverageObjective;
+    private double initialSolutionRunningTime;
+    private double initialSolutionAverageImprovement;
+    private double averageObjective;
+    private double averageImprovement;
+    private double bestImprovement;
 
 
     public DataResult(List<IOperator> operators, String heuristicName, int segmentAmount, int iterations, int operatorAmount, int orderAmount, int vehicleAmount, int locationsAmount){
@@ -138,7 +145,7 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public double getInitialObjective() {
+    public double getNoTransportObjective() {
         return initialObjective;
     }
 
@@ -183,7 +190,68 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public int getBestSolutions() {
-        return 0;
+    public double[] getBestSolutions() {
+        return bestSolutions;
+    }
+    @Override
+    public void setBestSolutions(double[] bestSolutions) {
+        this.bestSolutions = bestSolutions;
+    }
+
+    @Override
+    public double getInitialSolutionAverageObjective() {
+        return initialSolutionAverageObjective;
+    }
+
+    @Override
+    public double getInitialSolutionRunningTime() {
+        return initialSolutionRunningTime;
+    }
+
+    @Override
+    public double getInitialSolutionAverageImprovement() {
+        return initialSolutionAverageImprovement;
+    }
+
+    @Override
+    public double getAverageObjective() {
+        return averageObjective;
+    }
+
+    @Override
+    public double getAverageImprovement() {
+        return averageImprovement;
+    }
+
+    @Override
+    public double getBestImprovement() {
+        return bestImprovement;
+    }
+
+    @Override
+    public void setInitialSolutionAverageObjective(double initialSolutionAverageObjective) {
+        this.initialSolutionAverageObjective = initialSolutionAverageObjective;
+    }
+
+    @Override
+    public void setInitialSolutionRunningTime(double initialSolutionRunningTime) {
+        this.initialSolutionRunningTime = initialSolutionRunningTime;
+    }
+
+    @Override
+    public void setInitialSolutionAverageImprovement(double initialSolutionAverageImprovement) {
+        this.initialSolutionAverageImprovement = initialSolutionAverageImprovement;
+    }
+
+    public void setAverageObjective(double averageObjective) {
+        this.averageObjective = averageObjective;
+    }
+
+    public void setAverageImprovement(double averageImprovement) {
+        this.averageImprovement = averageImprovement;
+    }
+
+    public void setBestImprovement(double bestImprovement) {
+        this.bestImprovement = bestImprovement;
     }
 }

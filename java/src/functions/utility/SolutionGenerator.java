@@ -104,4 +104,9 @@ public class SolutionGenerator implements ISolutionGenerator {
         }
         return result;
     }
+
+    @Override
+    public int[] createStartSolution(int vehicles, int orders){
+        return createDummySolution(vehicles,orders);
+    }
 }

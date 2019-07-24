@@ -11,9 +11,8 @@ import printer.Printer;
 import reader.IReader;
 import reader.Reader;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class TestHeuristicFinal {
     public static void main(String[] args) throws Throwable {
@@ -26,39 +25,33 @@ public class TestHeuristicFinal {
         IReader reader = new Reader();
 
         List<IDataResult> results = new ArrayList<>();
-        IDataSet dataSet = null;
         List<IOperator> operators = null;
         IFeasibility feasibility = null;
-
-        for (int i = 0; i < 5; i++) {
-            operators=new ArrayList<>();
-            String fileName = "Inst"+(i+1)+"_Ord_20_Veh_10_Loc_11";
-            dataSet = reader.readDataFromFile(fileName);
+        String instance = "Inst1_";
+        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9");
+        List<IDataSet> dataSets = reader.readDataFromFiles(instance,instanceSizes);
+        int i = 0;
+        for (IDataSet dataSet:dataSets) {
 
             Random random = new Random(101+i);
-
             feasibility = new Feasibility(dataSet);
 
+            operators=new ArrayList<>();
+            operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
+            operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
+            operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&R1_4"));
+            operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
+            operators.add(new ReturnSameSolution("retSame"));
+
             AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, feasibility, random, "alns");
-
-            String swapDescription = "Swaps the position of 2 orders from one vehicle to another";
-            operators.add(new SwapTwo(dataSet, random, feasibility, "swap2", swapDescription));
-            String exchangeDescription = "exchanges the order of 3 orders a delivery schedule of a";
-            operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3", exchangeDescription));
-            String removeAndReinsertTwoToFourDescription = "remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
-            operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 3, "r&R1_4", removeAndReinsertTwoToFourDescription));
-            String removeAndReinsertOneDescription = "remove and reinsert operator that removes between 1-1 random elements from solution and reinserts them in randomly selected vehicles";
-            operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 3, "r&r1_4", removeAndReinsertOneDescription));
-            String returnSame = "return the same solution";
-            operators.add(new ReturnSameSolution("retSame", returnSame));
-
             IDataResult result = alns.optimize(operators);
             results.add(result);
+            i++;
         }
 
         IPrinter printer = new Printer();
 
-        printer.printDataToFile("Ord_4_Veh_3_Loc_7",dataSet,results,operators);
+        printer.printDataToFile(instance,instanceSizes,results,operators);
     }
 
     private static void printArray(int[] array) {

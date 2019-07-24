@@ -1,8 +1,10 @@
 package reader;
 
+import dataObjects.DataResult;
 import dataObjects.DataSet;
 import dataObjects.IDataSet;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.*;
 
@@ -11,7 +13,7 @@ public class Reader implements IReader {
     public IDataSet readDataFromFile(String fileName) throws Exception {
         IDataSet result;
 
-        File file = new File("/home/preben/repo/master/java/res/"+fileName+".dat");
+        File file = new File("/home/preben/repo/master/java/res/instances/"+fileName+".dat");
         Scanner fileScanner = new Scanner(file);
         nextSection(fileScanner);
         int vehicleAmount = getIntFromLineAndMoveToNextSection(fileScanner,1); //#1
@@ -97,6 +99,15 @@ public class Reader implements IReader {
         result.setUpperTimeWindows(upperTimeWindows);
         result.setTravelTimes(travelTimes);
         result.setTravelDistances(travelDistances);
+        return result;
+    }
+    @Override
+    public List<IDataSet> readDataFromFiles(String instance, List<String> instanceSizes) throws Exception {
+        List<IDataSet> result = new ArrayList<>();
+        for (String fileName :
+                instanceSizes) {
+            result.add(readDataFromFile(instance+fileName));
+        }
         return result;
     }
 
