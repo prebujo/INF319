@@ -2,9 +2,16 @@ package dataObjects;
 
 import java.util.Objects;
 
+import static java.lang.Math.cos;
+import static java.lang.StrictMath.sin;
+import static java.lang.StrictMath.sqrt;
+
 public class Point {
     private int x;
     private int y;
+    private double xFactoryRadius = 3;
+    private double yFactoryRadius = 3;
+
     public Point(int x, int y){
         this.x=x;
         this.y=y;
@@ -26,6 +33,14 @@ public class Point {
         Point point = (Point) o;
         return x == point.x &&
                 y == point.y;
+    }
+
+    public Point getFactoryPoint(double rho, double phi){
+        double x1 = sqrt(rho)+cos(phi);
+        double y1 = sqrt(rho) + sin(phi);
+        x1 = x+x1*xFactoryRadius;
+        y1 = y+y1*yFactoryRadius;
+        return new Point((int)x1,(int)y1);
     }
 
     @Override

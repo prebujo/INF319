@@ -46,4 +46,8 @@ public interface IDataResult {
     Double[][] getOperatorWeightData();
 
     Double[][] getScoreData();
+
+    String getName();
+
+    int getBestSolutions();
 }

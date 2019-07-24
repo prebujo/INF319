@@ -14,6 +14,7 @@ import java.util.Random;
 
 public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
+    private static final int RUNS_AMOUNT = 10;
     private final int INITIAL_SEGMENT_LENGTH = 100;
     private final double INITIAL_ACCEPTANCE_PROBABILITY = 0.8;
     private final IDataSet dataSet;
@@ -45,13 +46,17 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         //Generating start solution
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
 
-        int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
 
         //Hashset to store acceptedSolutions
+
+        ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
+        int[][] bestSolutions = new int[RUNS_AMOUNT][dataSet.getVehicleAmount()+dataSet.getOrderAmount()*2];
+
+        int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
         HashSet<String> acceptedSolutions = new HashSet<>();
         acceptedSolutions.add(toString(startSolution));
 
-        ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
+
         int[] bestSolution = startSolution;
         int[] acceptedSolution = startSolution;
         int[] currentSolution = startSolution;

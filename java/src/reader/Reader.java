@@ -64,9 +64,9 @@ public class Reader implements IReader {
 
         int timeWindowMax = getMaxValue(timeWindowAmounts);
 
-        double[][] lowerTimeWindows = getDouble2DReverseList(fileScanner, timeWindowMax, locationsAmount); //#26
+        double[][] lowerTimeWindows = getDouble2DList(fileScanner, locationsAmount, timeWindowMax); //#26
 
-        double[][] upperTimeWindows = getDouble2DReverseList(fileScanner, timeWindowMax, locationsAmount); //#27
+        double[][] upperTimeWindows = getDouble2DList(fileScanner, locationsAmount, timeWindowMax); //#27
 
         double[][][] travelTimes = getDouble3DList(fileScanner, vehicleAmount, locationsAmount, locationsAmount);   //#28
 
@@ -139,7 +139,7 @@ public class Reader implements IReader {
         for (int j = 0;j<(i-1);j++) {
             fileScanner.nextInt();
         }
-        if(fileScanner.hasNextInt()) {
+        if(fileScanner.hasNextDouble()) {
             return fileScanner.nextDouble();
         }
         //if input is no int ie. "." return 0
@@ -230,7 +230,7 @@ public class Reader implements IReader {
         for (int i = 0;i<x;i++){
             for (int j = 0;j<y;j++){
                 for (int k = 0; k<z;k++){
-                    result[i][j][k] = getIntFromLine(fileScanner, 4);
+                    result[i][j][k] = getDoubleFromLine(fileScanner, 4);
                 }
             }
         }

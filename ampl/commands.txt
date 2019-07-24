@@ -1,5 +1,6 @@
 #commands to run model
 model model.mod; data simple.dat; option solver cplex;
+model model.mod; data Inst5_Ord_4_Veh_3_Loc_7.dat; option solver cplex;
 option presolve 0;
 option cplex_options 'iisfind 2';
 solve;
@@ -12,12 +13,10 @@ display {j in 1.._nvars: _var[j].iis<>'non'} (_varname[j],_var[j].iis);
 display _varname, _var;
 
 #display eliminated constraints
-print {i in 1.._ncons:
-_con[i].status = "pre"}: _conname[i];
+print {i in 1.._ncons: _con[i].status = "pre"}: _conname[i];
 
 #display eliminated variables
-print {j in 1.._nvars:
-_var.status[j] = "pre"}: _varname[j];
+print {j in 1.._nvars: _var.status[j] = "pre"}: _varname[j];
 
 #display basis variables
 display {j in 1.._nvars: _var[j].sstatus = "bas"} (_varname[j], _var[j]);

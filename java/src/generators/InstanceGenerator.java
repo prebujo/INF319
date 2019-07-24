@@ -15,10 +15,9 @@ public class InstanceGenerator implements IInstanceGenerator {
     private static final double ORDER_WEIGHT_UPPER_BOUND = 24000;
     private static final double VEHICLE_WEIGHT_UPPER_BOUND_SMALL = 12000;
     private static final double VEHICLE_WEIGHT_UPPER_BOUND_MEDIUM = 18000;
-    private static final double ORDER_VOLUME_PORTION_LOWER_BOUND = 4;
-    private static final double ORDER_VOLUME_PORTION_MEDIUM_BOUND = 265;
-    private static final double ORDER_VOLUME_PORTION_UPPER_BOUND = 1000;
-    private static final double ORDER_VOLUME_MEDIUM_BOUND = 50;
+    private static final double ORDER_VOLUME_PORTION_LOWER_BOUND = 35;
+    private static final double ORDER_VOLUME_PORTION_UPPER_BOUND = 450;
+    private static final double ORDER_VOLUME_PORTION_MEDIAN = 120;
     private static final double ORDER_VOLUME_UPPER_BOUND = 102;
     private static final double VEHICLE_VOLUME_UPPER_BOUND_SMALL = 55;
     private static final double VEHICLE_VOLUME_UPPER_BOUND_MEDIUM = 71;
@@ -28,26 +27,30 @@ public class InstanceGenerator implements IInstanceGenerator {
     private static final int LARGEST_INSTANCE_ORDER_AMOUNT = 100;
     private static final double LARGE_NUMBER = 9999999;
     private static final double SMALL_VEHICLE_STOP_MULTIPLIER = 1;
-    private static final double MEDIUM_VEHICLE_STOP_MULTIPLIER = 3;
-    private static final double LARGE_VEHICLE_STOP_MULTIPLIER = 4;
+    private static final double MEDIUM_VEHICLE_STOP_MULTIPLIER = 1.5;
+    private static final double LARGE_VEHICLE_STOP_MULTIPLIER = 2;
     private static final int TIME_WINDOW_LOWER_BOUND_HOURS = 2;
     private static final int MINIMUM_OPENING_TIME = 3;
     private static final int MINIMUM_CLOSED_TIME = 1;
     private static final double TRAVEL_TIME_PERCENT_OF_DISTANCE = 0.6;
     private static final double TRAVEL_TIME_PERCENT_VARIATION = 0.1;
-    private final Random random;
+    private static final int MAX_INSTANCE_ORDERS = 200;
+    private final double UPPER_BOUND_PROBABILITY = 0.9;
+    private Random random;
     private final int COST_STRUCTURE_DISTANCE_DIMENSION = 10;
     private final int COST_STRUCTURE_WEIGHT_DIMENSION = 28;
     private final double MINIMUM_COST_OF_NO_TRANSPORT = 20000;
-    private final double MAXIMUM_COST_OF_NO_TRANSPORT = 40000;
-    private int TIMEWINDOW_AMOUNT_LOWER_BOUND = 2;
+    private int TIMEWINDOW_AMOUNT_LOWER_BOUND = 3;
     private final List<Elipse> possibilitiesGermany;
     private final List<Elipse> possibilitiesEurope;
     private int UNIFORM_UPPER_BOUND_X=1500;
     private int UNIFORM_UPPER_BOUND_Y=1500;
+    private double distMult = 30;
+    private double weightMult= 10;
+    private double sizeMult= 1000;
+    private double SPECIAL_ABILITY_PROBABILITY= 0.95;
 
     public InstanceGenerator(){
-        this.random = new Random(13);
         possibilitiesEurope = generateEuropeList();
         possibilitiesGermany = generateGermanyList();
     }
@@ -66,7 +69,7 @@ public class InstanceGenerator implements IInstanceGenerator {
                                 new Elipse(new Point(470,1620), 200,300),
                                 new Elipse(new Point(1250,480), 150,300),   //Italy
                                 new Elipse(new Point(1250,480), 150,300),
-                                new Elipse(new Point(1900,1350), 350,300),  //Polans
+                                new Elipse(new Point(1900,1350), 350,300),  //Poland
                                 new Elipse(new Point(1900,1350), 350,300),
                                 new Elipse(new Point( 1650, 1040), 130,100),
                                 new Elipse(new Point(1850,820), 150,100),
@@ -78,29 +81,29 @@ public class InstanceGenerator implements IInstanceGenerator {
 
     private List<Elipse> generateGermanyList(){
         return Arrays.asList(
-                new Elipse(new Point(525,570),35,40),   //Berlin
-                new Elipse(new Point(525,570),35,40),   //Berlin
-                new Elipse(new Point(525,570),35,40),   //Berlin
-                new Elipse(new Point(300,775),15,15),
-                new Elipse(new Point(295,690),30,30),
-                new Elipse(new Point(295,690),30,30),   //Hamburg
-                new Elipse(new Point(295,690),30,30),
-                new Elipse(new Point(200,640),30,30),
-                new Elipse(new Point(80,415),40,50),    //Düsseldorf/Cologne
-                new Elipse(new Point(80,415),40,50),
-                new Elipse(new Point(80,415),40,50),
-                new Elipse(new Point(405,95),60,40),    //Munich
-                new Elipse(new Point(405,95),60,40),
-                new Elipse(new Point(405,95),60,40),
-                new Elipse(new Point(205,305), 20,20),    //Frankfurt
-                new Elipse(new Point(205,305), 20,20),
-                new Elipse(new Point(273,550), 20,25),
-                new Elipse(new Point(240,165), 20,20),
-                new Elipse(new Point(368,245), 20,20),
-                new Elipse(new Point(540,415), 25,25),
-                new Elipse(new Point(455,445), 25,25),
-                new Elipse(new Point(90,210), 20,20),
-                new Elipse(new Point(445,760), 15,15)
+                new Elipse(new Point(525,570),55,60),   //Berlin
+                new Elipse(new Point(525,570),55,60),   //Berlin
+                new Elipse(new Point(525,570),55,60),   //Berlin
+                new Elipse(new Point(300,775),35,35),
+                new Elipse(new Point(295,690),45,45),
+                new Elipse(new Point(295,690),45,45),   //Hamburg
+                new Elipse(new Point(295,690),45,45),
+                new Elipse(new Point(200,640),35,30),
+                new Elipse(new Point(80,415),50,70),    //Düsseldorf/Cologne
+                new Elipse(new Point(80,415),50,70),
+                new Elipse(new Point(80,415),50,70),
+                new Elipse(new Point(405,95),80,50),    //Munich
+                new Elipse(new Point(405,95),80,50),
+                new Elipse(new Point(405,95),80,50),
+                new Elipse(new Point(205,305), 30,40),    //Frankfurt
+                new Elipse(new Point(205,305), 30,40),
+                new Elipse(new Point(273,550), 30,45),
+                new Elipse(new Point(240,165), 35,35),
+                new Elipse(new Point(368,245), 35,35),
+                new Elipse(new Point(540,415), 35,35),
+                new Elipse(new Point(455,445), 35,35),
+                new Elipse(new Point(90,210), 35,40),
+                new Elipse(new Point(445,760), 30,30)
                 );
     }
 
@@ -108,9 +111,9 @@ public class InstanceGenerator implements IInstanceGenerator {
     public void makeInstance(int orderAmount, int vehicleAmount, int pickupLocationAmount, int deliveryLocationAmount, int factoryAmount, int instanceID, int instanceType) {
 
         try {
-            FileWriter fileWriter = new FileWriter("res/Inst"+instanceID+"_Ord_"+orderAmount+"_Veh_"+vehicleAmount+"_Loc_"+(pickupLocationAmount+deliveryLocationAmount)+".dat");
+            FileWriter fileWriter = new FileWriter("res/instances/Inst"+instanceID+"_Ord_"+orderAmount+"_Veh_"+vehicleAmount+"_Loc_"+(pickupLocationAmount+deliveryLocationAmount)+".dat");
 
-
+            this.random = new Random(10+instanceID);
 
             int itemNumber = 1;
 
@@ -124,47 +127,46 @@ public class InstanceGenerator implements IInstanceGenerator {
 
             printNumber(itemNumber++,factoryAmount,"nf","amount of factories",fileWriter);
 
-            int[] factoryLocationAmounts = new int[factoryAmount];
-
-            int counter = deliveryLocationAmount;
-            for (int i = 0;i<factoryAmount;i++){
-                factoryLocationAmounts[i]=1;
-                counter--;
-            }
-
-
-            while (counter>0){
-                int selected = random.nextInt(factoryAmount);
-                factoryLocationAmounts[selected]++;
-                counter--;
-            }
-
-
             writeHeaderSection(itemNumber++, "factory sets", fileWriter);
 
             String setName = "N_f_2";
-            int[] locationElements = createPossibleElementsTable(deliveryLocationAmount,pickupLocationAmount+1);
-            int locationElementsCounter = deliveryLocationAmount;
+
+            int[][] factories = new int[factoryAmount][deliveryLocationAmount];
+
+            int[] factory = new int[totalLocationsAmount+1];
+            for (int i = 0; i < pickupLocationAmount + 1; i++) {
+                factory[i] = i;
+            }
+            int counter = pickupLocationAmount+1;
+            int[] indexes = new int[factoryAmount];
+            for (int i = 0; i < factoryAmount; i++) {
+                factory[counter] = counter;
+                factories[i][0]=counter++;
+                indexes[i]++;
+            }
+
+            while (counter<totalLocationsAmount+1){
+                int factoryChoice = random.nextInt(factoryAmount);
+                factory[counter] = factories[factoryChoice][0];
+                factories[factoryChoice][indexes[factoryChoice]++]=counter++;
+            }
+
             for (int i = 0;i<factoryAmount;i++) {
                 writeSetNumber(setName, i, fileWriter);
-                counter=factoryLocationAmounts[i];
-                while(counter>0){
-                    int choiceIdx = random.nextInt(locationElementsCounter--);
-                    fileWriter.write(" "+locationElements[choiceIdx]);
-                    if(choiceIdx!=locationElementsCounter){
-                        locationElements[choiceIdx] = locationElements[locationElementsCounter];
-                    }
-                    counter--;
+                counter=0;
+                while(factories[i][counter]!=0){
+                    fileWriter.write(" "+factories[i][counter++]);
                 }
                 fileWriter.write(" ;\n");
             }
+
             fileWriter.write("\n");
 
             writeNewParameterSection(itemNumber++,"H","factory stop capacities",fileWriter);
             for (int i = 0;i<factoryAmount-1;i++){
-                fileWriter.write((i+1)+" "+(1+random.nextInt(factoryLocationAmounts[i]))+"\n");
+                fileWriter.write((i+1)+" "+(1+random.nextInt(indexes[i]))+"\n");
             }
-            fileWriter.write(factoryAmount+" "+(1+random.nextInt(factoryLocationAmounts[factoryAmount-1]))+" ;\n\n");
+            fileWriter.write(factoryAmount+" "+(1+random.nextInt(indexes[factoryAmount-1]))+" ;\n\n");
 
             writeNewParameterSection(itemNumber++,"L_pd","pickup locations for each order",fileWriter);
 
@@ -201,13 +203,10 @@ public class InstanceGenerator implements IInstanceGenerator {
             double[] orderWeights = oneDimensionTable(orderAmount,ORDER_WEIGHT_LOWER_BOUND,ORDER_WEIGHT_MEDIUM_BOUND,ORDER_WEIGHT_UPPER_BOUND,fileWriter);
 
             writeNewParameterSection(itemNumber++,"Q_vol_2","order volumes",fileWriter);
-            double[] orderVolumes = oneDimensionTable(orderAmount,ORDER_VOLUME_PORTION_LOWER_BOUND,ORDER_VOLUME_PORTION_MEDIUM_BOUND,ORDER_VOLUME_PORTION_UPPER_BOUND, vehicleVolumeMax, fileWriter, orderWeights);
+            double[] orderVolumes = oneDimensionVolumeTable(orderAmount,ORDER_VOLUME_PORTION_MEDIAN, ORDER_VOLUME_PORTION_LOWER_BOUND,ORDER_VOLUME_PORTION_UPPER_BOUND, fileWriter, orderWeights);
 
-
-            double probability = 0.8;
-
-            boolean[] pickuplocationRequiresSpecialProperty = makeProbabilityTable(pickupLocationAmount+1, probability);
-            boolean[] orderRequiresSpecialProperty = makeProbabilityTable(orderAmount,probability);
+            boolean[] pickuplocationRequiresSpecialProperty = makeProbabilityTable(pickupLocationAmount+1, SPECIAL_ABILITY_PROBABILITY);
+            boolean[] orderRequiresSpecialProperty = makeProbabilityTable(orderAmount, SPECIAL_ABILITY_PROBABILITY);
 
             int[] distanceDimensions = new int[vehicleAmount];
 
@@ -268,7 +267,8 @@ public class InstanceGenerator implements IInstanceGenerator {
                     vehicleWeightCapacity[i-1]=ORDER_WEIGHT_UPPER_BOUND;
                 }
                 for(int j = 0;j<orderAmount;j++) {
-                    //first type of vehicle, can pickup all types of orders at all locations..
+
+                    //first type of vehicle, smaller capacity, no special ability at location or for order
                     if (i <= vehicleAmount / 3) {
                         if(orderWeights[j]> vehicleWeightCapacity[i-1]||orderVolumes[j]>vehicleVolumeCapacity[i-1]||
                                 pickuplocationRequiresSpecialProperty[pickupLocation[j]]||
@@ -285,8 +285,8 @@ public class InstanceGenerator implements IInstanceGenerator {
                         } else {
                             vehicleCanPickupOrder[i-1][j] = true;
                         }
-                    } else //third type of vehicle, smaller capacity, no special ability at location or for order
-                        {
+                    } else
+                        {//third type of vehicle, can pickup all types of orders at all locations..
                             vehicleCanPickupOrder[i-1][j]=true;
                         }
                     if(pickuplocationRequiresSpecialProperty[pickupLocation[j]]&&i<=vehicleAmount/3*2) {
@@ -303,7 +303,7 @@ public class InstanceGenerator implements IInstanceGenerator {
             writeBooleanSet("N_v_2", 1,vehicleCanVisitLocation, fileWriter);
 
             writeHeaderSection(itemNumber++,"Orders vehicles can pick up",fileWriter);
-            writeBooleanSet("N_vp",0,vehicleCanPickupOrder,fileWriter);
+            writeBooleanSet("N_vp_2",0,vehicleCanPickupOrder,fileWriter);
 
             writeNewParameterSection(itemNumber++,"K_kg","vehicle weight capacity", fileWriter);
 
@@ -324,6 +324,7 @@ public class InstanceGenerator implements IInstanceGenerator {
             writeNewParameterSection(itemNumber++, "Z_2","Weight intervals",fileWriter);
             writeTable(weightIntervals,fileWriter);
 
+            //COST STRUCTURES
             double[][][] costPerKmStd = new double[3][COST_STRUCTURE_DISTANCE_DIMENSION][COST_STRUCTURE_WEIGHT_DIMENSION];
             double[][][] costPerKgStd = new double[3][COST_STRUCTURE_DISTANCE_DIMENSION][COST_STRUCTURE_WEIGHT_DIMENSION];
             double[][][] costFixedStd = new double[3][COST_STRUCTURE_DISTANCE_DIMENSION][COST_STRUCTURE_WEIGHT_DIMENSION];
@@ -406,7 +407,7 @@ public class InstanceGenerator implements IInstanceGenerator {
             writeTable(costFixed,fileWriter);
 
             for (int i = 0; i < totalLocationsAmount; i++) {
-                stopCosts[0][i] = 10 + random.nextInt(11);
+                stopCosts[0][i] = 20 + random.nextInt(11);
             }
 
             for (int i = 1;i<vehicleAmount;i++){
@@ -417,7 +418,7 @@ public class InstanceGenerator implements IInstanceGenerator {
 
             double[][] travelDistance = new double[totalLocationsAmount][totalLocationsAmount];
             double[][][] travelTimeTypes = new double[3][totalLocationsAmount][totalLocationsAmount];
-            double[][][] travelTimes = new double[3][totalLocationsAmount][totalLocationsAmount];
+            double[][][] travelTimes = new double[vehicleAmount][totalLocationsAmount][totalLocationsAmount];
             List<Point> locations = new ArrayList<>(totalLocationsAmount);
             HashSet<Point> locationsHash = new HashSet<>(totalLocationsAmount);
             List<Elipse> possibilities = null;
@@ -430,17 +431,24 @@ public class InstanceGenerator implements IInstanceGenerator {
             }
 
             //generating locations from elipses or uniform distribution
-            int a=totalLocationsAmount;
-            while(a>0){
-                if(instanceType==3){
+            for (int i = 0; i < totalLocationsAmount; i++) {
+                if (factory[(i+1)]!=(i+1)){
+                    Point location = getRandomFactoryPoint(locations.get(factory[(i+1)]-1));
+                    //avoiding same locations twice...
+                    while (locationsHash.contains(location)){
+                        location = getRandomFactoryPoint(locations.get(factory[(i+1)]-1));
+                    }
+                    locations.add(location);
+                    locationsHash.add(location);
+                } else if(instanceType==3){
                     Point location = new Point(random.nextInt(UNIFORM_UPPER_BOUND_X + 1), random.nextInt(UNIFORM_UPPER_BOUND_Y + 1));
                     //avoiding same locations twice...
                     while (locationsHash.contains(location)){
                         location = new Point(random.nextInt(UNIFORM_UPPER_BOUND_X + 1), random.nextInt(UNIFORM_UPPER_BOUND_Y + 1));
                     }
-                    locationsHash.add(location);
                     locations.add(location);
-                }else {
+                    locationsHash.add(location);
+                } else {
                     int choice = random.nextInt(possibilities.size());
                     Point randomPointFromElipse = getRandomPointFromElipse(possibilities.get(choice));
                     //avoiding same location twice
@@ -450,7 +458,6 @@ public class InstanceGenerator implements IInstanceGenerator {
                     locations.add(randomPointFromElipse);
                     locationsHash.add(randomPointFromElipse);
                 }
-                a--;
             }
 
             //calculating travel times and travel times for each type of vehicles
@@ -481,9 +488,9 @@ public class InstanceGenerator implements IInstanceGenerator {
                     for (int k = 0; k < totalLocationsAmount; k++) {
                         if(!vehicleCanVisitLocation[i][j+1]||!vehicleCanVisitLocation[i][k+1]) {
                             travelTimes[i][j][k] = -1.0;
-                        }else if(i+1<=vehicleAmount/3){
+                        }else if((i+1)<=vehicleAmount/3){
                             travelTimes[i][j][k] = travelTimeTypes[0][j][k];
-                        }else if (i+1<=vehicleAmount*2/3) {
+                        }else if ((i+1)<=vehicleAmount*2/3) {
                             travelTimes[i][j][k] = travelTimeTypes[1][j][k];
                         } else {
                             travelTimes[i][j][k] = travelTimeTypes[2][j][k];
@@ -495,26 +502,37 @@ public class InstanceGenerator implements IInstanceGenerator {
             double[] costOfNoTransport = new double[orderAmount];
 
             for (int i = 0; i < orderAmount; i++) {
-                double distMult = 2.0
-                double dist = travelDistance[pickupLocation[i]][deliveryLocation[i]];
+                double dist = travelDistance[pickupLocation[i]-1][deliveryLocation[i]-1];
                 double weight = orderWeights[i];
                 double size = orderVolumes[i];
-                costOfNoTransport[i] = dist*
+                costOfNoTransport[i] = MINIMUM_COST_OF_NO_TRANSPORT+dist* distMult +weight* weightMult +size* sizeMult;
             }
 
-
-
-            writeNewParameterSection(itemNumber++,"C_Stop_2", "stopping costs", fileWriter);
+            writeNewParameterSection(itemNumber++,"C_stop_2", "stopping costs", fileWriter);
             writeTable(stopCosts,fileWriter);
 
             writeNewParameterSection(itemNumber++,"C_2", "cost of no transport",fileWriter);
             writeTable(costOfNoTransport,fileWriter);
 
-            int timewindowAmountUpperBound = 3;
+            //TIME WINDOWS
+
+            int timewindowAmountUpperBound = 4;
             if(instanceType==1){
-                timewindowAmountUpperBound = 7;
+                if(orderAmount>MAX_INSTANCE_ORDERS/2) {
+                    timewindowAmountUpperBound+=4;
+                }else if(orderAmount>MAX_INSTANCE_ORDERS/8*3){
+                    timewindowAmountUpperBound+=3;
+                }else if(orderAmount>MAX_INSTANCE_ORDERS/4){
+                    timewindowAmountUpperBound+=2;
+                } else if(orderAmount>MAX_INSTANCE_ORDERS/8){
+                    timewindowAmountUpperBound++;
+                }
             } else if(instanceType==3){
-                timewindowAmountUpperBound = 5;
+                if(orderAmount>MAX_INSTANCE_ORDERS/2) {
+                    timewindowAmountUpperBound+=2;
+                }else if(orderAmount>MAX_INSTANCE_ORDERS/4){
+                    timewindowAmountUpperBound++;
+                }
             }
 
             int[] timewindowAmounts = new int[totalLocationsAmount];
@@ -549,13 +567,13 @@ public class InstanceGenerator implements IInstanceGenerator {
                         timewindowUpperBounds[i][j] = -1.0;
                     }else if(timewindowType[i]==1){
                         timewindowLowerBounds[i][j]= 24*60 + timewindowLowerBounds[i][j-1];
-                        timewindowUpperBounds[i][j]= 24*60 + timewindowLowerBounds[i][j-1];
+                        timewindowUpperBounds[i][j]= 24*60 + timewindowUpperBounds[i][j-1];
                     } else if(j%2==1){
                         timewindowLowerBounds[i][j]= timewindowUpperBounds[i][j-1]+(MINIMUM_CLOSED_TIME + random.nextInt(2))*60;
                         timewindowUpperBounds[i][j]= timewindowLowerBounds[i][j]+(timewindowUpperBounds[i][j-2]-timewindowLowerBounds[i][j-2]);
                     } else {
                         timewindowLowerBounds[i][j]= timewindowLowerBounds[i][j-2] + 24*60;
-                        timewindowUpperBounds[i][j]= timewindowLowerBounds[i][j-2] + 24*60;
+                        timewindowUpperBounds[i][j]= timewindowUpperBounds[i][j-2] + 24*60;
                     }
                 }
             }
@@ -578,20 +596,6 @@ public class InstanceGenerator implements IInstanceGenerator {
             writeNewParameterSection(itemNumber++,"D_2", "Travel distance", fileWriter);
             writeTable(travelDistance,fileWriter);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             fileWriter.close();
 
         } catch (IOException e) {
@@ -602,6 +606,9 @@ public class InstanceGenerator implements IInstanceGenerator {
 
     private Point getRandomPointFromElipse(Elipse elipse){
         return elipse.getPointInside(random.nextDouble(),random.nextDouble()*2*PI);
+    }
+    private Point getRandomFactoryPoint(Point point){
+        return point.getFactoryPoint(random.nextDouble(),random.nextDouble()*2*PI);
     }
 
     private double[] getIntervalTable(double[] selection, int amount,int maxLength) {
@@ -780,42 +787,44 @@ public class InstanceGenerator implements IInstanceGenerator {
         double[] table = new double[tableDimension];
         for (int i = 0;i<tableDimension-1;i++){
             table[i] = lowerBound+random.nextDouble()*(mediumBound-lowerBound);
-            if(random.nextDouble()>0.9){
+            if(random.nextDouble()> UPPER_BOUND_PROBABILITY){
                 table[i]+=random.nextDouble()*(upperBound-mediumBound);
             }
             fileWriter.write((i+1)+" "+table[i]+"\n");
         }
         table[tableDimension-1] = lowerBound+random.nextDouble()*(upperBound-lowerBound);
-        if(random.nextDouble()>0.9){
+        if(random.nextDouble()> UPPER_BOUND_PROBABILITY){
             table[tableDimension-1]+=random.nextDouble()*(upperBound-mediumBound);
         }
         fileWriter.write(tableDimension+" "+table[tableDimension-1]+" ;\n\n");
         return table;
     }
 
-    private double[] oneDimensionTable(int tableDimension, double lowerBound, double mediumBound, double upperBound, double vehicleVolumeMax, FileWriter fileWriter, double[] regulator) throws IOException {
+    //TODO: fix this!!
+    private double[] oneDimensionVolumeTable(int tableDimension, double median, double lowerBound, double upperBound, FileWriter fileWriter, double[] regulator) throws IOException {
         double[] table = new double[tableDimension];
         for (int i = 0;i<tableDimension-1;i++){
-            table[i] = lowerBound+random.nextDouble()*(mediumBound-lowerBound);
-            if(random.nextDouble()>0.9){
-                table[i]+=random.nextDouble()*(upperBound-mediumBound);
-            }
+
+            table[i] = median + random.nextDouble()*getNormalSide(median, lowerBound, upperBound);
             table[i]=regulator[i]/table[i];
-            if(table[i]>vehicleVolumeMax){
-                table[i] = ORDER_VOLUME_MEDIUM_BOUND+random.nextDouble()*(vehicleVolumeMax-ORDER_VOLUME_MEDIUM_BOUND);
+            while(table[i]>ORDER_VOLUME_UPPER_BOUND){
+                table[i] = median + random.nextDouble()*getNormalSide(median, lowerBound, upperBound);
+                table[i]=regulator[i]/table[i];
             }
             fileWriter.write((i+1)+" "+table[i]+"\n");
         }
-        table[tableDimension-1] = lowerBound+random.nextDouble()*(upperBound-lowerBound);
-        if(random.nextDouble()>0.9){
-            table[tableDimension-1]+=random.nextDouble()*(upperBound-mediumBound);
-        }
-        table[tableDimension-1]=regulator[tableDimension-1]/table[tableDimension-1];
-        if(table[tableDimension-1]>vehicleVolumeMax){
-            table[tableDimension-1] = ORDER_VOLUME_MEDIUM_BOUND+random.nextDouble()*(vehicleVolumeMax-ORDER_VOLUME_MEDIUM_BOUND);
+        table[table.length-1] = median + random.nextDouble()*getNormalSide(median, lowerBound, upperBound);
+        table[table.length-1]=regulator[table.length-1]/table[table.length-1];
+        while(table[table.length-1]>ORDER_VOLUME_UPPER_BOUND){
+            table[table.length-1] = median + random.nextDouble()*getNormalSide(median, lowerBound, upperBound);
+            table[table.length-1]=regulator[table.length-1]/table[table.length-1];
         }
         fileWriter.write(tableDimension+" "+table[tableDimension-1]+" ;\n\n");
         return table;
+    }
+
+    private double getNormalSide(double median, double lowerBound, double upperBound) {
+        return random.nextBoolean() ? lowerBound-median:upperBound-median;
     }
 
     private void printNumber(int itemNumber, int outputNumber, String parameterName, String parameterDescription, FileWriter fileWriter) throws IOException {

@@ -9,6 +9,7 @@ public class DataResult implements IDataResult {
     private final int orderAmount;
     private final int vehicleAmount;
     private final int locationsAmount;
+    private final String name;
     private int[] objectiveResults;
     private HashSet<String> solutions;
     private int[] bestSolution;
@@ -38,6 +39,7 @@ public class DataResult implements IDataResult {
         this.orderAmount = orderAmount;
         this.vehicleAmount = vehicleAmount;
         this.locationsAmount = locationsAmount;
+        this.name = "Inst"+"_";
 
     }
 
@@ -173,5 +175,15 @@ public class DataResult implements IDataResult {
     @Override
     public Double[][] getScoreData() {
         return scoreData;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public int getBestSolutions() {
+        return 0;
     }
 }

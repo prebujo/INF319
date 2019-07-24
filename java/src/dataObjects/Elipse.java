@@ -11,6 +11,8 @@ public class Elipse {
     private Point point;
     private int xRadius;
     private int yRadius;
+    private final int factoryXRadius = 2;
+    private final int factoryYRadius = 2;
     public Elipse(Point point, int xRadius, int yRadius){
         this.point = point;
         this.xRadius = xRadius;
@@ -20,10 +22,11 @@ public class Elipse {
     public Point getPointInside(double rho, double phi){
         double x = sqrt(rho)+cos(phi);
         double y = sqrt(rho) + sin(phi);
-        x = point.getX()+x*xRadius;
-        y = point.getY()+y*yRadius;
+        x = point.getX()+x*factoryXRadius;
+        y = point.getY()+y*factoryYRadius;
         return new Point((int)x,(int)y);
     }
+
     @Override
     public String toString(){
         return "Point: ("+point.getX()+", "+point.getY()+"), xRad: "+xRadius+" yRad: "+yRadius;

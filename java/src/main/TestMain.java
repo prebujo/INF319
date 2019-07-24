@@ -8,6 +8,7 @@ import functions.utility.*;
 import reader.FlowReader;
 import reader.FlowReaderPrint;
 import reader.IReader;
+import reader.Reader;
 
 import java.util.Random;
 
@@ -18,10 +19,10 @@ public class TestMain {
         //Scanner scan = new Scanner(System.in);
         //String fileName = scan.nextLine();
 
-        IReader reader = new FlowReaderPrint();
+        IReader reader = new Reader();
 
         //creates a dataset from file
-        IDataSet dataset = reader.readDataFromFile("AT-DE_W");
+        IDataSet dataset = reader.readDataFromFile("Inst1_Ord_4_Veh_3_Loc_7");
 
         Random random = new Random(101);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
@@ -88,7 +89,8 @@ public class TestMain {
         System.out.println("solution: ");
         printArray(solution);
 
-    solution = new int[]{3,3,0, 0, 8, 13, 11, 13, 8, 11, 0, 10, 14, 6, 10, 6, 14, 0, 5, 19, 18, 19, 18, 5, 17, 15, 17, 15, 0, 0, 0, 0, 16, 9, 9, 16, 12, 7, 7, 12, 0, 2, 2, 1, 1,4,4 };
+//    solution = new int[]{3,3,0, 0, 8, 13, 11, 13, 8, 11, 0, 10, 14, 6, 10, 6, 14, 0, 5, 19, 18, 19, 18, 5, 17, 15, 17, 15, 0, 0, 0, 0, 16, 9, 9, 16, 12, 7, 7, 12, 0, 2, 2, 1, 1,4,4 };
+        solution = new int[]{2,2,0,3,4,3,4,0,1,1,0};
         System.out.println("is solution feasible: "+ feasibility.check(solution));
 
 

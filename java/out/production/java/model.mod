@@ -35,11 +35,15 @@ set N_f_2 {f in F}; #set from java version
 set N_f{f in F} = setof {i in N_f_2[f], j in L_2[i]} (j+nn); #translated factory set for AMPL
 set V = 1 .. nv;
 set V_p{v in V} = {v+no};
-set V_d{v in V} = {v+2*no+nv};
+set V_d{v in V} = {v+nn+no};
 set N_v_2 {v in V};
-set N_vp {v in V};
-set N_vp_2 {v in V} = setof {i in N_vp[v]} (i+nv+no);
-set N_v {v in V} = N_vp[v] union V_p[v] union N_vp_2[v] union V_d[v];
+set N_v_3 {v in V} = setof {i in N_v_2[v], j in L_2[i]:i<=L_lim} j;
+set N_v_4 {v in V} = setof {i in N_v_2[v], j in L_2[i]:i>L_lim} j+nn;
+set N_vp_2{v in V};
+set N_v {v in V} = N_v_3[v] union V_p[v] union N_v_4[v] union V_d[v];
+set N_vp_3{v in V} = setof{i in N_v[v]:i>nn} i-nn;
+set N_vp_4{v in V} = setof{i in N_v[v]:i<=no} i;
+set N_vp{v in V} = N_vp_2[v] inter N_vp_3[v] inter N_vp_4[v];
 set E_2 {v in V} = {i in N_v_2[v],j in N_v_2[v]: j <> i};
 set E {v in V} = {i in N_v[v],j in N_v[v]: j <> i};
 param pi_2 {i in S};
@@ -87,7 +91,7 @@ param T_u_2 {i in S, p in P_2[i]};
 param T_u_max = max {i in S, p in P_2[i]} T_u_2[i,p];
 param T_u {i in N, p in P[i]} = if i <=no then T_u_2[L_pd[i],p] else if i<=nn then T_u_max else if i<=(nn+no) then T_u_2[L_dd[i-nn],p] else T_u_max;
 param T_2 {v in V, (i, j) in E_2[v]};
-param T_max = 2*(max {v in V, (i,j) in E_2[v]} T_2[v,i,j]);
+param T_max = 10*(max {v in V, (i,j) in E_2[v]} T_2[v,i,j]);
 param T {v in V, (i, j) in E[v]} = 
 if i<=no&&j<=no then if L_pd[i] = L_pd[j] then 0 else T_2[v,L_pd[i], L_pd[j]] 
 else if i<=no&&j<=nn then T_max 
@@ -102,7 +106,7 @@ else if i<=(nn+no) then 0
 else if j<=(nn+no) then T_max
 else T_max ;
 param D_2 {i in S, j in S};
-param D_max = 2*(max {i in S, j in S:j<>i} D_2[i,j]);
+param D_max = 10*(max {i in S, j in S:j<>i} D_2[i,j]);
 param D {i in N, j in N} = 
 if i<=no&&j<=no then if L_pd[i] = L_pd[j] then 0 else D_2[L_pd[i], L_pd[j]] 
 else if i<=no&&j<=nn then D_max 

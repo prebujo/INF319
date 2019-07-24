@@ -115,7 +115,7 @@ public class ObjectiveFunction {
     private double getVehicleCosts(int v, double vehicleTotalDistance, double vehicleMaxWeight) {
         int distanceDimension = findDimension(vehicleTotalDistance, distanceIntervals, v);
         int weightDimension = findDimension(vehicleMaxWeight, weightIntervals, v);
-        double result = vehicleMaxWeight*kgCostMatrix[v][weightDimension][distanceDimension] + vehicleTotalDistance*kmCostMatrix[v][weightDimension][distanceDimension] +fixCostMatrix[v][weightDimension][distanceDimension];
+        double result = vehicleMaxWeight*kgCostMatrix[v][distanceDimension][weightDimension] + vehicleTotalDistance*kmCostMatrix[v][distanceDimension][weightDimension] +fixCostMatrix[v][distanceDimension][weightDimension];
         return result;
     }
 
