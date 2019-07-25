@@ -20,7 +20,6 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     private final IDataSet dataSet;
     private final int vehicleAmount;
     private final int orderAmount;
-    private final IFeasibility feasibilityCheck;
     private final Random random;
     private final int lowScore = 1;
     private final int mediumScore = 4;
@@ -29,11 +28,10 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     private String heuristicName;
     private int SEGMENT_LENGTH = 100;
 
-    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, IFeasibility feasibility, Random random, String heuristicName){
+    public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, Random random, String heuristicName){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();
-        this.feasibilityCheck = feasibility;
         this.random = random;
         this.heuristicName = heuristicName;
     }
@@ -42,6 +40,9 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         return optimize(new ArrayList<>());
     }
     public IDataResult optimize(List<IOperator> operators) throws Throwable {
+        //Variables that are equal for each run
+        double decreasePercentage = 0.995;
+        double historyWeight = 0.80;
 
         //Generating start solution
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
@@ -52,57 +53,60 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);
         int[][] bestSolutions = new int[RUNS_AMOUNT][dataSet.getVehicleAmount()+dataSet.getOrderAmount()*2];
         double[] bestObjectives = new double[RUNS_AMOUNT];
+        int[] bestOverallSolution = new int[dataSet.getVehicleAmount()+dataSet.getOrderAmount()*2];
         double averageObjective = 0;
         double averageRunTime = 0;
         double averageImprovement = 0;
+        int[] bestIterations = new int[RUNS_AMOUNT];
+        double[] heuristicRunningTime = new double[RUNS_AMOUNT];
+        int amountOfOperators = operators.size();
+        double[] operatorTime = new double[amountOfOperators];
+        int[] operatorRunningTimes = new int[amountOfOperators];
+        Double[][][] weightData = new Double[RUNS_AMOUNT][ITERATIONS / SEGMENT_LENGTH][amountOfOperators];
+        Double[][][] scoreData = new Double[RUNS_AMOUNT][ITERATIONS][amountOfOperators + 1];
 
         int[] dummySolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
-        double currentObjective = objectiveFunction.calculateSolution(dummySolution);
+        double noTransportObjective =  objectiveFunction.calculateSolution(dummySolution);
+        double currentObjective = noTransportObjective;
+        double bestOverallObjective = noTransportObjective;
         double bestObjective = currentObjective;
         double acceptedObjective = currentObjective;
-        double startSolutionRunningTime=0.0;
+        double initialSolutionRunningTime=0.0;
+        double initialSolutionAverageObjective = 0.0;
+        double initalSolutionAverageImprovement = 0.0;
         IDataResult data = new DataResult(operators, heuristicName, ITERATIONS / SEGMENT_LENGTH, ITERATIONS, operators.size(), orderAmount, vehicleAmount, dataSet.getLocationsAmount());
+        data.setNoTransportObjective(noTransportObjective);
 
-        //TODO: Continue updating model here Need to return the correct output so that I can print the average of all runs etc.
-        double noTransportSolution = objectiveFunction.calculateSolution(solutionGenerator.createDummySolution(dataSet.getVehicleAmount(),dataSet.getOrderAmount()));
-
-        int amountOfOperators = operators.size();
 
         for (int i = 0; i < RUNS_AMOUNT; i++) {
-
-
-            long startSolutionStartTimer = System.nanoTime();
-            int[] startSolution = solutionGenerator.createStartSolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
-            startSolutionRunningTime += (double) (System.nanoTime() - startSolutionStartTimer) / 1_000_000_000;
+            long initialSolutionStartTimer = System.nanoTime();
+            int[] startSolution = solutionGenerator.createDummyStartSolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
+            initialSolutionRunningTime += (double) (System.nanoTime() - initialSolutionStartTimer) / 1_000_000_000;
+            double startSolutionObjective = objectiveFunction.calculateSolution(startSolution);
+            initialSolutionAverageObjective += startSolutionObjective;
+            initalSolutionAverageImprovement += (noTransportObjective - startSolutionObjective) / noTransportObjective;
 
             int[] bestSolution = startSolution;
             int[] acceptedSolution = startSolution;
-            int[] currentSolution = startSolution;
+            int[] currentSolution;
+            currentObjective=objectiveFunction.calculateSolution(startSolution);
 
             HashSet<String> acceptedSolutions = new HashSet<>();
             acceptedSolutions.add(toString(startSolution));
             //int iteration = 0;
-            int i = 0;
-            int bestIteration = 0;
+            int iteration = 0;
             double temperature = 1000;
-            double decreasePercentage = 0.995;
-            double historyWeight = 0.80;
-            double[] operatorTime = new double[amountOfOperators];
-            int[] operatorRunningTimes = new int[amountOfOperators];
             int currentSegment = 0;
 
             //Initializing weights and scores
             Double[] weight = assignEqualStartWeights(amountOfOperators);
-            Double[][] weightData = new Double[ITERATIONS / SEGMENT_LENGTH][amountOfOperators];
             Double[] score = new Double[amountOfOperators];
             Double[] accumulatedTotalScore;
-            Double[][] scoreData = new Double[ITERATIONS][amountOfOperators + 1];
             int[] runTimes = new int[amountOfOperators];
 
-            data.setInitialObjective(currentObjective);
+            data.setNoTransportObjective(currentObjective);
 
             //STEP 1: SELECTING THE INITIAL TEMPERATURE SECTION:
-            double heuristicRunningTime;
             long heuristicStartTimer = System.nanoTime();
 
             for (int m = 0; m < score.length; m++) {
@@ -110,7 +114,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                 runTimes[m] = 0;
             }
 
-            weightData[currentSegment++] = weight.clone(); //saving weights used in current run.
+            weightData[i][currentSegment++] = weight.clone(); //saving weights used in current run.
             int segmentIteration = 0;
             Double objectiveDifference = 0.0;
             int objectiveCounter = 0;
@@ -135,9 +139,8 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         score[operator] += (highScore - mediumScore);
                         bestSolution = currentSolution.clone();
                         bestObjective = currentObjective;
-                        bestIteration = i + 1;
+                        bestIterations[i] = iteration + 1;
                     }
-
 
                     int result = 0;
                     if (currentObjective < acceptedObjective) {
@@ -156,7 +159,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         acceptedSolution = currentSolution.clone();
                     }
                 }
-                scoreData[i++] = score.clone();
+                scoreData[i][iteration++] = score.clone();
                 segmentIteration++;
             }
 
@@ -166,18 +169,20 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
             temperature = -(objectiveDifference / objectiveCounter) / Math.log(INITIAL_ACCEPTANCE_PROBABILITY);
 
+            //TODO: Experiment with the temperature selection segment length
+
             //INITIAL TEMPERATURE SELECTED
 
 
             //STEP 2: STARTING THE ALNS ALGORITHM WITH THE CHOSEN TEMPERATURE
-            while (i < ITERATIONS) {
+            while (iteration < ITERATIONS) {
                 segmentIteration = 0;
                 for (int m = 0; m < score.length; m++) {
                     score[m] = 0.0;
                     runTimes[m] = 0;
                 }
 
-                weightData[currentSegment++] = weight.clone(); //saving weights used in current run.
+                weightData[i][currentSegment++] = weight.clone(); //saving weights used in current run.
 
                 while (segmentIteration < SEGMENT_LENGTH) {
 
@@ -200,7 +205,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                             score[operator] += (highScore - mediumScore);
                             bestSolution = currentSolution.clone();
                             bestObjective = currentObjective;
-                            bestIteration = i + 1;
+                            bestIterations[i] = iteration + 1;
                         }
 
                         int result = accept(currentObjective, acceptedObjective, temperature);
@@ -212,7 +217,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         }
                     }
                     temperature = temperature * decreasePercentage;
-                    scoreData[i++] = score.clone();
+                    scoreData[i][iteration++] = score.clone();
                     segmentIteration++;
                 }
 
@@ -220,24 +225,39 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                 accumulatedTotalScore = updateAccumulatedTotalScore(amountOfOperators, score, runTimes);
                 weight = updateWeights(weight, accumulatedTotalScore, historyWeight);
             }
-            heuristicRunningTime = (double) (System.nanoTime() - heuristicStartTimer) / 1_000_000_000;
-
             //ALNS DONE
 
-            //SAVING DATA
-            data.setOperatorTime(operatorTime);
-            data.setOperatorRunningTimes(operatorRunningTimes);
-            data.setOperatorWeightData(weightData);
-            data.setScoreData(scoreData);
-            data.setBestSolution(bestSolution);
-            data.setSolutions(acceptedSolutions);
-            data.setBestObjective(bestObjective);
-            data.setBestIteration(bestIteration);
-            data.setRunningTime(heuristicRunningTime);
-            //DONE SAVING DATA for this run, continuing to next run
+            //UPDATING DATA
+            heuristicRunningTime[i] = (double) (System.nanoTime() - heuristicStartTimer) / 1_000_000_000;
+            averageRunTime+=heuristicRunningTime[i];
+            averageObjective+=bestObjective;
+            averageImprovement += (noTransportObjective-bestObjective)/noTransportObjective;
+
+            bestObjectives[i] = bestObjective;
+            if (bestObjective<bestOverallObjective){
+                bestOverallObjective=bestObjective;
+                bestOverallSolution=bestSolution.clone();
+            }
+            //DONE UPDATING DATA for this run, continuing to next run
         }
 
-        data.setInitialObjective();
+        //SAVING DATA
+        data.setScoreData(scoreData);
+        data.setOperatorWeightData(weightData);
+        data.setOperatorRunningTimes(operatorRunningTimes);
+        data.setOperatorTime(operatorTime);
+        data.setBestSolution(bestOverallSolution);
+        data.setBestIterations(bestIterations);
+        data.setBestObjective(bestOverallObjective);
+        data.setBestObjectives(bestObjectives);
+        data.setBestImprovement((noTransportObjective-bestOverallObjective)/noTransportObjective);
+        data.setInitialSolutionRunningTime(initialSolutionRunningTime/RUNS_AMOUNT);
+        data.setInitialSolutionAverageObjective(initialSolutionAverageObjective/RUNS_AMOUNT);
+        data.setInitialSolutionAverageImprovement(initalSolutionAverageImprovement/RUNS_AMOUNT);
+        data.setAverageImprovement(averageImprovement/RUNS_AMOUNT);
+        data.setAverageObjective(averageObjective/RUNS_AMOUNT);
+        data.setRunningTime(averageRunTime/RUNS_AMOUNT);
+        //DONE SAVING DATA
 
         return data;
     }

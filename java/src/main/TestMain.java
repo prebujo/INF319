@@ -56,21 +56,21 @@ public class TestMain {
         solutionObjective = objective.calculateSolution(solution);
         System.out.println("Solution objective: " + solutionObjective);
 
-        IOperator swap = new SwapTwo(dataset, random, feasibility, "swap2", "");
+        IOperator swap = new SwapTwo(dataset, random, feasibility, "swap2");
         solution = checkOperator(swap, solution, solutionObjective, objective);
 
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator exchangeThree = new ExchangeThree(dataset, random, feasibility, "exchange3", "");
+        IOperator exchangeThree = new ExchangeThree(dataset, random, feasibility, "exchange3");
         solution = checkOperator(exchangeThree, solution, solutionObjective, objective);
 
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator reinsertTwoOrThree = new RemoveAndReinsert(dataset, random, feasibility, 2, 3, "reinsert", "");
+        IOperator reinsertTwoOrThree = new RemoveAndReinsert(dataset, random, feasibility, 2, 3, "reinsert");
         solution = checkOperator(reinsertTwoOrThree, solution, solutionObjective, objective);
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator reinsertRandomTwoOrThree = new RemoveAndReinsertRandom(dataset, random, feasibility, 2, 3, "reinsertRandom", "");
+        IOperator reinsertRandomTwoOrThree = new RemoveAndReinsertRandom(dataset, random, feasibility, 2, 3, "reinsertRandom");
         solution = checkOperator(reinsertRandomTwoOrThree, solution, solutionObjective, objective);
         solutionObjective = objective.calculateSolution(solution);
 

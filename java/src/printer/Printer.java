@@ -32,7 +32,7 @@ public class Printer implements IPrinter {
             for (int i = 0; i< bestSolution.length; i++){
                 line+=","+bestSolution[i];
             }
-            line+="\n"+"Iteration found:,"+dataResult.getBestIteration();
+            line+="\n"+"Iteration found:,"+dataResult.getBestIterations();
 
             fileWriter.write(line);
             fileWriter.write("\n\n");
@@ -50,27 +50,27 @@ public class Printer implements IPrinter {
             }
             fileWriter.write("\n");
 
-            Double[][] operatorWeightData = dataResult.getOperatorWeightData();
+            Double[][][] operatorWeightData = dataResult.getOperatorWeightData();
             line = "Segments";
-            for (int i = 0; i<operatorWeightData.length;i++){
+            for (int i = 0; i<operatorWeightData[0].length;i++){
                 line+=","+(i+1);
             }
             line+="\n";
             fileWriter.write(line);
 
-            writeOperatorTableHorizontal(operatorWeightData, fileWriter, "weight", operators);
+            writeOperatorTableHorizontal(operatorWeightData[0], fileWriter, "weight", operators);
 
-            Double[][] scoreData = dataResult.getScoreData();
+            Double[][][] scoreData = dataResult.getScoreData();
 
             line = "\n";
             line += "Operator";
-            for (int i = 0; i<scoreData[0].length; i++){
+            for (int i = 0; i<scoreData[0][0].length; i++){
                 line += ","+ operators.get(i).getName()+" score" ;
             }
             line+="\n";
             fileWriter.write(line);
 
-            writeOperatorTableVertical(scoreData,fileWriter,"score");
+            writeOperatorTableVertical(scoreData[0],fileWriter,"score");
 
             fileWriter.close();
         } catch (IOException e) {
@@ -84,7 +84,7 @@ public class Printer implements IPrinter {
 
         try {
 
-            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"_RESULTS.csv");
+            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"RESULTS.csv");
 
             String line = ",Best objective found \n";
             fileWriter.write(line);
@@ -94,10 +94,10 @@ public class Printer implements IPrinter {
 
             //printing each run's results for each instance
             for (int i = 0; i < results.size(); i++) {
-                fileWriter.write(instanceSizes.get(i)+",");
-                double[] bestSolutions = results.get(i).getBestSolutions();
-                for (int j = 0; j < bestSolutions.length; j++) {
-                    fileWriter.write(","+bestSolutions[j]);
+                fileWriter.write(instanceSizes.get(i));
+                double[] bestObjectives = results.get(i).getBestObjectives();
+                for (int j = 0; j < bestObjectives.length; j++) {
+                    fileWriter.write(","+bestObjectives[j]);
                 }
                 fileWriter.write("\n");
             }

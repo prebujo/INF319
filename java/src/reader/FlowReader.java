@@ -211,6 +211,11 @@ public class FlowReader implements IReader {
         return result;
     }
 
+    @Override
+    public List<IDataSet> readDataFromFiles(String instance, List<String> instanceSizes) throws Exception {
+        return null;
+    }
+
     private int[] createSetList(HashSet<Integer> factories, int size) {
         int[] result = new int[size];
         int counter = 1;

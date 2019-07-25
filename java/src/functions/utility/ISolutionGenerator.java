@@ -5,5 +5,5 @@ public interface ISolutionGenerator {
     int[] randomlyAssignOrders(int vehicles, int orders);
     int[] createDummySolution(int vehicles, int orders);
 
-    int[] createStartSolution(int vehicleAmount, int orderAmount);
+    int[] createDummyStartSolution(int vehicleAmount, int orderAmount);
 }

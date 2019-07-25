@@ -36,14 +36,9 @@ public class TestHeuristicFinal {
             Random random = new Random(101+i);
             feasibility = new Feasibility(dataSet);
 
-            operators=new ArrayList<>();
-            operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
-            operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
-            operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&R1_4"));
-            operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
-            operators.add(new ReturnSameSolution("retSame"));
+            operators = getOperators(feasibility, dataSet, random);
 
-            AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, feasibility, random, "alns");
+            AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
             IDataResult result = alns.optimize(operators);
             results.add(result);
             i++;
@@ -52,6 +47,17 @@ public class TestHeuristicFinal {
         IPrinter printer = new Printer();
 
         printer.printDataToFile(instance,instanceSizes,results,operators);
+    }
+
+    private static List<IOperator> getOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
+        List<IOperator> operators;
+        operators=new ArrayList<>();
+        operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
+        operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
+        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&R1_4"));
+        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
+        operators.add(new ReturnSameSolution("retSame"));
+        return operators;
     }
 
     private static void printArray(int[] array) {

@@ -17,15 +17,15 @@ public class DataResult implements IDataResult {
     private int segmentAmount;
     private int iterations;
     private int operatorAmount;
-    private Double[][] operatorWeightData;
+    private Double[][][] operatorWeightData;
     private List<IOperator> operators;
     private List<IDataObject> listOfData;
     private String heuristicName;
     private double bestObjective;
-    private double initialObjective;
+    private double noTransportObjective;
     private double runningTime;
-    private int bestIteration;
-    private Double[][] scoreData;
+    private int[] bestIterations;
+    private Double[][][] scoreData;
     private double[] operatorTime;
     private int[] operatorRunningTimes;
     private double[] bestSolutions;
@@ -35,6 +35,7 @@ public class DataResult implements IDataResult {
     private double averageObjective;
     private double averageImprovement;
     private double bestImprovement;
+    private double[] bestObjectives;
 
 
     public DataResult(List<IOperator> operators, String heuristicName, int segmentAmount, int iterations, int operatorAmount, int orderAmount, int vehicleAmount, int locationsAmount){
@@ -86,7 +87,7 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public void setOperatorWeightData(Double[][] OperatorWeightData){
+    public void setOperatorWeightData(Double[][][] OperatorWeightData){
         this.operatorWeightData = OperatorWeightData;
     }
 
@@ -101,8 +102,8 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public void setInitialObjective(double initialObjective){
-        this.initialObjective = initialObjective;
+    public void setNoTransportObjective(double noTransportObjective){
+        this.noTransportObjective = noTransportObjective;
     }
 
     @Override
@@ -126,12 +127,12 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public void setBestIteration(int bestIteration){
-        this.bestIteration = bestIteration;
+    public void setBestIterations(int[] bestIterations){
+        this.bestIterations = bestIterations;
     }
 
     @Override
-    public void setScoreData(Double[][] scoreData) {
+    public void setScoreData(Double[][][] scoreData) {
         this.scoreData = scoreData;
     }
 
@@ -146,7 +147,7 @@ public class DataResult implements IDataResult {
 
     @Override
     public double getNoTransportObjective() {
-        return initialObjective;
+        return noTransportObjective;
     }
 
     @Override
@@ -160,8 +161,8 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public int getBestIteration() {
-        return bestIteration;
+    public int[] getBestIterations() {
+        return bestIterations;
     }
 
     @Override
@@ -175,12 +176,12 @@ public class DataResult implements IDataResult {
     }
 
     @Override
-    public Double[][] getOperatorWeightData() {
+    public Double[][][] getOperatorWeightData() {
         return operatorWeightData;
     }
 
     @Override
-    public Double[][] getScoreData() {
+    public Double[][][] getScoreData() {
         return scoreData;
     }
 
@@ -243,15 +244,27 @@ public class DataResult implements IDataResult {
         this.initialSolutionAverageImprovement = initialSolutionAverageImprovement;
     }
 
+    @Override
     public void setAverageObjective(double averageObjective) {
         this.averageObjective = averageObjective;
     }
 
+    @Override
     public void setAverageImprovement(double averageImprovement) {
         this.averageImprovement = averageImprovement;
     }
 
+    @Override
     public void setBestImprovement(double bestImprovement) {
         this.bestImprovement = bestImprovement;
+    }
+
+    @Override
+    public double[] getBestObjectives() {
+        return bestObjectives;
+    }
+    @Override
+    public void setBestObjectives(double[] bestObjectives) {
+        this.bestObjectives = bestObjectives;
     }
 }

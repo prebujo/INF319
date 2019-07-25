@@ -36,20 +36,20 @@ public class TestHeuristicMain {
 
         IFeasibility feasibility = new Feasibility(dataSet);
 
-        AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet,feasibility, random, "alns");
+        AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
 
         List<IOperator> operators = new ArrayList<>();
 
         String swapDescription="Swaps the position of 2 orders from one vehicle to another";
-        operators.add(new SwapTwo(dataSet, random, feasibility, "swap2", swapDescription));
+        operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
         String exchangeDescription="exchanges the order of 3 orders a delivery schedule of a";
-        operators.add(new ExchangeThree(dataSet,random,feasibility,"exch3", exchangeDescription));
+        operators.add(new ExchangeThree(dataSet,random,feasibility,"exch3"));
         String removeAndReinsertTwoToFourDescription="remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 3, "r&R1_4", removeAndReinsertTwoToFourDescription));
+        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 3, "r&R1_4"));
         String removeAndReinsertOneDescription="remove and reinsert operator that removes between 1-1 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 3, "r&r1_4", removeAndReinsertOneDescription));
+        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 3, "r&r1_4"));
         String returnSame = "return the same solution";
-        operators.add(new ReturnSameSolution("retSame", returnSame));
+        operators.add(new ReturnSameSolution("retSame"));
 
         IDataResult results = alns.optimize(operators);
 

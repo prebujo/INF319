@@ -7,7 +7,7 @@ public interface IDataResult {
 
     void addObjectData(IDataObject object);
 
-    void setOperatorWeightData(Double[][] weightData);
+    void setOperatorWeightData(Double[][][] weightData);
 
     void setBestSolution(int[] solution);
 
@@ -19,13 +19,13 @@ public interface IDataResult {
 
     String getHeuristicName();
 
-    void setInitialObjective(double currentObjective);
+    void setNoTransportObjective(double currentObjective);
 
     void setBestObjective(double bestObjective);
 
-    void setBestIteration(int bestIteration);
+    void setBestIterations(int[] bestIterations);
 
-    void setScoreData(Double[][] scoreData);
+    void setScoreData(Double[][][] scoreData);
 
     void setOperatorTime(double[] operatorTime);
 
@@ -37,15 +37,15 @@ public interface IDataResult {
 
     double getRunningTime();
 
-    int getBestIteration();
+    int[] getBestIterations();
 
     double[] getOperatorTime();
 
     int[] getOperatorRunningTimes();
 
-    Double[][] getOperatorWeightData();
+    Double[][][] getOperatorWeightData();
 
-    Double[][] getScoreData();
+    Double[][][] getScoreData();
 
     String getName();
 
@@ -70,4 +70,14 @@ public interface IDataResult {
     void setInitialSolutionRunningTime(double initialSolutionRunningTime);
 
     void setInitialSolutionAverageImprovement(double initialSolutionAverageImprovement);
+
+    void setAverageObjective(double averageObjective);
+
+    void setAverageImprovement(double averageImprovement);
+
+    void setBestImprovement(double bestImprovement);
+
+    double[] getBestObjectives();
+
+    void setBestObjectives(double[] bestObjectives);
 }
