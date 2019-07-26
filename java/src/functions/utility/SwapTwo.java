@@ -49,7 +49,7 @@ public class SwapTwo implements IOperator {
         if (feasibility.check(result)) {
             return result;
         } else {
-            return solution;
+            return solution.clone();
         }
     }
 

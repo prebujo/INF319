@@ -70,7 +70,7 @@ public class ExchangeThree implements IOperator {
         if(feasibility.check(newSolution)) {
             return newSolution;
         }else{
-            return solution;
+            return solution.clone();
         }
     }
 

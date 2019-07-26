@@ -10,7 +10,7 @@ public class ReturnSameSolution implements IOperator {
 
     @Override
     public int[] apply(int[] solution) throws Throwable {
-        return solution;
+        return solution.clone();
     }
 
     @Override

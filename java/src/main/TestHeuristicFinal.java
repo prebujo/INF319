@@ -28,7 +28,7 @@ public class TestHeuristicFinal {
         List<IOperator> operators = null;
         IFeasibility feasibility = null;
         String instance = "Inst1_";
-        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9");
+        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_9_Veh_5_Loc_6","Ord_10_Veh_6_Loc_7","Ord_12_Veh_7_Loc_9","Ord_15_Veh_8_Loc_11");
         List<IDataSet> dataSets = reader.readDataFromFiles(instance,instanceSizes);
         int i = 0;
         for (IDataSet dataSet:dataSets) {

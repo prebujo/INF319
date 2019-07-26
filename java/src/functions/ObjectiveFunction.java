@@ -34,12 +34,12 @@ public class ObjectiveFunction {
         this.locations = dataSet.getLocations();
         this.kgCostMatrix = dataSet.getKgCostMatrices();
         this.kmCostMatrix = dataSet.getKmCostMatrices();
-        this.orderPenalties = dataSet.getOrderPenalties();
         this.fixCostMatrix = dataSet.getFixCostMatrices();
         this.orderPickupLocations = dataSet.getOrderPickupLocations();
         this.orderDeliveryLocations = dataSet.getOrderDeliveryLocations();
         this.distanceIntervals = dataSet.getDistanceIntervals();
         this.weightIntervals = dataSet.getWeightIntervals();
+        this.orderPenalties = dataSet.getOrderPenalties();
     }
 
 
@@ -96,20 +96,11 @@ public class ObjectiveFunction {
     }
 
     private double weightDifference(boolean pickedUp, double[] orderWeights, int solutionElement) {
-        if(pickedUp) {
-            return -orderWeights[solutionElement-1];
-        }
-        else{
-            return orderWeights[solutionElement-1];
-        }
+        return pickedUp ? -orderWeights[solutionElement-1]: orderWeights[solutionElement-1];
     }
 
     private double getStopCost(int previousStop, int solutionElementPosition, int v ) {
-        double result=0;
-        if(previousStop!=solutionElementPosition){
-            result = stopCostMatrix[v][solutionElementPosition-1];
-        }
-        return result;
+        return previousStop!=solutionElementPosition ? stopCostMatrix[v][solutionElementPosition-1]:0.0;
     }
 
     private double getVehicleCosts(int v, double vehicleTotalDistance, double vehicleMaxWeight) {

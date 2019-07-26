@@ -89,7 +89,7 @@ public class Printer implements IPrinter {
             String line = ",Best objective found \n";
             fileWriter.write(line);
 
-            line = "Instance,Run 1,Run 2, Run 3, Run 4, Run 5, Run 6, Run 7, Run 8, Run 9, Run 10 \n ";
+            line = "Instance,Run 1,Run 2, Run 3, Run 4, Run 5, Run 6, Run 7, Run 8, Run 9, Run 10 \n";
             fileWriter.write(line);
 
             //printing each run's results for each instance
@@ -110,6 +110,84 @@ public class Printer implements IPrinter {
                 fileWriter.write(result.getNoTransportObjective()+","+result.getInitialSolutionAverageObjective()+","+result.getInitialSolutionAverageImprovement()+","+result.getAverageObjective()+","+result.getAverageImprovement()+","+result.getBestObjective()+","+result.getBestImprovement()+","+result.getInitialSolutionRunningTime()+","+result.getRunningTime()+"\n");
             }
             fileWriter.write("\n");
+
+            fileWriter.write("Operator");
+            for (int i = 0; i < instanceSizes.size(); i++) {
+                fileWriter.write(","+instanceSizes.get(i)+" Average Running Time,"+instanceSizes.get(i)+" Average Times Rum");
+            }
+            fileWriter.write("\n");
+
+            for (int i = 0; i < operators.size(); i++) {
+                fileWriter.write(operators.get(i).getName());
+                for (int j = 0; j < instanceSizes.size(); j++) {
+                    int operatorRunningTime = results.get(j).getOperatorRunningTimes()[i];
+                    fileWriter.write(","+results.get(j).getOperatorTime()[i]/ operatorRunningTime +","+operatorRunningTime);
+                }
+                fileWriter.write("\n");
+            }
+
+            fileWriter.write("\n");
+
+            int run = 1;
+            fileWriter.write("Best solution iteration\n");
+            for (int k = 0; k < instanceSizes.size(); k++) {
+                fileWriter.write(instanceSizes.get(k) + " Run " +run+","+results.get(k).getBestIterations()[(run-1)]+"\n");
+                run+=2;
+            }
+            fileWriter.write("\n");
+
+            run = 1;
+            for (int k = 0; k < instanceSizes.size(); k++) {
+                fileWriter.write("Weights per segments Run " + run +" "+instanceSizes.get(k));
+                for (int i = 0; i < 100; i++) {
+                    fileWriter.write("," + (i+1));
+                }
+                fileWriter.write("\n");
+                for (int i = 0; i < operators.size(); i++) {
+                    fileWriter.write(operators.get(i).getName());
+                    for (int j = 0; j < 100; j++) {
+                        Double[][][] operatorWeights = results.get(k).getOperatorWeightData();
+                        fileWriter.write("," + operatorWeights[run-1][j][i]);
+                    }
+                    fileWriter.write("\n");
+                }
+                fileWriter.write("\n");
+                run+=2;
+            }
+
+
+            fileWriter.write("Operator Score per Iteration\n");
+            run = 1;
+            for (int i = 0; i < instanceSizes.size(); i++) {
+                fileWriter.write(","+instanceSizes.get(i)+" Run "+run+",,,,");
+                run+=2;
+            }
+            fileWriter.write("\n");
+
+            fileWriter.write("Iteration");
+            for (int i = 0; i < instanceSizes.size(); i++) {
+                for (int j = 0; j < operators.size(); j++) {
+                    fileWriter.write(","+operators.get(j).getName());
+                }
+            }
+            fileWriter.write("\n");
+
+            for (int k = 0; k < 10000; k++) {
+                fileWriter.write(""+(k+1));
+                run = 1;
+                for (int j = 0; j < instanceSizes.size(); j++) {
+                    Double[][][] scoreData = results.get(j).getScoreData();
+                    for (int i = 0; i < operators.size(); i++) {
+                        fileWriter.write("," + scoreData[(run-1)][k][i]);
+                    }
+                    run+=2;
+                }
+                fileWriter.write("\n");
+            }
+
+
+
+
 
             fileWriter.close();
         } catch (IOException e) {
