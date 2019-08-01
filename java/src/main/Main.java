@@ -1,7 +1,7 @@
 package main;
 
-import Heuristic.IHeuristic;
-import Heuristic.RandomHeuristic;
+import heuristic.IHeuristic;
+import heuristic.RandomHeuristic;
 import dataObjects.IDataSet;
 import functions.*;
 import functions.feasibility.*;
@@ -180,7 +180,7 @@ public class Main {
         System.out.println("Solution feasible? ->"+feasibility.check(dummySolution));
 
         IOperator swap2 = new SwapTwo(dataset,random,feasibility, "swap2");
-        IOperator removeAndReinsert = new RemoveAndReinsert(dataset,random,feasibility, 2,2, "r&r2_2");
+        IOperator removeAndReinsert = new RemoveAndReinsert("r&r2_2",2,2, random,feasibility, dataset);
 
         int counter = 0;
 

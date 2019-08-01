@@ -5,8 +5,6 @@ import functions.ObjectiveFunction;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.*;
-import reader.FlowReader;
-import reader.FlowReaderPrint;
 import reader.IReader;
 import reader.Reader;
 
@@ -66,11 +64,11 @@ public class TestMain {
 
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator reinsertTwoOrThree = new RemoveAndReinsert(dataset, random, feasibility, 2, 3, "reinsert");
+        IOperator reinsertTwoOrThree = new RemoveAndReinsert("reinsert", 2, 3, random, feasibility, dataset);
         solution = checkOperator(reinsertTwoOrThree, solution, solutionObjective, objective);
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator reinsertRandomTwoOrThree = new RemoveAndReinsertRandom(dataset, random, feasibility, 2, 3, "reinsertRandom");
+        IOperator reinsertRandomTwoOrThree = new RemoveAndReinsertRandom("reinsertRandom", 2, 3, random, feasibility, dataset);
         solution = checkOperator(reinsertRandomTwoOrThree, solution, solutionObjective, objective);
         solutionObjective = objective.calculateSolution(solution);
 

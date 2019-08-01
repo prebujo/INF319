@@ -2,6 +2,8 @@ package functions.feasibility;
 
 import dataObjects.IDataSet;
 
+import java.util.List;
+
 public class FactoryDockFeasible implements IFeasibility {
 
     private final int[] factory;
@@ -45,5 +47,10 @@ public class FactoryDockFeasible implements IFeasibility {
             i++;
         }
         return true;
+    }
+
+    @Override
+    public boolean checkSchedule(int vehicle, List<Integer> schedule) {
+        return false;
     }
 }

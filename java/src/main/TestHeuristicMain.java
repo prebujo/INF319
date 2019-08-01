@@ -1,6 +1,6 @@
 package main;
 
-import Heuristic.AdaptiveLargeNeighbourhoodSearch;
+import heuristic.AdaptiveLargeNeighbourhoodSearch;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
@@ -9,7 +9,6 @@ import functions.feasibility.IFeasibility;
 import functions.utility.*;
 import printer.IPrinter;
 import printer.Printer;
-import reader.FlowReader;
 import reader.IReader;
 import reader.Reader;
 
@@ -45,9 +44,9 @@ public class TestHeuristicMain {
         String exchangeDescription="exchanges the order of 3 orders a delivery schedule of a";
         operators.add(new ExchangeThree(dataSet,random,feasibility,"exch3"));
         String removeAndReinsertTwoToFourDescription="remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, 3, "r&R1_4"));
+        operators.add(new RemoveAndReinsertRandom("r&R1_4", 1, 3, random, feasibility, dataSet));
         String removeAndReinsertOneDescription="remove and reinsert operator that removes between 1-1 random elements from solution and reinserts them in randomly selected vehicles";
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, 3, "r&r1_4"));
+        operators.add(new RemoveAndReinsert("r&r1_4", 1, 3, random, feasibility, dataSet));
         String returnSame = "return the same solution";
         operators.add(new ReturnSameSolution("retSame"));
 

@@ -1,10 +1,9 @@
-package Heuristic;
+package heuristic;
 
 import dataObjects.DataResult;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
-import functions.feasibility.IFeasibility;
 import functions.utility.*;
 
 import java.util.ArrayList;

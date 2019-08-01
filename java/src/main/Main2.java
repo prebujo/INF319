@@ -1,8 +1,5 @@
 package main;
 
-import Heuristic.AdaptiveLargeNeighbourhoodSearch;
-import Heuristic.IHeuristic;
-import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import reader.IReader;
 import reader.Reader;

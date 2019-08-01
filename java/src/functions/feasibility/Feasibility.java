@@ -137,15 +137,15 @@ public class Feasibility implements IFeasibility{
         for (int i = 0; i < schedule.size(); i++) {
             int solutionElement = schedule.get(i);
 
-            weightOnVehicle += getWeightDifference(solutionElement, pickedUp[solutionElement]);
-            volumeOnVehicle += getVolumeDifference(solutionElement, pickedUp[solutionElement]);
+            weightOnVehicle += getWeightDifference(solutionElement, pickedUp[solutionElement-1]);
+            volumeOnVehicle += getVolumeDifference(solutionElement, pickedUp[solutionElement-1]);
             if (weightOnVehicle > vehicleWeightCapacities[vehicle] || volumeOnVehicle > vehicleVolumeCapacities[vehicle]) {
                 return false;
             }
-            if (pickedUp[solutionElement]) {
+            if (pickedUp[solutionElement-1]) {
                 solutionLocation = orderDeliveryLocations[solutionElement - 1];
             } else {
-                pickedUp[solutionElement] = true;
+                pickedUp[solutionElement-1] = true;
                 solutionLocation = orderPickupLocations[solutionElement - 1];
             }
             if (vehicleLocation != 0) {

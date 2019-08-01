@@ -1,4 +1,4 @@
-package Heuristic;
+package heuristic;
 
 import dataObjects.DataResult;
 import dataObjects.IDataResult;

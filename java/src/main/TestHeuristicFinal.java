@@ -1,6 +1,6 @@
 package main;
 
-import Heuristic.AdaptiveLargeNeighbourhoodSearch;
+import heuristic.AdaptiveLargeNeighbourhoodSearch;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.feasibility.Feasibility;
@@ -11,7 +11,6 @@ import printer.Printer;
 import reader.IReader;
 import reader.Reader;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class TestHeuristicFinal {
@@ -54,8 +53,9 @@ public class TestHeuristicFinal {
         operators=new ArrayList<>();
         operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
         operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
-        operators.add(new RemoveAndReinsertRandom(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&R1_4"));
-        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
+        operators.add(new RemoveAndReinsertRandom("r&R1_4", 1, Math.min(dataSet.getOrderAmount()/4,5), random, feasibility, dataSet));
+//        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
+        operators.add(new TwoOpt("2opt",random,feasibility,dataSet));
         operators.add(new ReturnSameSolution("retSame"));
         return operators;
     }

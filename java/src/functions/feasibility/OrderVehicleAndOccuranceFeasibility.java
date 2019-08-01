@@ -2,6 +2,8 @@ package functions.feasibility;
 
 import dataObjects.IDataSet;
 
+import java.util.List;
+
 public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
 
     private final int vehicleAmount;
@@ -48,5 +50,10 @@ public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
             i++;
         }
         return true;
+    }
+
+    @Override
+    public boolean checkSchedule(int vehicle, List<Integer> schedule) {
+        return false;
     }
 }

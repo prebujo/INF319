@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class RemoveAndReinsertRandom extends RemoveAndReinsert {
 
-    public RemoveAndReinsertRandom(IDataSet dataSet, Random random, IFeasibility feasibilityCheck, int lowerLimit, int upperLimit, String name) {
-        super(dataSet, random, feasibilityCheck, lowerLimit, upperLimit, name);
+    public RemoveAndReinsertRandom(String name, int lowerLimit, int upperLimit, Random random, IFeasibility feasibilityCheck, IDataSet dataSet) {
+        super(name, lowerLimit, upperLimit, random, feasibilityCheck, dataSet);
         this.description = "remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
     }
 

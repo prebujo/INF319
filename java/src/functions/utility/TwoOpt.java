@@ -63,7 +63,7 @@ public class TwoOpt implements IOperator {
         return perform2optOnSchedule(vehicleChoice,vehicleSchedule,solution);
     }
 
-    private List<Integer> findVehicleSchedule(int vehicleChoice, int[] solution) {
+    protected List<Integer> findVehicleSchedule(int vehicleChoice, int[] solution) {
         List<Integer> result = new ArrayList<>();
         int vehicle=0;
         for (int i = 0; i < solution.length; i++) {
@@ -78,30 +78,35 @@ public class TwoOpt implements IOperator {
         return (result.size()>2) ? result: Arrays.asList(0);
     }
 
-    private int[] perform2optOnSchedule(int vehicleChoice, List<Integer> vehicleSchedule, int[] solution) {
+    protected int[] perform2optOnSchedule(int vehicleChoice, List<Integer> vehicleSchedule, int[] solution) {
         double vehicleCost = calculateVehicleCost(vehicleChoice, vehicleSchedule);
         double bestCost = vehicleCost;
-        List<Integer> bestSchedule = vehicleSchedule;
-
-
-        for (int i = 0; i < vehicleSchedule.size()-1; i++) {
-            for (int j = i+1; j < vehicleSchedule.size(); j++) {
-                List<Integer> newSchedule = twoOptSwap(i,j,vehicleSchedule);
-                double newCost = bestCost;
-                if(feasibility.checkSchedule(vehicleChoice,newSchedule)) {
-                    newCost = calculateVehicleCost(vehicleChoice,newSchedule);
-                }
-                if (newCost<bestCost){
-                    bestCost=newCost;
-                    bestSchedule=newSchedule;
+        List<Integer> bestSchedule=vehicleSchedule;
+        boolean improved=true;
+        while(improved) {
+            improved=false;
+            for (int i = 0; i < vehicleSchedule.size() - 1; i++) {
+                for (int j = i + 1; j < vehicleSchedule.size(); j++) {
+                    List<Integer> newSchedule = twoOptSwap(i, j, vehicleSchedule);
+                    double newCost = bestCost;
+                    if (feasibility.checkSchedule(vehicleChoice, newSchedule)&&!newSchedule.equals(vehicleSchedule)) {
+                        newCost = calculateVehicleCost(vehicleChoice, newSchedule);
+                    }
+                    if (newCost < bestCost) {
+                        bestCost = newCost;
+                        bestSchedule = newSchedule;
+                        improved=true;
+                    }
                 }
             }
+            vehicleSchedule=bestSchedule;
         }
 
-        return bestCost<vehicleCost ? solution.clone():createNewSolution(vehicleChoice,bestSchedule,solution);
+
+        return bestCost<vehicleCost ? createNewSolution(vehicleChoice,vehicleSchedule,solution):solution.clone();
     }
 
-    private List<Integer> twoOptSwap(int i, int j, List<Integer> vehicleSchedule) {
+    protected List<Integer> twoOptSwap(int i, int j, List<Integer> vehicleSchedule) {
         List<Integer> result = new ArrayList<>();
         int idx = 0;
         while(idx<i){
@@ -118,7 +123,7 @@ public class TwoOpt implements IOperator {
         return result;
     }
 
-    private int[] createNewSolution(int vehicleChoice, List<Integer> bestSchedule, int[] solution) {
+    protected int[] createNewSolution(int vehicleChoice, List<Integer> vehicleSchedule, int[] solution) {
         int[] result = solution.clone();
         int vehicle = 0;
         for (int i = 0; i < solution.length; i++) {
@@ -127,8 +132,8 @@ public class TwoOpt implements IOperator {
                 vehicle++;
                 continue;
             }else if (vehicle==vehicleChoice){
-                for (int j = 0; j < bestSchedule.size(); j++) {
-                    result[i++] = bestSchedule.get(j);
+                for (int j = 0; j < vehicleSchedule.size(); j++) {
+                    result[i++] = vehicleSchedule.get(j);
                 }
                 break;
             }
@@ -136,7 +141,7 @@ public class TwoOpt implements IOperator {
         return result;
     }
 
-    private double calculateVehicleCost(int vehicleChoice, List<Integer> vehicleSchedule) {
+    protected double calculateVehicleCost(int vehicleChoice, List<Integer> vehicleSchedule) {
         double result = 0.0;
         double vehicleTotalDistance = 0.0;
         double vehicleWeight = 0.0;
@@ -167,14 +172,14 @@ public class TwoOpt implements IOperator {
 
     }
 
-    private double getVehicleCosts(int v, double vehicleTotalDistance, double vehicleMaxWeight) {
+    protected double getVehicleCosts(int v, double vehicleTotalDistance, double vehicleMaxWeight) {
         int distanceDimension = findDimension(vehicleTotalDistance, distanceIntervals, v);
         int weightDimension = findDimension(vehicleMaxWeight, weightIntervals, v);
         double result = vehicleMaxWeight*kgCostMatrix[v][distanceDimension][weightDimension] + vehicleTotalDistance*kmCostMatrix[v][distanceDimension][weightDimension] +fixCostMatrix[v][distanceDimension][weightDimension];
         return result;
     }
 
-    private int findDimension(double element, double[][] intervals, int vehicle) {
+    protected int findDimension(double element, double[][] intervals, int vehicle) {
         double previousInterval = 0;
         for (int i = 0; i < intervals[vehicle].length; i++) {
             if (element <= intervals[vehicle][i] && element >= previousInterval) {

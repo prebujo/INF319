@@ -2,6 +2,8 @@ package functions.feasibility;
 
 import dataObjects.IDataSet;
 
+import java.util.List;
+
 public class CollectiveCheck implements IFeasibility {
 
     private final TimeFeasible timeFeasible;
@@ -30,5 +32,10 @@ public class CollectiveCheck implements IFeasibility {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean checkSchedule(int vehicle, List<Integer> schedule) {
+        return false;
     }
 }

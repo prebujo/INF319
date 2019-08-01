@@ -2,6 +2,8 @@ package functions.feasibility;
 
 import dataObjects.IDataSet;
 
+import java.util.List;
+
 public class WeightAndVolumeFeasible implements IFeasibility {
     private final IDataSet dataset;
     private final int vehicleAmount;
@@ -46,6 +48,11 @@ public class WeightAndVolumeFeasible implements IFeasibility {
             i++;
         }
         return result;
+    }
+
+    @Override
+    public boolean checkSchedule(int vehicle, List<Integer> schedule) {
+        return false;
     }
 
     private double getVolumeDifference(int solutionElement) {
