@@ -53,7 +53,7 @@ public class TestHeuristicFinal {
         operators=new ArrayList<>();
         operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
         operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
-        operators.add(new RemoveAndReinsertRandom("r&R1_4", 1, Math.min(dataSet.getOrderAmount()/4,5), random, feasibility, dataSet));
+        operators.add(new RemoveExpensiveReinsertGreedy("reig", 1, Math.min(dataSet.getOrderAmount()/4,5), random, feasibility, dataSet));
 //        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
         operators.add(new TwoOpt("2opt",random,feasibility,dataSet));
         operators.add(new ReturnSameSolution("retSame"));

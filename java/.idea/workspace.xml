@@ -2,59 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/java/functions/utility/TwoOpt.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/test/java/functions/utility/TwoOptTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/instances/test_file.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/OrderAndCost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/ScheduleAndCost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveReinsertGreedy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveAndReinsertTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveReinsertGreedyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/functions/utility/TwoOptTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TODO-list.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../TODO-list.odt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/utility/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/functions/utility/OperatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/IHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/IHeuristic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/Heuristic/RandomHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/RandomHeuristic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/META-INF/java.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/META-INF/java.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/ObjectiveFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/CollectiveCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/CollectiveCheck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/FactoryDockFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/FactoryDockFeasible.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/IFeasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/IFeasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/OrderVehicleAndOccuranceFeasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/OrderVehicleAndOccuranceFeasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/TimeFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/TimeFeasible.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/WeightAndVolumeFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/WeightAndVolumeFeasible.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsertRandom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsertRandom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/Main2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/Main2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveReinsertGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveReinsertGreedy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/TwoOpt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/TwoOpt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/TestHeuristicFinal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestHeuristicFinal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/.~lock.Inst1_RESULTS.csv#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristic/IHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/IHeuristic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristic/RandomHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/RandomHeuristic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveAndReinsertTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveAndReinsertTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveReinsertGreedyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveReinsertGreedyTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/TwoOptTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/TwoOptTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveReinsertGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveReinsertGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/TwoOpt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/TwoOpt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/TestHeuristicFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestHeuristicFinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/RESULTS_AT-DE_W.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/RESULTS_AT-DE_W.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveAndReinsertTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveAndReinsertTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveReinsertGreedyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveReinsertGreedyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/TwoOptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/TwoOptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -159,7 +126,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RemoveExpensiveReinsertGreedyTest">
+  <component name="RunManager" selected="Application.TestHeuristicFinal">
     <configuration name="TestHeuristicFinal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.TestHeuristicFinal" />
       <module name="java" />
@@ -173,15 +140,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestInstanceGeneratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.TestInstanceGeneratorMain" />
+    <configuration name="OperatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="functions.utility.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="functions.utility" />
+      <option name="MAIN_CLASS_NAME" value="functions.utility.OperatorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,11 +202,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestHeuristicFinal" />
         <item itemvalue="JUnit.RemoveExpensiveReinsertGreedyTest" />
+        <item itemvalue="JUnit.OperatorTest" />
         <item itemvalue="JUnit.RemoveAndReinsertTest" />
         <item itemvalue="JUnit.TwoOptTest" />
-        <item itemvalue="Application.TestHeuristicFinal" />
-        <item itemvalue="Application.TestInstanceGeneratorMain" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +317,8 @@
       <workItem from="1564397580955" duration="10197000" />
       <workItem from="1564474253616" duration="18076000" />
       <workItem from="1564571482449" duration="8214000" />
-      <workItem from="1564649497419" duration="7043000" />
+      <workItem from="1564649497419" duration="15126000" />
+      <workItem from="1564683191222" duration="7553000" />
     </task>
     <servers />
   </component>
@@ -414,24 +384,20 @@
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
-          <line>225</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/functions/utility/TwoOpt.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java</url>
-          <line>368</line>
+          <line>201</line>
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java</url>
-          <line>295</line>
+          <line>200</line>
           <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="vehicle==3" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/functions/utility/RemoveExpensiveReinsertGreedy.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -439,55 +405,6 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="breakpointCondition">
-      <expression>
-        <expression-string>i==163</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>i&gt;163</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>currentSegment&gt;7</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>segmentIteration&gt;8</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>segmentIteration ==3</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>segmentIteration&gt;3</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>segmentIteration==3</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>currentSegment==19</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>currentSegment==18</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
   <component name="masterDetails">
     <states>

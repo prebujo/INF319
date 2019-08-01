@@ -18,7 +18,7 @@ public class TwoOptTest {
         IDataSet dataSet = reader.readDataFromFile("Inst1_Ord_4_Veh_3_Loc_7");
         TwoOpt twoOpt = new TwoOpt("test",null,null,dataSet);
         int[] solution = new int[]{0,1,1,2,2,0};
-        List<Integer> testedObject = twoOpt.findVehicleSchedule(1,solution);
+        List<Integer> testedObject = twoOpt.getVehicleSchedule(1,solution);
         List<Integer> actual = Arrays.asList(1,1,2,2);
         assertTrue(testedObject.equals(actual));
     }

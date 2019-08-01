@@ -136,7 +136,9 @@ public class Feasibility implements IFeasibility{
 
         for (int i = 0; i < schedule.size(); i++) {
             int solutionElement = schedule.get(i);
-
+            if(!vehicleCanPickupOrder[vehicle][solutionElement-1]){
+                return false;
+            }
             weightOnVehicle += getWeightDifference(solutionElement, pickedUp[solutionElement-1]);
             volumeOnVehicle += getVolumeDifference(solutionElement, pickedUp[solutionElement-1]);
             if (weightOnVehicle > vehicleWeightCapacities[vehicle] || volumeOnVehicle > vehicleVolumeCapacities[vehicle]) {
@@ -147,6 +149,9 @@ public class Feasibility implements IFeasibility{
             } else {
                 pickedUp[solutionElement-1] = true;
                 solutionLocation = orderPickupLocations[solutionElement - 1];
+            }
+            if(!vehicleCanVisitNode[vehicle][solutionLocation-1]){
+                return false;
             }
             if (vehicleLocation != 0) {
                 currentVehicleTime += travelTime[vehicle][vehicleLocation - 1][solutionLocation - 1];
