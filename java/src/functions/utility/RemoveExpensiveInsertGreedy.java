@@ -7,12 +7,12 @@ import functions.feasibility.IFeasibility;
 
 import java.util.*;
 
-public class RemoveExpensiveReinsertGreedy extends RemoveAndReinsert{
+public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
 
 
     protected double[] orderPenalties;
 
-    public RemoveExpensiveReinsertGreedy(String name, int lowerLimit, int upperLimit, Random random, IFeasibility feasibility, IDataSet dataSet){
+    public RemoveExpensiveInsertGreedy(String name, int lowerLimit, int upperLimit, Random random, IFeasibility feasibility, IDataSet dataSet){
         super(name,lowerLimit,upperLimit,random,feasibility,dataSet);
         this.orderPenalties = dataSet.getOrderPenalties();
     }
@@ -29,28 +29,36 @@ public class RemoveExpensiveReinsertGreedy extends RemoveAndReinsert{
         return newSolution!=null ? newSolution:solution;
     }
 
-    protected int[] insertGreedy(HashSet<Integer> ordersToRemove, int[] solutionWithoutOrders) {
+    protected int[] insertGreedy(HashSet<Integer> ordersToInsert, int[] solutionWithoutOrders) {
         int[] result = solutionWithoutOrders.clone();
         List<List<Integer>> vehicleSchedules = getVehicleSchedules(solutionWithoutOrders);
 
         List<ScheduleAndCost> bestOrderSchedules = new ArrayList<>();
-        Iterator<Integer> iterator = ordersToRemove.iterator();
+        Iterator<Integer> iterator = ordersToInsert.iterator();
         while(iterator.hasNext()){
-            bestOrderSchedules.add(findBestScheduleForOrder(iterator.next(),vehicleSchedules));
+            int o = iterator.next();
+            bestOrderSchedules.add(findBestScheduleForOrder(o,vehicleSchedules));
         }
         //sort list of schedules after cost
         bestOrderSchedules.sort(Comparator.comparing(ScheduleAndCost::getCost));
         //insert each order, cheapest first, and keep track of vehicle used to then update schedule for that order
         boolean[] touchedVehicle = new boolean[vehicleAmount];
         for (ScheduleAndCost scheduleAndCost:bestOrderSchedules) {
+            if (scheduleAndCost.order==0){
+                continue;
+            }
             int vehicle = scheduleAndCost.vehicle;
             if(!touchedVehicle[vehicle]) {
                 result = createNewSolution(scheduleAndCost, result);
                 touchedVehicle[vehicle]=true;
+                vehicleSchedules.set(vehicle, getVehicleSchedule(vehicle, result));
             }else {
-                vehicleSchedules.set(vehicle,getVehicleSchedule(vehicle,result));
-                ScheduleAndCost newSchedule = findBestScheduleForOrder(scheduleAndCost.order,vehicleSchedules);
-                result = createNewSolution(newSchedule,result);
+                ScheduleAndCost newSchedule = findBestScheduleForOrder(scheduleAndCost.order, vehicleSchedules);
+                if (newSchedule.order!=0) {
+                    result = createNewSolution(newSchedule, result);
+                    touchedVehicle[newSchedule.vehicle]=true;
+                    vehicleSchedules.set(newSchedule.vehicle, getVehicleSchedule(vehicle, result));
+                }
             }
         }
         return result;
@@ -61,7 +69,7 @@ public class RemoveExpensiveReinsertGreedy extends RemoveAndReinsert{
         int bestVehicle = 0;
         Double bestCost = Double.MAX_VALUE;
         for (int vehicle = 0; vehicle<vehicleSchedules.size();vehicle++) {
-            Double cost = Double.MAX_VALUE;
+            Double cost;
             List<Integer> schedule = vehicleSchedules.get(vehicle);
             for (int i = 0; i < schedule.size() +1; i++) {
                 for (int j = i+1; j < schedule.size() + 2; j++) {
@@ -77,7 +85,9 @@ public class RemoveExpensiveReinsertGreedy extends RemoveAndReinsert{
                 }
             }
         }
-
+        if (bestSchedule.size()==0){
+            order =0;
+        }
         return new ScheduleAndCost(bestVehicle,order,bestCost,bestSchedule);
     }
 

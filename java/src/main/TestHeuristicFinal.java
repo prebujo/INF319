@@ -49,14 +49,15 @@ public class TestHeuristicFinal {
     }
 
     private static List<IOperator> getOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
+        int a = dataSet.getOrderAmount() / 4;
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
         operators.add(new ExchangeThree(dataSet, random, feasibility, "exch3"));
-        operators.add(new RemoveExpensiveReinsertGreedy("reig", 1, Math.min(dataSet.getOrderAmount()/4,5), random, feasibility, dataSet));
+        operators.add(new RemoveExpensiveInsertGreedy("reig", 1, Math.min(a,5), random, feasibility, dataSet));
 //        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
         operators.add(new TwoOpt("2opt",random,feasibility,dataSet));
-        operators.add(new ReturnSameSolution("retSame"));
+        operators.add(new RemoveAndReinsertRandom("rrr", 1,Math.min(a,5),random,feasibility,dataSet));
         return operators;
     }
 

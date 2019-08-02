@@ -1,6 +1,6 @@
 #commands to run model
 model model.mod; data simple.dat; option solver cplex;
-model model.mod; data Inst5_Ord_4_Veh_3_Loc_7.dat; option solver cplex;
+model model.mod; data instances/Inst1_Ord_9_Veh_5_Loc_6.dat; option solver cplex;
 option presolve 0;
 option cplex_options 'iisfind 2';
 solve;

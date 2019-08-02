@@ -4,7 +4,6 @@ import dataObjects.IDataSet;
 import functions.feasibility.IFeasibility;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -16,10 +15,10 @@ public class TwoOpt extends Operator {
 
     @Override
     public int[] apply(int[] solution) throws Throwable {
-        List<Integer> vehicleSchedule = Arrays.asList(0);
+        List<Integer> vehicleSchedule = new ArrayList<>();
         int vehicleChoice=0;
         int tries = 0;
-        while(vehicleSchedule.get(0)==0){
+        while(vehicleSchedule.size()<3){
             if(tries>100){
                 return solution.clone();
             }

@@ -18,7 +18,7 @@ class RemoveExpensiveReinsertGreedyTest {
     void most_expensive_elements_are_in_dummy() throws Exception {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
-        RemoveExpensiveReinsertGreedy removeAndReinsert = new RemoveExpensiveReinsertGreedy(null,1,1,null,null,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,null,dataSet);
 
         int[] solution = new int[]{0,3,3,0,4,4,0,1,1,2,2};
 
@@ -32,7 +32,7 @@ class RemoveExpensiveReinsertGreedyTest {
     void returns_correctly_the_most_expensive_elements() throws Exception {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
-        RemoveExpensiveReinsertGreedy removeAndReinsert = new RemoveExpensiveReinsertGreedy(null,1,1,null,null,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,null,dataSet);
 
         int[] solution = new int[]{1,2,1,2,0,3,3,0,4,4,0};
 
@@ -48,7 +48,7 @@ class RemoveExpensiveReinsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        RemoveExpensiveReinsertGreedy removeAndReinsert = new RemoveExpensiveReinsertGreedy(null,1,1,null,feasibility,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,feasibility,dataSet);
 
         int[] solution = new int[]{2,2,0,3,3,0,4,4,0,1,1};
         int[] expected = new int[]{2,2,0,1,3,3,1,0,4,4,0};

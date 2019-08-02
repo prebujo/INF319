@@ -160,16 +160,20 @@ public class Operator implements IOperator {
     protected List<Integer> getVehicleSchedule(int vehicleChoice, int[] solution) {
         List<Integer> result = new ArrayList<>();
         int vehicle=0;
+        boolean done = false;
         for (int i = 0; i < solution.length; i++) {
             int solutionElement=solution[i];
             if (vehicle == vehicleChoice&&solutionElement!=0){
                 result.add(solutionElement);
-            }
-            if (solutionElement==0){
+                done = true;
+            }else if (solutionElement==0){
+                if (done){
+                    break;
+                }
                 vehicle++;
             }
         }
-        return (result.size()>2) ? result: Arrays.asList(0);
+        return result;
     }
 
     protected List<List<Integer>> getVehicleSchedules(int[] solution) {
@@ -235,23 +239,27 @@ public class Operator implements IOperator {
         int vehicle = 0;
         int resultIdx = 0;
         for (int i = 0; i < solution.length; i++) {
-            int solutionElement = solution[i];
-            if (vehicle==scheduleAndCost.vehicle){
+            if (vehicle==scheduleAndCost.vehicle) {
                 List<Integer> schedule = scheduleAndCost.schedule;
                 for (int j = 0; j < schedule.size(); j++) {
                     result[resultIdx++] = schedule.get(j);
                 }
-                while (solution[i]!=0){
+                while (solution[i] != 0) {
                     i++;
                 }
-                vehicle++;
-                resultIdx++;
-            }else if (solutionElement==0){
+            }
+            int solutionElement = solution[i];
+            if (solutionElement==0){
                 vehicle++;
                 resultIdx++;
             } else if(solutionElement!=scheduleAndCost.order){
                 result[resultIdx++]=solutionElement;
             }
+        }
+        int testcounter=0; //TODO:Remove when finished analysing
+        for (int i = 0; i < result.length; i++) {
+            if (result[i]==0)
+                testcounter++;
         }
         return result;
     }

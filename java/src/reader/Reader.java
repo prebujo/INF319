@@ -1,10 +1,8 @@
 package reader;
 
-import dataObjects.DataResult;
 import dataObjects.DataSet;
 import dataObjects.IDataSet;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.*;
 
