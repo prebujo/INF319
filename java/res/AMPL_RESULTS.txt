@@ -1,5 +1,5 @@
-Unsure:
-ampl: model model.mod; data Inst1_Ord_12_Veh_7_Loc_9.dat; option solver cplex;
+Finished:
+ampl: model model.mod; data instances/Inst1_Ord_12_Veh_7_Loc_9.dat; option solver cplex;
 ampl: solve;
 CPLEX 12.9.0.0: optimal integer solution within mipgap or absmipgap; objective 2088.390215
 26107538 MIP simplex iterations

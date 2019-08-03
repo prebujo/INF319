@@ -22,7 +22,7 @@ public interface IDataSet {
     int[] getLocations();
 
     void setVehicleCanVisitNode(boolean[][] vehicleNodes);
-    boolean[][] getVehicleCanVisitNode();
+    boolean[][] getVehicleCanVisitLocation();
 
     void setVehicleCanPickupOrder(boolean[][] vehicleCanPickupOrder);
     boolean[][] getVehicleCanPickupOrder();

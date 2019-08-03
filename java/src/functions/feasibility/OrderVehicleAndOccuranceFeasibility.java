@@ -7,15 +7,19 @@ import java.util.List;
 public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
 
     private final int vehicleAmount;
-    private final boolean[][] vehicleCanVisitNode;
-    private final boolean[][] vehicleCanPickupNode;
+    private final boolean[][] vehicleCanVisitLocation;
+    private final boolean[][] vehicleCanPickupOrder;
     private final int orderAmount;
+    private final int[] orderDeliveryLocations;
+    private final int[] orderPickupLocations;
 
     public OrderVehicleAndOccuranceFeasibility(IDataSet dataset) {
         this.vehicleAmount = dataset.getVehicleAmount();
-        this.vehicleCanVisitNode = dataset.getVehicleCanVisitNode();
-        this.vehicleCanPickupNode = dataset.getVehicleCanPickupOrder();
+        this.vehicleCanVisitLocation = dataset.getVehicleCanVisitLocation();
+        this.vehicleCanPickupOrder = dataset.getVehicleCanPickupOrder();
         this.orderAmount = dataset.getOrderAmount();
+        this.orderDeliveryLocations = dataset.getOrderDeliveryLocations();
+        this.orderPickupLocations = dataset.getOrderPickupLocations();
 
     }
 
@@ -23,27 +27,28 @@ public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
     public boolean check(int[] solution) {
         int i = 0;
         int solutionElement;
-        int[] pickedUpOrDeliveredBy = new int[2*orderAmount+1];
+        int[] pickedUpBy = new int[orderAmount+1];
+        int[] deliveredBy = new int[orderAmount+1];
         for (int v = 0; v < vehicleAmount; v++) {
             solutionElement = solution[i];
             while (solutionElement != 0) {
-                if (!vehicleCanVisitNode[v][solutionElement]) {
+                int solutionLocation;
+                if (pickedUpBy[solutionElement]>0){
+                    if(deliveredBy[solutionElement]>0||pickedUpBy[solutionElement]!=(v+1)){
+                        return false;
+                    }
+                    solutionLocation=orderDeliveryLocations[solutionElement-1];
+                    deliveredBy[solutionElement]=v+1;
+                } else{
+                    if (!vehicleCanPickupOrder[v][solutionElement-1]) {
+                        return false;
+                    }
+                    solutionLocation=orderPickupLocations[solutionElement-1];
+                    pickedUpBy[solutionElement] = v+1;
+                }
+                if (!vehicleCanVisitLocation[v][solutionLocation-1]) {
                     return false;
                 }
-                if(solutionElement>orderAmount){
-                    if(pickedUpOrDeliveredBy[solutionElement]>0||pickedUpOrDeliveredBy[solutionElement-orderAmount]!=(v+1)){
-                        return false;
-                    }
-                }
-                else {
-                    if (!vehicleCanPickupNode[v][solutionElement]){
-                        return false;
-                    }
-                    if(pickedUpOrDeliveredBy[solutionElement]>0){
-                        return false;
-                    }
-                }
-                pickedUpOrDeliveredBy[solutionElement] = v+1;
                 i++;
                 solutionElement = solution[i];
             }

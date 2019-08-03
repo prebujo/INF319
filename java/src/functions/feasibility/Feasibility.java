@@ -20,7 +20,7 @@ public class Feasibility implements IFeasibility{
     private final double[] vehicleWeightCapacities;
     private final double[] vehicleVolumeCapacities;
     private final int[] factory;
-    private final boolean[][] vehicleCanVisitNode;
+    private final boolean[][] vehicleCanVisitLocation;
     private final int[] orderPickupLocations;
     private final int[] orderDeliveryLocations;
     private boolean[][] vehicleCanPickupOrder;
@@ -41,7 +41,7 @@ public class Feasibility implements IFeasibility{
         this.factory = dataSet.getFactories();
         this.factoryAmount = dataSet.getFactoryAmount();
         this.factoryStopCapacity = dataSet.getFactoryStopCapacities();
-        this.vehicleCanVisitNode = dataSet.getVehicleCanVisitNode();
+        this.vehicleCanVisitLocation = dataSet.getVehicleCanVisitLocation();
         this.vehicleCanPickupOrder = dataSet.getVehicleCanPickupOrder();
     }
 
@@ -77,13 +77,10 @@ public class Feasibility implements IFeasibility{
                     if (!vehicleCanPickupOrder[v][solutionElement-1]){
                         return false;
                     }
-                    if(pickedUpBy[solutionElement]>0){
-                        return false;
-                    }
                     pickedUpBy[solutionElement] = v+1;
                     solutionLocation = orderPickupLocations[solutionElement-1];
                 }
-                if (!vehicleCanVisitNode[v][solutionLocation-1]) {
+                if (!vehicleCanVisitLocation[v][solutionLocation-1]) {
                     return false;
                 }
                 if(vehicleLocation!= 0) {
@@ -150,7 +147,7 @@ public class Feasibility implements IFeasibility{
                 pickedUp[solutionElement-1] = true;
                 solutionLocation = orderPickupLocations[solutionElement - 1];
             }
-            if(!vehicleCanVisitNode[vehicle][solutionLocation-1]){
+            if(!vehicleCanVisitLocation[vehicle][solutionLocation-1]){
                 return false;
             }
             if (vehicleLocation != 0) {

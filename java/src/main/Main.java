@@ -53,9 +53,9 @@ public class Main {
 //        System.out.println("Location Node 9: "+dataset.getLocations()[8]);
 //        System.out.println("Location Node 9: "+dataset.getLocations()[5]);
 
-        System.out.println("Vehicle 1 can visit Node 4: "+dataset.getVehicleCanVisitNode()[0][3]);
-        System.out.println("Vehicle 2 can visit Node 2: "+dataset.getVehicleCanVisitNode()[1][1]);
-        System.out.println("Vehicle 3 can visit Node 6: "+dataset.getVehicleCanVisitNode()[2][5]);
+        System.out.println("Vehicle 1 can visit Node 4: "+dataset.getVehicleCanVisitLocation()[0][3]);
+        System.out.println("Vehicle 2 can visit Node 2: "+dataset.getVehicleCanVisitLocation()[1][1]);
+        System.out.println("Vehicle 3 can visit Node 6: "+dataset.getVehicleCanVisitLocation()[2][5]);
 
         System.out.println("Vehicle 1 can Pickup Node 1: "+dataset.getVehicleCanPickupOrder()[0][0]);
         System.out.println("Vehicle 2 can Pickup Node 2: "+dataset.getVehicleCanPickupOrder()[1][1]);

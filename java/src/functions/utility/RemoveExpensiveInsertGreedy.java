@@ -113,7 +113,12 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
                     double vehicleTotalCost = calculateVehicleCost(vehicle,schedule);
                     while(!orders.isEmpty()){
                         Integer removed = ordersList.remove(0);
-                        orderCost.add(new OrderAndCost(removed,vehicleTotalCost-calculateVehicleCostWithoutOrder(removed,vehicle,schedule)));
+                        List<Integer> scheduleWithoutOrder = getScheduleWithoutOrder(removed, schedule);
+                        if(feasibility.checkSchedule(vehicle, scheduleWithoutOrder)) {
+                            orderCost.add(new OrderAndCost(removed, vehicleTotalCost - calculateVehicleCostWithoutOrder(removed, vehicle, schedule)));
+                        }else{
+                            orderCost.add(new OrderAndCost(removed,0.0));
+                        }
                         orders.remove(removed);
                     }
                 }
@@ -140,30 +145,37 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
     private HashSet<Integer> getMostExpensiveOrders(int amount, List<OrderAndCost> orderCost) {
         assert orderCost.size()>amount;
         HashSet<Integer> result = new HashSet<>();
+
+        orderCost.sort(Comparator.comparing(OrderAndCost::getCost));
+
         List<OrderAndCost> mostExpensiveOrders = new ArrayList<>();
-        int cheapestIndex = 0;
-        double cheapestCost = orderCost.get(0).cost;
-        while(mostExpensiveOrders.size()<amount){
-            OrderAndCost removed = orderCost.remove(0);
-            mostExpensiveOrders.add(removed);
-            if (removed.cost<cheapestCost){
-                cheapestIndex = mostExpensiveOrders.size()-1;
-                cheapestCost = removed.cost;
-            }
+        while(amount>0){
+            mostExpensiveOrders.add(orderCost.remove(0));
+            amount--;
         }
-        for (OrderAndCost order:orderCost) {
-            if (order.cost>cheapestCost){
-                mostExpensiveOrders.set(cheapestIndex,order);
-                cheapestCost = order.cost;
-                for (int i = 0; i < mostExpensiveOrders.size(); i++) {
-                    OrderAndCost orderAndCost = mostExpensiveOrders.get(i);
-                    if (orderAndCost.cost<cheapestCost){
-                        cheapestCost=orderAndCost.cost;
-                        cheapestIndex=i;
-                    }
-                }
-            }
-        }
+//        int cheapestIndex = 0;
+//        double cheapestCost = orderCost.get(0).cost;
+//        while(mostExpensiveOrders.size()<amount){
+//            OrderAndCost removed = orderCost.remove(0);
+//            mostExpensiveOrders.add(removed);
+//            if (removed.cost<cheapestCost){
+//                cheapestIndex = mostExpensiveOrders.size()-1;
+//                cheapestCost = removed.cost;
+//            }
+//        }
+//        for (OrderAndCost order:orderCost) {
+//            if (order.cost>cheapestCost){
+//                mostExpensiveOrders.set(cheapestIndex,order);
+//                cheapestCost = order.cost;
+//                for (int i = 0; i < mostExpensiveOrders.size(); i++) {
+//                    OrderAndCost orderAndCost = mostExpensiveOrders.get(i);
+//                    if (orderAndCost.cost<cheapestCost){
+//                        cheapestCost=orderAndCost.cost;
+//                        cheapestIndex=i;
+//                    }
+//                }
+//            }
+//        }
         for (OrderAndCost orderAndCost:mostExpensiveOrders) {
             result.add(orderAndCost.order);
         }

@@ -24,7 +24,7 @@ public class InstanceGenerator implements IInstanceGenerator {
     private static final double FIXED_INCREASE_RATE_LARGE = 1.64;
     private static final double FIXED_INCREASE_RATE_MEDIUM = 1.56;
     private static final double FIXED_INCREASE_RATE_SMALL = 1.50;
-    private static final int LARGEST_INSTANCE_ORDER_AMOUNT = 100;
+    private static final int LARGEST_INSTANCE_ORDER_AMOUNT = 150;
     private static final double LARGE_NUMBER = 9999999;
     private static final double SMALL_VEHICLE_STOP_MULTIPLIER = 1;
     private static final double MEDIUM_VEHICLE_STOP_MULTIPLIER = 1.5;

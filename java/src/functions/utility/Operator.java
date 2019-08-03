@@ -176,7 +176,7 @@ public class Operator implements IOperator {
         return result;
     }
 
-    protected List<List<Integer>> getVehicleSchedules(int[] solution) {
+    public List<List<Integer>> getVehicleSchedules(int[] solution) {
         List<List<Integer>> result = new ArrayList<>();
         int vehicle = 0;
         List<Integer> schedule = new ArrayList<>();
@@ -215,6 +215,8 @@ public class Operator implements IOperator {
         }
         return result;
     }
+
+
 
     protected int[] createNewSolution(int vehicleChoice, List<Integer> vehicleSchedule, int[] solution) {
         int[] result = solution.clone();
@@ -256,11 +258,6 @@ public class Operator implements IOperator {
                 result[resultIdx++]=solutionElement;
             }
         }
-        int testcounter=0; //TODO:Remove when finished analysing
-        for (int i = 0; i < result.length; i++) {
-            if (result[i]==0)
-                testcounter++;
-        }
         return result;
     }
 
@@ -275,5 +272,34 @@ public class Operator implements IOperator {
             }
         }
         return result;
+    }
+
+    protected List<Integer> getVehicleScheduleWithoutOrder(int vehicle, int order, List<List<Integer>> vehicleSchedules) {
+        return getScheduleWithoutOrder(order,vehicleSchedules.get(vehicle));
+    }
+
+    protected List<Integer> getScheduleWithoutOrder(int order, List<Integer> schedule) {
+        List<Integer> newSchedule = new ArrayList<>();
+        for (int i = 0; i < schedule.size(); i++) {
+            if(schedule.get(i)==order){
+                continue;
+            } else {
+                newSchedule.add(schedule.get(i));
+            }
+        }
+        return newSchedule;
+    }
+
+    protected int getVehicle(int order, List<List<Integer>> vehicleSchedules) {
+        int vehicle = vehicleSchedules.size();
+        for (int i = 0; i < vehicleSchedules.size(); i++) {
+            List<Integer> schedule = vehicleSchedules.get(i);
+            for (int j = 0; j < schedule.size(); j++) {
+                if (schedule.get(j)==order){
+                    return i;
+                }
+            }
+        }
+        return vehicle;
     }
 }

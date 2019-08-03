@@ -114,7 +114,7 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public boolean[][] getVehicleCanVisitNode() {
+    public boolean[][] getVehicleCanVisitLocation() {
         return vehicleCanVisitNode;
     }
 

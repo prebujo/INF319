@@ -25,29 +25,25 @@ public class WeightAndVolumeFeasible implements IFeasibility {
 
     @Override
     public boolean check(int[] solution) {
-        boolean result = true;
-
         int i = 0;
+        boolean[] pickedUp = new boolean[orderAmount];
         for (int v = 0; v < vehicleAmount; v++) {
-            int weightOnVehicle = 0;
-            int volumeOnVehicle = 0;
+            double weightOnVehicle = 0;
+            double volumeOnVehicle = 0;
             int solutionElement = solution[i];
             while (solutionElement != 0) {
-                weightOnVehicle += getWeightDifference(solutionElement);
-                volumeOnVehicle += getVolumeDifference(solutionElement);
+                weightOnVehicle += getWeightDifference(solutionElement, pickedUp[solutionElement-1]);
+                volumeOnVehicle += getVolumeDifference(solutionElement, pickedUp[solutionElement-1]);
+                pickedUp[solutionElement-1]=true;
                 if (weightOnVehicle > vehicleWeightCapacity[v]||volumeOnVehicle>vehicleVolumeCapacity[v]) {
-                    result = false;
-                    break;
+                    return false;
                 }
                 i++;
                 solutionElement = solution[i];
             }
-            if (weightOnVehicle > vehicleWeightCapacity[v]) {
-                break;
-            }
             i++;
         }
-        return result;
+        return true;
     }
 
     @Override
@@ -55,21 +51,21 @@ public class WeightAndVolumeFeasible implements IFeasibility {
         return false;
     }
 
-    private double getVolumeDifference(int solutionElement) {
-        if(solutionElement<=orderAmount){
+    private double getVolumeDifference(int solutionElement, boolean pickedup) {
+        if(!pickedup){
             return orderVolume[solutionElement-1];
         }
         else {
-            return -orderVolume[solutionElement-orderAmount-1];
+            return -orderVolume[solutionElement-1];
         }
     }
 
-    private double getWeightDifference(int solutionElement) {
-        if(solutionElement<=orderAmount){
+    private double getWeightDifference(int solutionElement, boolean pickedup) {
+        if(!pickedup){
             return orderWeights[solutionElement-1];
         }
         else {
-            return -orderWeights[solutionElement-orderAmount-1];
+            return -orderWeights[solutionElement-1];
         }
     }
 }

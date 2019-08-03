@@ -20,7 +20,7 @@ public class Reader implements IReader {
         int factoryAmount = getIntFromLineAndMoveToNextSection(fileScanner,1);  //#4
 
 
-        int[] factories = getSetList(fileScanner, factoryAmount, 2*orderAmount); //#5
+        int[] factories = getSetList(fileScanner, factoryAmount, locationsAmount); //#5
 
         int[] stopCapacities = getIntegerList(fileScanner, factoryAmount);  //#6
 

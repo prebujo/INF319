@@ -19,7 +19,7 @@ public class TwoOpt extends Operator {
         int vehicleChoice=0;
         int tries = 0;
         while(vehicleSchedule.size()<3){
-            if(tries>100){
+            if(tries>=orderAmount){
                 return solution.clone();
             }
             vehicleChoice = random.nextInt(vehicleAmount);
