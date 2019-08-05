@@ -40,9 +40,9 @@ public class TestHeuristicMain {
         List<IOperator> operators = new ArrayList<>();
 
         String swapDescription="Swaps the position of 2 orders from one vehicle to another";
-        operators.add(new SwapTwo(dataSet, random, feasibility, "swap2"));
+        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
         String exchangeDescription="exchanges the order of 3 orders a delivery schedule of a";
-        operators.add(new ExchangeThree(dataSet,random,feasibility,"exch3"));
+        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
         String removeAndReinsertTwoToFourDescription="remove and reinsert operator that removes between 2-4 random elements from solution and reinserts them in randomly selected vehicles";
         operators.add(new RemoveAndReinsertRandom("r&R1_4", 1, 3, random, feasibility, dataSet));
         String removeAndReinsertOneDescription="remove and reinsert operator that removes between 1-1 random elements from solution and reinserts them in randomly selected vehicles";

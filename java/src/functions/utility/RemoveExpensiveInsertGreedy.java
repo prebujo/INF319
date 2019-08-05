@@ -57,7 +57,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
                 if (newSchedule.order!=0) {
                     result = createNewSolution(newSchedule, result);
                     touchedVehicle[newSchedule.vehicle]=true;
-                    vehicleSchedules.set(newSchedule.vehicle, getVehicleSchedule(vehicle, result));
+                    vehicleSchedules.set(newSchedule.vehicle, getVehicleSchedule(newSchedule.vehicle, result));
                 }
             }
         }

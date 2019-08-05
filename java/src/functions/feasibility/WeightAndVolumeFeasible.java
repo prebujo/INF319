@@ -51,6 +51,11 @@ public class WeightAndVolumeFeasible implements IFeasibility {
         return false;
     }
 
+    @Override
+    public boolean checkScheduleWithOrderReplacement(int vehicle, int orderToReplace, int replacement, List<Integer> schedule) {
+        return false;
+    }
+
     private double getVolumeDifference(int solutionElement, boolean pickedup) {
         if(!pickedup){
             return orderVolume[solutionElement-1];

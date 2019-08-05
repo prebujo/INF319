@@ -61,4 +61,9 @@ public class OrderVehicleAndOccuranceFeasibility implements IFeasibility {
     public boolean checkSchedule(int vehicle, List<Integer> schedule) {
         return false;
     }
+
+    @Override
+    public boolean checkScheduleWithOrderReplacement(int vehicle, int orderToReplace, int replacement, List<Integer> schedule) {
+        return false;
+    }
 }

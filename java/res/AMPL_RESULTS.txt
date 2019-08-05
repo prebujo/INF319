@@ -1,4 +1,4 @@
-Finished:
+Finished not with latest model:
 ampl: model model.mod; data instances/Inst1_Ord_12_Veh_7_Loc_9.dat; option solver cplex;
 ampl: solve;
 CPLEX 12.9.0.0: optimal integer solution within mipgap or absmipgap; objective 2088.390215
@@ -6,21 +6,54 @@ CPLEX 12.9.0.0: optimal integer solution within mipgap or absmipgap; objective 2
 488281 branch-and-bound nodes
 absmipgap = 0.189564, relmipgap = 9.07702e-05
 
-Finished:
+Unfinished, not with latest model:
+ampl: model model.mod; data instances/Inst1_Ord_12_Veh_7_Loc_9.dat; option solver cplex;
+ampl: solve;
+CPLEX 12.9.0.0:
+<BREAK> (cplex)
+
+<BREAK> (cplex)
+CPLEX solution status 13 with fixed integers:
+	aborted in phase II
+aborted, integer solution exists; objective 29594.42507
+107675336 MIP simplex iterations
+1014430 branch-and-bound nodes
+absmipgap = 365.299, relmipgap = 0.0123435
+
+
+Unfinished, not with final model.mod:
 ampl: model model.mod; data instances/Inst1_Ord_10_Veh_6_Loc_7.dat; option solver cplex;
 ampl: solve;
-CPLEX 12.9.0.0: optimal (non-)integer solution within mipgap or absmipgap; objective 1897.653819
-11486464 MIP simplex iterations
-149714 branch-and-bound nodes
-absmipgap = 0.179742, relmipgap = 9.47181e-05
-4 integer variables rounded (maxerr = 1.31278e-08).
-Assigning integrality = 7e-09 might help.
-Currently integrality = 1e-05.
+CPLEX 12.9.0.0:
+<BREAK> (cplex)
+
+<BREAK> (cplex)
+CPLEX solution status 13 with fixed integers:
+	aborted in phase II
+aborted, integer solution exists; objective 6768.91344
+49052955 MIP simplex iterations
+665584 branch-and-bound nodes
+absmipgap = 1609.64, relmipgap = 0.237799
+ampl:
 
 Finished:
 ampl: model model.mod; data instances/Inst1_Ord_9_Veh_5_Loc_6.dat; option solver cplex;
 ampl: solve;
 CPLEX 12.9.0.0: optimal integer solution; objective 15361.5121
-1442798 MIP simplex iterations
-13437 branch-and-bound nodes
+1768797 MIP simplex iterations
+13738 branch-and-bound nodes
+
+Finished:
+ampl: model model.mod; data instances/Inst1_Ord_7_Veh_4_Loc_10.dat; option solver cplex;
+ampl: solve;
+CPLEX 12.9.0.0: optimal integer solution; objective 4367.24818
+174450 MIP simplex iterations
+2735 branch-and-bound nodes
+
+ampl: model model.mod; data instances/Inst1_Ord_4_Veh_3_Loc_7.dat; option solver cplex;
+ampl: solve;
+CPLEX 12.9.0.0: optimal integer solution; objective 3444.671884
+481 MIP simplex iterations
+0 branch-and-bound nodes
+
 

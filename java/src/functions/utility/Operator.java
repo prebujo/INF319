@@ -2,6 +2,7 @@ package functions.utility;
 
 import dataObjects.IDataSet;
 import dataObjects.ScheduleAndCost;
+import dataObjects.VehicleAndSchedule;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -301,5 +302,27 @@ public class Operator implements IOperator {
             }
         }
         return vehicle;
+    }
+
+    protected VehicleAndSchedule getVehicleScheduleOfOrder(int order, int[] solution) {
+        List<Integer> schedule = new ArrayList<>();
+        int vehicle = 0;
+        boolean correctSchedule = false;
+        for (int i = 0; i < solution.length; i++) {
+            int solutionElement = solution[i];
+            if(solutionElement==0){
+                if (correctSchedule){
+                    return new VehicleAndSchedule(vehicle,schedule);
+                }
+                schedule=new ArrayList<>();
+                vehicle++;
+            } else if (solutionElement==order){
+                schedule.add(solutionElement);
+                correctSchedule = true;
+            } else{
+                schedule.add(solutionElement);
+            }
+        }
+        return new VehicleAndSchedule(vehicle,schedule);
     }
 }

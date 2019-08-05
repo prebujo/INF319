@@ -179,7 +179,7 @@ public class Main {
         System.out.println("Solution objective: "+ resultCost);
         System.out.println("Solution feasible? ->"+feasibility.check(dummySolution));
 
-        IOperator swap2 = new SwapTwo(dataset,random,feasibility, "swap2");
+        IOperator swap2 = new SwapTwo("swap2",random,feasibility, dataset);
         IOperator removeAndReinsert = new RemoveAndReinsert("r&r2_2",2,2, random,feasibility, dataset);
 
         int counter = 0;

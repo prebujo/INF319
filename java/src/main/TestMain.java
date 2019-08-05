@@ -54,12 +54,12 @@ public class TestMain {
         solutionObjective = objective.calculateSolution(solution);
         System.out.println("Solution objective: " + solutionObjective);
 
-        IOperator swap = new SwapTwo(dataset, random, feasibility, "swap2");
+        IOperator swap = new SwapTwo("swap2", random, feasibility, dataset);
         solution = checkOperator(swap, solution, solutionObjective, objective);
 
         solutionObjective = objective.calculateSolution(solution);
 
-        IOperator exchangeThree = new ExchangeThree(dataset, random, feasibility, "exchange3");
+        IOperator exchangeThree = new ExchangeThree("exchange3", random, feasibility, dataset);
         solution = checkOperator(exchangeThree, solution, solutionObjective, objective);
 
         solutionObjective = objective.calculateSolution(solution);

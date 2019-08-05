@@ -15,7 +15,7 @@ public class ExchangeThree implements IOperator {
     private final IFeasibility feasibility;
     private final String description= "exchanges the order of 3 scheduled pickups/deliveries for a vehicle";
 
-    public ExchangeThree(IDataSet dataSet, Random random, IFeasibility feasibility, String name){
+    public ExchangeThree(String name, Random random, IFeasibility feasibility, IDataSet dataSet){
         this.dataSet = dataSet;
         this.vehicleAmount = dataSet.getVehicleAmount();
         this.orderAmount = dataSet.getOrderAmount();

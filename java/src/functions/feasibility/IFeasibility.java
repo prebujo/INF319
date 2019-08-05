@@ -11,4 +11,6 @@ public interface IFeasibility {
     boolean check(int[] solution);
 
     boolean checkSchedule(int vehicle, List<Integer> schedule);
+
+    boolean checkScheduleWithOrderReplacement(int vehicle, int orderToReplace, int replacement, List<Integer> schedule);
 }

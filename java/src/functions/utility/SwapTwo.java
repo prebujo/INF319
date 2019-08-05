@@ -17,7 +17,7 @@ public class SwapTwo implements IOperator {
     private String name;
 
 
-    public SwapTwo(IDataSet dataSet, Random random, IFeasibility feasibility, String name){
+    public SwapTwo(String name, Random random, IFeasibility feasibility, IDataSet dataSet){
         this.dataSet = dataSet;
         this.orderAmount = dataSet.getOrderAmount();
         this.vehicleAmount = dataSet.getVehicleAmount();

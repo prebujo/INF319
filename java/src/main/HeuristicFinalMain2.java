@@ -13,7 +13,7 @@ import reader.Reader;
 
 import java.util.*;
 
-public class HeuristicFinalMain {
+public class HeuristicFinalMain2 {
     public static void main(String[] args) throws Throwable {
 
         //reads data from 4flow file
@@ -25,13 +25,12 @@ public class HeuristicFinalMain {
 
         List<IDataResult> results = new ArrayList<>();
         List<IOperator> operators = null;
-        IFeasibility feasibility = null;
+        IFeasibility feasibility;
         String instance = "Inst1_";
-        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9","Ord_35_Veh_20_Loc_22", "Ord_80_Veh_45_Loc_45", "Ord_150_Veh_80_Loc_85");
+        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_7_Veh_4_Loc_10","Ord_9_Veh_5_Loc_6", "Ord_10_Veh_6_Loc_7", "Ord_12_Veh_7_Loc_9");
         List<IDataSet> dataSets = reader.readDataFromFiles(instance,instanceSizes);
         int i = 0;
         for (IDataSet dataSet:dataSets) {
-
             Random random = new Random(101+i);
             feasibility = new Feasibility(dataSet);
 
@@ -53,10 +52,10 @@ public class HeuristicFinalMain {
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
-        operators.add(new SwapTwoFirstFit("swapf",random,feasibility,dataSet));
-        operators.add(new SwapTwoFirstFit2("swapf2", random, feasibility, dataSet));
+        operators.add(new ExchangeThree("exch3", random, feasibility, dataSet));
         operators.add(new RemoveExpensiveInsertGreedy("reig", 1, Math.min(a,5), random, feasibility, dataSet));
 //        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
+        operators.add(new TwoOpt("2opt",random,feasibility,dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.min(a,5),random,feasibility,dataSet));
         return operators;
     }
@@ -69,3 +68,4 @@ public class HeuristicFinalMain {
     }
 
 }
+
