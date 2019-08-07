@@ -254,7 +254,7 @@ public class FlowReaderPrint implements IReader {
         result.setOrderPenalties(orderPenalties);
         result.setVehicleWeightCapacities(vehicleKGCapacities);
         result.setVehicleVolumeCapacities(vehicleVOLCapacities);
-        result.setVehicleCanVisitNode(vehicleCanVisitNodes);
+        result.setVehicleCanVisitLocation(vehicleCanVisitNodes);
         result.setVehicleCanPickupOrder(vehicleCanPickupOrder);
         result.setVehicleStartingLocations(vehicleStartingLocations);
         result.setVehicleDestinationLocations(vehicleDestinationLocations);

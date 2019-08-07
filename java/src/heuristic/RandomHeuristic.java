@@ -6,8 +6,8 @@ import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
-import functions.utility.ISolutionGenerator;
-import functions.utility.SolutionGenerator;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 
 import java.util.ArrayList;
 import java.util.Random;

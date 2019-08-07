@@ -1,7 +1,8 @@
-package functions.utility;
+package generators;
+
+import generators.ISolutionGenerator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 

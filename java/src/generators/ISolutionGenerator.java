@@ -1,4 +1,4 @@
-package functions.utility;
+package generators;
 
 public interface ISolutionGenerator {
     int[] randomize (int[] solution);

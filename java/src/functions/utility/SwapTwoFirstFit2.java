@@ -16,21 +16,15 @@ public class SwapTwoFirstFit2 extends Operator {
     @Override
     public int[] apply(int[] solution) {
 
-        int[] result = solution.clone();
-
-        VehicleAndSchedule vehicleSchedule1 = null;
-        VehicleAndSchedule vehicleSchedule2 = null;
-        boolean feasible = false;
         int tries = 0;
-        while (!feasible&&tries<100) {
+        while (tries<100) {
             int choice1 = 1 + random.nextInt(orderAmount);
             int choice2 = choice1;
             while (choice1 == choice2) {
                 choice2 = 1 + random.nextInt(orderAmount);
             }
-
-            vehicleSchedule1 = getVehicleScheduleOfOrder(choice1,solution);
-            vehicleSchedule2 = getVehicleScheduleOfOrder(choice2,solution);
+            VehicleAndSchedule vehicleSchedule1 = getVehicleScheduleOfOrder(choice1,solution);
+            VehicleAndSchedule vehicleSchedule2 = getVehicleScheduleOfOrder(choice2,solution);
             if(vehicleSchedule1.vehicle==vehicleSchedule2.vehicle){
                 List<Integer> vehicleScheduleOrderReplacements = getVehicleScheduleOrderReplacements(choice1, choice2, vehicleSchedule1.schedule);
                 if(feasibility.checkSchedule(vehicleSchedule1.vehicle, vehicleScheduleOrderReplacements)){
@@ -87,6 +81,7 @@ public class SwapTwoFirstFit2 extends Operator {
                 vehicle++;
             }else if(solutionElement==0){
                 vehicle++;
+                resultIdx++;
             }else{
                 result[resultIdx++]=solutionElement;
             }

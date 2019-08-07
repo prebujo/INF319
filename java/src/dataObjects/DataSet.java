@@ -34,6 +34,9 @@ public class DataSet implements IDataSet {
     private double[][][] travelTimes;
     private double[][] travelDistances;
     private int[] orderDeliveryDock;
+    private double maxDistance;
+    private double latestPickupTimeWindow;
+    private double latestDeliveryTimeWindow;
 
 
     public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount){
@@ -51,13 +54,18 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public int getFactoryAmount() {
-        return factoryAmount;
+    public int getVehicleAmount() {
+        return vehicleAmount;
     }
 
     @Override
-    public int getVehicleAmount() {
-        return vehicleAmount;
+    public int getLocationsAmount() {
+        return locationsAmount;
+    }
+
+    @Override
+    public int getFactoryAmount() {
+        return factoryAmount;
     }
 
     @Override
@@ -109,7 +117,7 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public void setVehicleCanVisitNode(boolean[][] vehicleCanVisitNode) {
+    public void setVehicleCanVisitLocation(boolean[][] vehicleCanVisitNode) {
         this.vehicleCanVisitNode = vehicleCanVisitNode;
     }
 
@@ -334,8 +342,34 @@ public class DataSet implements IDataSet {
     }
 
     @Override
-    public int getLocationsAmount() {
-        return locationsAmount;
+    public double getMaxDistance() {
+        return maxDistance;
+    }
+
+    @Override
+    public void setMaxDistance(double maxDistance) {
+        this.maxDistance = maxDistance;
+    }
+
+    @Override
+    public double getLatestPickupTimeWindow() {
+        return latestPickupTimeWindow;
+    }
+
+    @Override
+    public void setLatestPickupTimeWindow(double latestPickupTimeWindow) {
+        this.latestPickupTimeWindow=latestPickupTimeWindow;
+    }
+
+
+    @Override
+    public double getLatestDeliveryTimeWindow() {
+        return latestDeliveryTimeWindow;
+    }
+
+    @Override
+    public void setLatestDeliveryTimeWindow(double latestDeliveryTimeWindow) {
+        this.latestDeliveryTimeWindow = latestDeliveryTimeWindow;
     }
 
 }

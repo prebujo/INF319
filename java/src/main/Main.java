@@ -1,5 +1,7 @@
 package main;
 
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 import heuristic.IHeuristic;
 import heuristic.RandomHeuristic;
 import dataObjects.IDataSet;

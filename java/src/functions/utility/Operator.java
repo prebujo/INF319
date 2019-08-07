@@ -15,11 +15,11 @@ public class Operator implements IOperator {
     protected final IFeasibility feasibility;
     protected final int vehicleAmount;
     protected final int orderAmount;
-    private final double[][][] kgCostMatrix;
-    private final double[][][] kmCostMatrix;
-    private final double[][][] fixCostMatrix;
-    private final double[][] distanceIntervals;
-    private final double[][] weightIntervals;
+    protected final double[][][] kgCostMatrix;
+    protected final double[][][] kmCostMatrix;
+    protected final double[][][] fixCostMatrix;
+    protected final double[][] distanceIntervals;
+    protected final double[][] weightIntervals;
     protected final double[] orderWeights;
     protected final int[] orderPickupLocations;
     protected final int[] orderDeliveryLocations;

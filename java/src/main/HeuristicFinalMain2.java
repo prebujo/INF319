@@ -51,7 +51,7 @@ public class HeuristicFinalMain2 {
         int a = dataSet.getOrderAmount() / 4;
         List<IOperator> operators;
         operators=new ArrayList<>();
-        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
+        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
         operators.add(new ExchangeThree("exch3", random, feasibility, dataSet));
         operators.add(new RemoveExpensiveInsertGreedy("reig", 1, Math.min(a,5), random, feasibility, dataSet));
 //        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));

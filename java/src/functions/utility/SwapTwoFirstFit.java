@@ -16,7 +16,6 @@ public class SwapTwoFirstFit extends Operator {
 
         boolean feasible = false;
         int tries =0;
-        boolean failed = false;
         while(!feasible&&tries<100) {
             int choice1 = 1 + random.nextInt(orderAmount);
             int choice2 = choice1;

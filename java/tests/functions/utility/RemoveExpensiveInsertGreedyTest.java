@@ -4,6 +4,8 @@ import dataObjects.IDataSet;
 import functions.feasibility.CollectiveCheck;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 import org.junit.jupiter.api.Test;
 import reader.IReader;
 import reader.Reader;

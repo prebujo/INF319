@@ -21,7 +21,7 @@ public interface IDataSet {
     void setLocations(int[] locationCollection);
     int[] getLocations();
 
-    void setVehicleCanVisitNode(boolean[][] vehicleNodes);
+    void setVehicleCanVisitLocation(boolean[][] vehicleNodes);
     boolean[][] getVehicleCanVisitLocation();
 
     void setVehicleCanPickupOrder(boolean[][] vehicleCanPickupOrder);
@@ -95,4 +95,12 @@ public interface IDataSet {
 
 
     void setOrderDeliveryDocks(int[] orderDeliveryDocks);
+
+    double getMaxDistance();
+    void setMaxDistance(double maxDistance);
+
+    double getLatestPickupTimeWindow();
+    void setLatestPickupTimeWindow(double latestPickupTimeWindow);
+    double getLatestDeliveryTimeWindow();
+    void setLatestDeliveryTimeWindow(double latestDeliveryTimeWindow);
 }

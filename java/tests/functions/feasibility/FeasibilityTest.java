@@ -2,6 +2,8 @@ package functions.feasibility;
 
 import dataObjects.IDataSet;
 import functions.utility.*;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 import org.junit.jupiter.api.Test;
 import reader.IReader;
 import reader.Reader;

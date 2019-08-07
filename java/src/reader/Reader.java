@@ -33,13 +33,16 @@ public class Reader implements IReader {
 
         double[] orderVolumes = getDoubleList(fileScanner,orderAmount); //#11
 
-        boolean[][] vehicleCanVisitNode = getBooleanList(fileScanner,vehicleAmount, locationsAmount); //#12
+        boolean[][] vehicleCanVisitLocation = getBooleanList(fileScanner,vehicleAmount, locationsAmount); //#12
 
-        boolean[][] vehicleCanPickupNode = getBooleanList(fileScanner, vehicleAmount, orderAmount);   //#13
+        boolean[][] vehicleCanPickupOrder = getBooleanList(fileScanner, vehicleAmount, orderAmount);   //#13
 
         double[] vehicleWeightCapacities = getDoubleList(fileScanner,vehicleAmount);    //#14
 
         double[] vehicleVolumeCapacities = getDoubleList(fileScanner,vehicleAmount);    //#15
+
+        List<HashSet<Integer>> orderCanBePickedUpBy = getAllOrderVehicleCompatabilities(orderAmount,vehicleAmount,vehicleCanPickupOrder,
+                vehicleCanVisitLocation,orderPickupLocations,orderDeliveryLocations,orderWeights,orderVolumes,vehicleWeightCapacities,vehicleVolumeCapacities);
 
         int[] distanceDimensions = getIntegerList(fileScanner,vehicleAmount); //#16
         int[] weightDimensions = getIntegerList(fileScanner,vehicleAmount); //#17
@@ -66,11 +69,17 @@ public class Reader implements IReader {
 
         double[][] lowerTimeWindows = getDouble2DList(fileScanner, locationsAmount, timeWindowMax); //#26
 
+
         double[][] upperTimeWindows = getDouble2DList(fileScanner, locationsAmount, timeWindowMax); //#27
+        int lastPickupLocation = getMaxValue(orderPickupLocations);
+        double latestPickupTime = getMaxValueFromTo(0,lastPickupLocation,timeWindowAmounts,upperTimeWindows);
+        double latestDeliveryTime = getMaxValueFromTo(lastPickupLocation,locationsAmount,timeWindowAmounts,upperTimeWindows);
 
         double[][][] travelTimes = getDouble3DList(fileScanner, vehicleAmount, locationsAmount, locationsAmount);   //#28
 
         double[][] travelDistances = getDouble2DList(fileScanner, locationsAmount, locationsAmount);    //#29
+
+        double maxDistance = getMaxValue(travelDistances);
 
         result = new DataSet(vehicleAmount,orderAmount,locationsAmount, factoryAmount);
         result.setWeightDimensions(weightDimensions);
@@ -79,8 +88,8 @@ public class Reader implements IReader {
         result.setFactoryStopCapacities(stopCapacities);
         result.setOrderPickupLocations(orderPickupLocations);
         result.setOrderDeliveryLocations(orderDeliveryLocations);
-        result.setVehicleCanVisitNode(vehicleCanVisitNode);
-        result.setVehicleCanPickupOrder(vehicleCanPickupNode);
+        result.setVehicleCanVisitLocation(vehicleCanVisitLocation);
+        result.setVehicleCanPickupOrder(vehicleCanPickupOrder);
         result.setVehicleWeightCapacities(vehicleWeightCapacities);
         result.setOrderWeights(orderWeights);
         result.setVehicleVolumeCapacities(vehicleVolumeCapacities);
@@ -97,8 +106,24 @@ public class Reader implements IReader {
         result.setUpperTimeWindows(upperTimeWindows);
         result.setTravelTimes(travelTimes);
         result.setTravelDistances(travelDistances);
+        result.setMaxDistance(maxDistance);
+        result.setLatestPickupTimeWindow(latestPickupTime);
+        result.setLatestDeliveryTimeWindow(latestDeliveryTime);
         return result;
     }
+
+
+    private double getMaxValueFromTo(int fromIdx, int toIdx, int[] timeWindowAmounts, double[][] upperTimeWindows) {
+        double max = 0.0;
+        for (int i = fromIdx; i < toIdx; i++) {
+            double latestTime = upperTimeWindows[i][ timeWindowAmounts[i]- 1];
+            if(latestTime>max){
+                max=latestTime;
+            }
+        }
+        return max;
+    }
+
     @Override
     public List<IDataSet> readDataFromFiles(String instance, List<String> instanceSizes) throws Exception {
         List<IDataSet> result = new ArrayList<>();
@@ -207,6 +232,17 @@ public class Reader implements IReader {
         for(int i:list){
             if(i>max)
                 max = i;
+        }
+        return max;
+    }
+
+    private double getMaxValue(double[][] list) {
+        double max = 0.0;
+        for(double[] i:list){
+            for (double j:i) {
+                if (j > max)
+                    max = j;
+            }
         }
         return max;
     }

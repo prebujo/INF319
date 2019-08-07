@@ -5,6 +5,8 @@ import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
 import functions.utility.*;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 
 import java.util.ArrayList;
 import java.util.HashSet;

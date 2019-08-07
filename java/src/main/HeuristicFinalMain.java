@@ -50,14 +50,15 @@ public class HeuristicFinalMain {
 
     private static List<IOperator> getOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
         int a = dataSet.getOrderAmount() / 4;
+        int b = dataSet.getOrderAmount() / 3;
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
-        operators.add(new SwapTwoFirstFit("swapf",random,feasibility,dataSet));
-        operators.add(new SwapTwoFirstFit2("swapf2", random, feasibility, dataSet));
+        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
+        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
         operators.add(new RemoveExpensiveInsertGreedy("reig", 1, Math.min(a,5), random, feasibility, dataSet));
 //        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
-        operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.min(a,5),random,feasibility,dataSet));
+        operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.min(a,7),random,feasibility,dataSet));
         return operators;
     }
 

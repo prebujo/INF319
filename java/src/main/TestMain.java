@@ -5,6 +5,8 @@ import functions.ObjectiveFunction;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.*;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 import reader.IReader;
 import reader.Reader;
 
