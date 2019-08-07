@@ -6,8 +6,10 @@ import dataObjects.OrderAndSimilarity;
 import dataObjects.VehicleAndSchedule;
 import functions.feasibility.IFeasibility;
 
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 
 public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
     private final double maxDistance;
@@ -56,10 +58,9 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
             if (order2==order){
                 continue;
             }
-            Double similarity = getOrderSimilarity(order, orderPickupAndDeliveryTime,order2,solution);
+            Double similarity = getOrderSimilarity(order,vehicleScheduleOfOrder.vehicle, orderPickupAndDeliveryTime,order2,solution);
             result.add(new OrderAndSimilarity(order2, similarity));
         }
-
         return result;
     }
 
@@ -77,7 +78,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
                 phi*(1-intersectionSize/Math.min(order1VehicleSet.size(),order2VehicleSet.size()))+
                 omega*(order1Vehicle==vehicleSchedule.vehicle ? 1:0);
 
-        return null;
+        return result;
     }
 
     private DoublePair getPickupAndDeliveryTime(int order2, VehicleAndSchedule vehicleSchedule) {

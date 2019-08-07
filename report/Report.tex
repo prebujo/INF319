@@ -221,7 +221,7 @@ $l_{iv}^{kg}$ is the weight and $l_{iv}^{vol}$ is the volume on the vehicle $v$ 
 The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$, indicating that an order is not picked up.
 
 \begin{equation}
-\label{eq:1}
+\label{objectfunc}
         min\sum_{v\in V} \sum_{(\alpha, \beta) \in A_v} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
@@ -270,7 +270,7 @@ subject to:
 \endgroup
 
 \par
-The objective function (\ref{eq:1}) sums up to the cost of all vehicles given corresponding costs from their cost matrix. Costs could be variable per distance, weight, fixed and/or related to stops made. Loads not transported will be penilized with costs and the aim is to minimize the sum of all these costs.
+The objective function (\ref{objectfunc}) sums up to the cost of all vehicles given corresponding costs from their cost matrix. Costs could be variable per distance, weight, fixed and/or related to stops made. Loads not transported will be penilized with costs and the aim is to minimize the sum of all these costs.
 Constraint \ref{eq:2} secures that a load is picked up once and only by one vehicle or not picked up at all. 
 \ref{eq:3} makes certain that if a load at a node j is travelled to it is also left. This is not the case for origin and final destination node.
 Then \ref{eq:4} makes sure that origin is only left once by each vehicle, 
