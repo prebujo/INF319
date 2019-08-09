@@ -1,6 +1,7 @@
 package functions.feasibility;
 
 import dataObjects.IDataSet;
+import dataObjects.VehicleAndSchedule;
 
 import java.util.List;
 
@@ -244,6 +245,65 @@ public class Feasibility implements IFeasibility{
         }
         return true;
     }
+
+    @Override
+    public boolean checkScheduleWithoutOrder(int order, VehicleAndSchedule vehicleScheduleOfOrder) {
+        return checkScheduleWithoutOrder(order,vehicleScheduleOfOrder.vehicle,vehicleScheduleOfOrder.schedule);
+    }
+
+    @Override
+    public boolean checkScheduleWithoutOrder(int order, int vehicle, List<Integer> schedule) {
+        if (vehicle==vehicleAmount){
+            return true;
+        }
+        int vehicleLocation = 0;
+        int solutionLocation;
+        int factoryStopCounter = 1;
+        boolean[] pickedUp = new boolean[orderAmount];
+        double currentVehicleTime=0.0;
+
+        for (int i = 0; i < schedule.size(); i++) {
+            int solutionElement = schedule.get(i);
+            if (solutionElement==order){
+                continue;
+            }
+            if (pickedUp[solutionElement-1]) {
+                solutionLocation = orderDeliveryLocations[solutionElement - 1];
+            } else {
+                pickedUp[solutionElement-1] = true;
+                solutionLocation = orderPickupLocations[solutionElement - 1];
+            }
+
+            if(vehicleLocation!= 0) {
+                currentVehicleTime += travelTime[vehicle][vehicleLocation - 1][solutionLocation - 1];
+            }
+            for (int timewindow = 0; timewindow < timeWindowAmounts[solutionLocation-1]; timewindow++) {
+                if (currentVehicleTime < lowerTimeWindows[solutionLocation - 1][timewindow]) {
+                    currentVehicleTime = lowerTimeWindows[solutionLocation - 1][timewindow];
+                }
+                if (currentVehicleTime >= lowerTimeWindows[solutionLocation - 1][timewindow] && currentVehicleTime <= upperTimeWindows[solutionLocation - 1][timewindow]) {
+                    break;
+                }
+                if (timewindow == timeWindowAmounts[solutionLocation- 1] - 1) {
+                    return false;
+                }
+            }
+
+            if (vehicleLocation != 0) {
+                if (factory[solutionLocation - 1] != factory[vehicleLocation - 1] || factory[solutionLocation - 1] == 0) {
+                    factoryStopCounter = 1;
+                } else {
+                    factoryStopCounter++;
+                    if (factoryStopCounter > factoryStopCapacity[factory[solutionLocation - 1] - 1]) {
+                        return false;
+                    }
+                }
+            }
+            vehicleLocation = solutionLocation;
+        }
+        return true;
+    }
+
 
     private double getVolumeDifference(int solutionElement, boolean pickedUp) {
         return pickedUp ? -orderVolume[solutionElement-1]:orderVolume[solutionElement-1];

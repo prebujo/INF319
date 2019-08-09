@@ -7,4 +7,7 @@ public class OrderAndSimilarity {
         this.order=order;
         this.similarity=similarity;
     }
+    public Double getSimilarity(){
+        return similarity;
+    }
 }

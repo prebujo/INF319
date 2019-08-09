@@ -6,21 +6,20 @@ import dataObjects.OrderAndSimilarity;
 import dataObjects.VehicleAndSchedule;
 import functions.feasibility.IFeasibility;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
     private final double maxDistance;
-    private double psi = 1;
+    private double psi = 0.8;
     private double chi = 0.5;
     private double phi = 1;
     private double omega = 1;
+    private double tao = 0.3;
     private final double[][][] travelTimes;
     private final double latestPickupTime;
     private final double latestDeliveryTime;
     private final List<HashSet<Integer>> orderCanBePickedUpBy;
+    private final int[] factories;
 
     public RemoveSimilarInsertRegret(String name, int lowerLimit, int upperLimit, Random random, IFeasibility feasibilityCheck, IDataSet dataSet) {
         super(name, lowerLimit, upperLimit, random, feasibilityCheck, dataSet);
@@ -30,6 +29,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         this.latestPickupTime = dataSet.getLatestPickupTimeWindow();
         this.orderCanBePickedUpBy = getAllOrderVehicleCompatabilities(dataSet.getOrderAmount(),dataSet.getVehicleAmount(),dataSet.getVehicleCanPickupOrder(),
                 dataSet.getVehicleCanVisitLocation(),dataSet.getOrderPickupLocations(),dataSet.getOrderDeliveryLocations());
+        this.factories = dataSet.getFactories();
     }
 
     @Override
@@ -38,15 +38,24 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         int amount = lowerLimit+ random.nextInt(upperLimit-lowerLimit+1);
         int randomOrder = 1 + random.nextInt(orderAmount);
         List<OrderAndSimilarity> orderSimilarities = getOrderSimilarities(randomOrder,solution);
-        HashSet<Integer> ordersToRemove = getMostSimilarOrders(amount,orderSimilarities);
+        orderSimilarities.sort(Comparator.comparing(OrderAndSimilarity::getSimilarity));
+        HashSet<Integer> ordersToRemove = getMostSimilarOrders(amount,orderSimilarities, solution);
+        int[] solutionWithoutOrders = removeOrdersFromSolution(ordersToRemove,solution);
+        int[] newSolution = insertRegret(ordersToRemove,solutionWithoutOrders);
+
+        return newSolution!=null ? newSolution:solution;
 
 
-        //build shaw with P for picked up by same car (0 or 1 if same). T time of pickup/delivery. d distance between each pickup/delivery node.
+
         //and if orders can be picked up from the same vehicles or not, add also if orders are deliverd in the same factories
         //test if similar weight will work or test if better with small weight (wi + wj), the smaller the more likely they will fit together
         //experiment with the size of the greek constants to be multiplied.
 
         //reinsert similar orders based on regret-k.
+    }
+
+    private int[] insertRegret(HashSet<Integer> orders, int[] solution) {
+
         return new int[0];
     }
 
@@ -67,8 +76,8 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
     private Double getOrderSimilarity(int order1, int order1Vehicle, DoublePair order1PickupAndDeliveryTime, int order2, int[] solution) {
         double pickupDistanceDifference = travelDistance[orderPickupLocations[order1]][orderPickupLocations[order2]];
         double deliveryDistanceDifference = travelDistance[orderDeliveryLocations[order1]][orderDeliveryLocations[order2]];
-        VehicleAndSchedule vehicleSchedule = getVehicleScheduleOfOrder(order2,solution);
-        DoublePair order2pickupAndDeliveryTime = getPickupAndDeliveryTime(order2,vehicleSchedule);
+        VehicleAndSchedule order2VehicleSchedule = getVehicleScheduleOfOrder(order2,solution);
+        DoublePair order2pickupAndDeliveryTime = getPickupAndDeliveryTime(order2,order2VehicleSchedule);
         HashSet<Integer> order1VehicleSet = orderCanBePickedUpBy.get(order2-1);
         HashSet<Integer> order2VehicleSet = orderCanBePickedUpBy.get(order1-1);
         long intersectionSize = order1VehicleSet.stream().filter(order2VehicleSet::contains).count();
@@ -76,8 +85,8 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         Double result = psi*((pickupDistanceDifference+deliveryDistanceDifference)/(maxDistance*2))+
                 chi*(Math.abs(order1PickupAndDeliveryTime.firstDouble-order2pickupAndDeliveryTime.firstDouble)/latestPickupTime+Math.abs(order1PickupAndDeliveryTime.secondDouble-order2pickupAndDeliveryTime.secondDouble)/latestDeliveryTime)+
                 phi*(1-intersectionSize/Math.min(order1VehicleSet.size(),order2VehicleSet.size()))+
-                omega*(order1Vehicle==vehicleSchedule.vehicle ? 1:0);
-
+                omega*(order1Vehicle==order2VehicleSchedule.vehicle ? 1:0)+
+                tao*(factories[order1]==factories[order2]? 0:1);
         return result;
     }
 
@@ -113,8 +122,18 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return new DoublePair(pickupTime,deliveryTime);
     }
 
-    private HashSet<Integer> getMostSimilarOrders(int amount, List<OrderAndSimilarity> orderSimilarities) {
-        return null;
+    private HashSet<Integer> getMostSimilarOrders(int amount, List<OrderAndSimilarity> orderSimilarities, int[] solution) {
+        HashSet<Integer> result = new HashSet<>();
+        int idx = 0;
+        while (result.size()<amount){
+            int order = orderSimilarities.get(idx).order;
+            VehicleAndSchedule vehicleScheduleOfOrder = getVehicleScheduleOfOrder(order, solution);
+            if (feasibility.checkScheduleWithoutOrder(order,vehicleScheduleOfOrder)){
+                result.add(order);
+            }
+            idx++;
+        }
+        return result;
     }
 
     private List<HashSet<Integer>> getAllOrderVehicleCompatabilities(int orderAmount, int vehicleAmount,boolean[][] vehicleCanPickupOrder, boolean[][] vehicleCanVisitLocation, int[] orderPickupLocations, int[] orderDeliveryLocations) {

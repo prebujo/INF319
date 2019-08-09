@@ -41,9 +41,6 @@ public class Reader implements IReader {
 
         double[] vehicleVolumeCapacities = getDoubleList(fileScanner,vehicleAmount);    //#15
 
-        List<HashSet<Integer>> orderCanBePickedUpBy = getAllOrderVehicleCompatabilities(orderAmount,vehicleAmount,vehicleCanPickupOrder,
-                vehicleCanVisitLocation,orderPickupLocations,orderDeliveryLocations,orderWeights,orderVolumes,vehicleWeightCapacities,vehicleVolumeCapacities);
-
         int[] distanceDimensions = getIntegerList(fileScanner,vehicleAmount); //#16
         int[] weightDimensions = getIntegerList(fileScanner,vehicleAmount); //#17
         int maxDistanceDimension = getMaxValue(distanceDimensions);

@@ -2,14 +2,12 @@ package dataObjects;
 
 import java.util.List;
 
-public class ScheduleAndCost {
+public class VehicleCostSchedule {
     public List<Integer> schedule;
     public Double cost;
     public int vehicle;
-    public int order;
 
-    public ScheduleAndCost(int vehicle,int order, Double cost, List<Integer> schedule){
-        this.order=order;
+    public VehicleCostSchedule(int vehicle,int order, Double cost, List<Integer> schedule){
         this.vehicle = vehicle;
         this.cost = cost;
         this.schedule = schedule;
@@ -17,7 +15,5 @@ public class ScheduleAndCost {
     public Double getCost(){
         return cost;
     }
-    public Double getNegativeCost(){
-        return -cost;
-    }
+    public Double getNegativeCost(){return -cost;}
 }

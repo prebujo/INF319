@@ -35,15 +35,18 @@ public class RemoveRandomInsertFirst extends RemoveAndReinsert{
             int order = iterator.next();
 
             List<Integer> newSchedule = new ArrayList<>();
-            int vehicle = 9999; //TODO: change to 0 when I am certain code works.
+            int idx = 0; //TODO: change to 0 when I am certain code works.
+            int vehicle = 0;
             int tries = 0;
-            boolean foundNew = true;
-            while(newSchedule.isEmpty()){
-                vehicle = random.nextInt(vehicleAmount);
+            boolean foundNew = false;
+            List<Integer> vehicles = Stream.iterate(1,n->n+1).limit(vehicleAmount-1).collect(Collectors.toList());
+            while(vehicles.size()>0){
+                idx = random.nextInt(vehicles.size());
+                vehicle = vehicles.remove(idx);
                 newSchedule = insertOrderInVehicleFirstRandomFit(order,vehicle,vehicleSchedules.get(vehicle));
                 tries++;
-                if (tries>vehicleAmount*2){
-                    foundNew=false;
+                if (newSchedule.size()>0){
+                    foundNew=true;
                     break;
                 }
             }
@@ -85,22 +88,17 @@ public class RemoveRandomInsertFirst extends RemoveAndReinsert{
                 choice = random.nextInt(orderAmount) + 1;
                 vehicle = getVehicle(choice,vehicleSchedules);
                 if(vehicle!=vehicleAmount) {
-                    vehicleSchedule = getVehicleScheduleWithoutOrder(vehicle, choice, vehicleSchedules);
+                    vehicleSchedule = vehicleSchedules.get(vehicle);
                 } else if(!result.contains(choice)){
                     break;
                 }
-            }while(result.contains(choice)||!feasibility.checkSchedule(vehicle,vehicleSchedule));
+            }while(result.contains(choice)||!feasibility.checkScheduleWithoutOrder(choice,vehicle,vehicleSchedule));
             result.add(choice);
             if (vehicle!=vehicleAmount) {
-                vehicleSchedules.set(vehicle, vehicleSchedule);
+                vehicleSchedules.set(vehicle, getScheduleWithoutOrder(choice,vehicleSchedule));
             }
             amountOfElements--;
         }
-
         return result;
     }
-
-
-
-
 }

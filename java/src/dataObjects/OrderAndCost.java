@@ -9,7 +9,7 @@ public class OrderAndCost {
         this.cost = cost;
     }
 
-    public Double getCost(){
+    public Double getNegativeCost(){
         return -cost;
     }
 

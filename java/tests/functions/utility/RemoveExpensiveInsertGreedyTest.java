@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RemoveExpensiveInsertGreedyTest {
 
     @Test
-    void solutions_generated_are_feasible_2() throws Throwable {
+    void solutions_generated_are_feasible_large() throws Throwable {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("larger_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
@@ -26,7 +26,7 @@ class RemoveExpensiveInsertGreedyTest {
 
         Random random = new Random(11);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
-        IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",1,5,random,feasibility,dataSet);
+        IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",4,1,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
@@ -40,7 +40,7 @@ class RemoveExpensiveInsertGreedyTest {
     }
 
     @Test
-    void all_solutions_generated_are_feasible() throws Throwable {
+    void solutions_generated_are_feasible_medium() throws Throwable {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("medium_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
@@ -48,7 +48,7 @@ class RemoveExpensiveInsertGreedyTest {
 
         Random random = new Random(11);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
-        IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",1,5,random,feasibility,dataSet);
+        IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",4,1,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
@@ -66,11 +66,11 @@ class RemoveExpensiveInsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,feasibility,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,4,1,1,new Random(1),feasibility,dataSet);
 
         int[] solution = new int[]{0,3,3,0,4,4,0,1,1,2,2};
 
-        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getMostExpensiveElements(2, solution);
+        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getWorstElements(2, 4, solution);
 
         assertTrue(mostExpensiveElements.size()==2);
         assertTrue(mostExpensiveElements.contains(1));
@@ -81,15 +81,15 @@ class RemoveExpensiveInsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,feasibility,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,4,1,1,new Random(1),feasibility,dataSet);
 
         int[] solution = new int[]{1,2,1,2,0,3,3,0,4,4,0};
 
-        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getMostExpensiveElements(2, solution);
+        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getWorstElements(2,4, solution);
 
         assertTrue(mostExpensiveElements.size()==2);
-        assertTrue(mostExpensiveElements.contains(3));
         assertTrue(mostExpensiveElements.contains(4));
+        assertTrue(mostExpensiveElements.contains(3));
     }
 
     @Test
@@ -97,12 +97,12 @@ class RemoveExpensiveInsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,1,1,null,feasibility,dataSet);
+        RemoveExpensiveInsertGreedy removeAndReinsert = new RemoveExpensiveInsertGreedy(null,4,1,1,new Random(1),feasibility,dataSet);
 
         int[] solution = new int[]{2,2,0,3,3,0,4,4,0,1,1};
         int[] expected = new int[]{2,2,0,1,3,3,1,0,4,4,0};
 
-        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getMostExpensiveElements(1, solution);
+        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getWorstElements(1,4, solution);
 
         int[] testedObject = removeAndReinsert.insertGreedy(mostExpensiveElements,solution);
         assertEquals(expected[0],testedObject[0]);

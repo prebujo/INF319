@@ -42,18 +42,20 @@ It removes orders that share specific similar qualities, as the basic idea is th
 We define a relatedness factor $r_{ij}$ which represents how much the order $i$ is related to the order $j$. 
 The lower the value of $r_{ij}$ the more the two orders $i$ and $j$ are related.
 The relatedness of two orders we base here on the following properties: 
-a distance factor, a time factor, a factor indicating if the same vehicles can be used to serve each request, and finally if the same vehicle is currently both orders.
+a distance factor, a time factor, a factor indicating if the same vehicles can be used to serve each request, if the same vehicle is currently serving both orders, and finally if the orders belong o the same factory.
 
 The relatedness factor is given by the following equation:
 
 \begin{equation}
 \label{relatedness}
-    r_{ij} = \psi ( D_{i j} + D_{(i+n)(j+n)}) + \chi ( |t_i - t_j| + |t_{(i+n)} - t_{(j+n)}|) + \phi (1-\dfrac{|V_i\cap V_j|}{max(|V_i|, |V_j|)}
+    r_{ij} = \psi ( D_{i j} + D_{(i+n)(j+n)}) + \chi ( |t_i - t_j| + |t_{(i+n)} - t_{(j+n)}|) + \phi (1-\dfrac{|V_i\cap V_j|}{max(|V_i|, |V_j|)} ) + \omega U_{ij} + \tau G_{ij}
 \end{equation}
 
 All values have been normalised to have a value between $[0..1]$. 
 Here $V_i$ is the set of vehicles that can serve order $i$. 
-Thus the relatedness measure $0\leq r_{ij} \leq 2(\psi + \chi) + \phi + \omega$
+$U_{ij}$ is evaluating to 1 if $i$ and $j$ are served by the same vehicle and 0 if not. 
+The parameter $G_{ij}$ is 1 if $i$ belong to another factory than $j$ and 0 if they do. 
+Thus the relatedness measure $0\leq r_{ij} \leq 2(\psi + \chi) + \phi + \omega + \tau$
 We have chosen the following values in this paper $\psi=0.7$, $\chi = 0.3$, $\phi=0.8$, $\omega=1.0$. 
 
 \subsubsection{Remove Randomly and insert First}
