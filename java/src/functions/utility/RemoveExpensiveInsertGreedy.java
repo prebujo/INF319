@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.ScheduleAndCost;
+import dataObjects.VehicleOrderScheduleCost;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -31,13 +31,16 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
 
     protected HashSet<Integer> getWorstElements(int amount, double randomReduction, int[] solution) {
             HashSet<Integer> result = new HashSet<>();
-            List<ScheduleAndCost> orderCost = getOrderCosts(solution);
+            List<VehicleOrderScheduleCost> orderCost = getOrderCosts(solution);
             while(amount>0){
-                orderCost.sort(Comparator.comparing(ScheduleAndCost::getNegativeCost));
+                orderCost.sort(Comparator.comparing(VehicleOrderScheduleCost::getNegativeCost));
                 double position = random.nextDouble();
                 position=Math.pow(position,randomReduction);
                 int idx = (int) Math.round(position*(orderCost.size()-1));
-                ScheduleAndCost element = orderCost.remove(idx);
+                if (orderCost.get(idx).cost==0.0){
+                    continue;
+                }
+                VehicleOrderScheduleCost element = orderCost.remove(idx);
                 result.add(element.order);
                 List<Integer> newSchedule = getScheduleWithoutOrder(element.order,element.schedule);
                 Double newVehicleCost = calculateVehicleCost(element.vehicle,newSchedule);
@@ -46,9 +49,9 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
                     int scheduleElement = newSchedule.get(i);
                     if(!done[scheduleElement]) {
                         for (int j = 0; j < orderCost.size(); j++) {
-                            ScheduleAndCost costElement = orderCost.get(j);
+                            VehicleOrderScheduleCost costElement = orderCost.get(j);
                             if (costElement.order == scheduleElement) {
-                                orderCost.set(j, new ScheduleAndCost(costElement.vehicle, costElement.order, newVehicleCost - calculateVehicleCostWithoutOrder(costElement.order, costElement.vehicle, newSchedule), newSchedule));
+                                orderCost.set(j, new VehicleOrderScheduleCost(costElement.vehicle, costElement.order, newVehicleCost - calculateVehicleCostWithoutOrder(costElement.order, costElement.vehicle, newSchedule), newSchedule));
                             }
                         }
                         done[scheduleElement] = true;
@@ -59,8 +62,8 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
             return result;
     }
 
-    private List<ScheduleAndCost> getOrderCosts(int[] solution) {
-        List<ScheduleAndCost> orderCost = new ArrayList<>();
+    private List<VehicleOrderScheduleCost> getOrderCosts(int[] solution) {
+        List<VehicleOrderScheduleCost> orderCost = new ArrayList<>();
         HashSet<Integer> orders = new HashSet<>();
         List<Integer> ordersList = new ArrayList<>();
         List<Integer> schedule = new ArrayList<>();
@@ -75,9 +78,9 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
                     while(!orders.isEmpty()){
                         Integer removed = ordersList.remove(0);
                         if(feasibility.checkScheduleWithoutOrder(removed, vehicle, schedule)) {
-                            orderCost.add(new ScheduleAndCost(vehicle, removed, vehicleTotalCost - calculateVehicleCostWithoutOrder(removed, vehicle, schedule),schedule));
+                            orderCost.add(new VehicleOrderScheduleCost(vehicle, removed, vehicleTotalCost - calculateVehicleCostWithoutOrder(removed, vehicle, schedule),schedule));
                         }else{
-                            orderCost.add(new ScheduleAndCost(vehicle,removed,0.0, schedule));
+                            orderCost.add(new VehicleOrderScheduleCost(vehicle,removed,0.0, schedule));
                         }
                         orders.remove(removed);
                     }
@@ -96,7 +99,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
         }
         while (!orders.isEmpty()){
             Integer removed = ordersList.remove(0);
-            orderCost.add(new ScheduleAndCost(vehicleAmount,removed,orderPenalties[removed-1],new ArrayList<>()));
+            orderCost.add(new VehicleOrderScheduleCost(vehicleAmount,removed,orderPenalties[removed-1],new ArrayList<>()));
             orders.remove(removed);
         }
         return orderCost;
@@ -107,7 +110,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
         List<List<Integer>> vehicleSchedules = getVehicleSchedules(solutionWithoutOrders);
 
         while(ordersToInsert.size()>0) {
-            ScheduleAndCost bestOverallSchedule = getBestOverallScheduleAndCost(ordersToInsert.iterator(), vehicleSchedules);
+            VehicleOrderScheduleCost bestOverallSchedule = getBestOverallScheduleAndCost(ordersToInsert.iterator(), vehicleSchedules);
             ordersToInsert.remove(bestOverallSchedule.order);
             if(bestOverallSchedule.vehicle!=vehicleAmount||!bestOverallSchedule.schedule.isEmpty()) {
                 vehicleSchedules.set(bestOverallSchedule.vehicle, bestOverallSchedule.schedule);
@@ -117,11 +120,11 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
         return result;
     }
 
-    private ScheduleAndCost getBestOverallScheduleAndCost(Iterator<Integer> iterator, List<List<Integer>> vehicleSchedules) {
-        ScheduleAndCost bestOverallSchedule = findBestScheduleForOrder(iterator.next(), vehicleSchedules);
+    private VehicleOrderScheduleCost getBestOverallScheduleAndCost(Iterator<Integer> iterator, List<List<Integer>> vehicleSchedules) {
+        VehicleOrderScheduleCost bestOverallSchedule = findBestScheduleForOrder(iterator.next(), vehicleSchedules);
         while (iterator.hasNext()) {
             int o = iterator.next();
-            ScheduleAndCost bestScheduleForOrder = findBestScheduleForOrder(o, vehicleSchedules);
+            VehicleOrderScheduleCost bestScheduleForOrder = findBestScheduleForOrder(o, vehicleSchedules);
             if (bestScheduleForOrder.cost < bestOverallSchedule.cost) {
                 bestOverallSchedule = bestScheduleForOrder;
             }
@@ -129,7 +132,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
         return bestOverallSchedule;
     }
 
-    protected ScheduleAndCost findBestScheduleForOrder(Integer order, List<List<Integer>> vehicleSchedules) {
+    protected VehicleOrderScheduleCost findBestScheduleForOrder(Integer order, List<List<Integer>> vehicleSchedules) {
         List<Integer> bestSchedule = new ArrayList<>();
         int bestVehicle = 0;
         Double bestCost = Double.MAX_VALUE;
@@ -153,7 +156,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
         if (bestSchedule.size()==0){
             bestVehicle=vehicleAmount;
         }
-        return new ScheduleAndCost(bestVehicle,order,bestCost,bestSchedule);
+        return new VehicleOrderScheduleCost(bestVehicle,order,bestCost,bestSchedule);
     }
 
     @Override

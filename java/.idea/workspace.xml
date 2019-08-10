@@ -2,61 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/ahmad.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/VehicleCostSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndSimilarity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndSimilarity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/CollectiveCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/CollectiveCheck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/FactoryDockFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/FactoryDockFeasible.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/Feasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/IFeasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/IFeasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/OrderVehicleAndOccuranceFeasibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/OrderVehicleAndOccuranceFeasibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/TimeFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/TimeFeasible.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/feasibility/WeightAndVolumeFeasible.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/feasibility/WeightAndVolumeFeasible.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/ISolutionGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SolutionGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/RandomHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/RandomHeuristic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/reader/FlowReaderPrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/FlowReaderPrint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/functions/feasibility/FeasibilityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/feasibility/FeasibilityTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveRandomInsertFirstTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveRandomInsertFirstTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/SwapTwoFirstFit2Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/SwapTwoFirstFit2Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/OrderAndCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndSimilarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/OrderAndSimilarity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/ScheduleAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/ScheduleAndCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/CollectiveCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/FactoryDockFeasible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/Feasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/IFeasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/IFeasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/OrderVehicleAndOccuranceFeasibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/TimeFeasible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/feasibility/WeightAndVolumeFeasible.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/ScheduleAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/VehicleOrderScheduleCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/VehicleCostSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/VehicleCostSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/Operator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/OperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/OperatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -178,19 +133,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HeuristicFinalMain2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain2" />
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RemoveExpensiveInsertGreedyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
@@ -222,6 +164,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RemoveExpensiveInsertGreedyTest.solutions_generated_are_feasible_medium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions.utility" />
+      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveExpensiveInsertGreedyTest" />
+      <option name="METHOD_NAME" value="solutions_generated_are_feasible_medium" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RemoveRandomInsertFirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
@@ -240,10 +198,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest" />
+        <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest.solutions_generated_are_feasible_medium" />
         <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest.returns_correctly_the_most_expensive_elements" />
         <item itemvalue="JUnit.RemoveRandomInsertFirstTest" />
         <item itemvalue="Application.HeuristicFinalMain" />
-        <item itemvalue="Application.HeuristicFinalMain2" />
       </list>
     </recent_temporary>
   </component>
@@ -368,6 +326,7 @@
       <workItem from="1565166598103" duration="18395000" />
       <workItem from="1565210743391" duration="15799000" />
       <workItem from="1565349449532" duration="16235000" />
+      <workItem from="1565425776350" duration="2933000" />
     </task>
     <servers />
   </component>

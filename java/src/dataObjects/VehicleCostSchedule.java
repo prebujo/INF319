@@ -7,7 +7,7 @@ public class VehicleCostSchedule {
     public Double cost;
     public int vehicle;
 
-    public VehicleCostSchedule(int vehicle,int order, Double cost, List<Integer> schedule){
+    public VehicleCostSchedule(int vehicle, Double cost, List<Integer> schedule){
         this.vehicle = vehicle;
         this.cost = cost;
         this.schedule = schedule;

@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.ScheduleAndCost;
+import dataObjects.VehicleOrderScheduleCost;
 import dataObjects.VehicleAndSchedule;
 import functions.feasibility.IFeasibility;
 
@@ -237,7 +237,7 @@ public class Operator implements IOperator {
         return result;
     }
 
-    protected int[] createNewSolution(ScheduleAndCost scheduleAndCost, int[] solution) {
+    protected int[] createNewSolution(VehicleOrderScheduleCost scheduleAndCost, int[] solution) {
         int[] result = new int[solution.length];
         int vehicle = 0;
         int resultIdx = 0;

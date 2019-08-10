@@ -31,10 +31,10 @@ class RemoveExpensiveInsertGreedyTest {
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
         solution = removeAndReinsert.apply(solution);
-        int iterations = 10000;
+        int iterations = 20000;
         while(iterations>0) {
             solution = removeAndReinsert.apply(solution);
-            assertTrue(feasibility.check(solution)); //TODO: continue analysing here. Not giving feasible solution always
+            assertTrue(feasibility.check(solution));
             iterations--;
         }
     }
@@ -53,7 +53,7 @@ class RemoveExpensiveInsertGreedyTest {
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
         solution = removeAndReinsert.apply(solution);
-        int iterations = 50000;
+        int iterations = 70000;
         while(iterations>0) {
             solution = removeAndReinsert.apply(solution);
             assertTrue(feasibility.check(solution));
@@ -102,7 +102,7 @@ class RemoveExpensiveInsertGreedyTest {
         int[] solution = new int[]{2,2,0,3,3,0,4,4,0,1,1};
         int[] expected = new int[]{2,2,0,1,3,3,1,0,4,4,0};
 
-        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getWorstElements(1,4, solution);
+        HashSet<Integer> mostExpensiveElements = removeAndReinsert.getWorstElements(1,20, solution);
 
         int[] testedObject = removeAndReinsert.insertGreedy(mostExpensiveElements,solution);
         assertEquals(expected[0],testedObject[0]);

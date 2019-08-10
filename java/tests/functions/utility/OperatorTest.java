@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.ScheduleAndCost;
+import dataObjects.VehicleOrderScheduleCost;
 import org.junit.jupiter.api.Test;
 import reader.IReader;
 import reader.Reader;
@@ -129,7 +129,7 @@ class OperatorTest {
 
         int[] solution = new int[]{1,1,0,3,3,0,0,2,2,4,4};
         int[] expected = new int[]{1,1,0,3,4,3,4,0,0,2,2};
-        ScheduleAndCost scheduleAndCost = new ScheduleAndCost(1,4,1.0,Arrays.asList(3,4,3,4));
+        VehicleOrderScheduleCost scheduleAndCost = new VehicleOrderScheduleCost(1,4,1.0,Arrays.asList(3,4,3,4));
 
         int[] testedObject = operator.createNewSolution(scheduleAndCost,solution);
         assertEquals(expected.length,testedObject.length);

@@ -2,13 +2,13 @@ package dataObjects;
 
 import java.util.List;
 
-public class ScheduleAndCost {
+public class VehicleOrderScheduleCost {
     public List<Integer> schedule;
     public Double cost;
     public int vehicle;
     public int order;
 
-    public ScheduleAndCost(int vehicle,int order, Double cost, List<Integer> schedule){
+    public VehicleOrderScheduleCost(int vehicle, int order, Double cost, List<Integer> schedule){
         this.order=order;
         this.vehicle = vehicle;
         this.cost = cost;
