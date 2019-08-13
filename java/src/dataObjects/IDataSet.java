@@ -103,4 +103,12 @@ public interface IDataSet {
     void setLatestPickupTimeWindow(double latestPickupTimeWindow);
     double getLatestDeliveryTimeWindow();
     void setLatestDeliveryTimeWindow(double latestDeliveryTimeWindow);
+
+    double getOrderSimilarity(int order1, int order2);
+
+    void setOrderSimilarities();
+
+    void setMaxWeight(double maxWeight);
+
+    double getMaxWeight();
 }

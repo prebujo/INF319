@@ -1,7 +1,6 @@
 package reader;
 
-import dataObjects.DataSet;
-import dataObjects.IDataSet;
+import dataObjects.*;
 
 import java.io.File;
 import java.util.*;
@@ -78,6 +77,9 @@ public class Reader implements IReader {
 
         double maxDistance = getMaxValue(travelDistances);
 
+        double maxWeight = getMaxValue(orderWeights);
+
+
         result = new DataSet(vehicleAmount,orderAmount,locationsAmount, factoryAmount);
         result.setWeightDimensions(weightDimensions);
         result.setDistanceDimensions(distanceDimensions);
@@ -106,9 +108,11 @@ public class Reader implements IReader {
         result.setMaxDistance(maxDistance);
         result.setLatestPickupTimeWindow(latestPickupTime);
         result.setLatestDeliveryTimeWindow(latestDeliveryTime);
+        result.setMaxWeight(maxWeight);
+
+        result.setOrderSimilarities();
         return result;
     }
-
 
     private double getMaxValueFromTo(int fromIdx, int toIdx, int[] timeWindowAmounts, double[][] upperTimeWindows) {
         double max = 0.0;
@@ -227,6 +231,15 @@ public class Reader implements IReader {
     private int getMaxValue(int[] list) {
         int max = 0;
         for(int i:list){
+            if(i>max)
+                max = i;
+        }
+        return max;
+    }
+
+    private double getMaxValue(double[] list) {
+        double max = 0.0;
+        for(double i:list){
             if(i>max)
                 max = i;
         }

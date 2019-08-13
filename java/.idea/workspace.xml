@@ -2,16 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.~lock.TODO-list.odt#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TODO-list.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../TODO-list.odt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/ScheduleAndCost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/VehicleCostSchedule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/VehicleCostSchedule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/OperatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/OperatorTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/ScheduleAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/VehicleOrderScheduleCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/VehicleCostSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/VehicleCostSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/VehicleOrderScheduleCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/VehicleOrderCostSchedule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/OperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/OperatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.fls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Report.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Report.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -326,7 +349,10 @@
       <workItem from="1565166598103" duration="18395000" />
       <workItem from="1565210743391" duration="15799000" />
       <workItem from="1565349449532" duration="16235000" />
-      <workItem from="1565425776350" duration="2933000" />
+      <workItem from="1565425776350" duration="15330000" />
+      <workItem from="1565602722163" duration="4005000" />
+      <workItem from="1565633445595" duration="11642000" />
+      <workItem from="1565685204729" duration="3682000" />
     </task>
     <servers />
   </component>
@@ -405,6 +431,12 @@
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java</url>
           <line>104</line>
           <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="iterations==1" language="JAVA" />
+          <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="186" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

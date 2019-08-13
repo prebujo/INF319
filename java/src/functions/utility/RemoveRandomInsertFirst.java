@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.VehicleOrderScheduleCost;
+import dataObjects.VehicleOrderCostSchedule;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -52,7 +52,7 @@ public class RemoveRandomInsertFirst extends RemoveAndReinsert{
             }
             if(foundNew) {
                 vehicleSchedules.set(vehicle, newSchedule);
-                result = createNewSolution(new VehicleOrderScheduleCost(vehicle, order, 0.0, newSchedule), result);
+                result = createNewSolution(new VehicleOrderCostSchedule(vehicle, order, 0.0, newSchedule), result);
             }
         }
         return result;

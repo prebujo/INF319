@@ -1,6 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
+import dataObjects.VehicleOrderCostSchedule;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -18,5 +19,69 @@ public class RemoveAndReinsert extends Operator {
         super(name,random,feasibilityCheck,dataSet);
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
+    }
+
+    protected List<VehicleOrderCostSchedule> getBestSchedules(Iterator<Integer> iterator, List<List<Integer>> vehicleSchedules) {
+        List<VehicleOrderCostSchedule> bestSchedules = new ArrayList<>();
+        bestSchedules.add(findBestScheduleForOrder(iterator.next(), vehicleSchedules));
+        while (iterator.hasNext()) {
+            int o = iterator.next();
+            VehicleOrderCostSchedule bestScheduleForOrder = findBestScheduleForOrder(o, vehicleSchedules);
+            if (bestScheduleForOrder.cost < bestSchedules.get(0).cost) {
+                bestSchedules.add(0,bestScheduleForOrder);
+            }else {
+                bestSchedules.add(bestScheduleForOrder);
+            }
+        }
+        return bestSchedules;
+    }
+
+    protected VehicleOrderCostSchedule findBestScheduleForOrder(Integer order, List<List<Integer>> vehicleSchedules) {
+        List<Integer> bestSchedule = new ArrayList<>();
+        int bestVehicle = 0;
+        Double bestCost = Double.MAX_VALUE;
+        for (int vehicle = 0; vehicle<vehicleSchedules.size();vehicle++) {
+            Double solutionIncreasedCost;
+            List<Integer> schedule = vehicleSchedules.get(vehicle);
+            Double vehicleCost = calculateVehicleCost(vehicle,schedule);
+            for (int i = 0; i < schedule.size() +1; i++) {
+                for (int j = i+1; j < schedule.size() + 2; j++) {
+                    List<Integer> newSchedule = createNewSchedule(order, i, j, schedule);
+                    if(feasibility.checkSchedule(vehicle, newSchedule)){
+                        solutionIncreasedCost = calculateVehicleCost(vehicle,newSchedule)-vehicleCost;
+                        if (solutionIncreasedCost<bestCost){
+                            bestCost=solutionIncreasedCost;
+                            bestSchedule=newSchedule;
+                            bestVehicle=vehicle;
+                        }
+                    }
+                }
+            }
+        }
+        if (bestSchedule.size()==0){
+            bestVehicle=vehicleAmount;
+        }
+        return new VehicleOrderCostSchedule(bestVehicle,order,bestCost,bestSchedule);
+    }
+
+    protected VehicleOrderCostSchedule findBestScheduleCostForOrderInVehicle(Integer order, int vehicle, List<Integer> vehicleSchedule) {
+        List<Integer> bestSchedule = new ArrayList<>();
+        int bestVehicle = 0;
+        Double bestCost = Double.MAX_VALUE;
+        Double solutionIncreasedCost;
+        Double vehicleCost = calculateVehicleCost(vehicle, vehicleSchedule);
+        for (int i = 0; i < vehicleSchedule.size() + 1; i++) {
+            for (int j = i + 1; j < vehicleSchedule.size() + 2; j++) {
+                List<Integer> newSchedule = createNewSchedule(order, i, j, vehicleSchedule);
+                if (feasibility.checkSchedule(vehicle, newSchedule)) {
+                    solutionIncreasedCost = calculateVehicleCost(vehicle, newSchedule) - vehicleCost;
+                    if (solutionIncreasedCost < bestCost) {
+                        bestCost = solutionIncreasedCost;
+                        bestSchedule = newSchedule;
+                    }
+                }
+            }
+        }
+        return new VehicleOrderCostSchedule(vehicle, order, bestCost, bestSchedule);
     }
 }

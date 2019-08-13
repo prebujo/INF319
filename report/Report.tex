@@ -1,7 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{amsmath}
-\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage[sort,comma]{natbib}
 \usepackage{geometry}
 \usepackage{cancel}
 \begin{document}
@@ -222,7 +222,7 @@ The cost of not transporting an order will be represented by $C_i$ for each node
 
 \begin{equation}
 \label{objectfunc}
-        min\sum_{v\in V} \sum_{(\alpha, \beta) \in A_v} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
+        \min\sum_{v\in V} \sum_{(\alpha, \beta) \in A_v} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
 
@@ -248,7 +248,7 @@ subject to:
     \sum_{p\in P_i} u_{ip} = 1,						& 	&& 	i \in N 					\label{eq:16}	\\[4pt]
     \sum_{p\in P_i} u_{ip}\underline{T_{ip}} \leq t_{i},		& 	&&	i \in N 					\label{eq:17}	\\[4pt]
     \sum_{p\in P_i} u_{ip}\overline{T_{ip}} \geq t_{i},			& 	&& 	i \in N 					\label{eq:18}	\\[4pt]
-    t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{\pi_i i}} + 		& 	&&						\nonumber\\
+    t_{i} + T_{ijv} - t_{j} \leq (\overline{T_{i\pi_i}} + 		& 	&&						\nonumber\\
     T_{ijv})(1 - x_{ijv}),						& 	&& 	v \in V, (i,j) \in E_v				\label{eq:19}	\\[8pt]
     t_{i} + T_{i(i+n)v} - t_{(i+n)} \leq 0,				& 	&& 	v \in V, i \in N_v^P				\label{eq:20}	\\[8pt]
     \sum_{(\alpha,\beta)\in A_v}d_{v\alpha\beta} = 

@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.VehicleOrderScheduleCost;
+import dataObjects.VehicleOrderCostSchedule;
 import dataObjects.VehicleAndSchedule;
 import functions.feasibility.IFeasibility;
 
@@ -25,6 +25,7 @@ public class Operator implements IOperator {
     protected final int[] orderDeliveryLocations;
     protected final double[][] travelDistance;
     protected final double[][] stopCosts;
+    private final double[] orderPenalties;
 
     public Operator(String name, Random random, IFeasibility feasibility, IDataSet dataSet){
         this.name = name;
@@ -42,6 +43,7 @@ public class Operator implements IOperator {
         this.distanceIntervals = dataSet.getDistanceIntervals();
         this.weightIntervals = dataSet.getWeightIntervals();
         this.stopCosts = dataSet.getStopCosts();
+        this.orderPenalties = dataSet.getOrderPenalties();
     }
     @Override
     public int[] apply(int[] solution) throws Throwable {
@@ -61,6 +63,8 @@ public class Operator implements IOperator {
     protected double calculateVehicleCost(int vehicleChoice, List<Integer> vehicleSchedule) {
         if (vehicleSchedule.size()==0){
             return 0.0;
+        } else if (vehicleChoice==vehicleAmount){
+            return getPenaltyCostForOrdersInSchedule(vehicleSchedule);
         }
         double result = 0.0;
         double vehicleTotalDistance = 0.0;
@@ -90,6 +94,19 @@ public class Operator implements IOperator {
         result += getVehicleCosts(vehicleChoice, vehicleTotalDistance, vehicleMaxWeight);
         return result;
 
+    }
+
+    private double getPenaltyCostForOrdersInSchedule(List<Integer> vehicleSchedule) {
+        double result = 0.0;
+        boolean[] calculated = new boolean[orderAmount+1];
+        for (Integer order :
+                vehicleSchedule) {
+            if (!calculated[order]) {
+                result += orderPenalties[order-1];
+                calculated[order]=true;
+            }
+        }
+        return result;
     }
 
     protected Double calculateVehicleCostWithoutOrder(Integer order, int vehicleChoice, List<Integer> vehicleSchedule) {
@@ -237,7 +254,7 @@ public class Operator implements IOperator {
         return result;
     }
 
-    protected int[] createNewSolution(VehicleOrderScheduleCost scheduleAndCost, int[] solution) {
+    protected int[] createNewSolution(VehicleOrderCostSchedule scheduleAndCost, int[] solution) {
         int[] result = new int[solution.length];
         int vehicle = 0;
         int resultIdx = 0;

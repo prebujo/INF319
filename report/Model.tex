@@ -5,7 +5,6 @@
 \usepackage{geometry}
 \usepackage{cancel}
 
-\newpage
 \begin{document}
 
 \pagenumbering{roman}
@@ -38,25 +37,43 @@ This operation is continued until no improvement can be made ie. the best possib
 \subsubsection{Remove Worst and Insert Greedy}
 \subsubsection{Remove Similar and Regret Insert}
 The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
-It removes orders that share specific similar qualities, as the basic idea is that by inserting these orders together we find new, hopefully better, solutions.
+It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 
+Another good reason to remove similar orders is that it could be advantagous to reinsert these orders togther on the same vehicle since they share alot of the same properties in regards to distance, time etc.
 We define a relatedness factor $r_{ij}$ which represents how much the order $i$ is related to the order $j$. 
 The lower the value of $r_{ij}$ the more the two orders $i$ and $j$ are related.
 The relatedness of two orders we base here on the following properties: 
-a distance factor, a time factor, a factor indicating if the same vehicles can be used to serve each request, if the same vehicle is currently serving both orders, and finally if the orders belong o the same factory.
+a distance property, a weight property, an overlapping timewindow property, a property indicating if the same vehicles can be used to serve each request, and finally if the orders belong to the same factory.
 
 The relatedness factor is given by the following equation:
 
 \begin{equation}
 \label{relatedness}
-    r_{ij} = \psi ( D_{i j} + D_{(i+n)(j+n)}) + \chi ( |t_i - t_j| + |t_{(i+n)} - t_{(j+n)}|) + \phi (1-\dfrac{|V_i\cap V_j|}{max(|V_i|, |V_j|)} ) + \omega U_{ij} + \tau G_{ij}
+    r_{ij} = \psi ( D_{i j} + D_{(i+n)(j+n)}) + \omega|Q_i - Q_j|
+    + \phi (1-\dfrac{|V_i\cap V_j|}{max(|V_i|, |V_j|)} ) + \tau G_{ij} + \chi (U_{ij} + U_{(i+n)(j+n)})
 \end{equation}
 
-All values have been normalised to have a value between $[0..1]$. 
-Here $V_i$ is the set of vehicles that can serve order $i$. 
-$U_{ij}$ is evaluating to 1 if $i$ and $j$ are served by the same vehicle and 0 if not. 
-The parameter $G_{ij}$ is 1 if $i$ belong to another factory than $j$ and 0 if they do. 
-Thus the relatedness measure $0\leq r_{ij} \leq 2(\psi + \chi) + \phi + \omega + \tau$
-We have chosen the following values in this paper $\psi=0.7$, $\chi = 0.3$, $\phi=0.8$, $\omega=1.0$. 
+$D_{ij}$, $Q_i$, are defined in the problem formulation section and these values have been normalised to result in a value between $[0..1]$. 
+$V_i$ is the set of vehicles that can serve order $i$. 
+The parameter $G_{ij}$ is 1 if $i$ belong to another factory than $j$ and 0 if they belong to the same factory. 
+$U_{ij}$ is the timewindows at the pickup and delivery location, equal to 0 if the two orders have identical time windows and 1 if not. It corresponds to the sum of overlapping time windows divided by the overlapping span of the two time window sets.
+It can be formulated as follows
+\begin{equation}
+    \label{overlaptime}
+    U_{ij} = 1 - 
+\dfrac{ 
+    \sum\limits_{\substack{p\in \pi_i\\ o\in \pi_j\\ \underline{T_{ip}}\leq \overline{T_{jo}}\\ \underline{T_{jo}}\leq\overline{T_{ip}}}} 
+    (\min(\overline{T_{ip}}, \overline{T_{jo}}) - \max(\underline{T_{ip}},\underline{T_{jo}}) )
+    }
+    {\max{(\max\limits_{p\in \pi_i} \overline{T_{ip}}, \max\limits_{o\in \pi_j} \overline{T_{jo}})} - 
+    \min{(\min\limits_{p\in \pi_i} \underline{T_{ip}}, \min\limits_{o\in \pi_j} \underline{T_{jo}}}) -     
+    \sum\limits_{\substack{p\in \pi_i\\ o\in \pi:q_j\\ \underline{T_{ip}}\geq \overline{T_{j(o-1)}}\\ \underline{T_{jo}}\geq\overline{T_{i(p-1)}}}} 
+    (\min(\underline{T_{ip}}, \underline{T_{jo}}) - \max(\overline{T_{i(p-1)}},\overline{T_{j(o-1)}}) ) 
+    }
+\end{equation}
+
+Here $\overline{T_{ip}}$ and $\underline{T_{ip}}$ are the upper and lower time windows defined in the problem formulation. \par
+Thus the relatedness measure is given a value $0\leq r_{ij} \leq 2\psi + \omega + \phi + \tau  + \chi$. 
+We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. 
 
 \subsubsection{Remove Randomly and insert First}
 Removes randomly between 2-7 orders (adjusted to the instance size) and reinserts them in randomly their first possible position. 
