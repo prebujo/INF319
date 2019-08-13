@@ -1,9 +1,6 @@
 package functions.utility;
 
-import dataObjects.IDataSet;
-import dataObjects.OrderAndSimilarity;
-import dataObjects.VehicleAndSchedule;
-import dataObjects.VehicleOrderCostSchedule;
+import dataObjects.*;
 import functions.feasibility.IFeasibility;
 
 import java.util.*;
@@ -40,88 +37,146 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
     }
 
     private int[] insertRegret(HashSet<Integer> orders, int[] solution) {
-        Iterator<Integer> ordersIterator = orders.iterator();
-        List<VehicleOrderScheduleRegretKList> highestRegretKs = new ArrayList<>();
-        highestRegretKs.add(new VehicleOrderCostSchedule(0,0,0.0,new ArrayList<>()));
+        int[] result = solution.clone();
+        List<List<Integer>> vehicleSchedules = getVehicleSchedules(solution);
 
-        while(ordersIterator.hasNext()) {
-            int order = ordersIterator.next();
-            //calculate the regret-k values for each order
-            double regretKValue = getRegretKValue(order, regretK, solution);
-            if (regretKValue>highestRegretKs.get(0).cost) {
-                VehicleAndSchedule vehicleScheduleOfOrder = getVehicleScheduleOfOrder(order, solution);
-                highestRegretKs.add(0, new VehicleOrderCostSchedule(vehicleScheduleOfOrder.vehicle, order, regretKValue, vehicleScheduleOfOrder.schedule));
+        List<OrderRegretKVOCS> orderRegretKs = new ArrayList<>();
+        List<OrderRegretKVOCS> firstPriority = new ArrayList<>();
+            Iterator<Integer> ordersIterator = orders.iterator();
+            while (ordersIterator.hasNext()) {
+                int order = ordersIterator.next();
+                List<VehicleOrderCostSchedule> kBestSchedules = getKBestSchedules(order, regretK, vehicleSchedules);
+                OrderRegretKVOCS regretKAndVOCS = getRegretKValue(kBestSchedules);
+                if (regretKAndVOCS.vehicleOrderCostScheduleList.size() < regretK) {
+                    if (firstPriority.size() == 0) {
+                        firstPriority.add(regretKAndVOCS);
+                    } else if (firstPriority.get(0).vehicleOrderCostScheduleList.size() > regretKAndVOCS.vehicleOrderCostScheduleList.size()) {
+                        firstPriority.add(regretKAndVOCS);
+                    } else if (firstPriority.get(0).vehicleOrderCostScheduleList.size() == regretKAndVOCS.vehicleOrderCostScheduleList.size()) {
+                        if (firstPriority.get(0).regretValue < regretKAndVOCS.regretValue) {
+                            firstPriority.add(0, regretKAndVOCS);
+                        } else if (firstPriority.get(0).regretValue == regretKAndVOCS.regretValue && firstPriority.get(0).vehicleOrderCostScheduleList.get(0).cost > regretKAndVOCS.vehicleOrderCostScheduleList.get(0).cost) {
+                            firstPriority.add(0, regretKAndVOCS);
+                        } else {
+                            firstPriority.add(regretKAndVOCS);
+                        }
+                    } else {
+                        firstPriority.add(regretKAndVOCS);
+                    }
+                } else if (orderRegretKs.size() == 0) {
+                    orderRegretKs.add(regretKAndVOCS);
+                } else if (regretKAndVOCS.regretValue > orderRegretKs.get(0).regretValue) {
+                    orderRegretKs.add(0, regretKAndVOCS);
+                } else if (regretKAndVOCS.regretValue == orderRegretKs.get(0).regretValue) {
+                    if (regretKAndVOCS.vehicleOrderCostScheduleList.get(0).cost < orderRegretKs.get(0).vehicleOrderCostScheduleList.get(0).cost) {
+                        orderRegretKs.add(0, regretKAndVOCS);
+                    } else {
+                        orderRegretKs.add(regretKAndVOCS);
+                    }
+                } else {
+                    orderRegretKs.add(regretKAndVOCS);
+                }
             }
+
+            VehicleOrderCostSchedule chosenOrderSchedule;
+            if (firstPriority.size() > 0) {
+                chosenOrderSchedule = firstPriority.remove(0).vehicleOrderCostScheduleList.get(0);
+            } else {
+                chosenOrderSchedule = orderRegretKs.remove(0).vehicleOrderCostScheduleList.get(0);
+            }
+
+            result = createNewSolution(chosenOrderSchedule,result);
+            vehicleSchedules.set(chosenOrderSchedule.vehicle,chosenOrderSchedule.schedule);
+            orders.remove(chosenOrderSchedule.order);
+
+        while (orders.size()>0){
+            if (firstPriority.size()>0){
+                for (int i = 0; i < firstPriority.size(); i++) {
+                    OrderRegretKVOCS orderRegretKVOCSnew = updateOrderRegret(chosenOrderSchedule, firstPriority.get(i));
+                    OrderRegretKVOCS orderRegretKVOCS = firstPriority.get(i);
+
+
+                }
+
+            }
+
+            orders.remove(chosenOrderSchedule.order);
         }
-        //choose the highest regret value
 
-        //insert order in its cheapest position.
-
-        orders.remove(chosenOrder);
-        double highestRegretValue =0.0;
-        Integer chosenOrder = 0;
         return new int[0];
     }
 
-    private double getRegretKValue(int order, int regretK, int[] solution) {
-        double result;
-        List<List<Integer>> vehicleSchedules = getVehicleSchedules(solution);
-        List<VehicleOrderCostSchedule> kBestSchedules = getKBestSchedules(order,regretK,vehicleSchedules);
-        VehicleOrderCostSchedule bestSchedule = findBestScheduleForOrder(order,vehicleSchedules);
-        while(regretKList.size()<regretK){
-
-
+    private OrderRegretKVOCS updateOrderRegret(VehicleOrderCostSchedule chosenOrderSchedule, OrderRegretKVOCS orderRegretKVOCS) {
+        int order = orderRegretKVOCS.vehicleOrderCostScheduleList.get(0).order;
+        int vehicle = chosenOrderSchedule.vehicle;
+        List<Integer> schedule = chosenOrderSchedule.schedule;
+        VehicleOrderCostSchedule bestVOCS = findBestScheduleCostForOrderInVehicle(order,vehicle,schedule);
+        if (bestVOCS.schedule.size()>0) {
+            boolean updated = false;
+            for (int vocsIdx = 0; vocsIdx <orderRegretKVOCS.vehicleOrderCostScheduleList.size();vocsIdx++) {
+                if (vehicle == vehicleOrderCostSchedule.vehicle&&) {
+                    //TODO: continue here... either update (quick) or create new...
+                }
+            }
         }
+        return orderRegretKVOCS;
+    }
 
+    private OrderRegretKVOCS getRegretKValue(List<VehicleOrderCostSchedule> kBestSchedules) {
 
+        double regretKValue = 0.0;
 
-
-
-        return result;
+        for (int i = 1; i < kBestSchedules.size(); i++) {
+            regretKValue += kBestSchedules.get(i).cost-kBestSchedules.get(0).cost;
+        }
+        return new OrderRegretKVOCS(regretKValue,kBestSchedules);
     }
 
     private List<VehicleOrderCostSchedule> getKBestSchedules(int order, int regretK, List<List<Integer>> vehicleSchedules) {
         List<VehicleOrderCostSchedule> result = new ArrayList<>();
         int vehicle = 0;
         boolean notEnoughVehicles = false;
+        double worstCost = 0.0;
+        double bestCost = Double.MAX_VALUE;
         while(result.size()<regretK&&vehicle<vehicleSchedules.size()){
             List<Integer> schedule = vehicleSchedules.get(vehicle);
             VehicleOrderCostSchedule bestVOCS = findBestScheduleCostForOrderInVehicle(order,vehicle,schedule);
-            if (bestVOCS.schedule.size()>0){
+            if (result.size()==0){
+                worstCost=bestCost=bestVOCS.cost;
                 result.add(bestVOCS);
+            }else if (bestVOCS.cost<bestCost){
+                bestCost=bestVOCS.cost;
+                result.add(0,bestVOCS);
+            }else if (bestVOCS.cost>worstCost){
+                worstCost=bestVOCS.cost;
+                result.add(result.size()-1,bestVOCS);
             }
             vehicle++;
         }
+        Comparator<VehicleOrderCostSchedule> comparing = Comparator.comparing(VehicleOrderCostSchedule::getCost);
+        result.sort(comparing);
 
         if(vehicle==vehicleSchedules.size()&&result.size()<regretK){
-            //TODO: deal with situation when 
+            return result;
         }
 
-
         while (vehicle<vehicleSchedules.size()) {
-            Double solutionIncreasedCost;
             List<Integer> schedule = vehicleSchedules.get(vehicle);
-            Double vehicleCost = calculateVehicleCost(vehicle,schedule);
-            for (int i = 0; i < schedule.size() +1; i++) {
-                for (int j = i+1; j < schedule.size() + 2; j++) {
-                    List<Integer> newSchedule = createNewSchedule(order, i, j, schedule);
-                    if(feasibility.checkSchedule(vehicle, newSchedule)){
-                        solutionIncreasedCost = calculateVehicleCost(vehicle,newSchedule)-vehicleCost;
-                        if (solutionIncreasedCost<bestCost){
-                            bestCost=solutionIncreasedCost;
-                            bestSchedule=newSchedule;
-                            bestVehicle=vehicle;
-                        }
-                    }
-                }
+            VehicleOrderCostSchedule bestVOCS = findBestScheduleCostForOrderInVehicle(order,vehicle,schedule);
+            if (bestVOCS.cost<bestCost){
+                bestCost=bestVOCS.cost;
+                result.add(0,bestVOCS);
+                result.remove(result.size()-1);
+            }else if (bestVOCS.cost<worstCost){
+                result.add(result.size()-1,bestVOCS);
+                result.remove(result.size()-1);
+                result.sort(comparing);
+                worstCost=result.get(result.size()-1).cost;
             }
             vehicle++;
         }
-        if (bestSchedule.size()==0){
-            bestVehicle=vehicleAmount;
-        }
 
-        return null;
+        return result;
     }
 
     private List<OrderAndSimilarity> getOrderSimilarities(int randomOrder) {
