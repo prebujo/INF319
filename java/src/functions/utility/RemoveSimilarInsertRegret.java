@@ -7,11 +7,13 @@ import java.util.*;
 
 public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
     private final int regretK;
+    private final int randomReduction;
     IDataSet dataSet;
-    public RemoveSimilarInsertRegret(String name, int lowerLimit, int upperLimit, int regretK, Random random, IFeasibility feasibilityCheck, IDataSet dataSet) {
+    public RemoveSimilarInsertRegret(String name, int randomReduction,int lowerLimit, int upperLimit, int regretK, Random random, IFeasibility feasibilityCheck, IDataSet dataSet) {
         super(name, lowerLimit, upperLimit, random, feasibilityCheck, dataSet);
         this.dataSet = dataSet;
         this.regretK = regretK;
+        this.randomReduction = randomReduction;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return newSolution!=null ? newSolution:solution;
     }
 
-    private int[] insertRegret(HashSet<Integer> orders, int[] solution) {
+    protected int[] insertRegret(HashSet<Integer> orders, int[] solution) {
         int[] result = solution.clone();
         List<List<Integer>> vehicleSchedules = getVehicleSchedules(solution);
 
@@ -53,7 +55,6 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         vehicleSchedules.set(chosenOrderSchedule.vehicle,chosenOrderSchedule.schedule);
         orders.remove(chosenOrderSchedule.order);
         List<OrderRegretKVOCS> fromFirstPriorityToNormal = new ArrayList<>();
-        List<OrderRegretKVOCS> fromNormalToFirstPriority = new ArrayList<>();
         while (orders.size()>0){
             if (firstPriority.size()>0){
                 for (int i = 0; i < firstPriority.size(); i++) {
@@ -91,7 +92,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return result;
     }
 
-    private void addRegretAndVOCSInCorrectPosition(List<OrderRegretKVOCS> orderRegretKs, List<OrderRegretKVOCS> firstPriority, OrderRegretKVOCS regretKAndVOCS) {
+    protected void addRegretAndVOCSInCorrectPosition(List<OrderRegretKVOCS> orderRegretKs, List<OrderRegretKVOCS> firstPriority, OrderRegretKVOCS regretKAndVOCS) {
         if (regretKAndVOCS.vehicleOrderCostScheduleList.size() < regretK) {
             addFirstPriorityInCorrectPosition(firstPriority, regretKAndVOCS);
         } else if (orderRegretKs.size() == 0) {
@@ -109,7 +110,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         }
     }
 
-    private void addFirstPriorityInCorrectPosition(List<OrderRegretKVOCS> firstPriority, OrderRegretKVOCS regretKAndVOCS) {
+    protected void addFirstPriorityInCorrectPosition(List<OrderRegretKVOCS> firstPriority, OrderRegretKVOCS regretKAndVOCS) {
         if (firstPriority.size() == 0) {
             firstPriority.add(regretKAndVOCS);
         } else if (firstPriority.get(0).vehicleOrderCostScheduleList.size() > regretKAndVOCS.vehicleOrderCostScheduleList.size()) {
@@ -127,7 +128,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         }
     }
 
-    private OrderRegretKVOCS updateOrderRegret(VehicleOrderCostSchedule chosenOrderSchedule, OrderRegretKVOCS orderRegretKVOCS, List<List<Integer>> vehicleSchedules) {
+    protected OrderRegretKVOCS updateOrderRegret(VehicleOrderCostSchedule chosenOrderSchedule, OrderRegretKVOCS orderRegretKVOCS, List<List<Integer>> vehicleSchedules) {
         List<VehicleOrderCostSchedule> vehicleOrderCostScheduleList = orderRegretKVOCS.vehicleOrderCostScheduleList;
         int order = vehicleOrderCostScheduleList.get(0).order;
         int vehicle = chosenOrderSchedule.vehicle;
@@ -155,7 +156,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return orderRegretKVOCS;
     }
 
-    private OrderRegretKVOCS updateOrderRegretFirstPriority(VehicleOrderCostSchedule chosenOrderSchedule, OrderRegretKVOCS orderRegretKVOCS, List<List<Integer>> vehicleSchedules) {
+    protected OrderRegretKVOCS updateOrderRegretFirstPriority(VehicleOrderCostSchedule chosenOrderSchedule, OrderRegretKVOCS orderRegretKVOCS, List<List<Integer>> vehicleSchedules) {
         List<VehicleOrderCostSchedule> vehicleOrderCostScheduleList = orderRegretKVOCS.vehicleOrderCostScheduleList;
         int order = vehicleOrderCostScheduleList.get(0).order;
         int vehicle = chosenOrderSchedule.vehicle;
@@ -182,7 +183,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return orderRegretKVOCS;
     }
 
-    private List<VehicleOrderCostSchedule> addKBestSchedule(int order, int regretK, List<List<Integer>> vehicleSchedules, List<VehicleOrderCostSchedule> vehicleOrderCostScheduleList) {
+    protected List<VehicleOrderCostSchedule> addKBestSchedule(int order, int regretK, List<List<Integer>> vehicleSchedules, List<VehicleOrderCostSchedule> vehicleOrderCostScheduleList) {
         List<VehicleOrderCostSchedule> result = new ArrayList<>(vehicleOrderCostScheduleList);
         boolean[] includedVehicle = new boolean[vehicleAmount];
         for (VehicleOrderCostSchedule costSchedule :
@@ -218,7 +219,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return result;
     }
 
-    private OrderRegretKVOCS getRegretKValue(List<VehicleOrderCostSchedule> kBestSchedules) {
+    protected OrderRegretKVOCS getRegretKValue(List<VehicleOrderCostSchedule> kBestSchedules) {
 
         double regretKValue = 0.0;
 
@@ -228,7 +229,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return new OrderRegretKVOCS(regretKValue,kBestSchedules);
     }
 
-    private List<VehicleOrderCostSchedule> getKBestSchedules(int order, int regretK, List<List<Integer>> vehicleSchedules) {
+    protected List<VehicleOrderCostSchedule> getKBestSchedules(int order, int regretK, List<List<Integer>> vehicleSchedules) {
         List<VehicleOrderCostSchedule> result = new ArrayList<>();
         int vehicle = 0;
         double worstCost = 0.0;
@@ -236,13 +237,17 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         while(result.size()<regretK&&vehicle<vehicleSchedules.size()){
             List<Integer> schedule = vehicleSchedules.get(vehicle);
             VehicleOrderCostSchedule bestVOCS = findBestScheduleCostForOrderInVehicle(order,vehicle,schedule);
+            if (bestVOCS.schedule.size()==0){
+                vehicle++;
+                continue;
+            }
             if (result.size()==0){
                 worstCost=bestCost=bestVOCS.cost;
                 result.add(bestVOCS);
             }else if (bestVOCS.cost<bestCost){
                 bestCost=bestVOCS.cost;
                 result.add(0,bestVOCS);
-            }else if (bestVOCS.cost>worstCost){
+            }else if (bestVOCS.cost>=worstCost){
                 worstCost=bestVOCS.cost;
                 result.add(result.size()-1,bestVOCS);
             }
@@ -275,7 +280,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return result;
     }
 
-    private List<OrderAndSimilarity> getOrderSimilarities(int randomOrder) {
+    protected List<OrderAndSimilarity> getOrderSimilarities(int randomOrder) {
         List<OrderAndSimilarity> result = new ArrayList<>();
         for (int order = 0; order<dataSet.getOrderAmount();order++){
             result.add(new OrderAndSimilarity(order+1, dataSet.getOrderSimilarity(randomOrder-1,order)));
@@ -285,16 +290,27 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
 
 
 
-    private HashSet<Integer> getMostSimilarOrders(int amount, List<OrderAndSimilarity> orderSimilarities, int[] solution) {
+    protected HashSet<Integer> getMostSimilarOrders(int amount, List<OrderAndSimilarity> orderSimilarities, int[] solution) {
         HashSet<Integer> result = new HashSet<>();
-        int idx = 0;
-        while (result.size()<amount){
-            int order = orderSimilarities.get(idx).order;
-            VehicleAndSchedule vehicleScheduleOfOrder = getVehicleScheduleOfOrder(order, solution);
-            if (feasibility.checkScheduleWithoutOrder(order,vehicleScheduleOfOrder)){
-                result.add(order);
+        List<List<Integer>> vehicleSchedules = getVehicleSchedules(solution);
+        while (result.size()<amount&&orderSimilarities.size()>0){
+            double position = random.nextDouble();
+            position=Math.pow(position,randomReduction);
+            int idx = (int) Math.round(position*(orderSimilarities.size()-1));
+            OrderAndSimilarity element = orderSimilarities.remove(idx);
+            int order = element.order;
+            int vehicle = getVehicle(order,vehicleSchedules);
+            List<Integer> vehicleSchedule = new ArrayList<>();
+            if(vehicle<vehicleAmount) {
+                vehicleSchedule = vehicleSchedules.get(vehicle);
+
+                if (!feasibility.checkScheduleWithoutOrder(order, vehicle, vehicleSchedule)) {
+                    continue;
+                }
+
+                vehicleSchedules.set(vehicle, getScheduleWithoutOrder(order, vehicleSchedule));
             }
-            idx++;
+            result.add(order);
         }
         return result;
     }

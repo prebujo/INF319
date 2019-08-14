@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/VehicleOrderScheduleCost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/Operator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/OperatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/OperatorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,20 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RemoveExpensiveInsertGreedyTest">
-    <configuration name="HeuristicFinalMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain" />
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_medium">
     <configuration name="RemoveExpensiveInsertGreedyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
@@ -173,7 +173,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveRandomInsertFirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RemoveSimilarInsertRegretTest.returns_correct_similarities" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
@@ -182,19 +182,36 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveRandomInsertFirstTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveSimilarInsertRegretTest" />
+      <option name="METHOD_NAME" value="returns_correct_similarities" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_medium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions.utility" />
+      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveSimilarInsertRegretTest" />
+      <option name="METHOD_NAME" value="solutions_generated_are_feasible_medium" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_medium" />
+        <item itemvalue="JUnit.RemoveSimilarInsertRegretTest.returns_correct_similarities" />
         <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest" />
         <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest.solutions_generated_are_feasible_medium" />
         <item itemvalue="JUnit.RemoveExpensiveInsertGreedyTest.returns_correctly_the_most_expensive_elements" />
-        <item itemvalue="JUnit.RemoveRandomInsertFirstTest" />
-        <item itemvalue="Application.HeuristicFinalMain" />
       </list>
     </recent_temporary>
   </component>
@@ -323,7 +340,7 @@
       <workItem from="1565602722163" duration="4005000" />
       <workItem from="1565633445595" duration="11642000" />
       <workItem from="1565685204729" duration="14988000" />
-      <workItem from="1565726779061" duration="9879000" />
+      <workItem from="1565726779061" duration="21706000" />
     </task>
     <servers />
   </component>
@@ -408,6 +425,16 @@
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java</url>
           <line>57</line>
           <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="197" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -419,58 +419,66 @@ public class DataSet implements IDataSet {
     }
 
     private Double getOrderSimilarity2(int order1, int order2 ) {
-        int orderPickupLocation1 = orderPickupLocations[order1];
-        int orderPickupLocation2 = orderPickupLocations[order2];
-        double pickupDistanceDifference = travelDistances[orderPickupLocation1][orderPickupLocation2];
-        int orderDeliveryLocation1 = orderDeliveryLocations[order1];
-        int orderDeliveryLocation2 = orderDeliveryLocations[order2];
-        double deliveryDistanceDifference = travelDistances[orderDeliveryLocation1][orderDeliveryLocation2];
+        int order1PickupLocation = orderPickupLocations[order1]-1;
+        int order2PickupLocation = orderPickupLocations[order2]-1;
+        double pickupDistanceDifference = travelDistances[order1PickupLocation][order2PickupLocation];
+        int order1DeliveryLocation = orderDeliveryLocations[order1]-1;
+        int order2DeliveryLocation = orderDeliveryLocations[order2]-1;
+        double deliveryDistanceDifference = travelDistances[order1DeliveryLocation][order2DeliveryLocation];
         double weightDifference = Math.abs(orderWeights[order1]-orderWeights[order2])/maxWeight;
         List<HashSet<Integer>> orderCanBePickedUpBy = getAllOrderVehicleCompatabilities();
-        HashSet<Integer> order1VehicleSet = orderCanBePickedUpBy.get(order2-1);
-        HashSet<Integer> order2VehicleSet = orderCanBePickedUpBy.get(order1-1);
+        HashSet<Integer> order1VehicleSet = orderCanBePickedUpBy.get(order2);
+        HashSet<Integer> order2VehicleSet = orderCanBePickedUpBy.get(order1);
         long intersectionSize = order1VehicleSet.stream().filter(order2VehicleSet::contains).count();
         double timeWindowsOverlapping =0.0;
-        timeWindowsOverlapping+= getTimeWindowsOverlappingFactor(orderPickupLocation1, orderPickupLocation2);
-        timeWindowsOverlapping+= getTimeWindowsOverlappingFactor(orderDeliveryLocation1, orderDeliveryLocation2);
+        timeWindowsOverlapping+= getTimeWindowsOverlappingFactor(order1PickupLocation, order2PickupLocation);
+        timeWindowsOverlapping+= getTimeWindowsOverlappingFactor(order1DeliveryLocation, order2DeliveryLocation);
 
         Double result = psi*((pickupDistanceDifference+deliveryDistanceDifference)/(maxDistance*2))+ omega*weightDifference +
                 phi*(1-intersectionSize/Math.min(order1VehicleSet.size(),order2VehicleSet.size()))+
-                tao*(factories[order1]==factories[order2]? 0:1) +
+                tao*(factories[order1DeliveryLocation]==factories[order2DeliveryLocation]? 0:1) +
                 chi*(timeWindowsOverlapping);
         return result;
     }
 
-    private double getTimeWindowsOverlappingFactor(int orderPickupLocation1, int orderPickupLocation2) {
+    private double getTimeWindowsOverlappingFactor(int order1Location, int order2Location) {
         double quotient = 0.0;
         double dividendPart2 = 0.0;
         double maxUpperTimeWindow = 0.0;
         double minLowerTimewindow = 0.0;
-        for(int timewindow1 = 0; timewindow1<timeWindowAmounts[orderPickupLocation1]; timewindow1++){
-            for (int timewindow2 = 0; timewindow2<timeWindowAmounts[orderPickupLocation2]; timewindow2++){
-                double ltw1 = lowerTimeWindows[orderPickupLocation1][timewindow1];
-                double utw1 = upperTimeWindows[orderPickupLocation1][timewindow1];
-                double utw_1 = -1.0; //set negative for first iteration
-                double utw2 = upperTimeWindows[orderPickupLocation2][timewindow2];
-                double ltw2 = lowerTimeWindows[orderPickupLocation2][timewindow2];
+        int timeWindowAmount1 = timeWindowAmounts[order1Location];
+        int timeWindowAmount2 = timeWindowAmounts[order2Location];
+        for(int timewindow1 = 0; timewindow1< timeWindowAmount1; timewindow1++){
+            double ltw1 = lowerTimeWindows[order1Location][timewindow1];
+            double utw1 = upperTimeWindows[order1Location][timewindow1];
+            double utw_1 = -1.0; //set negative for first iteration
+            if (timewindow1>0) {
+                utw_1 = upperTimeWindows[order1Location][timewindow1 - 1];
+            }
+            for (int timewindow2 = 0; timewindow2< timeWindowAmount2; timewindow2++){
+                double ltw2 = lowerTimeWindows[order2Location][timewindow2];
+                double utw2 = upperTimeWindows[order2Location][timewindow2];
                 double utw_2 = -1.0; //set negative for first iteration
                 if (timewindow1==0&&timewindow2==0){
                     minLowerTimewindow = Math.min(ltw1,ltw2);
                 }
-                if (timewindow1==(timeWindowAmounts[orderPickupLocation1]-1)&&timewindow2==(timeWindowAmounts[orderPickupLocation2]-1)){
+                if (timewindow1==(timeWindowAmount1 -1)&&timewindow2==(timeWindowAmount2 -1)){
                     maxUpperTimeWindow=Math.max(utw1,utw2);
                 }
-                if (timewindow1>0) {
-                    utw_1 = upperTimeWindows[orderPickupLocation1][timewindow1 - 1];
-                }
                 if(timewindow2>0){
-                    utw_2 = upperTimeWindows[orderPickupLocation2][timewindow2-1];
+                    utw_2 = upperTimeWindows[order2Location][timewindow2-1];
                 }
                 if (ltw1 < utw2 && ltw2 < utw1){
                     quotient += Math.min(utw1,utw2)-Math.max(ltw1,ltw2);
                 }
-                if (ltw1>utw_2 && ltw2>utw_1){
+                if (ltw1>utw_2 && ltw2>utw_1&&utw_1!=-1&&utw_2!=-1){
                     dividendPart2 += Math.min(ltw1,ltw2) - Math.max(utw_1,utw_2);
+                }
+                if (timewindow2==(timeWindowAmount2-1)&&utw2<ltw1){
+                    dividendPart2+= ltw1-Math.max(utw2,utw_1);
+                }
+                if (timewindow1==(timeWindowAmount1-1)&&utw1<ltw2){
+                    dividendPart2+= ltw2-Math.max(utw1,utw_2);
                 }
             }
         }
@@ -484,7 +492,7 @@ public class DataSet implements IDataSet {
         for (int o = 0; o < orderAmount; o++) {
             HashSet<Integer> vehiclesCompatableWithOrder = new HashSet<>();
             for (int v = 0; v < vehicleAmount; v++) {
-                if(vehicleCanPickupOrder[v][o]&&vehicleCanVisitLocation[v][orderPickupLocations[o]]&&vehicleCanVisitLocation[v][orderDeliveryLocations[o]]){
+                if(vehicleCanPickupOrder[v][o]&&vehicleCanVisitLocation[v][orderPickupLocations[o]-1]&&vehicleCanVisitLocation[v][orderDeliveryLocations[o]-1]){
                     vehiclesCompatableWithOrder.add(v);
                 }
             }

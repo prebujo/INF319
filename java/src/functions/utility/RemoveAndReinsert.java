@@ -21,21 +21,6 @@ public class RemoveAndReinsert extends Operator {
         this.upperLimit = upperLimit;
     }
 
-    protected List<VehicleOrderCostSchedule> getBestSchedules(Iterator<Integer> iterator, List<List<Integer>> vehicleSchedules) {
-        List<VehicleOrderCostSchedule> bestSchedules = new ArrayList<>();
-        bestSchedules.add(findBestScheduleForOrder(iterator.next(), vehicleSchedules));
-        while (iterator.hasNext()) {
-            int o = iterator.next();
-            VehicleOrderCostSchedule bestScheduleForOrder = findBestScheduleForOrder(o, vehicleSchedules);
-            if (bestScheduleForOrder.cost < bestSchedules.get(0).cost) {
-                bestSchedules.add(0,bestScheduleForOrder);
-            }else {
-                bestSchedules.add(bestScheduleForOrder);
-            }
-        }
-        return bestSchedules;
-    }
-
     protected VehicleOrderCostSchedule findBestScheduleForOrder(Integer order, List<List<Integer>> vehicleSchedules) {
         List<Integer> bestSchedule = new ArrayList<>();
         int bestVehicle = 0;
