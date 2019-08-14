@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/OrderRegretKVOCS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
     </list>
@@ -35,8 +35,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -83,9 +83,11 @@
       <recent name="functions.utility" />
       <recent name="functions.feasibility" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="dataObjects" />
-      <recent name="functions.utility" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/flow_instances" />
+      <recent name="$PROJECT_DIR$/res/flow_results" />
+      <recent name="$PROJECT_DIR$/res/results" />
+      <recent name="$PROJECT_DIR$/res/instances" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="generators" />
@@ -93,11 +95,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res/flow_instances" />
-      <recent name="$PROJECT_DIR$/res/flow_results" />
-      <recent name="$PROJECT_DIR$/res/results" />
-      <recent name="$PROJECT_DIR$/res/instances" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="dataObjects" />
+      <recent name="functions.utility" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -322,7 +322,8 @@
       <workItem from="1565425776350" duration="15330000" />
       <workItem from="1565602722163" duration="4005000" />
       <workItem from="1565633445595" duration="11642000" />
-      <workItem from="1565685204729" duration="14897000" />
+      <workItem from="1565685204729" duration="14988000" />
+      <workItem from="1565726779061" duration="9879000" />
     </task>
     <servers />
   </component>
