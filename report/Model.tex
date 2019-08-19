@@ -71,12 +71,13 @@ It can be formulated as follows
     }
 \end{equation}
 
-Here $\overline{T_{ip}}$ and $\underline{T_{ip}}$ are the upper and lower time windows defined in the problem formulation. \par
+Here $\overline{T_{ip}}$ and $\underline{T_{ip}}$ are the upper and lower time windows defined in the problem formulation.
 Thus the relatedness measure is given a value $0\leq r_{ij} \leq 2\psi + \omega + \phi + \tau  + \chi$. 
-We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. 
+We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. \newline\par
+The insertion part of this operator tries to improve on the insert greedy by calculating a regret value, $c^*_i$
 
-\subsubsection{Remove Randomly and insert First}
-Removes randomly between 2-7 orders (adjusted to the instance size) and reinserts them in randomly their first possible position. 
+\subsubsection{Remove Randomly and insert First Fit}
+Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
 This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
 
 

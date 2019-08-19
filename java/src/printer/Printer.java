@@ -80,8 +80,6 @@ public class Printer implements IPrinter {
 
     @Override
     public void printDataToFile(String outputFileName, List<String> instanceSizes, List<IDataResult> results, List<IOperator> operators) {
-        //TODO: Finish printer of several runs
-
         try {
 
             FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"RESULTS.csv");
@@ -98,6 +96,17 @@ public class Printer implements IPrinter {
                 double[] bestObjectives = results.get(i).getBestObjectives();
                 for (int j = 0; j < bestObjectives.length; j++) {
                     fileWriter.write(","+bestObjectives[j]);
+                }
+                fileWriter.write("\n");
+            }
+            fileWriter.write("\n");
+
+            fileWriter.write("Best solution iteration,Run 1,Run 2, Run 3, Run 4, Run 5, Run 6, Run 7, Run 8, Run 9, Run 10\n");
+            for (int i = 0; i < results.size(); i++) {
+                fileWriter.write(instanceSizes.get(i));
+                int[] bestIterations = results.get(i).getBestIterations();
+                for (int k = 0; k < bestIterations.length; k++) {
+                    fileWriter.write( ","+ bestIterations[k]);
                 }
                 fileWriter.write("\n");
             }
@@ -129,14 +138,6 @@ public class Printer implements IPrinter {
             fileWriter.write("\n");
 
             int run = 1;
-            fileWriter.write("Best solution iteration\n");
-            for (int k = 0; k < instanceSizes.size(); k++) {
-                fileWriter.write(instanceSizes.get(k) + " Run " +run+","+results.get(k).getBestIterations()[(run-1)]+"\n");
-                run+=2;
-            }
-            fileWriter.write("\n");
-
-            run = 1;
             for (int k = 0; k < instanceSizes.size(); k++) {
                 fileWriter.write("Weights per segments Run " + run +" "+instanceSizes.get(k));
                 for (int i = 0; i < 100; i++) {

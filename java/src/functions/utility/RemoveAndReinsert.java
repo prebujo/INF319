@@ -51,7 +51,6 @@ public class RemoveAndReinsert extends Operator {
 
     protected VehicleOrderCostSchedule findBestScheduleCostForOrderInVehicle(Integer order, int vehicle, List<Integer> vehicleSchedule) {
         List<Integer> bestSchedule = new ArrayList<>();
-        int bestVehicle = 0;
         Double bestCost = Double.MAX_VALUE;
         Double solutionIncreasedCost;
         Double vehicleCost = calculateVehicleCost(vehicle, vehicleSchedule);

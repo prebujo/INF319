@@ -48,15 +48,21 @@ public class HeuristicFinalMain2 {
     }
 
     private static List<IOperator> getOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
-        int a = dataSet.getOrderAmount() / 4;
+        int orderAmount = dataSet.getOrderAmount();
+        int a = (int) (orderAmount *0.1);
+        int b = 5;
+        if (orderAmount <b){
+            b = 3;
+        }
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
-        operators.add(new ExchangeThree("exch3", random, feasibility, dataSet));
-        operators.add(new RemoveExpensiveInsertGreedy("reig",4, 1, Math.min(a,5), random, feasibility, dataSet));
-//        operators.add(new RemoveAndReinsert(dataSet, random, feasibility, 1, Math.min(dataSet.getOrderAmount()/4,5), "r&r1_4"));
-        operators.add(new TwoOpt("2opt",random,feasibility,dataSet));
-        operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.min(a,5),random,feasibility,dataSet));
+        operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
+//        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
+//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
+        operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
+        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
+        operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
         return operators;
     }
 
