@@ -37,7 +37,7 @@ public class HeuristicFinalMain2 {
             operators = getOperators(feasibility, dataSet, random);
 
             AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
-            IDataResult result = alns.optimize(operators);
+            IDataResult result = alns.optimize(operators, getWildOperators(feasibility,dataSet,random));
             results.add(result);
             i++;
         }
@@ -61,6 +61,22 @@ public class HeuristicFinalMain2 {
 //        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
 //        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
         operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
+        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
+        operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
+        return operators;
+    }
+
+    private static List<IOperator> getWildOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
+        int orderAmount = dataSet.getOrderAmount();
+        int a = (int) (orderAmount *0.3);
+        int b = 7;
+        if (orderAmount <b){
+            b = 4;
+        }
+        List<IOperator> operators;
+        operators=new ArrayList<>();
+        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
+//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
         operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
         return operators;

@@ -2,33 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../TODO-list.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../TODO-list.odt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/dataObjects/DataSetTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderRegretKVOCS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/OrderRegretKVOCS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsert.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndCost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndSimilarity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/printer/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderRegretKVOCS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/OrderRegretKVOCS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IntegerDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndSimilarity.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/printer/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Operators Descriptions.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Operators Descriptions.odt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,18 +69,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>add</find>
-      <find>UPPER_BOUND_PRO</find>
-      <find>iteration</find>
-      <find>i</find>
-      <find>run</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -96,6 +89,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project_zip" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -105,6 +99,7 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="functions.utility" />
+      <recent name="dataObjects" />
       <recent name="functions.feasibility" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -136,7 +131,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HeuristicFinalMain2">
+  <component name="RunManager" selected="JUnit.RemoveSimilarInsertRegretTest">
     <configuration name="HeuristicFinalMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain" />
       <module name="java" />
@@ -150,15 +145,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HeuristicFinalMain2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain2" />
+    <configuration name="DataSetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="dataObjects.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="dataObjects" />
+      <option name="MAIN_CLASS_NAME" value="dataObjects.DataSetTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataSetTest.claculate_correct_Siluette_Coefficient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dataObjects" />
+      <option name="MAIN_CLASS_NAME" value="dataObjects.DataSetTest" />
+      <option name="METHOD_NAME" value="claculate_correct_Siluette_Coefficient" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataSetTest.merge_column_and_row_returns_correct_matrix" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dataObjects" />
+      <option name="MAIN_CLASS_NAME" value="dataObjects.DataSetTest" />
+      <option name="METHOD_NAME" value="merge_column_and_row_returns_correct_matrix" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -178,44 +207,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_large" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.utility.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveSimilarInsertRegretTest" />
-      <option name="METHOD_NAME" value="solutions_generated_are_feasible_large" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_medium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.utility.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveSimilarInsertRegretTest" />
-      <option name="METHOD_NAME" value="solutions_generated_are_feasible_medium" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HeuristicFinalMain2" />
-        <item itemvalue="JUnit.RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_large" />
         <item itemvalue="JUnit.RemoveSimilarInsertRegretTest" />
-        <item itemvalue="JUnit.RemoveSimilarInsertRegretTest.solutions_generated_are_feasible_medium" />
+        <item itemvalue="JUnit.DataSetTest" />
+        <item itemvalue="JUnit.DataSetTest.claculate_correct_Siluette_Coefficient" />
+        <item itemvalue="JUnit.DataSetTest.merge_column_and_row_returns_correct_matrix" />
         <item itemvalue="Application.HeuristicFinalMain" />
       </list>
     </recent_temporary>
@@ -349,7 +346,17 @@
       <workItem from="1565804756870" duration="41263000" />
       <workItem from="1565974978568" duration="668000" />
       <workItem from="1565984473549" duration="1694000" />
-      <workItem from="1566212066809" duration="1532000" />
+      <workItem from="1566212066809" duration="3498000" />
+      <workItem from="1566244319855" duration="2429000" />
+      <workItem from="1566290368662" duration="7340000" />
+      <workItem from="1566313106667" duration="614000" />
+      <workItem from="1566373060263" duration="2065000" />
+      <workItem from="1566376930277" duration="7752000" />
+      <workItem from="1566464798703" duration="4057000" />
+      <workItem from="1566549768741" duration="4170000" />
+      <workItem from="1566817953664" duration="18374000" />
+      <workItem from="1566893291074" duration="6970000" />
+      <workItem from="1566925978047" duration="20120000" />
     </task>
     <servers />
   </component>
@@ -445,6 +452,16 @@
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java</url>
           <line>56</line>
           <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/dataObjects/DataSetTest.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/dataObjects/DataSetTest.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="208" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

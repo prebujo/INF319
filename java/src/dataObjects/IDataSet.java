@@ -1,5 +1,7 @@
 package dataObjects;
 
+import java.util.List;
+
 public interface IDataSet {
     int getVehicleAmount();
     int getOrderAmount();
@@ -111,4 +113,10 @@ public interface IDataSet {
     void setMaxWeight(double maxWeight);
 
     double getMaxWeight();
+
+    void setLocationClusters();
+
+    List<List<Integer>> getLocationClusters();
+
+    int getCluster(int location);
 }

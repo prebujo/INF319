@@ -1,7 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import dataObjects.OrderAndSimilarity;
+import dataObjects.IntegerDouble;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import generators.ISolutionGenerator;
@@ -68,17 +68,17 @@ class RemoveSimilarInsertRegretTest {
         RemoveSimilarInsertRegret removeAndReinsert = new RemoveSimilarInsertRegret("",4,1,3,3,new Random(1),feasibility,dataSet);
 
         int order = 3;
-        List<OrderAndSimilarity> orderSimilarityList = removeAndReinsert.getOrderSimilarities(order);
+        List<IntegerDouble> orderSimilarityList = removeAndReinsert.getOrderSimilarities(order);
 
         assertTrue(orderSimilarityList.size()==4);
-        assertEquals(orderSimilarityList.get(0).order, 1);
-        assertEquals(0.19166763397082842, orderSimilarityList.get(0).similarity);
-        assertEquals(orderSimilarityList.get(1).order, 2);
-        assertEquals(0.8096243556540229, orderSimilarityList.get(1).similarity);
-        assertEquals(orderSimilarityList.get(2).order, 3);
-        assertEquals(0.0, orderSimilarityList.get(2).similarity);
-        assertEquals(orderSimilarityList.get(3).order, 4);
-        assertEquals(1.629758113997644, orderSimilarityList.get(3).similarity);
+        assertEquals(orderSimilarityList.get(0).key, 1);
+        assertEquals(0.19166763397082842, orderSimilarityList.get(0).value);
+        assertEquals(orderSimilarityList.get(1).key, 2);
+        assertEquals(0.8096243556540229, orderSimilarityList.get(1).value);
+        assertEquals(orderSimilarityList.get(2).key, 3);
+        assertEquals(0.0, orderSimilarityList.get(2).value);
+        assertEquals(orderSimilarityList.get(3).key, 4);
+        assertEquals(1.629758113997644, orderSimilarityList.get(3).value);
 
     }
 

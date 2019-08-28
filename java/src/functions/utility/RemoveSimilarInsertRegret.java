@@ -36,8 +36,8 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
             vehicleSchedules.set(vehicle, getScheduleWithoutOrder(randomOrder, vehicleSchedules.get(vehicle)));
         }
 
-        List<OrderAndSimilarity> orderSimilarities = getOrderSimilarities(randomOrder);
-        orderSimilarities.sort(Comparator.comparing(OrderAndSimilarity::getSimilarity));
+        List<IntegerDouble> orderSimilarities = getOrderSimilarities(randomOrder);
+        orderSimilarities.sort(Comparator.comparing(IntegerDouble::getValue));
 
         HashSet<Integer> ordersToRemove = getMostSimilarOrders(amount,orderSimilarities, vehicleSchedules);
         int[] solutionWithoutOrders = removeOrdersFromSolution(ordersToRemove,solution);
@@ -343,25 +343,25 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return result;
     }
 
-    protected List<OrderAndSimilarity> getOrderSimilarities(int randomOrder) {
-        List<OrderAndSimilarity> result = new ArrayList<>();
+    protected List<IntegerDouble> getOrderSimilarities(int randomOrder) {
+        List<IntegerDouble> result = new ArrayList<>();
         for (int order = 0; order<dataSet.getOrderAmount();order++){
-            result.add(new OrderAndSimilarity(order+1, dataSet.getOrderSimilarity(randomOrder-1,order)));
+            result.add(new IntegerDouble(order+1, dataSet.getOrderSimilarity(randomOrder-1,order)));
         }
         return result;
     }
 
 
 
-    protected HashSet<Integer> getMostSimilarOrders(int amount, List<OrderAndSimilarity> orderSimilarities, List<List<Integer>> vehicleSchedules) {
+    protected HashSet<Integer> getMostSimilarOrders(int amount, List<IntegerDouble> orderSimilarities, List<List<Integer>> vehicleSchedules) {
         HashSet<Integer> result = new HashSet<>();
-        result.add(orderSimilarities.remove(0).order);//adding randomly selected order to selection
+        result.add(orderSimilarities.remove(0).key);//adding randomly selected order to selection
         while (result.size()<amount&&orderSimilarities.size()>0){
             double position = random.nextDouble();
             position=Math.pow(position,randomReduction);
             int idx = (int) Math.round(position*(orderSimilarities.size()-1));
-            OrderAndSimilarity element = orderSimilarities.remove(idx);
-            int order = element.order;
+            IntegerDouble element = orderSimilarities.remove(idx);
+            int order = element.key;
             int vehicle = getVehicle(order,vehicleSchedules);
             List<Integer> vehicleSchedule = new ArrayList<>();
             if(vehicle<vehicleAmount) {

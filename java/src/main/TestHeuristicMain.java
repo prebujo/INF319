@@ -50,7 +50,7 @@ public class TestHeuristicMain {
         String returnSame = "return the same solution";
         operators.add(new ReturnSameSolution("retSame"));
 
-        IDataResult results = alns.optimize(operators);
+        IDataResult results = alns.optimize(operators, new ArrayList<>());
 
         IPrinter printer = new Printer();
 

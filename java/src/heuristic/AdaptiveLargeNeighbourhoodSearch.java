@@ -16,6 +16,7 @@ import java.util.Random;
 public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
     private static final int RUNS_AMOUNT = 10;
+    private static final int MAX_WILD_ITERATIONS = 100;
     private final int INITIAL_SEGMENT_LENGTH = 100;
     private final double INITIAL_ACCEPTANCE_PROBABILITY = 0.8;
     private final IDataSet dataSet;
@@ -28,6 +29,9 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     private final int ITERATIONS = 10000;
     private String heuristicName;
     private int SEGMENT_LENGTH = 100;
+    private double decreasePercentage = 0.995;
+    private double historyWeight = 0.80;
+    private int MAX_ITERATIONS_WITHOUT_IMPROVEMENT = 500;
 
     public AdaptiveLargeNeighbourhoodSearch(IDataSet dataSet, Random random, String heuristicName){
         this.dataSet = dataSet;
@@ -38,16 +42,11 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     }
 
     public IDataResult optimize() throws Throwable {
-        return optimize(new ArrayList<>());
+        return optimize(new ArrayList<>(), new ArrayList<>());
     }
-    public IDataResult optimize(List<IOperator> operators) throws Throwable {
-        //Variables that are equal for each run
-        double decreasePercentage = 0.995;
-        double historyWeight = 0.80;
-
+    public IDataResult optimize(List<IOperator> operators, List<IOperator> wildOperators) throws Throwable {
         //Generating start solution
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
-
 
         //Hashset to store acceptedSolutions
 
@@ -59,6 +58,9 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         double averageRunTime = 0;
         double averageImprovement = 0;
         int[] bestIterations = new int[RUNS_AMOUNT];
+        int[][] wildRunsIterations = new int[RUNS_AMOUNT][(ITERATIONS/MAX_ITERATIONS_WITHOUT_IMPROVEMENT)];
+        int[][] timesJumpedInWild = new int[RUNS_AMOUNT][(ITERATIONS/MAX_ITERATIONS_WITHOUT_IMPROVEMENT)];
+        String[][][] solutionBeforeAndAfterWild = new String[RUNS_AMOUNT][(ITERATIONS/MAX_ITERATIONS_WITHOUT_IMPROVEMENT)][2];
         double[] heuristicRunningTime = new double[RUNS_AMOUNT];
         int amountOfOperators = operators.size();
         double[] operatorTime = new double[amountOfOperators];
@@ -89,7 +91,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
             int[] bestSolution = startSolution.clone();
             int[] acceptedSolution = startSolution.clone();
-            int[] currentSolution;
+            int[] currentSolution = new int[0];
             bestObjective=startSolutionObjective;
             acceptedObjective=startSolutionObjective;
             currentObjective=startSolutionObjective;
@@ -98,7 +100,9 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
             acceptedSolutions.add(toString(startSolution));
             //int iteration = 0;
             int iteration = 0;
+            int iterationsSinceBestSolution = 0;
             int currentSegment = 0;
+            int wildIdx = 0;
 
             //Initializing weights and scores
             Double[] weight = assignEqualStartWeights(amountOfOperators);
@@ -140,6 +144,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         bestSolution = currentSolution.clone();
                         bestObjective = currentObjective;
                         bestIterations[run] = iteration + 1;
+                        iterationsSinceBestSolution=0;
                     }
 
                     int result = 0;
@@ -161,6 +166,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                 }
                 scoreData[run][iteration++] = score.clone();
                 segmentIteration++;
+                iterationsSinceBestSolution++;
             }
 
 
@@ -186,9 +192,45 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
                 while (segmentIteration < SEGMENT_LENGTH) {
 
+                    //TODO: Experiment with something wild to do when no improvement has been found for a while
+                    if (iterationsSinceBestSolution>MAX_ITERATIONS_WITHOUT_IMPROVEMENT){
+                        int acceptIterations = 0;
+                        wildRunsIterations[run][wildIdx] = iteration;
+                        solutionBeforeAndAfterWild[run][wildIdx][0] = toString(currentSolution);
+                        while(acceptIterations<MAX_WILD_ITERATIONS) {
+                            //choosing operator from fastest 2 randomly
+                            int operator = (random.nextInt(wildOperators.size()));
+
+//                            runTimes[operator]++;
+//                            operatorRunningTimes[operator] += 1;
+
+                            //long operatorStartTimer = System.nanoTime();
+                            currentSolution = wildOperators.get(operator).apply(acceptedSolution);
+                            //operatorTime[operator] += (double) (System.nanoTime() - operatorStartTimer) / 1_000_000_000;
+
+                            if (!acceptedSolutions.contains(toString(currentSolution))) {
+                                timesJumpedInWild[run][wildIdx]++;
+                                currentObjective = objectiveFunction.calculateSolution(currentSolution);
+                                if (currentObjective < bestObjective) {
+                                    //score[operator] += (highScore - mediumScore);
+                                    bestSolution = currentSolution.clone();
+                                    bestObjective = currentObjective;
+                                    bestIterations[run] = iteration + 1;
+                                }
+                                acceptedSolutions.add(toString(currentSolution));
+                                //score[operator] += result;
+                                acceptedObjective = currentObjective;
+                                acceptedSolution = currentSolution.clone();
+
+                            }
+                            acceptIterations++;
+                        }
+                        iterationsSinceBestSolution=0;
+                        solutionBeforeAndAfterWild[run][wildIdx++][1] = toString(currentSolution);
+                    }
+
                     //choosing operator based on probabilities of this segment
                     int operator = getOperator(amountOfOperators, weight, random.nextDouble());
-
 
                     runTimes[operator]++;
                     operatorRunningTimes[operator] += 1;
@@ -204,6 +246,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                             bestSolution = currentSolution.clone();
                             bestObjective = currentObjective;
                             bestIterations[run] = iteration + 1;
+                            iterationsSinceBestSolution=0;
                         }
 
                         int result = accept(currentObjective, acceptedObjective, temperature);
@@ -217,6 +260,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                     temperature = temperature * decreasePercentage;
                     scoreData[run][iteration++] = score.clone();
                     segmentIteration++;
+                    iterationsSinceBestSolution++;
                 }
                 accumulatedTotalScore = updateAccumulatedTotalScore(amountOfOperators, score, runTimes);
                 weight = updateWeights(weight, accumulatedTotalScore, historyWeight);

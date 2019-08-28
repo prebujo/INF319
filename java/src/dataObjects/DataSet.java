@@ -1,8 +1,6 @@
 package dataObjects;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class DataSet implements IDataSet {
     private int vehicleAmount;
@@ -48,6 +46,9 @@ public class DataSet implements IDataSet {
     private double tao = 0.25;
     private double chi = 0.1;
     private double maxWeight;
+    private double[][] locationClusters;
+    private List<List<Integer>> locationClusterList;
+    private int[] cluster;
 
 
     public DataSet(int vehicleAmount, int orderAmount, int locationsAmount, int factoryAmount){
@@ -405,6 +406,135 @@ public class DataSet implements IDataSet {
         return maxWeight;
     }
 
+    @Override
+    public void setLocationClusters() {
+
+        //make clusters for each possible k (maksimum k equal to vehicle amount) and keep cluster with best possible measurement
+
+        double bestClusterValue = -1.0;
+        List<List<Integer>> bestClusterList = new ArrayList<>();
+        double[][] bestCluster = new double[0][0];
+
+        for (int k = 2; k <= vehicleAmount; k++) {
+            int currentK = locationsAmount;
+            double[][] currentDistanceMatrix = travelDistances.clone();
+            List<List<Integer>> clusterList = new ArrayList<>();
+            for (int i = 0; i<travelDistances.length;i++){
+                clusterList.add(Arrays.asList(i));
+            }
+
+            while(currentK>k) {
+                int bestI = 0;
+                int bestJ = 0;
+                double shortestDistance = Double.MAX_VALUE;
+                for (int i = 0; i < currentDistanceMatrix.length - 1; i++) {
+                    for (int j = i + 1; j < currentDistanceMatrix.length; j++) {
+                        if (currentDistanceMatrix[i][j] < shortestDistance){
+                            shortestDistance=currentDistanceMatrix[i][j];
+                            bestI=i;
+                            bestJ=j;
+                        }
+                    }
+                }
+                currentDistanceMatrix= mergeRowAndColumn(bestI,bestJ,currentDistanceMatrix, clusterList);
+                currentK=currentDistanceMatrix.length;
+            }
+            double currentClusterValue = calculateSiluetteCoefficient(currentDistanceMatrix, clusterList);
+            if (currentClusterValue>bestClusterValue){
+                bestClusterList = clusterList;
+                bestCluster=currentDistanceMatrix;
+                bestClusterValue=currentClusterValue;
+            }
+        }
+        locationClusters = bestCluster;
+        locationClusterList = bestClusterList;
+        cluster = createIntList(bestClusterList);
+
+    }
+
+    private int[] createIntList(List<List<Integer>> bestClusterList) {
+        int[] result = new int[locationsAmount];
+        for (int i = 0; i < bestClusterList.size(); i++) {
+            for (Integer j:bestClusterList.get(i)) {
+                result[j]=(i+1);
+            }
+        }
+        return result;
+    }
+
+    protected double calculateSiluetteCoefficient(double[][] clusteredDistanceMatrix, List<List<Integer>> clusterList) {
+        double totalSiluette = 0.0;
+
+        for (int i = 0;i<clusterList.size();i++){
+            List<Integer> cluster = clusterList.get(i);
+            for (int clusterMember : cluster) {
+                double cohesion = getCohesion(clusterMember, cluster);
+                double separation = getSepraration(clusterMember, cluster, clusterList);
+                double silhouette = (separation - cohesion) / Math.max(separation, cohesion);
+                totalSiluette += silhouette;
+            }
+        }
+        return totalSiluette/locationsAmount;
+    }
+
+    private double getSepraration(int currentNode, List<Integer> ownCluster, List<List<Integer>> clusterList) {
+        double minDistance = Double.MAX_VALUE;
+        double currentClusterDistance = 0.0;
+        for (List<Integer> cluster:clusterList){
+            if (cluster==ownCluster){
+                continue;
+            }
+            for (Integer i: cluster) {
+                currentClusterDistance+=travelDistances[currentNode][i];
+            }
+            currentClusterDistance=currentClusterDistance/cluster.size();
+            if (currentClusterDistance<minDistance){
+                minDistance=currentClusterDistance;
+            }
+        }
+        return minDistance;
+    }
+
+    protected double getCohesion(int currentNode, List<Integer> cluster) {
+        if (cluster.size()==1){
+            return 0;
+        }
+        double result = 0.0;
+        for (Integer i:cluster){
+                result += travelDistances[currentNode][i];
+        }
+        return result/(cluster.size()-1);
+    }
+
+    protected double[][] mergeRowAndColumn(int bestI, int bestJ, double[][] currentDistanceMatrix, List<List<Integer>> clusterList) {
+        assert(bestI<bestJ);
+        double[][] result = new double[currentDistanceMatrix.length-1][currentDistanceMatrix.length-1];
+        int resultI = 0;
+        for (int i = 0; i < currentDistanceMatrix.length; i++) {
+            int resultJ = 0;
+            for (int j = 0; j < currentDistanceMatrix.length; j++) {
+                if (i == bestJ || j == bestJ) {
+                    continue;
+                }else if (i == bestI) {
+                    result[resultI][resultJ++]= Math.min(currentDistanceMatrix[i][j], currentDistanceMatrix[bestJ][j]);
+                }else if(j == bestI){
+                    result[resultI][resultJ++] = Math.min(currentDistanceMatrix[i][j], currentDistanceMatrix[i][bestJ]);
+                }else {
+                    result[resultI][resultJ++] = currentDistanceMatrix[i][j];
+                }
+            }
+            if (i != bestJ) {
+                resultI++;
+            }
+        }
+        List<Integer> collection = new ArrayList<>(clusterList.get(bestI));
+        List<Integer> collectionToBeAdded = clusterList.get(bestJ);
+        Optional.ofNullable(collectionToBeAdded).ifPresent(collection::addAll);
+        clusterList.set(bestI,collection);
+        clusterList.remove(bestJ);
+        return result;
+    }
+
     private double[][] getOrderSimilarities(int orderAmount) {
         double[][] result = new double[orderAmount][orderAmount];
         for (int order1 = 0;order1<orderAmount;order1++) {
@@ -501,4 +631,13 @@ public class DataSet implements IDataSet {
         return result;
     }
 
+    @Override
+    public List<List<Integer>> getLocationClusters() {
+        return locationClusterList;
+    }
+
+    @Override
+    public int getCluster(int location){
+        return cluster[location];
+    }
 }

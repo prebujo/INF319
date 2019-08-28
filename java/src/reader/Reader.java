@@ -111,6 +111,7 @@ public class Reader implements IReader {
         result.setMaxWeight(maxWeight);
 
         result.setOrderSimilarities();
+        result.setLocationClusters();
         return result;
     }
 
