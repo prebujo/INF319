@@ -2,38 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/dataObjects/DataSetTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataObjects/BitStringAndDataResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/OperatorAnalysisMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IDataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndCost.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/OrderAndSimilarity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IDataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IntegerDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataObjects/OrderAndSimilarity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/printer/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/printer/IPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/IPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/printer/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,8 +42,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,7 +67,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project_zip" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -131,9 +109,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RemoveSimilarInsertRegretTest">
-    <configuration name="HeuristicFinalMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain" />
+  <component name="RunManager" selected="JUnit.RemoveNonClusteredInsertClusteredTest.returns_correct_cluster_values">
+    <configuration name="OperatorAnalysisMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.OperatorAnalysisMain" />
       <module name="java" />
       <extension name="coverage">
         <pattern>
@@ -176,17 +154,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataSetTest.merge_column_and_row_returns_correct_matrix" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RemoveNonClusteredInsertClusteredTest.returns_correct_cluster_values" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dataObjects.*" />
+          <option name="PATTERN" value="functions.utility.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dataObjects" />
-      <option name="MAIN_CLASS_NAME" value="dataObjects.DataSetTest" />
-      <option name="METHOD_NAME" value="merge_column_and_row_returns_correct_matrix" />
+      <option name="PACKAGE_NAME" value="functions.utility" />
+      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveNonClusteredInsertClusteredTest" />
+      <option name="METHOD_NAME" value="returns_correct_cluster_values" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -209,11 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RemoveNonClusteredInsertClusteredTest.returns_correct_cluster_values" />
+        <item itemvalue="Application.OperatorAnalysisMain" />
         <item itemvalue="JUnit.RemoveSimilarInsertRegretTest" />
         <item itemvalue="JUnit.DataSetTest" />
         <item itemvalue="JUnit.DataSetTest.claculate_correct_Siluette_Coefficient" />
-        <item itemvalue="JUnit.DataSetTest.merge_column_and_row_returns_correct_matrix" />
-        <item itemvalue="Application.HeuristicFinalMain" />
       </list>
     </recent_temporary>
   </component>
@@ -357,6 +335,9 @@
       <workItem from="1566817953664" duration="18374000" />
       <workItem from="1566893291074" duration="6970000" />
       <workItem from="1566925978047" duration="20120000" />
+      <workItem from="1567009767168" duration="229000" />
+      <workItem from="1567171298526" duration="2099000" />
+      <workItem from="1567239721151" duration="6402000" />
     </task>
     <servers />
   </component>
@@ -462,6 +443,21 @@
           <url>file://$PROJECT_DIR$/tests/dataObjects/DataSetTest.java</url>
           <line>65</line>
           <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="211" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

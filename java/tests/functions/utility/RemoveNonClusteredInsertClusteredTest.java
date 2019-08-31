@@ -1,6 +1,7 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
+import dataObjects.IntegerDouble;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import generators.ISolutionGenerator;
@@ -12,6 +13,7 @@ import reader.Reader;
 import java.util.List;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RemoveNonClusteredInsertClusteredTest {
@@ -70,7 +72,10 @@ class RemoveNonClusteredInsertClusteredTest {
 
         int[] solution = new int[]{1,1,2,2,0,3,3,4,4,0,0};
         List<List<Integer>> vehicleSchedules = removeAndReinsert.getVehicleSchedules(solution);
-        removeAndReinsert.getOrderClusterValues(vehicleSchedules);
+        List<IntegerDouble> orderClusterValues = removeAndReinsert.getOrderClusterValues(vehicleSchedules);
+
+        assertEquals(1,orderClusterValues.get(0).key);
+        assertEquals(2,orderClusterValues.get(0).value);
 
     }
 

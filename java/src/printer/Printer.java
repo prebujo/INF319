@@ -1,5 +1,6 @@
 package printer;
 
+import dataObjects.BitStringAndDataResult;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.utility.IOperator;
@@ -194,8 +195,46 @@ public class Printer implements IPrinter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+    @Override
+    public void printOperatorDataToFile(String outputFileName, List<BitStringAndDataResult> results, List<IOperator> operators) {
+        try {
+            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"OPERATOR_ANALYSIS.csv");
+
+            String line = ",Operator Analysis for "+outputFileName+" \n\n";
+            fileWriter.write(line);
+            line = "Bit Strings represent use of the following operators in order: \n";
+            fileWriter.write(line);
+            line="";
+            for (IOperator operator:operators) {
+                line+=","+operator.getName();
+            }
+            line+="\n\n";
+            fileWriter.write(line);
+
+            fileWriter.write("Operators (1=used), Initial Objective, Average Objective,Best Objective,Best Realtive to Average,Average Run Time\n");
+
+            line = "";
+            for (BitStringAndDataResult bitAndResult : results) {
+                IDataResult dataResult = bitAndResult.getDataResult();
+                double averageObjective = dataResult.getAverageObjective();
+                double bestObjective = dataResult.getBestObjective();
+                line+=bitAndResult.getBitString()+","+ dataResult.getNoTransportObjective()+","+ averageObjective +","+ bestObjective +","+((averageObjective - bestObjective)/ averageObjective) +","+dataResult.getRunningTime()+"\n";
+                fileWriter.write(line);
+            }
+
+            fileWriter.write("\n");
+
+            for (IOperator operator :
+                    operators) {
+                fileWriter.write(operator.getName() + "," + operator.getDescription());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void printData(IDataResult result) {
