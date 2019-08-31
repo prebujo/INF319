@@ -75,8 +75,13 @@ class RemoveNonClusteredInsertClusteredTest {
         List<IntegerDouble> orderClusterValues = removeAndReinsert.getOrderClusterValues(vehicleSchedules);
 
         assertEquals(1,orderClusterValues.get(0).key);
-        assertEquals(2,orderClusterValues.get(0).value);
-
+        assertEquals(0.5,orderClusterValues.get(0).value);
+        assertEquals(2,orderClusterValues.get(1).key);
+        assertEquals(0.5,orderClusterValues.get(1).value);
+        assertEquals(3,orderClusterValues.get(2).key);
+        assertEquals(0.25,orderClusterValues.get(2).value);
+        assertEquals(4,orderClusterValues.get(3).key);
+        assertEquals(0.25,orderClusterValues.get(3).value);
     }
 
 

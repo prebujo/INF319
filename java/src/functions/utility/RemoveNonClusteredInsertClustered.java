@@ -47,8 +47,13 @@ public class RemoveNonClusteredInsertClustered extends RemoveAndReinsert{
         for (int i = 0; i < vehicleSchedules.size(); i++) {
             List<Integer> vehicleSchedule = vehicleSchedules.get(i);
             int maxClusteredNodes = 2*(vehicleSchedule.size()-2); //maximum possible clustered nodes are 2 (pickup/delivery) times the size of the schedule minus own pickup/delivery.
+            boolean[] done = new boolean[orderAmount];
             for (int j = 0; j < vehicleSchedule.size(); j++) {
                 int order = vehicleSchedule.get(j);
+                if (done[order-1]){
+                    continue;
+                }
+                done[order-1] = true;
                 int orderPickupCluster = dataSet.getCluster(orderPickupLocations[order-1]-1);
                 int orderDeliveryCluster = dataSet.getCluster(orderDeliveryLocations[order-1]-1);
                 int clusteredLocations = 0;
@@ -68,7 +73,9 @@ public class RemoveNonClusteredInsertClustered extends RemoveAndReinsert{
                         }
                     }
                 }
-                result.add(new IntegerDouble(order,(double)(clusteredLocations/maxClusteredNodes)));
+
+                IntegerDouble orderClusterSimilarity = new IntegerDouble(order, (double)clusteredLocations / (double)maxClusteredNodes);
+                result.add(orderClusterSimilarity);
             }
         }
         return result;

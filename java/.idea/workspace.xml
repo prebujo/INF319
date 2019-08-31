@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/BitStringAndDataResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/OperatorAnalysisMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/IntegerDouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/IntegerDouble.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/printer/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/printer/IPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/IPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/printer/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveNonClusteredInsertClusteredTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveNonClusteredInsertClusteredTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/IntegerDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/IntegerDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.RESULTS_AT-DE_W.xlsx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Results_Analysis.xlsx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -338,6 +338,9 @@
       <workItem from="1567009767168" duration="229000" />
       <workItem from="1567171298526" duration="2099000" />
       <workItem from="1567239721151" duration="6402000" />
+      <workItem from="1567258281172" duration="157000" />
+      <workItem from="1567258487123" duration="2521000" />
+      <workItem from="1567283100551" duration="1093000" />
     </task>
     <servers />
   </component>
@@ -458,6 +461,11 @@
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
           <line>74</line>
           <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
