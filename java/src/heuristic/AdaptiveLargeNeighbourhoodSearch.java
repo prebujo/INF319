@@ -45,6 +45,9 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         return optimize(new ArrayList<>(), new ArrayList<>());
     }
     public IDataResult optimize(List<IOperator> operators, List<IOperator> wildOperators) throws Throwable {
+        if (operators.size()==0||wildOperators.size()==0){
+            return null;
+        }
         //Generating start solution
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
 

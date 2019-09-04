@@ -1,6 +1,7 @@
 package main;
 
 import dataObjects.BitStringAndDataResult;
+import dataObjects.BitStringAndOperators;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.feasibility.Feasibility;
@@ -29,7 +30,7 @@ public class OperatorAnalysisMain {
         List<IDataResult> results = new ArrayList<>();
         IFeasibility feasibility;
         String instance = "Inst1_";
-        String instanceSize ="Ord_80_Veh_45_Loc_45";
+        String instanceSize ="Ord_12_Veh_7_Loc_9";
         IDataSet dataSet = reader.readDataFromFile(instance+instanceSize);
         Random random = new Random(101);
         feasibility = new Feasibility(dataSet);
@@ -38,29 +39,50 @@ public class OperatorAnalysisMain {
 
         List<BitStringAndDataResult> dataResults = new ArrayList<>();
         AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
-        runOperatorAnalysis(0,operators.size(),"",new ArrayList<IOperator>(), operators, wildOperators, alns, dataResults);
+        List<BitStringAndOperators> eachOperatorCombination = new ArrayList<>();
+        getOperatorsCombinations(0,operators.size(),"",new ArrayList<IOperator>(), operators, eachOperatorCombination);
+        runOperatorAnalysis(eachOperatorCombination, wildOperators, alns, dataResults);
         IPrinter printer = new Printer();
         printer.printOperatorDataToFile(instance+instanceSize,dataResults, operators);
 
         }
 
-    private static void runOperatorAnalysis(int i, int n, String operatorsBit, List<IOperator> operators, List<IOperator> operatorsPossibilities, List<IOperator> wildOperators,AdaptiveLargeNeighbourhoodSearch alns, List<BitStringAndDataResult> dataResults) throws Throwable {
+    private static void getOperatorsCombinations(int i, int n, String s, List<IOperator> operators, List<IOperator> operatorsPossibilities, List<BitStringAndOperators> result) {
         if(i==n) {
-            if (operators.size()==0) {
-                dataResults.add(new BitStringAndDataResult(operatorsBit,null));
-            } else{
-                IDataResult result=alns.optimize(operators,wildOperators);
-                dataResults.add(new BitStringAndDataResult(operatorsBit,result));
-            }
+            result.add(new BitStringAndOperators(s,new ArrayList<>(operators)));
             return;
+
         }
-
-        runOperatorAnalysis(i+1,n,operatorsBit.concat("0"),operators,operatorsPossibilities,wildOperators,alns,dataResults);
-
         List<IOperator> newOperators = new ArrayList<>(operators);
+        getOperatorsCombinations(i+1,n,s.concat("0"),newOperators,operatorsPossibilities,result);
+
         newOperators.add(operatorsPossibilities.get(i));
-        runOperatorAnalysis(i+1,n,operatorsBit.concat("1"),newOperators,operatorsPossibilities,wildOperators,alns,dataResults);
+        getOperatorsCombinations(i+1,n,s.concat("1"),newOperators,operatorsPossibilities,result);
     }
+
+    private static void runOperatorAnalysis(List<BitStringAndOperators> combinations, List<IOperator> wildOperators, AdaptiveLargeNeighbourhoodSearch alns, List<BitStringAndDataResult> dataResults) throws Throwable {
+        for (BitStringAndOperators combination:combinations ) {
+            dataResults.add(new BitStringAndDataResult(combination.getBitString(),alns.optimize(combination.getOperators(),wildOperators)));
+        }
+    }
+
+//    private static void runOperatorAnalysis(int i, int n, String operatorsBit, List<IOperator> operators, List<IOperator> operatorsPossibilities, List<IOperator> wildOperators,AdaptiveLargeNeighbourhoodSearch alns, List<BitStringAndDataResult> dataResults) throws Throwable {
+//        if(i==n) {
+//            if (operators.size()==0) {
+//                dataResults.add(new BitStringAndDataResult(operatorsBit,null));
+//            } else{
+//                IDataResult result=null;
+//                dataResults.add(new BitStringAndDataResult(operatorsBit,result));
+//            }
+//            return;
+//        }
+//
+//        runOperatorAnalysis(i+1,n,operatorsBit.concat("0"),operators,operatorsPossibilities,wildOperators,alns,dataResults);
+//
+//        List<IOperator> newOperators = new ArrayList<>(operators);
+//        newOperators.add(operatorsPossibilities.get(i));
+//        runOperatorAnalysis(i+1,n,operatorsBit.concat("1"),newOperators,operatorsPossibilities,wildOperators,alns,dataResults);
+//    }
 
     private static List<IOperator> getWildOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
         int orderAmount = dataSet.getOrderAmount();

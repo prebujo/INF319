@@ -200,7 +200,7 @@ public class Printer implements IPrinter {
     @Override
     public void printOperatorDataToFile(String outputFileName, List<BitStringAndDataResult> results, List<IOperator> operators) {
         try {
-            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"OPERATOR_ANALYSIS.csv");
+            FileWriter fileWriter = new FileWriter("res/results/"+outputFileName+"_OPERATOR_ANALYSIS.csv");
 
             String line = ",Operator Analysis for "+outputFileName+" \n\n";
             fileWriter.write(line);
@@ -218,9 +218,17 @@ public class Printer implements IPrinter {
             line = "";
             for (BitStringAndDataResult bitAndResult : results) {
                 IDataResult dataResult = bitAndResult.getDataResult();
-                double averageObjective = dataResult.getAverageObjective();
-                double bestObjective = dataResult.getBestObjective();
-                line+=bitAndResult.getBitString()+","+ dataResult.getNoTransportObjective()+","+ averageObjective +","+ bestObjective +","+((averageObjective - bestObjective)/ averageObjective) +","+dataResult.getRunningTime()+"\n";
+                double averageObjective=0.0;
+                double bestObjective=0.0;
+                double noTransportObjective = 0.0;
+                double runningTime = 0.0;
+                if (dataResult!=null) {
+                    averageObjective  = dataResult.getAverageObjective();
+                    bestObjective = dataResult.getBestObjective();
+                    noTransportObjective = dataResult.getNoTransportObjective();
+                    runningTime = dataResult.getRunningTime();
+                }
+                line=bitAndResult.getBitString()+","+ noTransportObjective +","+ averageObjective +","+ bestObjective +","+((averageObjective - bestObjective)/ averageObjective) +","+ runningTime +"\n";
                 fileWriter.write(line);
             }
 
@@ -228,8 +236,9 @@ public class Printer implements IPrinter {
 
             for (IOperator operator :
                     operators) {
-                fileWriter.write(operator.getName() + "," + operator.getDescription());
+                fileWriter.write(operator.getName() + "," + operator.getDescription()+"\n");
             }
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

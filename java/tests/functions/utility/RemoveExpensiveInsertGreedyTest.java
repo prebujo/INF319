@@ -1,7 +1,6 @@
 package functions.utility;
 
 import dataObjects.IDataSet;
-import functions.feasibility.CollectiveCheck;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import generators.ISolutionGenerator;
@@ -13,7 +12,8 @@ import reader.Reader;
 import java.util.HashSet;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RemoveExpensiveInsertGreedyTest {
 
@@ -22,7 +22,6 @@ class RemoveExpensiveInsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("larger_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        IFeasibility collectiveCheck = new CollectiveCheck(dataSet);
 
         Random random = new Random(11);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
@@ -44,7 +43,6 @@ class RemoveExpensiveInsertGreedyTest {
         IReader reader = new Reader();
         IDataSet dataSet = reader.readDataFromFile("medium_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
-        IFeasibility collectiveCheck = new CollectiveCheck(dataSet);
 
         Random random = new Random(11);
         ISolutionGenerator solutionGenerator = new SolutionGenerator(random);

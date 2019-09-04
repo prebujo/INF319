@@ -56,7 +56,8 @@ public class HeuristicFinalMain2 {
         }
         List<IOperator> operators;
         operators=new ArrayList<>();
-        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
+//        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
+        operators.add(new RemoveNonClusteredInsertClustered("rncic", 4,1,Math.max(a,b),random,feasibility,dataSet));
         operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
 //        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
 //        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));

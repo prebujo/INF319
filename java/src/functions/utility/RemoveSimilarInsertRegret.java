@@ -363,7 +363,7 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
             IntegerDouble element = orderSimilarities.remove(idx);
             int order = element.key;
             int vehicle = getVehicle(order,vehicleSchedules);
-            List<Integer> vehicleSchedule = new ArrayList<>();
+            List<Integer> vehicleSchedule;
             if(vehicle<vehicleAmount) {
                 vehicleSchedule = vehicleSchedules.get(vehicle);
 

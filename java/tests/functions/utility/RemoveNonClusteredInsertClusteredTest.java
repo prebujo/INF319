@@ -31,7 +31,7 @@ class RemoveNonClusteredInsertClusteredTest {
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
         solution = removeAndReinsert.apply(solution);
-        int iterations = 50000;
+        int iterations = 10000;
         while(iterations>0) {
             solution = removeAndReinsert.apply(solution);
             assertTrue(feasibility.check(solution));
@@ -52,7 +52,7 @@ class RemoveNonClusteredInsertClusteredTest {
         int orderAmount = dataSet.getOrderAmount();
         int[] solution = solutionGenerator.createDummyStartSolution(vehicleAmount,orderAmount);
         solution = removeAndReinsert.apply(solution);
-        int iterations = 100140;
+        int iterations = 200000;
         while(iterations>0) {
             solution = removeAndReinsert.apply(solution);
             assertTrue(feasibility.check(solution));

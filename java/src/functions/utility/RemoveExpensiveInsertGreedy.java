@@ -155,30 +155,25 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
 
     private List<VehicleOrderCostSchedule> updateBestSchedules(Iterator<Integer> iterator, VehicleOrderCostSchedule updatedSchedule, List<VehicleOrderCostSchedule> bestSchedules, List<List<Integer>> vehicleSchedules) {
         List<VehicleOrderCostSchedule> result = new ArrayList<>();
-        while(iterator.hasNext()) {
-            int orderToCheck = iterator.next();
             VehicleOrderCostSchedule newBestVOSC;
             for (int i = 0; i < bestSchedules.size(); i++) {
                 VehicleOrderCostSchedule schedule = bestSchedules.get(i);
-                if (schedule.order==orderToCheck){
-                    newBestVOSC = schedule;
-                    VehicleOrderCostSchedule bestSolutionInSchedule = findBestScheduleCostForOrderInVehicle(orderToCheck,updatedSchedule.vehicle,updatedSchedule.schedule);
-                    if (schedule.vehicle==updatedSchedule.vehicle&&bestSolutionInSchedule.cost>=schedule.cost){
-                        newBestVOSC = findBestScheduleForOrder(orderToCheck,vehicleSchedules);
-                    } else if (bestSolutionInSchedule.cost<schedule.cost){
-                        newBestVOSC = bestSolutionInSchedule;
-                    }
-                    if (result.size()==0){
-                        result.add(newBestVOSC);
-                    } else if (newBestVOSC.cost<result.get(0).cost){
-                        result.add(0,newBestVOSC);
-                    } else {
-                        result.add(newBestVOSC);
-                    }
-                    break;
+                int orderToCheck = schedule.order;
+                newBestVOSC = schedule;
+                VehicleOrderCostSchedule bestSolutionInSchedule = findBestScheduleCostForOrderInVehicle(orderToCheck,updatedSchedule.vehicle,updatedSchedule.schedule);
+                if (schedule.vehicle==updatedSchedule.vehicle&&bestSolutionInSchedule.cost>=schedule.cost){
+                    newBestVOSC = findBestScheduleForOrder(orderToCheck,vehicleSchedules);
+                } else if (bestSolutionInSchedule.cost<schedule.cost){
+                    newBestVOSC = bestSolutionInSchedule;
+                }
+                if (result.size()==0){
+                    result.add(newBestVOSC);
+                } else if (newBestVOSC.cost<result.get(0).cost){
+                    result.add(0,newBestVOSC);
+                } else {
+                    result.add(newBestVOSC);
                 }
             }
-        }
         return result;
     }
 
