@@ -3,6 +3,7 @@ package reader;
 import dataObjects.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Reader implements IReader {
@@ -111,7 +112,7 @@ public class Reader implements IReader {
         result.setMaxWeight(maxWeight);
 
         result.setOrderSimilarities();
-        result.setLocationClusters();
+//        result.setLocationClusters();
         return result;
     }
 
@@ -134,6 +135,38 @@ public class Reader implements IReader {
             result.add(readDataFromFile(instance+fileName));
         }
         return result;
+    }
+
+    @Override
+    public List<List<int[]>> readSolutionsFromFile(String instance, int i) throws FileNotFoundException {
+        File file = new File("/home/preben/repo/master/java/res/randomSolutions/"+instance+"random_solutions.csv");
+        Scanner fileScanner = new Scanner(file);
+        List<List<int[]>> result = new ArrayList<>();
+        for (int j = 0; j < 5; j++) {
+            List <int[]> list = new ArrayList<>();
+            for (int k = 0; k < i; k++) {
+                list.add(getRecordFromLine(fileScanner.nextLine()));
+            }
+            result.add(list);
+            fileScanner.nextLine();
+        }
+        return result;
+    }
+
+    private int[] getRecordFromLine(String line) {
+        try (Scanner rowScanner = new Scanner(line)) {
+            rowScanner.useDelimiter(",");
+            List<Integer> list = new ArrayList<>();
+            int i = 0;
+            while (rowScanner.hasNext()) {
+                list.add( Integer.parseInt(rowScanner.next()));
+            }
+            int[] values = new int[list.size()];
+            for (int j = 0; j < list.size(); j++) {
+                values[j] = list.get(j);
+            }
+            return values;
+        }
     }
 
     private double[][] getDouble2DReverseList(Scanner fileScanner, int x, int y) {

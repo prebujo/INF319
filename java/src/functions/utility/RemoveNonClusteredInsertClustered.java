@@ -192,4 +192,9 @@ public class RemoveNonClusteredInsertClustered extends RemoveAndReinsert{
         }
         return clusteredLocations / maxClusteredNodes;
     }
+
+    @Override
+    public String getDescription() {
+        return "removes orders that are badly clustered and tries to insert them in the most clustered schedule";
+    }
 }

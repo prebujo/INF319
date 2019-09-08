@@ -2,41 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/java/dataObjects/BitStringAndOperators.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysis_two.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataObjects/BitStringAndOperators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/OperatorAnalysis_two.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/instances/xlarge_test_file.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/instances/xxlarge_test_file.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/randomSolutions/Inst1_random_solutions_SMALL.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_RandomSolution.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_WIldOperator.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_Without.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_150_Veh_80_Loc_85_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/RandomSolutionGeneratorMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/functions/utility/ExchangeThreeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/generators/SolutionGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataObjects/DataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/ExchangeThree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/ExchangeThree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveAndReinsertRandom.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveExpensiveInsertGreedy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveNonClusteredInsertClustered.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveRandomInsertFirst.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/RemoveSimilarInsertRegret.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwoFirstFit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwoFirstFit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwoFirstFit2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/generators/ISolutionGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/ISolutionGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/generators/SolutionGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/SolutionGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/RandomHeuristic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/RandomHeuristic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysisMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysisMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysis_two.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysis_two.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestHeuristicMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/TestMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/IPrinter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/java/printer/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/printer/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/FlowReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/FlowReaderPrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/FlowReaderPrint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/IReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/IReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/reader/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/reader/Reader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/feasibility/FeasibilityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/feasibility/FeasibilityTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveExpensiveInsertGreedyTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveNonClusteredInsertClusteredTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveNonClusteredInsertClusteredTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveRandomInsertFirstTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveRandomInsertFirstTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/java/functions/utility/RemoveSimilarInsertRegretTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/java/functions/utility/SwapTwoFirstFit2Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataObjects/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataObjects/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/ExchangeThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/ExchangeThree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveAndReinsertRandom.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveExpensiveInsertGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveNonClusteredInsertClustered.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveRandomInsertFirst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/RemoveSimilarInsertRegret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/SwapTwo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/utility/SwapTwoFirstFit2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/SwapTwoFirstFit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generators/ISolutionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/ISolutionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generators/SolutionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/SolutionGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/heuristic/RandomHeuristic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/RandomHeuristic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/OperatorAnalysisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/OperatorAnalysisMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/OperatorAnalysisMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/OperatorAnalysis_two.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/OperatorAnalysis_two.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TestHeuristicMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TestMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/printer/IPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/IPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/printer/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/printer/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/FlowReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/FlowReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/FlowReaderPrint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/FlowReaderPrint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/IReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/IReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reader/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/feasibility/FeasibilityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/feasibility/FeasibilityTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveExpensiveInsertGreedyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveRandomInsertFirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveRandomInsertFirstTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/RemoveSimilarInsertRegretTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functions/utility/SwapTwoFirstFit2Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functions/utility/SwapTwoFirstFitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_zip/Johannessen_Master_2019.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/Model.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/Model.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/Model.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,8 +141,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -116,6 +175,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="generators" />
       <recent name="functions.utility" />
       <recent name="dataObjects" />
       <recent name="functions.feasibility" />
@@ -131,6 +191,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/results/Final_Results" />
       <recent name="$PROJECT_DIR$/res/flow_instances" />
       <recent name="$PROJECT_DIR$/res/flow_results" />
       <recent name="$PROJECT_DIR$/res/results" />
@@ -150,8 +211,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.OperatorAnalysis_two">
-    <configuration name="HeuristicFinalMain2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain2" />
+    <configuration name="HeuristicFinalMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.HeuristicFinalMain" />
       <module name="java" />
       <extension name="coverage">
         <pattern>
@@ -176,48 +237,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveNonClusteredInsertClusteredTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SolutionGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.utility.*" />
+          <option name="PATTERN" value="generators.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveNonClusteredInsertClusteredTest" />
+      <option name="PACKAGE_NAME" value="generators" />
+      <option name="MAIN_CLASS_NAME" value="generators.SolutionGeneratorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveNonClusteredInsertClusteredTest.returns_correct_cluster_values" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SolutionGeneratorTest.all_solutions_generated_are_feasible_xlarge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.utility.*" />
+          <option name="PATTERN" value="generators.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveNonClusteredInsertClusteredTest" />
-      <option name="METHOD_NAME" value="returns_correct_cluster_values" />
+      <option name="PACKAGE_NAME" value="generators" />
+      <option name="MAIN_CLASS_NAME" value="generators.SolutionGeneratorTest" />
+      <option name="METHOD_NAME" value="all_solutions_generated_are_feasible_xlarge" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveNonClusteredInsertClusteredTest.solutions_generated_are_feasible_medium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SolutionGeneratorTest.all_solutions_generated_are_feasible_xxlarge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.utility.*" />
+          <option name="PATTERN" value="generators.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions.utility" />
-      <option name="MAIN_CLASS_NAME" value="functions.utility.RemoveNonClusteredInsertClusteredTest" />
-      <option name="METHOD_NAME" value="solutions_generated_are_feasible_medium" />
+      <option name="PACKAGE_NAME" value="generators" />
+      <option name="MAIN_CLASS_NAME" value="generators.SolutionGeneratorTest" />
+      <option name="METHOD_NAME" value="all_solutions_generated_are_feasible_xxlarge" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -226,10 +287,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.OperatorAnalysis_two" />
-        <item itemvalue="Application.HeuristicFinalMain2" />
-        <item itemvalue="JUnit.RemoveNonClusteredInsertClusteredTest" />
-        <item itemvalue="JUnit.RemoveNonClusteredInsertClusteredTest.solutions_generated_are_feasible_medium" />
-        <item itemvalue="JUnit.RemoveNonClusteredInsertClusteredTest.returns_correct_cluster_values" />
+        <item itemvalue="Application.HeuristicFinalMain" />
+        <item itemvalue="JUnit.SolutionGeneratorTest" />
+        <item itemvalue="JUnit.SolutionGeneratorTest.all_solutions_generated_are_feasible_xxlarge" />
+        <item itemvalue="JUnit.SolutionGeneratorTest.all_solutions_generated_are_feasible_xlarge" />
       </list>
     </recent_temporary>
   </component>
@@ -385,7 +446,9 @@
       <workItem from="1567592902082" duration="5895000" />
       <workItem from="1567605213472" duration="1178000" />
       <workItem from="1567606966574" duration="6695000" />
-      <workItem from="1567627669162" duration="416000" />
+      <workItem from="1567627669162" duration="9571000" />
+      <workItem from="1567763451113" duration="12593000" />
+      <workItem from="1567845658875" duration="17983000" />
     </task>
     <servers />
   </component>
@@ -415,24 +478,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>219</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Random.class</url>
           <line>167</line>
           <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/TestMain.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>178</line>
-          <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/generators/InstanceGenerator.java</url>
@@ -489,53 +537,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
-          <line>76</line>
+          <line>75</line>
           <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
-          <line>74</line>
+          <line>73</line>
           <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
-          <line>287</line>
+          <line>292</line>
           <option name="timeStamp" value="218" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/OperatorAnalysisMain.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="221" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/OperatorAnalysisMain.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="223" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/OperatorAnalysisMain.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="225" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/OperatorAnalysisMain.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="226" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/OperatorAnalysisMain.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="227" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/OperatorAnalysis_two.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="228" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/HeuristicFinalMain2.java</url>
           <line>39</line>
-          <option name="timeStamp" value="229" />
+          <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/printer/Printer.java</url>
@@ -547,6 +565,26 @@
           <url>file://$PROJECT_DIR$/tests/functions/utility/RemoveNonClusteredInsertClusteredTest.java</url>
           <line>56</line>
           <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/HeuristicFinalMain2.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/generators/SolutionGeneratorTest.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="239" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/generators/SolutionGeneratorTest.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="243" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

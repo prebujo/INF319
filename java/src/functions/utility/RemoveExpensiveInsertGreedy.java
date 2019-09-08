@@ -195,7 +195,7 @@ public class RemoveExpensiveInsertGreedy extends RemoveAndReinsert{
 
     @Override
     public String getDescription() {
-        return "Removes the k most expensive orders and reinserts them in the cheapest possible place.";
+        return "Removes the most expensive orders and reinserts them in the cheapest possible position";
     }
 
 }

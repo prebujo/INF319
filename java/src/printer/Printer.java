@@ -251,6 +251,29 @@ public class Printer implements IPrinter {
 
     }
 
+    @Override
+    public void printSolutionsToFile(String outputFileName,List<List<int[]>> feasibleSolutionsList) {
+        try {
+            FileWriter fileWriter = new FileWriter("res/randomSolutions/"+outputFileName+"random_solutions.csv");
+
+            String line = "";
+            for (List<int[]> solutionList:feasibleSolutionsList) {
+                for (int[] solution:solutionList) {
+                    line="";
+                    for (int i = 0; i < solution.length; i++) {
+                        line+=solution[i]+",";
+                    }
+                    fileWriter.write(line+"\n");
+                }
+                fileWriter.write("\n");
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private <E> void writeOperatorTableVertical(E[][] table, FileWriter fileWriter, String dataType) throws IOException {
         String line;
         for(int i = 0; i<table.length;i++) {

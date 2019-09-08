@@ -31,7 +31,7 @@ public class RandomHeuristic implements IHeuristic{
     @Override
     public IDataResult optimize() {
 
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibilityCheck);
         int[] startSolution = solutionGenerator.createDummySolution(dataSet.getVehicleAmount(),dataSet.getOrderAmount());
 
         ObjectiveFunction objectiveFunction = new ObjectiveFunction(dataSet);

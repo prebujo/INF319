@@ -25,7 +25,7 @@ class RemoveNonClusteredInsertClusteredTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
         IOperator removeAndReinsert = new RemoveNonClusteredInsertClustered("",4,1,7,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -46,7 +46,7 @@ class RemoveNonClusteredInsertClusteredTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
         IOperator removeAndReinsert = new RemoveNonClusteredInsertClustered("",4,1,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -67,7 +67,6 @@ class RemoveNonClusteredInsertClusteredTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
         RemoveNonClusteredInsertClustered removeAndReinsert = new RemoveNonClusteredInsertClustered("",4,1,5,random,feasibility,dataSet);
 
         int[] solution = new int[]{1,1,2,2,0,3,3,4,4,0,0};

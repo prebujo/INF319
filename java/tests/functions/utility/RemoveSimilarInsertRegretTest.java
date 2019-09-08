@@ -25,7 +25,7 @@ class RemoveSimilarInsertRegretTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
         IOperator removeAndReinsert = new RemoveSimilarInsertRegret("",4,1,7,3,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -46,7 +46,7 @@ class RemoveSimilarInsertRegretTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         IOperator removeAndReinsert = new RemoveSimilarInsertRegret("",4,1,5,3,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();

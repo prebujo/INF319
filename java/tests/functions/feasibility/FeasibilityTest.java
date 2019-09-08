@@ -24,7 +24,7 @@ class FeasibilityTest {
         IFeasibility collectiveCheck = new CollectiveCheck(dataSet);
 
         Random random = new Random(13);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         IOperator removeAndReinsert = new RemoveRandomInsertFirst("",2,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -46,7 +46,7 @@ class FeasibilityTest {
         IDataSet dataSet = reader.readDataFromFile("medium_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         Operator operator = new Operator("",random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -69,7 +69,7 @@ class FeasibilityTest {
         IDataSet dataSet = reader.readDataFromFile("medium_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         Operator operator = new Operator("",random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -92,7 +92,7 @@ class FeasibilityTest {
         IDataSet dataSet = reader.readDataFromFile("medium_test_file");
         IFeasibility feasibility = new Feasibility(dataSet);
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         Operator operator = new Operator("",random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();

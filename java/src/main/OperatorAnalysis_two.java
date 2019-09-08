@@ -6,6 +6,8 @@ import dataObjects.IDataSet;
 import functions.feasibility.Feasibility;
 import functions.feasibility.IFeasibility;
 import functions.utility.*;
+import generators.ISolutionGenerator;
+import generators.SolutionGenerator;
 import heuristic.AdaptiveLargeNeighbourhoodSearch;
 import printer.IPrinter;
 import printer.Printer;
@@ -18,13 +20,15 @@ import java.util.Random;
 
 public class OperatorAnalysis_two {
     public static void main(String[] args) throws Throwable {
+        long startTimer = System.nanoTime();
         //reads data from .dat file
         IReader reader = new Reader();
 
         IFeasibility feasibility;
         String instance = "Inst1_";
-        String fileSize = "Ord_35_Veh_20_Loc_22";
+        String fileSize = "Ord_80_Veh_45_Loc_45";
         IDataSet dataSet = reader.readDataFromFile(instance+ fileSize);
+        dataSet.setLocationClusters();
         Random random = new Random(101);
         feasibility = new Feasibility(dataSet);
         AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
@@ -32,10 +36,13 @@ public class OperatorAnalysis_two {
         ArrayList<BitStringAndOperators> operatorCombinations = new ArrayList<>();
         getOperatorsCombinations(0,operators.size(),"",new ArrayList<IOperator>(),operators, operatorCombinations);
         ArrayList<BitStringAndDataResult> dataResults = new ArrayList<>();
-        runOperatorAnalysis(operatorCombinations,getWildOperators(feasibility,dataSet,random),alns, dataResults);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
+        runOperatorAnalysis(operatorCombinations,getWildOperators(feasibility,dataSet,random),new ArrayList<>(),alns, dataResults);
         IPrinter printer = new Printer();
 
         printer.printOperatorDataToFile(instance+fileSize,dataResults,operators);
+
+        System.out.println(((double) (System.nanoTime() - startTimer) / 1_000_000_000)/60 + " min");
     }
 
     private static void getOperatorsCombinations(int i, int n, String s, List<IOperator> operators, List<IOperator> operatorsPossibilities, List<BitStringAndOperators> result) {
@@ -51,9 +58,12 @@ public class OperatorAnalysis_two {
         getOperatorsCombinations(i+1,n,s.concat("1"),newOperators,operatorsPossibilities,result);
     }
 
-    private static void runOperatorAnalysis(List<BitStringAndOperators> combinations, List<IOperator> wildOperators, AdaptiveLargeNeighbourhoodSearch alns, List<BitStringAndDataResult> dataResults) throws Throwable {
+    private static void runOperatorAnalysis(List<BitStringAndOperators> combinations, List<IOperator> wildOperators, List<int[]> feasibleSolutions, AdaptiveLargeNeighbourhoodSearch alns, List<BitStringAndDataResult> dataResults) throws Throwable {
+        int i = 1;
         for (BitStringAndOperators combination:combinations ) {
-            dataResults.add(new BitStringAndDataResult(combination.getBitString(),alns.optimize(combination.getOperators(),wildOperators))); //actual:
+            System.out.println(i+"/"+combinations.size());
+            dataResults.add(new BitStringAndDataResult(combination.getBitString(),alns.optimize(combination.getOperators(), false, false, feasibleSolutions, wildOperators))); //actual:
+            i++;
         }
     }
 
@@ -66,14 +76,13 @@ public class OperatorAnalysis_two {
         }
         List<IOperator> operators;
         operators=new ArrayList<>();
-//        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
-        operators.add(new RemoveNonClusteredInsertClustered("rncic", 4,1,Math.max(a,b),random,feasibility,dataSet));
-        operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
-//        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
-//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
-        operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
+        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
+        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
         operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
+        operators.add(new RemoveNonClusteredInsertClustered("rncic", 4,1,Math.max(a,b),random,feasibility,dataSet));
+        operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
+        operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
         return operators;
     }
 
@@ -86,9 +95,9 @@ public class OperatorAnalysis_two {
         }
         List<IOperator> operators;
         operators=new ArrayList<>();
-        operators.add(new SwapTwoFirstFit2("swapf", random, feasibility, dataSet));
-//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
-        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
+        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
+        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
+//        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
         return operators;
     }

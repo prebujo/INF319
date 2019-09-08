@@ -101,4 +101,9 @@ public class RemoveRandomInsertFirst extends RemoveAndReinsert{
         }
         return result;
     }
+
+    @Override
+    public String getDescription() {
+        return "removes random orders and reinserts them in the first fitting position in random vehicle";
+    }
 }

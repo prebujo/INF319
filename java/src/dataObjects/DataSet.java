@@ -414,8 +414,8 @@ public class DataSet implements IDataSet {
         double bestClusterValue = -1.0;
         List<List<Integer>> bestClusterList = new ArrayList<>();
         double[][] bestCluster = new double[0][0];
-
-        for (int k = 2; k <= vehicleAmount; k++) {
+        int maxK = Math.min(vehicleAmount,locationsAmount/2);
+        for (int k = 2; k <= maxK; k++) {
             int currentK = locationsAmount;
             double[][] currentDistanceMatrix = travelDistances.clone();
             List<List<Integer>> clusterList = new ArrayList<>();
@@ -449,7 +449,7 @@ public class DataSet implements IDataSet {
         locationClusters = bestCluster;
         locationClusterList = bestClusterList;
         cluster = createIntList(bestClusterList);
-
+        System.out.println("Best cluster k: " + bestCluster.length+"/"+ maxK);
     }
 
     private int[] createIntList(List<List<Integer>> bestClusterList) {

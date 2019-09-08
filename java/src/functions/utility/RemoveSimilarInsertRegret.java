@@ -378,5 +378,9 @@ public class RemoveSimilarInsertRegret extends RemoveAndReinsert {
         return result;
     }
 
+    @Override
+    public String getDescription() {
+        return "removes similar orders and reinserts them after regret k";
+    }
 
 }

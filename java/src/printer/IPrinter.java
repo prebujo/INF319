@@ -17,4 +17,5 @@ public interface IPrinter {
 
     void printData(IDataResult result);
 
+    void printSolutionsToFile(String ouputFileName,List<List<int[]>> feasibleSolutionsList);
 }

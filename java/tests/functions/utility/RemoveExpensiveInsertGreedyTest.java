@@ -24,7 +24,7 @@ class RemoveExpensiveInsertGreedyTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random,feasibility);
         IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",4,1,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();
@@ -45,7 +45,7 @@ class RemoveExpensiveInsertGreedyTest {
         IFeasibility feasibility = new Feasibility(dataSet);
 
         Random random = new Random(11);
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
         IOperator removeAndReinsert = new RemoveExpensiveInsertGreedy("",4,1,5,random,feasibility,dataSet);
         int vehicleAmount = dataSet.getVehicleAmount();
         int orderAmount = dataSet.getOrderAmount();

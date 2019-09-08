@@ -4,14 +4,11 @@ import dataObjects.DataResult;
 import dataObjects.IDataResult;
 import dataObjects.IDataSet;
 import functions.ObjectiveFunction;
-import functions.utility.*;
+import functions.utility.IOperator;
 import generators.ISolutionGenerator;
 import generators.SolutionGenerator;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
@@ -42,14 +39,14 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
     }
 
     public IDataResult optimize() throws Throwable {
-        return optimize(new ArrayList<>(), new ArrayList<>());
+        return optimize(new ArrayList<>(), true, false, new ArrayList<>(), new ArrayList<>());
     }
-    public IDataResult optimize(List<IOperator> operators, List<IOperator> wildOperators) throws Throwable {
+    public IDataResult optimize(List<IOperator> operators, boolean withWildOperators, boolean withRandomSolutions, List<int[]> feasibleSolutions, List<IOperator> wildOperators) throws Throwable {
         if (operators.size()==0||wildOperators.size()==0){
             return null;
         }
         //Generating start solution
-        ISolutionGenerator solutionGenerator = new SolutionGenerator(random);
+        ISolutionGenerator solutionGenerator = new SolutionGenerator(random, null);
 
         //Hashset to store acceptedSolutions
 
@@ -84,6 +81,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
         data.setNoTransportObjective(noTransportObjective);
 
 
+
         for (int run = 0; run < RUNS_AMOUNT; run++) {
             long initialSolutionStartTimer = System.nanoTime();
             int[] startSolution = solutionGenerator.createDummyStartSolution(dataSet.getVehicleAmount(), dataSet.getOrderAmount());
@@ -99,6 +97,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
             acceptedObjective=startSolutionObjective;
             currentObjective=startSolutionObjective;
 
+            Iterator<int[]> feasibleSolutionsIterator = feasibleSolutions.iterator();
             HashSet<String> acceptedSolutions = new HashSet<>();
             acceptedSolutions.add(toString(startSolution));
             //int iteration = 0;
@@ -196,7 +195,7 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                 while (segmentIteration < SEGMENT_LENGTH) {
 
                     //TODO: Experiment with something wild to do when no improvement has been found for a while
-                    if (iterationsSinceBestSolution>MAX_ITERATIONS_WITHOUT_IMPROVEMENT){
+                    if (iterationsSinceBestSolution>MAX_ITERATIONS_WITHOUT_IMPROVEMENT&&withWildOperators){
                         int acceptIterations = 0;
                         wildRunsIterations[run][wildIdx] = iteration;
                         solutionBeforeAndAfterWild[run][wildIdx][0] = toString(currentSolution);
@@ -230,6 +229,12 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
                         }
                         iterationsSinceBestSolution=0;
                         solutionBeforeAndAfterWild[run][wildIdx++][1] = toString(currentSolution);
+                    }else if (iterationsSinceBestSolution>MAX_ITERATIONS_WITHOUT_IMPROVEMENT&&withRandomSolutions){
+                        acceptedSolutions = new HashSet<>();
+                        acceptedSolution = feasibleSolutionsIterator.next();
+                        acceptedSolutions.add(acceptedSolution.toString());
+                        weight = assignEqualStartWeights(amountOfOperators);
+                        iterationsSinceBestSolution=0;
                     }
 
                     //choosing operator based on probabilities of this segment

@@ -33,8 +33,33 @@ If the new route has a smaller cost than the original route the route the route 
 When all reverses have been performed on the current route, the best route is selected as the new route.
 This operation is continued until no improvement can be made ie. the best possible schedule for the selected vehicle has been found.
 
+\subsubsection{Swap first fit}
+This operator simply swaps the pickup and delivery of two orders first time it fits. 
+This operator is very efficient and jumps randomly around the solution space.
+
 \subsection{Removal and reinsertion heuristics}
+Removal and reinsertion heuristics are well reserached tools used in solving PDP. 
+We have implemented and adapted the most succesful heuristics and created some new ones to help solve our specific problem. 
+\subsubsection{Remove Non-Clustered and insert Clustered}
+This heuristic tries to remove orders that are bundled together but belong to different clusters. It then tries to bundle orders together in the best possible way.
+The orders pickup and delivery locations are all assorted into clusters based on the distance between them. 
+We use a hirarchial single linkage clustering algorithm to cluster locations together into $k$ clusters. (TODO: make algorithm table for herarchial single linkage algorithm) 
+Then we compare each set of $k$ cluster to eachother using the siluette coefficient, and keep the best one. (TODO: make algorithm table for siluette coefficient) \newlinw \par
+To choose which order to remove we have ranked the orders based on how many clusters are shared within a vehicles schedule.
+If an orders pickup and delivery shares no cluster with any other pickup or delivery nodes the rank is 0. 
+If the order shares the same cluster with both pickup and delivery node as all other pickup and delivery nodes within a vehicle it is given a rank 1.  
+This leads us to quite easily differenciate between a well clustered order and a not well clustered one.
+The orders are sorted based on their rank and we choose the order to pickup that has the lowest rank, using some randomization, based on the value $p$. 
+We choose the order on the position $k^p$ in the rank where k is a random number. 
+We have chosen $p=4$ in this paper.  \newline \par
+To reinsert the orders we have chosen to try and maximize the cluster rank we introduced above. This means we find the vehicle where the rank is the highest and insert the order in the best possible position in the chosen vehicle. 
+
 \subsubsection{Remove Worst and Insert Greedy}
+Removing orders in the most costful positions and reinserting it in its cheapest (greedy) position seems to be a reasonable way of moving towards a better solution.
+We therefore propose a heuristic that removes the orders with the highest cost $C_{i}$.
+The $C_i$ is calclated as the increase in a vehicles schedule cost with the chosen order.
+We remove orders again based on the same randomness factor explained above. We do this by first ranking the orders based on cost and choose the order in the $k^p$ position. \newline \par
+The reinsertion is using a greedy algorithm where it simply checks to find the best possible possition for the order and inserts it there. 
 \subsubsection{Remove Similar and Regret Insert}
 The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
 It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 
@@ -80,6 +105,14 @@ The insertion part of this operator tries to improve on the insert greedy by cal
 Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
 This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
 
+\subsection{Choosing heuristic}
+
+\subsection{Adaptive Weights}
+
+\subsection{Stopping and Acceptance Criteria}
+
+\subsection{Wild operator}
+If we for 500 iterations find no improvement in the solution we are assuming that we are stuck. In this case we need to do something to get unstuck. We have designed our algorithm so that in this case we run 100 iterations apart from the normal iterations, where we use the most random operators from our selection and accept every solution generated. This will allow us to move away from the solution space into another neighbourhood to begin our search here.
 
 \bibliographystyle{abbrvnat}
 \bibliography{references}

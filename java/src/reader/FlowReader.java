@@ -4,6 +4,7 @@ import dataObjects.DataSet;
 import dataObjects.IDataSet;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class FlowReader implements IReader {
@@ -213,6 +214,11 @@ public class FlowReader implements IReader {
 
     @Override
     public List<IDataSet> readDataFromFiles(String instance, List<String> instanceSizes) throws Exception {
+        return null;
+    }
+
+    @Override
+    public List<List<int[]>> readSolutionsFromFile(String instance, int i) throws FileNotFoundException {
         return null;
     }
 
