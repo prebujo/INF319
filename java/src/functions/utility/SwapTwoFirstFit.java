@@ -104,6 +104,9 @@ public class SwapTwoFirstFit extends Operator {
         }
         return newSchedule;
     }
-
+    @Override
+    public String getDescription() {
+        return "swaps the pickup and delivery of two random orders until it finds a feasible solution";
+    }
 
 }

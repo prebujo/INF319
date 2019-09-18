@@ -29,3 +29,13 @@ option gurobi_options "outlev=1";
 param length {(i,j) in Arcs} := sqrt((xcoord[i] - xcoord[j])^2 + (ycoord[i] - ycoord[j])^2);
 display _solve_time;
 display _solve_elapsed_time;
+
+reset; model model.mod; data instances/Inst1_Ord_4_Veh_3_Loc_7.dat; option solver gurobi; option gurobi_options "timelim=60"; solve;
+
+reset; model model.mod; data instances/Inst1_Ord_12_Veh_7_Loc_9.dat; option solver gurobi; option gurobi_options "timelim=60"; solve;
+
+reset; model model.mod; data instances/Inst1_Ord_35_Veh_20_Loc_22.dat; option solver gurobi; option gurobi_options "timelim=60"; solve;
+
+reset; model model.mod; data instances/Inst1_Ord_80_Veh_45_Loc_45.dat; option solver gurobi; option gurobi_options "timelim=60"; solve;
+
+reset; model model.mod; data instances/Inst1_Ord_150_Veh_80_Loc_85.dat; option solver gurobi; option gurobi_options "timelim=60"; solve;

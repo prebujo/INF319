@@ -1,0 +1,64 @@
+\documentclass[12pt,twoside]{report}
+\usepackage[usenames, dvipsnames]{color}                
+\usepackage{amsmath} 
+\usepackage[sort,comma]{natbib}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage{cancel}
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{\leftmark}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+
+\graphicspath{{img/}}
+\def\biblio{\bibliographystyle{abbrvnat}\bibliography{tex/references}}  
+
+\title{{A Pickup and Delivery problem with multiple time windows in supply chain industry}\\
+{\includegraphics{uib_2.png}}\\
+{\large Department of Informatics}\\
+{\large University of Bergen}\\
+}
+\author{Preben Bucher Johannessen}
+
+
+\begin{document}
+\maketitle
+\def\biblio{}
+
+\subfile{./tex/abstract.tex}
+
+\tableofcontents{}
+
+\listoffigures{}
+
+test before file
+
+\subfile{./tex/chapter1.tex}
+
+
+test after file
+
+\subfile{./tex/chapter2.tex}
+
+\subfile{./tex/chapter3.tex}
+
+\subfile{./tex/chapter4.tex}
+
+\subfile{./tex/chapter5.tex}
+
+\subfile{./tex/chapter6.tex}
+
+\appendix
+\subfile{./tex/appendix.tex}
+
+\bibliographystyle{abbrvnat}
+\bibliography{tex/references}
+
+\end{document}
+

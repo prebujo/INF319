@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: abbrvnat.bst
+Database file #1: tex/references.bib
+Warning--empty note in 4flowWeb
+You've used 22 entries,
+            2773 wiz_defined-function locations,
+            735 strings with 8479 characters,
+and the built_in function-call counts, 10141 in all, are:
+= -- 917
+> -- 589
+< -- 9
++ -- 199
+- -- 177
+* -- 884
+:= -- 1580
+add.period$ -- 66
+call.type$ -- 22
+change.case$ -- 123
+chr.to.int$ -- 22
+cite$ -- 45
+duplicate$ -- 441
+empty$ -- 817
+format.name$ -- 209
+if$ -- 2074
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 21
+newline$ -- 118
+num.names$ -- 88
+pop$ -- 214
+preamble$ -- 1
+purify$ -- 103
+quote$ -- 0
+skip$ -- 330
+stack$ -- 0
+substring$ -- 440
+swap$ -- 21
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 237
+warning$ -- 1
+while$ -- 102
+width$ -- 0
+write$ -- 289
+(There was 1 warning)

@@ -17,50 +17,52 @@ import java.util.*;
 
 public class HeuristicFinalMain {
     public static void main(String[] args) throws Throwable {
-        long startTimer = System.nanoTime();
-        //reads data from 4flow file
+        String[] instances = new String[]{"Inst1_","Inst2_","Inst3_","Inst4_","Inst5_"};
+        for(String instance:instances) {
+            long startTimer = System.nanoTime();
+            //reads data from 4flow file
 //        IReader reader = new FlowReader();
 //        IDataSet dataSet = reader.readDataFromFile(fileName);
 
-        //reads data from .dat file
-        IReader reader = new Reader();
+            //reads data from .dat file
+            IReader reader = new Reader();
 
-        List<IDataResult> results = new ArrayList<>();
-        List<IOperator> operators = null;
-        IFeasibility feasibility;
-        String instance = "Inst1_";
-        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9","Ord_35_Veh_20_Loc_22", "Ord_80_Veh_45_Loc_45", "Ord_150_Veh_80_Loc_85");
-        List<IDataSet> dataSets = reader.readDataFromFiles(instance,instanceSizes);
-        int i = 0;
-        for (IDataSet dataSet:dataSets) {
-            long clusterStartTime = System.nanoTime();
-            dataSet.setLocationClusters();
-            System.out.println(((double) (System.nanoTime() - clusterStartTime) / 1_000_000_000)/60 + " min to find cluster");
+            List<IDataResult> results = new ArrayList<>();
+            List<IOperator> operators = null;
+            IFeasibility feasibility;
+            List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9", "Ord_35_Veh_20_Loc_22", "Ord_80_Veh_45_Loc_45", "Ord_150_Veh_80_Loc_85");
+            List<IDataSet> dataSets = reader.readDataFromFiles(instance, instanceSizes);
+            int i = 0;
+            for (IDataSet dataSet : dataSets) {
+                long clusterStartTime = System.nanoTime();
+                dataSet.setLocationClusters();
+                System.out.println(((double) (System.nanoTime() - clusterStartTime) / 1_000_000_000) / 60 + " min to find cluster");
 
-            Random random = new Random(101+i);
-            feasibility = new Feasibility(dataSet);
+                Random random = new Random(13 + i);
+                feasibility = new Feasibility(dataSet);
 
-            boolean withRandomSolutions = false;
-            List<int[]> feasibleSolutions = new ArrayList<>();
-            if(withRandomSolutions) {
-                ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
-                feasibleSolutions = solutionGenerator.getRandomSolutions(20, dataSet.getVehicleAmount(), dataSet.getOrderAmount(), feasibility);
+                boolean withRandomSolutions = false;
+                List<int[]> feasibleSolutions = new ArrayList<>();
+                if (withRandomSolutions) {
+                    ISolutionGenerator solutionGenerator = new SolutionGenerator(random, feasibility);
+                    feasibleSolutions = solutionGenerator.getRandomSolutions(20, dataSet.getVehicleAmount(), dataSet.getOrderAmount(), feasibility);
+                }
+
+                operators = getOperators(feasibility, dataSet, random);
+                List<IOperator> wildOperators = getWildOperators(feasibility, dataSet, random);
+
+                AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
+                IDataResult result = alns.optimize(operators, true, withRandomSolutions, feasibleSolutions, wildOperators);
+                results.add(result);
+                i++;
             }
 
-            operators = getOperators(feasibility, dataSet, random);
-            List<IOperator> wildOperators = getWildOperators(feasibility,dataSet,random);
+            IPrinter printer = new Printer();
 
-            AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
-            IDataResult result = alns.optimize(operators, true, withRandomSolutions, feasibleSolutions, wildOperators);
-            results.add(result);
-            i++;
+            printer.printDataToFile(instance, instanceSizes, results, operators);
+
+            System.out.println(((double) (System.nanoTime() - startTimer) / 1_000_000_000) / 60 + " min");
         }
-
-        IPrinter printer = new Printer();
-
-        printer.printDataToFile(instance,instanceSizes,results,operators);
-
-        System.out.println(((double) (System.nanoTime() - startTimer) / 1_000_000_000)/60 + " min");
     }
 
     private static List<IOperator> getWildOperators(IFeasibility feasibility, IDataSet dataSet, Random random) {
@@ -73,9 +75,8 @@ public class HeuristicFinalMain {
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
-
-//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
-        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
+        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
+//        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
         return operators;
     }
@@ -90,12 +91,12 @@ public class HeuristicFinalMain {
         List<IOperator> operators;
         operators=new ArrayList<>();
         operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
-//        operators.add(new SwapTwo("swap2", random, feasibility, dataSet));
 //        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
-        operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
-        operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
-        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
+//        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
+        operators.add(new RemoveNonClusteredInsertClustered("rncic", 4,1,Math.max(a,b),random,feasibility,dataSet));
+        operators.add(new RemoveExpensiveInsertGreedy("reig", 4,1, Math.max(a,b), random, feasibility, dataSet));
+        operators.add(new RemoveSimilarInsertRegret("rsirg", 4, 1, Math.max(a, b),3, random, feasibility, dataSet));
         return operators;
     }
 

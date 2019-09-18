@@ -1,0 +1,81 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+\begin{document} 
+\chapter{Introduction}
+The automobile industry is one of the most significant industries in Europe today which is facing high cost-reduction pressure from fierce international competition and difficult conditions.\cite{4flowWeb}
+The supply chain process in automobile industry requires alot of flexibility in their planning and modelling of transportation which often takes the form some sort of vehicle transportation problem.
+In planning the most efficient way of organizing your transportation network the classical VRPTW from is likely the first problem that comes to mind.
+
+\cite{parragh08}
+The Vehicle Routing Problem with Time Window Constraints (VRPTW) is defined as the problem of minimizing costs when a fleet of homogeneus vehicles has to destribute goods from a depot to a set of customers satisfying time windows and capacity constraints \cite{cordeau00}. 
+Another classical problem is the PDPTW, Pickup and Delivery Problem with Time Windows, with multiple vehicles is another problem that has been widely researched and solved for example in \cite{nanry00}. 
+\par
+
+\cite{cordeau00} Presents a VRPTW Problem as an extension of the Capacitated Vehicle routing problem, with hard and soft timewindows, where soft can be broken agains a cost and hard time-windows cannot.
+They present a multi-commodity network flow formulation of the problem and use approximation methods to derive upper bounds and use Lagrangean relaxation and column generation to derive lower bounds. 
+To produce integer solutions they use cutting and branching strategies and finally they also present special cases and extensions. 
+\cite{solomon87} formalized an algorithm for general PDP
+\cite{lu06} insertion based heuristic
+\cite{kalantari85} An algorithm for the travelling salesman problem with pickup and delivery of customers
+\cite{dumas91} pickup and delivery problem with time windows
+\cite{fagerholt10} speed optimization and reduction of fuel emissions
+\cite{berbeglia10} dynamic and static pickup and delivery problems survey and classification scheme 
+\cite{berbeglia07} static
+\cite{zhou13} Inventory management and inbound logistics optimization
+\cite{savelsbergh95} General pickup and delivery problem.
+\cite{dror89} Properties and solution framework
+
+\cite{christiansen02} present a ship scheduling PDP problem of bulk cargoes with multiple time windows. 
+They also handle specific shipping industry challenges regarding ship idle time, transport risks due to weather and unpredictable service time at ports. 
+They use a set partitioning approach to solve the problem and found that you could increase the robustness of the schedules on account of costs.
+\cite{christiansen04} Ship routing and scheduling 
+\cite{hemmati14} Consider a class of cargo ship routing and scheduling problems from tramp and industrial shipping industry. 
+They provide solutions to a wide range of benchmark instances both optimal for smaller instances, using a commercial mixed-integer programming solver.
+And they present adaptice large neighbourhood search heuristics to larger instances.
+They also provide the benchmark instances and an instance generator.
+\cite{hemmati16} A iterative two-phase hybrid metaheuristic for multi-product short sea inventory routing problem
+\cite{ferreira18} variable neighbourhood search for vehicle routing problem with multiple time windows
+\cite{desrosiers95} Time constrained routing and scheduling
+
+
+In this paper we will propose a mathematical formulation to a multivehicle PDPTW problem, with certain adjustments to satisfy the needs of an automobile manufacturing company.
+To these type of companies the inbound production side of the supply chain is more in focus and require ajdustments on the classical PDPTW.
+In these type of industries companies often facing challenges related to the production side of the problem, which is often referred to as looking at the problem from an inbound perspective.
+Inbound oriented perspective means that you have less focus on the the supplier side of the of the production, and on the means of transportation as long as what is being transported arrives on time for production.
+This changes our problem away from the classical problems mentioned above. 
+Instead of having a customer oriented view, we must instead shift our view to focus on getting a set of orders from a set of suppliers to a set of factories where the orders are needed for production. 
+\par
+Being more inbound oriented also leads to having more focus on the problems that sometimes occur within the factory and the delivery part of the problem.
+Some manufacturers might have alot of traffic on their factories, and want to limit that, saying that a vehicle can only visit a certain amount of docks for each visit.
+This might lead to more ineffective solutions and more use of vehicles in some cases however, for the inbound oriented producer it is a nessecary limitation. To our knowledge dock constraints has not been researched before in PDPTW problems. \par
+
+Another result from the inbound thinker is that instead of using your own fleet of vehicles, you hire a logistics carrier to do your transports.
+The carries might have different cost structures and payment methods which you have no influence over.
+Leading you to need a model that takes that into account.
+We focus here on dealing with a carrier that offers a varying cost per kilometer.
+Meaning that the cost parameter of the standard PDP will change depending on how far a vehicle is travelling. 
+Using a carrier also changes the problem to that you dont care so much where the vehicle is travelling from to its first pickup.   
+The vehicle rather starts at its first pickup point because the cost of the car manufacturer starts only from the time of the first pickup.
+Before pickup and after delivery the carrier has the costs. To our knowledge very little research has been made into using a logistics carrier as vehicle fleet. \par
+
+In car manufacturing business you might have production periods that go over several days with strict opening times on delivery. 
+This leads to the problem of multiple time windows.
+The manufacturer might only want the parts delivered in the morning on one of three days but have a break in the middle of each time window (lunch). 
+There might also be advantageous to move the delivery of one order to the next day to bundle orders together and we want our model to be able to handle such problems. \par
+In \cite{favaretto07} they propose a time window model to handle multiple time windows and multiple visits. 
+We are using a modified version of this model to handle the multiple time windows in this paper to handle the time window constraints.
+However as they focus on satisfying a set of customers instead of production companies our model differs greatly when it comes to the rest of the constraints.\par
+\par
+To make a model that is as realistic as possible it is important to integrate each of the above aspects and take them all into account. 
+One aspect of the model could greatly influence the decision of another so it is important to build a model that satisfies all the aspects above. 
+Research often forcuses on solving single issues, like the multiple time windows, to handle this specific problem for a certain industry. 
+However handeling all of the above mentioned aspects have to our knowledge never been researched before and makes it therefore an important problem to solve. 
+\par
+The goal of this paper is to present a realistic mathematical model that can be further developed into a realistic model solving pickup and delivery problems on a daily/weekly basis for manufacturing companies. 
+The goal is also to have a mathematical basis to be used in a solver such as AMPL to solve a small instance, and finally to make a heuristic model that can solve the problem efficiently and be used by companies in similar sort of industries.
+
+
+\biblio
+\end{document}

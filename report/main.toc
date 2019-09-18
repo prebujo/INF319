@@ -1,0 +1,28 @@
+\contentsline {chapter}{\numberline {1}Introduction}{5}
+\contentsline {chapter}{\numberline {2}Model Description}{8}
+\contentsline {chapter}{\numberline {3}Solution Method}{14}
+\contentsline {section}{\numberline {3.1}ALNS on PDPMTWF}{14}
+\contentsline {subsection}{\numberline {3.1.1}Request shuffeling}{14}
+\contentsline {subsubsection}{2-opt}{14}
+\contentsline {subsubsection}{Swap first fit}{14}
+\contentsline {subsection}{\numberline {3.1.2}Removal and reinsertion heuristics}{15}
+\contentsline {subsubsection}{Remove Non-Clustered and insert Clustered}{15}
+\contentsline {subsubsection}{Remove Worst and Insert Greedy}{15}
+\contentsline {subsubsection}{Remove Similar and Regret Insert}{15}
+\contentsline {subsubsection}{Remove Randomly and insert First Fit}{16}
+\contentsline {subsection}{\numberline {3.1.3}Choosing heuristic}{17}
+\contentsline {subsection}{\numberline {3.1.4}Adaptive Weights}{17}
+\contentsline {subsection}{\numberline {3.1.5}Stopping and Acceptance Criteria}{17}
+\contentsline {subsection}{\numberline {3.1.6}Wild operator}{17}
+\contentsline {chapter}{\numberline {4}An Adaptive Large Neighbourhood Aproach}{18}
+\contentsline {chapter}{\numberline {5}Computational Results}{19}
+\contentsline {section}{\numberline {5.1}Experimental Setup}{19}
+\contentsline {subsection}{\numberline {5.1.1}Technical Setup}{19}
+\contentsline {subsection}{\numberline {5.1.2}Analytics Setup}{20}
+\contentsline {section}{\numberline {5.2}Instances}{20}
+\contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real data}{20}
+\contentsline {subsubsection}{Random locations based on real georaphical data}{21}
+\contentsline {subsection}{\numberline {5.2.2}Generated Instances}{22}
+\contentsline {section}{\numberline {5.3}Results}{22}
+\contentsline {chapter}{\numberline {6}Conclusions}{23}
+\contentsline {chapter}{\numberline {A}Appendix}{24}
