@@ -3,7 +3,141 @@
 \makeatother                                                    
 \documentclass[../main.tex]{subfiles}                           
 \begin{document}                                                
-\chapter{An Adaptive Large Neighbourhood Aproach}                                 
+\chapter{An Adaptive Large Neighbourhood Search Aproach}
+\label{chap:4}
+This chapter explains how we have applied ALNS to the PDPMTW. The model in this paper differs to models from papers like \cite{ropke06} in the following way:
+\begin{enumerate}
+    \item We use only one removal and one insertion heuristic in each search iteration in what we call an operator. We describe each of these operators and their heuristics in \ref{sec:oper}.
+\end{enumerate}
+\section{Initial Solution}
+\label{sec:init}
+Many different algorithms have been made for finding an initial solution. In our paper we have chosen to simply start with an initial solution where no orders are assigned to any vehicle which is very efficient and will not lead us to getting 
 This is a test \cite{shaw97}. Hopefully it works..              
+
+\section{Operators}
+\label{sec:oper}
+This section presents the operators or heuristics used by our ALNS algorithm.
+The first three operators \ref{ssec:swap}, \ref{ssec:exch}, \ref{ssec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
+The last four operators, \ref{ssec:rand}, \ref{ssed:clust}, \ref{ssec:greedy}, \ref{ssec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
+
+Removal and reinsertion heuristics are well reserached tools used in solving PDP. 
+We have implemented and adapted the most succesful heuristics and created some new ones to help solve our specific problem. 
+
+\subsection{Swap first fit}
+\label{ssec:swap}
+This operator simply swaps the pickup and delivery of two orders first time it fits. 
+This operator is very efficient and jumps randomly around the solution space.
+
+\subsection{3-exchange}
+\label{ssec:exch}
+
+
+\subsection{2-opt}
+\label{ssec:2opt}
+The 2-opt operator used in this paper is based on the 2-opt-L operator from {ref: Carcasse2006}. 
+It selects a random vehicle with more than 2 orders (it breaks out after not finding any fitting vehicle after o tires, where o is the amount of orders in the problem).
+For the selected vehicle it divides up the route of the vehicle in 3 parts. 
+All orders up until the index i of the vehicle route are inserted normally. 
+Orders from the index j+1 until the end of the route are also inserted normally. 
+then finally orders from the index i+1 until index j are inserted in inverse order.
+If the new route has a smaller cost than the original route the route the route is remembered as the new best route. 
+When all reverses have been performed on the current route, the best route is selected as the new route.
+This operation is continued until no improvement can be made ie. the best possible schedule for the selected vehicle has been found.
+
+\subsection{Remove random and insert first fit}
+\label{ssec:rand}
+Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
+This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
+
+\subsection{Remove non-clustered and insert clustered}
+\label{ssec:clust}
+This heuristic tries to remove orders that are bundled together but belong to different clusters. It then tries to bundle orders together in the best possible way.
+The orders pickup and delivery locations are all assorted into clusters based on the distance between them. 
+We use a hirarchial single linkage clustering algorithm to cluster locations together into $k$ clusters. (TODO: make algorithm table for herarchial single linkage algorithm) 
+Then we compare each set of $k$ cluster to eachother using the siluette coefficient, and keep the best one. (TODO: make algorithm table for siluette coefficient) \newlinw \par
+To choose which order to remove we have ranked the orders based on how many clusters are shared within a vehicles schedule.
+If an orders pickup and delivery shares no cluster with any other pickup or delivery nodes the rank is 0. 
+If the order shares the same cluster with both pickup and delivery node as all other pickup and delivery nodes within a vehicle it is given a rank 1.  
+This leads us to quite easily differenciate between a well clustered order and a not well clustered one.
+The orders are sorted based on their rank and we choose the order to pickup that has the lowest rank, using some randomization, based on the value $p$. 
+We choose the order on the position $k^p$ in the rank where k is a random number. 
+We have chosen $p=4$ in this paper.  \newline \par
+To reinsert the orders we have chosen to try and maximize the cluster rank we introduced above. This means we find the vehicle where the rank is the highest and insert the order in the best possible position in the chosen vehicle. 
+
+\subsection{Remove Worst and Insert Greedy}
+\label{ssec:greedy}
+Removing orders in the most costful positions and reinserting it in its cheapest (greedy) position seems to be a reasonable way of moving towards a better solution.
+We therefore propose a heuristic that removes the orders with the highest cost $C_{i}$.
+The $C_i$ is calclated as the increase in a vehicles schedule cost with the chosen order.
+We remove orders again based on the same randomness factor explained above. We do this by first ranking the orders based on cost and choose the order in the $k^p$ position. \newline \par
+The reinsertion is using a greedy algorithm where it simply checks to find the best possible possition for the order and inserts it there. 
+
+\subsubsection{Remove Similar and Regret Insert}
+\label{ssec:shaw}
+The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
+It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 
+Another good reason to remove similar orders is that it could be advantagous to reinsert these orders togther on the same vehicle since they share alot of the same properties in regards to distance, time etc.
+We define a relatedness factor $r_{ij}$ which represents how much the order $i$ is related to the order $j$. 
+The lower the value of $r_{ij}$ the more the two orders $i$ and $j$ are related.
+The relatedness of two orders we base here on the following properties: 
+a distance property, a weight property, an overlapping timewindow property, a property indicating if the same vehicles can be used to serve each request, and finally if the orders belong to the same factory.
+
+The relatedness factor is given by the following equation:
+
+\begin{equation}
+\label{relatedness}
+    r_{ij} = \psi ( D_{i j} + D_{(i+n)(j+n)}) + \omega|Q_i - Q_j|
+    + \phi (1-\dfrac{|V_i\cap V_j|}{max(|V_i|, |V_j|)} ) + \tau G_{ij} + \chi (U_{ij} + U_{(i+n)(j+n)})
+\end{equation}
+
+$D_{ij}$, $Q_i$, are defined in the problem formulation section and these values have been normalised to result in a value between $[0..1]$. 
+$V_i$ is the set of vehicles that can serve order $i$. 
+The parameter $G_{ij}$ is 1 if $i$ belong to another factory than $j$ and 0 if they belong to the same factory. 
+$U_{ij}$ is the timewindows at the pickup and delivery location, equal to 0 if the two orders have identical time windows and 1 if not. It corresponds to the sum of overlapping time windows divided by the overlapping span of the two time window sets.
+It can be formulated as follows
+\begin{equation}
+    \label{overlaptime}
+    U_{ij} = 1 - 
+\dfrac{ 
+    \sum\limits_{\substack{p\in \pi_i\\ o\in \pi_j\\ \underline{T_{ip}}\leq \overline{T_{jo}}\\ \underline{T_{jo}}\leq\overline{T_{ip}}}} 
+    (\min(\overline{T_{ip}}, \overline{T_{jo}}) - \max(\underline{T_{ip}},\underline{T_{jo}}) )
+    }
+    {\max{(\max\limits_{p\in \pi_i} \overline{T_{ip}}, \max\limits_{o\in \pi_j} \overline{T_{jo}})} - 
+    \min{(\min\limits_{p\in \pi_i} \underline{T_{ip}}, \min\limits_{o\in \pi_j} \underline{T_{jo}}}) -     
+    \sum\limits_{\substack{p\in \pi_i\\ o\in \pi:q_j\\ \underline{T_{ip}}\geq \overline{T_{j(o-1)}}\\ \underline{T_{jo}}\geq\overline{T_{i(p-1)}}}} 
+    (\min(\underline{T_{ip}}, \underline{T_{jo}}) - \max(\overline{T_{i(p-1)}},\overline{T_{j(o-1)}}) ) 
+    }
+\end{equation}
+
+Here $\overline{T_{ip}}$ and $\underline{T_{ip}}$ are the upper and lower time windows defined in the problem formulation.
+Thus the relatedness measure is given a value $0\leq r_{ij} \leq 2\psi + \omega + \phi + \tau  + \chi$. 
+We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. \newline\par
+The insertion part of this operator tries to improve on the insert greedy by calculating a regret value, $c^*_i$, which represents how much is lost by inserting this order in its second best position.
+
+\subsection{Wild operator}
+
+\section{Choosing an operator}
+\label{sec:opchice}
+
+\section{Adaptive weight adjustment}
+\label{sec:weight}
+
+\section{Acceptance criteria}
+\label{sec:accept}
+
+\section{Radical jump away from neighbourhood}
+\label{sec:wild}
+ALNS algorithms are known to be good at searching locally aswell as globally. However they do sometimes get stuck in one neighbourhood, and it is important that our algorithm is able to adapt in these situations.
+If we for 500 iterations find no improvement in the solution we are assuming that we are stuck. In this case we need to do something to get unstuck. 
+We have designed our algorithm so that in the case when no improvement in found, we run 100 iterations apart from the normal iterations, where we accept any new solution found regardless of the objective value. 
+In these iterations we use what we call a wild operator. 
+The wild operator is basically a collection of the most unspecific targeting operators from \ref{sec:oper}.
+We use the operators from section \ref{ssec:rand}, \ref{ssec:exch} and \ref{ssec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
+We also increase the amount of elements the operators are working on to effectively move further then the normal search iterations. 
+
+
+
+
+
 \biblio                                                         
 \end{document}

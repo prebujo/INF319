@@ -4,45 +4,45 @@ The top-level auxiliary file: main.aux
 The style file: abbrvnat.bst
 Database file #1: tex/references.bib
 Warning--empty note in 4flowWeb
-You've used 22 entries,
+You've used 23 entries,
             2773 wiz_defined-function locations,
-            735 strings with 8479 characters,
-and the built_in function-call counts, 10141 in all, are:
-= -- 917
-> -- 589
-< -- 9
-+ -- 199
-- -- 177
-* -- 884
-:= -- 1580
-add.period$ -- 66
-call.type$ -- 22
-change.case$ -- 123
-chr.to.int$ -- 22
-cite$ -- 45
-duplicate$ -- 441
-empty$ -- 817
-format.name$ -- 209
-if$ -- 2074
+            740 strings with 8630 characters,
+and the built_in function-call counts, 10597 in all, are:
+= -- 961
+> -- 610
+< -- 10
++ -- 206
+- -- 183
+* -- 921
+:= -- 1648
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 128
+chr.to.int$ -- 23
+cite$ -- 47
+duplicate$ -- 461
+empty$ -- 857
+format.name$ -- 218
+if$ -- 2170
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 21
-newline$ -- 118
-num.names$ -- 88
-pop$ -- 214
+missing$ -- 22
+newline$ -- 123
+num.names$ -- 92
+pop$ -- 222
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 107
 quote$ -- 0
-skip$ -- 330
+skip$ -- 346
 stack$ -- 0
-substring$ -- 440
-swap$ -- 21
+substring$ -- 467
+swap$ -- 22
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 237
+type$ -- 248
 warning$ -- 1
-while$ -- 102
+while$ -- 107
 width$ -- 0
-write$ -- 289
+write$ -- 302
 (There was 1 warning)

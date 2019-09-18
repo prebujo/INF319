@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -127,6 +127,13 @@ S.~N. Parragh, K.~F. Doerner, and R.~F. Hartl.
   between pickup and delivery locations.
 \newblock \emph{Journal f{\"u}r Betriebswirtschaft}, 58\penalty0 (2):\penalty0
   81--117, 2008.
+
+\bibitem[Ropke and Pisinger(2006)]{ropke06}
+S.~Ropke and D.~Pisinger.
+\newblock An adaptive large neighborhood search heuristic for the pickup and
+  delivery problem with time windows.
+\newblock \emph{Transportation science}, 40\penalty0 (4):\penalty0 455--472,
+  2006.
 
 \bibitem[Savelsbergh and Sol(1995)]{savelsbergh95}
 M.~W. Savelsbergh and M.~Sol.

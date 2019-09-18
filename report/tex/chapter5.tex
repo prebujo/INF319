@@ -19,8 +19,10 @@ This icludes the techical side aswell as the setup of the analytical experiments
 After that we will explain the generation ofthe instances used in the final result section.
 
 \section{Experimental Setup}
+\label{sec:setup}
 In this section we describe the technical setup of the experiments aswell as the Analytical setup of our eperiments.
 \subsection{Technical Setup}
+\label{ssec:tech}
 The computational experiments in this paper is run on two different computers. 
 The more demanding experiments are run on a 64-bit Windows 8 computer with a 2.7 Ghz i7-8500 processor and 16GB RAM. 
 We will shorten the name of this computer to "Windows computer". 
@@ -36,6 +38,7 @@ The statistical experiments are performed in Matlab (version number) on the Ubun
 
 
 \subsection{Analytics Setup}
+\label{ssec:analy}
 In section 3 we described seven operators, aswell as a wild operator, some invented in this paper and others based on known ALNS heuristics. 
 For our testing we generated five instance sets of each five instances, totally 25 instance.
 Each instance set has 5 instances with sizes ranging from $4-150$ orders.
@@ -50,10 +53,12 @@ For these tests we compare the results toward the best known solution from AMPL 
 We use a $95\%$ confidence level for all statistical experiments in this paper.
 
 \section{Instances}
+\label{sec:ins}
 The instance generator was created based on real data from an anonumous costomer of 4flow. 
 Following, we will describe how we designed the generator and how we generated the instances used in the analytical part of the paper.
 
 \subsection{Generate Instances based on real data}
+\label{ssec:data}
 The 4flow data gives information about the number of orders $|N|$, locations $|L|$, factories $|F|$. 
 The amount of vehicles $|V|$ are kept large compared to the amount of orders to make sure there are enough but not too many vehicles. 
 A solution that uses all but one vehicle is the ideal here and we found $|N|/2 \leq |V| \leq 2/3 |N|$ to be fitting.
@@ -122,10 +127,32 @@ From our 5 instance sets, two were generated using \ref{fig:eur}, two with \ref{
 If a point belong in the same factory as a previously generated point, that point was generated within a reasonable radius of three kilometer.
 
 \subsection{Generated Instances}
+\label{ssec:geni}
 TODO: Describe the instances I have generated and how I refer to them in the paper. 
 Finish the presentation of the results first to, know how I do this.
 
 \section{Results}
+\label{sec:res}
+In the first two parts of this section we will present the data from our experiments, that leads to the final composition of our model. The results for the final algorithm are presented in the third part of this section.
+
+\subsection{Evaluation of a stuck algorithm}
+\label{ssec:evals}
+To help our algorithm our of a stuck position we designed a wild operator described in section 4. To 
+\subsection{Evaluation of operators}
+\label{ssec:evalo}
+
+\subsection{Evaluation of algorithm}
+\label{ssec:evala}
+
+\section{Observations}
+\label{sec:obs}
+This section will focus on the observation made from the results in the previous section.
+
+\subsection{Choosing the final composition}
+\label{ssec:choosing}
+
+\subsection{Performance of final composition}
+\label{ssec:fincomp}
 
 \biblio                                                         
 \end{document}  

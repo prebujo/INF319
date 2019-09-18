@@ -2,76 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/console_final_run" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_Nothing.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_Random.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_Wild.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Ord_80_OPERATOR_ANALYSIS.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst2_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst3_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Inst5_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ahmad_Main/Operator_Analysis_Large.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ahmad_Main/Operator_Analysis_Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../project_zip/PrebenJohannessenMaster.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../project_zip/java.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/ahmad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/ahmad.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwoFirstFit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/functions/utility/SwapTwoFirstFit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysis_two.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/OperatorAnalysis_two.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Final_Results/Inst1_RESULTS_RandomSolution.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Final_Results/Inst1_RESULTS_WIldOperator.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_150_Veh_80_Loc_85_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_4_Veh_3_Loc_7_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/results/Ord_4_Veh_3_Loc_7_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ahmad.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/ahmad.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_RandomSolution.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_WIldOperator.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_12_Veh_7_Loc_9_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_150_Veh_80_Loc_85_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_35_Veh_20_Loc_22_OPERATOR_ANALYSIS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_4_Veh_3_Loc_7_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_Ord_80_Veh_45_Loc_45_OPERATOR_ANALYSIS_EXTRA.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Ord_4_Veh_3_Loc_7_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/utility/SwapTwoFirstFit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/utility/SwapTwoFirstFit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.aux" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.bbl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.blg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.fdb_latexmk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.fls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Model.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Operators Descriptions.odt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.aux" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.bbl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.blg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.fdb_latexmk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.fls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/Report.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/notes.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/references.bib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/references.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/test.aux" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/test.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/test.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/test.synctex.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/test.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/texput.log" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
