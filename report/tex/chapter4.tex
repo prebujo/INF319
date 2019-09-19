@@ -4,7 +4,7 @@
 \documentclass[../main.tex]{subfiles}                           
 \begin{document}                                                
 \chapter{An Adaptive Large Neighbourhood Search Aproach}
-\label{chap:4}
+\label{ch:appr}
 This chapter explains how we have applied ALNS to the PDPMTW. The model in this paper differs to models from papers like \cite{ropke06} in the following way:
 \begin{enumerate}
     \item We use only one removal and one insertion heuristic in each search iteration in what we call an operator. We describe each of these operators and their heuristics in \ref{sec:oper}.
@@ -17,23 +17,23 @@ This is a test \cite{shaw97}. Hopefully it works..
 \section{Operators}
 \label{sec:oper}
 This section presents the operators or heuristics used by our ALNS algorithm.
-The first three operators \ref{ssec:swap}, \ref{ssec:exch}, \ref{ssec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
-The last four operators, \ref{ssec:rand}, \ref{ssed:clust}, \ref{ssec:greedy}, \ref{ssec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
+The first three operators \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
+The last four operators, \ref{sec:rand}, \ref{ssed:clust}, \ref{sec:greedy}, \ref{sec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
 
 Removal and reinsertion heuristics are well reserached tools used in solving PDP. 
 We have implemented and adapted the most succesful heuristics and created some new ones to help solve our specific problem. 
 
 \subsection{Swap first fit}
-\label{ssec:swap}
+\label{sec:swap}
 This operator simply swaps the pickup and delivery of two orders first time it fits. 
 This operator is very efficient and jumps randomly around the solution space.
 
 \subsection{3-exchange}
-\label{ssec:exch}
+\label{sec:exch}
 
 
 \subsection{2-opt}
-\label{ssec:2opt}
+\label{sec:2opt}
 The 2-opt operator used in this paper is based on the 2-opt-L operator from {ref: Carcasse2006}. 
 It selects a random vehicle with more than 2 orders (it breaks out after not finding any fitting vehicle after o tires, where o is the amount of orders in the problem).
 For the selected vehicle it divides up the route of the vehicle in 3 parts. 
@@ -45,12 +45,12 @@ When all reverses have been performed on the current route, the best route is se
 This operation is continued until no improvement can be made ie. the best possible schedule for the selected vehicle has been found.
 
 \subsection{Remove random and insert first fit}
-\label{ssec:rand}
+\label{sec:rand}
 Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
 This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
 
-\subsection{Remove non-clustered and insert clustered}
-\label{ssec:clust}
+\section{Remove non-clustered and insert clustered}
+\label{sec:clust}
 This heuristic tries to remove orders that are bundled together but belong to different clusters. It then tries to bundle orders together in the best possible way.
 The orders pickup and delivery locations are all assorted into clusters based on the distance between them. 
 We use a hirarchial single linkage clustering algorithm to cluster locations together into $k$ clusters. (TODO: make algorithm table for herarchial single linkage algorithm) 
@@ -64,8 +64,8 @@ We choose the order on the position $k^p$ in the rank where k is a random number
 We have chosen $p=4$ in this paper.  \newline \par
 To reinsert the orders we have chosen to try and maximize the cluster rank we introduced above. This means we find the vehicle where the rank is the highest and insert the order in the best possible position in the chosen vehicle. 
 
-\subsection{Remove Worst and Insert Greedy}
-\label{ssec:greedy}
+\subsubsection{Remove Worst and Insert Greedy}
+\label{sec:greedy}
 Removing orders in the most costful positions and reinserting it in its cheapest (greedy) position seems to be a reasonable way of moving towards a better solution.
 We therefore propose a heuristic that removes the orders with the highest cost $C_{i}$.
 The $C_i$ is calclated as the increase in a vehicles schedule cost with the chosen order.
@@ -73,7 +73,7 @@ We remove orders again based on the same randomness factor explained above. We d
 The reinsertion is using a greedy algorithm where it simply checks to find the best possible possition for the order and inserts it there. 
 
 \subsubsection{Remove Similar and Regret Insert}
-\label{ssec:shaw}
+\label{sec:shaw}
 The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
 It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 
 Another good reason to remove similar orders is that it could be advantagous to reinsert these orders togther on the same vehicle since they share alot of the same properties in regards to distance, time etc.
@@ -132,7 +132,7 @@ If we for 500 iterations find no improvement in the solution we are assuming tha
 We have designed our algorithm so that in the case when no improvement in found, we run 100 iterations apart from the normal iterations, where we accept any new solution found regardless of the objective value. 
 In these iterations we use what we call a wild operator. 
 The wild operator is basically a collection of the most unspecific targeting operators from \ref{sec:oper}.
-We use the operators from section \ref{ssec:rand}, \ref{ssec:exch} and \ref{ssec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
+We use the operators from section \ref{sec:rand}, \ref{sec:exch} and \ref{sec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
 We also increase the amount of elements the operators are working on to effectively move further then the normal search iterations. 
 
 

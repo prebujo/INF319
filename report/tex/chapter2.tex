@@ -135,7 +135,7 @@ $l_{iv}^{kg}$ is the weight and $l_{iv}^{vol}$ is the volume on the vehicle $v$ 
 The cost of not transporting an order will be represented by $C_i$ for each node $i$, with a corresponding binary variable $y_i$, indicating that an order is not picked up.
 
 \begin{equation}
-\label{objectfunc}
+\label{eq:object}
         \min\sum_{v\in V} \sum_{(\alpha, \beta) \in A_v} ( C^{km}_{v\alpha\beta}d_{v\alpha\beta} + C^{kg}_{v\alpha\beta}l_{v\alpha\beta} + C^{fix}_{v\alpha\beta}b_{v\alpha\beta} ) + \sum_{v\in V}\sum_{s\in S}\sum_{\substack{i \in L_s\\j \in N_v{\notin} L_s}}C^{stop}_ix_{ijv} + \sum_{i\in N^P}C_iy_i
 \end{equation}
 
@@ -145,17 +145,17 @@ subject to:
 \begingroup
     \allowdisplaybreaks
 \begin{alignat} {2}
-    \sum_{v\in V}\sum_{j\in N_v}x_{ijv} + y_i = 1,	        	&\quad\quad\quad&& 	 i \in N^P 				\label{eq:2} 	\\[4pt]
-    \sum_{j\in N_v}x_{ijv} - \sum_{j\in N_v}x_{jiv} = 0,		& 	&&	v \in V, i\in N_v \notin \{o(v), d(v)\}		\label{eq:3} 	\\[4pt]
-    \sum_{j\in N_v}x_{o(v)jv} = 1,				        & 	&&	v \in V 					\label{eq:4}	\\[4pt]
-    \sum_{j\in N_v}x_{j d(v)v} = 1,					& 	&&	v \in V 					\label{eq:5}	\\[4pt]
-    \sum_{j\in N_v}x_{ijv} - \sum_{j\in N_v}x_{(i+n)jv} = 0,  	        & 	&&	v \in V, i\in N^P_v 				\label{eq:6}	\\[4pt]
-    l_{iv}^{kg} + Q_j^{kg} - l_{jv}^{kg} \leq K_v^{kg}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:7} 	\\[8pt]
-    l_{iv}^{kg} - Q_j^{kg} - l_{(j+n)v}^{kg} \leq K_v^{kg}(1-x_{i(j+n)v}),& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:8}	\\[8pt]
-    0 \leq l_{iv}^{kg} \leq K_v^{kg},					& 	&&	v \in V, i \in N^P_v 				\label{eq:9}	\\[8pt]
-    l_{iv}^{vol} + Q_j^{vol} - l_{jv}^{vol} \leq K_v^{vol}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:10} 	\\[8pt]
-    l_{iv}^{vol} - Q_j^{vol} - l_{(j+n)v}^{vol} \leq K_v^{vol}(1-x_{i(j+n)v}),&	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:11}	\\[8pt]
-    0 \leq l_{iv}^{vol} \leq K_v^{vol},					& 	&&	v \in V, i \in N^P_v 				\label{eq:12}	\\[8pt]
+    \sum_{v\in V}\sum_{j\in N_v}x_{ijv} + y_i = 1,	        	&\quad\quad\quad&& 	 i \in N^P 				\label{eq:pickornot} 	\\[4pt]
+    \sum_{j\in N_v}x_{ijv} - \sum_{j\in N_v}x_{jiv} = 0,		& 	&&	v \in V, i\in N_v \notin \{o(v), d(v)\}		\label{eq:enterleave} 	\\[4pt]
+    \sum_{j\in N_v}x_{o(v)jv} = 1,				        & 	&&	v \in V 					\label{eq:orig}	\\[4pt]
+    \sum_{j\in N_v}x_{j d(v)v} = 1,					& 	&&	v \in V 					\label{eq:dest}	\\[4pt]
+    \sum_{j\in N_v}x_{ijv} - \sum_{j\in N_v}x_{(i+n)jv} = 0,  	        & 	&&	v \in V, i\in N^P_v 				\label{eq:pickanddeliv}	\\[4pt]
+    l_{iv}^{kg} + Q_j^{kg} - l_{jv}^{kg} \leq K_v^{kg}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:weightbeforeafter} 	\\[8pt]
+    l_{iv}^{kg} - Q_j^{kg} - l_{(j+n)v}^{kg} \leq K_v^{kg}(1-x_{i(j+n)v}),& 	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:weightpickup}	\\[8pt]
+    0 \leq l_{iv}^{kg} \leq K_v^{kg},					& 	&&	v \in V, i \in N^P_v 				\label{eq:weightdeliv}	\\[8pt]
+    l_{iv}^{vol} + Q_j^{vol} - l_{jv}^{vol} \leq K_v^{vol}(1-x_{ijv}),      & 	&&	v \in V, j\in N_v^P, (i,j) \in E_v 		\label{eq:weightlim} 	\\[8pt]
+    l_{iv}^{vol} - Q_j^{vol} - l_{(j+n)v}^{vol} \leq K_v^{vol}(1-x_{i(j+n)v}),&	&&	v \in V ,j\in N_v^P, (i, n+j)\in E_v 		\label{eq:volpickup}	\\[8pt]
+    0 \leq l_{iv}^{vol} \leq K_v^{vol},					& 	&&	v \in V, i \in N^P_v 				\label{eq:voldeliv}	\\[8pt]
     h_{i} + 1 - h_{j} \leq (H_f+1)(1-x_{ijv}),				& 	&&	v \in V, f\in F,  i \in N_f, j \in N_f, j\neq i	\label{eq:13}	\\[4pt]
     h_{j} \leq H_f,                                                     & 	&&	v \in V,f\in F, j\in N_f,  			\label{eq:14}	\\[4pt]
     h_{j} \geq \sum_{\substack{i\in N_v\\i{\notin} N_f}}(x_{ijv})       & 	&&	v \in V, j \in N_f                      	\label{eq:15}	\\[4pt]
@@ -185,7 +185,7 @@ subject to:
 
 \par
 The objective function (\ref{objectfunc}) sums up to the cost of all vehicles given corresponding costs from their cost matrix. Costs could be variable per distance, weight, fixed and/or related to stops made. Loads not transported will be penilized with costs and the aim is to minimize the sum of all these costs.
-Constraint \ref{eq:2} secures that a load is picked up once and only by one vehicle or not picked up at all. 
+Constraint \ref{eq:pickornot} secures that a load is picked up once and only by one vehicle or not picked up at all. 
 \ref{eq:3} makes certain that if a load at a node j is travelled to it is also left. This is not the case for origin and final destination node.
 Then \ref{eq:4} makes sure that origin is only left once by each vehicle, 
 and \ref{eq:5} ensures that desination is only arrived to once.

@@ -10,14 +10,14 @@
 \contentsline {subsection}{\numberline {4.2.2}3-exchange}{17}
 \contentsline {subsection}{\numberline {4.2.3}2-opt}{17}
 \contentsline {subsection}{\numberline {4.2.4}Remove random and insert first fit}{17}
-\contentsline {subsection}{\numberline {4.2.5}Remove non-clustered and insert clustered}{17}
-\contentsline {subsection}{\numberline {4.2.6}Remove Worst and Insert Greedy}{18}
+\contentsline {section}{\numberline {4.3}Remove non-clustered and insert clustered}{17}
+\contentsline {subsubsection}{Remove Worst and Insert Greedy}{18}
 \contentsline {subsubsection}{Remove Similar and Regret Insert}{18}
-\contentsline {subsection}{\numberline {4.2.7}Wild operator}{19}
-\contentsline {section}{\numberline {4.3}Choosing an operator}{19}
-\contentsline {section}{\numberline {4.4}Adaptive weight adjustment}{19}
-\contentsline {section}{\numberline {4.5}Acceptance criteria}{19}
-\contentsline {section}{\numberline {4.6}Radical jump away from neighbourhood}{19}
+\contentsline {subsection}{\numberline {4.3.1}Wild operator}{19}
+\contentsline {section}{\numberline {4.4}Choosing an operator}{19}
+\contentsline {section}{\numberline {4.5}Adaptive weight adjustment}{19}
+\contentsline {section}{\numberline {4.6}Acceptance criteria}{19}
+\contentsline {section}{\numberline {4.7}Radical jump away from neighbourhood}{19}
 \contentsline {chapter}{\numberline {5}Computational Results}{20}
 \contentsline {section}{\numberline {5.1}Experimental Setup}{20}
 \contentsline {subsection}{\numberline {5.1.1}Technical Setup}{20}
@@ -27,11 +27,14 @@
 \contentsline {subsubsection}{Random locations based on real georaphical data}{22}
 \contentsline {subsection}{\numberline {5.2.2}Generated Instances}{23}
 \contentsline {section}{\numberline {5.3}Results}{23}
-\contentsline {subsection}{\numberline {5.3.1}Evaluation of a stuck algorithm}{23}
-\contentsline {subsection}{\numberline {5.3.2}Evaluation of operators}{23}
-\contentsline {subsection}{\numberline {5.3.3}Evaluation of algorithm}{23}
-\contentsline {section}{\numberline {5.4}Observations}{23}
-\contentsline {subsection}{\numberline {5.4.1}Choosing the final composition}{23}
-\contentsline {subsection}{\numberline {5.4.2}Performance of final composition}{23}
-\contentsline {chapter}{\numberline {6}Conclusions}{24}
-\contentsline {chapter}{\numberline {A}Appendix}{25}
+\contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{23}
+\contentsline {subsection}{\numberline {5.3.2}Evaluation of heuristics}{23}
+\contentsline {subsubsection}{Ranking the combinations}{24}
+\contentsline {subsubsection}{ANOVA and regression analysis}{24}
+\contentsline {subsubsection}{T-tests}{24}
+\contentsline {subsection}{\numberline {5.3.3}Evaluation of algorithm}{24}
+\contentsline {section}{\numberline {5.4}Observations}{24}
+\contentsline {subsection}{\numberline {5.4.1}Choosing the final composition}{25}
+\contentsline {subsection}{\numberline {5.4.2}Performance of final composition}{25}
+\contentsline {chapter}{\numberline {6}Conclusions}{26}
+\contentsline {chapter}{\numberline {A}Appendix}{27}

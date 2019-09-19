@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  18 SEP 2019 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  19 SEP 2019 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -169,33 +169,38 @@ s
 \f@nch@O@erf=\skip54
 \f@nch@O@olf=\skip55
 \f@nch@O@orf=\skip56
-) (./main.aux)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyref/fancyref.sty
+Package: fancyref 1999/02/03 v0.9c Fancy cross-referencing
+(/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
+Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
+\c@vrcnt=\count107
+)) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
+\scratchcounter=\count108
 \scratchdimen=\dimen129
 \scratchbox=\box28
-\nofMPsegments=\count108
-\nofMParguments=\count109
+\nofMPsegments=\count109
+\nofMParguments=\count110
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count110
+\MPscratchCnt=\count111
 \MPscratchDim=\dimen130
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -279,7 +284,7 @@ Package caption Info: End \AtBeginDocument code.
 <img/uib_2.png, id=1, 153.6942pt x 150.3216pt>
 File: img/uib_2.png Graphic file (type png)
 <use img/uib_2.png>
-Package pdftex.def Info: img/uib_2.png  used on input line 31.
+Package pdftex.def Info: img/uib_2.png  used on input line 32.
 (pdftex.def)             Requested size: 153.6938pt x 150.32121pt.
 [1
 
@@ -307,7 +312,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Overfull \hbox (28.59283pt too wide) in paragraph at lines 16--29
+Overfull \hbox (28.59283pt too wide) in paragraph at lines 17--30
 []\OT1/cmr/m/n/12 Cordeau and Groupe d'^^Setudes et de recherche en anal-yse de
 s d^^Secisions  (Montr^^Seal(2000)
  []
@@ -395,7 +400,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 115--132
 
  []
 
-[12] [13]) (./tex/chapter3.tex [14]
+[12]
+
+LaTeX Warning: Reference `objectfunc' on page 13 undefined on input line 187.
+
+
+LaTeX Warning: Reference `eq:3' on page 13 undefined on input line 189.
+
+
+LaTeX Warning: Reference `eq:4' on page 13 undefined on input line 190.
+
+
+LaTeX Warning: Reference `eq:5' on page 13 undefined on input line 191.
+
+
+LaTeX Warning: Reference `eq:6' on page 13 undefined on input line 192.
+
+[13]
+
+LaTeX Warning: Reference `eq:7' on page 14 undefined on input line 194.
+
+
+LaTeX Warning: Reference `eq:8' on page 14 undefined on input line 195.
+
+
+LaTeX Warning: Reference `eq:9' on page 14 undefined on input line 196.
+
+
+LaTeX Warning: Reference `eq:10' on page 14 undefined on input line 198.
+
+
+LaTeX Warning: Reference `eq:12' on page 14 undefined on input line 198.
+
+) (./tex/chapter3.tex [14]
 Chapter 3.
 ) (./tex/chapter4.tex [15
 
@@ -455,54 +492,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--114
 
 [18]) (./tex/chapter5.tex [19]
 Chapter 5.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
 [20
 
 ] [21]
-<img/europe_coordinates.png, id=84, 684.5575pt x 569.12625pt>
+<img/europe_coordinates.png, id=84, 737.75626pt x 604.2575pt>
 File: img/europe_coordinates.png Graphic file (type png)
 <use img/europe_coordinates.png>
-Package pdftex.def Info: img/europe_coordinates.png  used on input line 102.
-(pdftex.def)             Requested size: 128.0387pt x 106.4417pt.
-<img/germany_coordinates.png, id=85, 624.3325pt x 516.93124pt>
+Package pdftex.def Info: img/europe_coordinates.png  used on input line 103.
+(pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
+<img/germany_coordinates.png, id=85, 602.25pt x 494.84875pt>
 File: img/germany_coordinates.png Graphic file (type png)
 <use img/germany_coordinates.png>
-Package pdftex.def Info: img/germany_coordinates.png  used on input line 109.
-(pdftex.def)             Requested size: 128.0387pt x 106.01102pt.
-<img/uniform_coordinates.png, id=86, 620.3175pt x 512.91624pt>
+Package pdftex.def Info: img/germany_coordinates.png  used on input line 110.
+(pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
+<img/uniform_coordinates.png, id=86, 485.815pt x 409.53pt>
 File: img/uniform_coordinates.png Graphic file (type png)
 <use img/uniform_coordinates.png>
-Package pdftex.def Info: img/uniform_coordinates.png  used on input line 116.
-(pdftex.def)             Requested size: 128.0387pt x 105.86855pt.
+Package pdftex.def Info: img/uniform_coordinates.png  used on input line 117.
+(pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
 [22 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
-rm_coordinates.png>]) (./tex/chapter6.tex [23]
+rm_coordinates.png>]
+
+LaTeX Warning: Reference `fig:wildcomp' on page 23 undefined on input line 147.
+
+
+
+LaTeX Warning: Reference `fig:wildcomp' on page 23 undefined on input line 147.
+
+
+[23]
+<img/avrg_imp_rank.png, id=94, 1187.43625pt x 120.45pt>
+File: img/avrg_imp_rank.png Graphic file (type png)
+<use img/avrg_imp_rank.png>
+Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 175.
+(pdftex.def)             Requested size: 405.45045pt x 41.12704pt.
+<img/best_imp_rank.png, id=95, 1186.4325pt x 120.45pt>
+File: img/best_imp_rank.png Graphic file (type png)
+<use img/best_imp_rank.png>
+Package pdftex.def Info: img/best_imp_rank.png  used on input line 182.
+(pdftex.def)             Requested size: 405.45045pt x 41.16197pt.
+<img/best_avrg_imp_rank.png, id=96, 1187.43625pt x 121.45375pt>
+File: img/best_avrg_imp_rank.png Graphic file (type png)
+<use img/best_avrg_imp_rank.png>
+Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 189.
+(pdftex.def)             Requested size: 405.45045pt x 41.46977pt.
+) (./tex/chapter6.tex [24 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <
+./img/best_avrg_imp_rank.png>] [25]
 Chapter 6.
-) (./tex/appendix.tex [24
+) (./tex/appendix.tex [26
 
 ]
 Appendix A.
-) (./main.bbl [25
+) (./main.bbl [27
 
-] [26
+] [28
 
-]) [27] (./main.aux)
+]) [29] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4670 strings out of 492982
- 68892 string characters out of 6134896
- 163031 words of memory out of 5000000
- 8140 multiletter control sequences out of 15000+600000
+ 5026 strings out of 492982
+ 73820 string characters out of 6134896
+ 167494 words of memory out of 5000000
+ 8486 multiletter control sequences out of 15000+600000
  11186 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,43p,368b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,21n,43p,379b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -516,10 +582,10 @@ cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (27 pages, 415131 bytes).
+Output written on main.pdf (29 pages, 456615 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 163 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

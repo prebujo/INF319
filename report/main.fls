@@ -63,6 +63,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/fancyref/fancyref.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/fancyref/fancyref.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
 INPUT main.aux
 INPUT main.aux
 OUTPUT main.aux
@@ -148,6 +152,15 @@ INPUT ./img/germany_coordinates.png
 INPUT img/uniform_coordinates.png
 INPUT ./img/uniform_coordinates.png
 INPUT ./img/uniform_coordinates.png
+INPUT img/avrg_imp_rank.png
+INPUT ./img/avrg_imp_rank.png
+INPUT ./img/avrg_imp_rank.png
+INPUT img/best_imp_rank.png
+INPUT ./img/best_imp_rank.png
+INPUT ./img/best_imp_rank.png
+INPUT img/best_avrg_imp_rank.png
+INPUT ./img/best_avrg_imp_rank.png
+INPUT ./img/best_avrg_imp_rank.png
 INPUT ./tex/chapter6.tex
 INPUT ./tex/chapter6.tex
 INPUT ./tex/appendix.tex
