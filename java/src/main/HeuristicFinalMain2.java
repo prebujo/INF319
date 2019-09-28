@@ -30,18 +30,18 @@ public class HeuristicFinalMain2 {
         List<IOperator> operators = null;
         IFeasibility feasibility;
         String instance = "Inst1_";
-        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_7_Veh_4_Loc_10","Ord_9_Veh_5_Loc_6", "Ord_10_Veh_6_Loc_7", "Ord_12_Veh_7_Loc_9");
+        List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9", "Ord_35_Veh_20_Loc_22", "Ord_80_Veh_45_Loc_45", "Ord_150_Veh_80_Loc_85");
         List<IDataSet> dataSets = reader.readDataFromFiles(instance,instanceSizes);
-        List<List<int[]>> feasibleSolutions = reader.readSolutionsFromFile(instance,20);
+        List<int[]> feasibleSolutions = new ArrayList<>();
         for (int i = 0; i < dataSets.size(); i++) {
             IDataSet dataSet=dataSets.get(i);
             dataSet.setLocationClusters();
-            Random random = new Random(101+i);
+            Random random = new Random(11+i);
             feasibility = new Feasibility(dataSet);
             operators = getOperators(feasibility, dataSet, random);
 
             AdaptiveLargeNeighbourhoodSearch alns = new AdaptiveLargeNeighbourhoodSearch(dataSet, random, "alns");
-            IDataResult result = alns.optimize(operators, false,true,feasibleSolutions.get(i), getWildOperators(feasibility,dataSet,random));
+            IDataResult result = alns.optimize(operators, true,false,feasibleSolutions, getWildOperators(feasibility,dataSet,random));
             results.add(result);
         }
 

@@ -14,11 +14,11 @@ This chapter explains how we have applied ALNS to the PDPMTW. The model in this 
 Many different algorithms have been made for finding an initial solution. In our paper we have chosen to simply start with an initial solution where no orders are assigned to any vehicle which is very efficient and will not lead us to getting 
 This is a test \cite{shaw97}. Hopefully it works..              
 
-\section{Operators}
+\section{Heuristics}
 \label{sec:oper}
 This section presents the operators or heuristics used by our ALNS algorithm.
 The first three operators \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
-The last four operators, \ref{sec:rand}, \ref{ssed:clust}, \ref{sec:greedy}, \ref{sec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
+The last four operators, \ref{sec:rand}, \ref{sec:clust}, \ref{sec:greedy}, \ref{sec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
 
 Removal and reinsertion heuristics are well reserached tools used in solving PDP. 
 We have implemented and adapted the most succesful heuristics and created some new ones to help solve our specific problem. 
@@ -26,11 +26,16 @@ We have implemented and adapted the most succesful heuristics and created some n
 \subsection{Swap first fit}
 \label{sec:swap}
 This operator simply swaps the pickup and delivery of two orders first time it fits. 
-This operator is very efficient and jumps randomly around the solution space.
+This operator is very efficient and jumps randomly around a neighbourhoods solution space.
 
 \subsection{3-exchange}
 \label{sec:exch}
-
+The 3-exchange operator selects a random vehicle with at least two assigned orders, and performs an exchange of 3 assigned positions until a feasible new combination is found. This can be illustrated as follows: \newline
+A vehicles schedule before exchange: \newline
+        [ 1 \textbf{1} 2 \textbf{2} \textbf{3} 3 ] \newline
+A 3-exchange performed on highlighted positions (two, four and five) on this schedule would result in the following: \newline
+        [ 1 \textbf{3} 2 \textbf{1} \textbf{2} 3 ]  TODO: make an illustration here with arrows \newline
+This heuristic is very fast as the exchanges are fast operations and the feasibility check of a vehicles schedule is a very effective operation. Like the swap heuristic from the previous section this operator jumps randomly around a neighbourhoods solution space.
 
 \subsection{2-opt}
 \label{sec:2opt}
@@ -49,7 +54,7 @@ This operation is continued until no improvement can be made ie. the best possib
 Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
 This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
 
-\section{Remove non-clustered and insert clustered}
+\subsection{Remove non-clustered and insert clustered}
 \label{sec:clust}
 This heuristic tries to remove orders that are bundled together but belong to different clusters. It then tries to bundle orders together in the best possible way.
 The orders pickup and delivery locations are all assorted into clusters based on the distance between them. 
@@ -64,15 +69,15 @@ We choose the order on the position $k^p$ in the rank where k is a random number
 We have chosen $p=4$ in this paper.  \newline \par
 To reinsert the orders we have chosen to try and maximize the cluster rank we introduced above. This means we find the vehicle where the rank is the highest and insert the order in the best possible position in the chosen vehicle. 
 
-\subsubsection{Remove Worst and Insert Greedy}
+\subsection{Remove Worst and Insert Greedy}
 \label{sec:greedy}
 Removing orders in the most costful positions and reinserting it in its cheapest (greedy) position seems to be a reasonable way of moving towards a better solution.
 We therefore propose a heuristic that removes the orders with the highest cost $C_{i}$.
 The $C_i$ is calclated as the increase in a vehicles schedule cost with the chosen order.
 We remove orders again based on the same randomness factor explained above. We do this by first ranking the orders based on cost and choose the order in the $k^p$ position. \newline \par
 The reinsertion is using a greedy algorithm where it simply checks to find the best possible possition for the order and inserts it there. 
-
-\subsubsection{Remove Similar and Regret Insert}
+\newline 
+\subsection{Remove Similar and Regret Insert}
 \label{sec:shaw}
 The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
 It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 

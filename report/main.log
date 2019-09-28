@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  19 SEP 2019 16:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  28 SEP 2019 02:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -174,34 +174,126 @@ Package: fancyref 1999/02/03 v0.9c Fancy cross-referencing
 (/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
 Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
 \c@vrcnt=\count107
-)) (./main.aux)
+)) (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texl
+ive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
+)
+\XKV@depth=\count108
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+) (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box28
+)
+\tc@llx=\dimen129
+\tc@lly=\dimen130
+\tc@urx=\dimen131
+\tc@ury=\dimen132
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen133
+\adjbox@Height=\dimen134
+\adjbox@Depth=\dimen135
+\adjbox@Totalheight=\dimen136
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count109
+) (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box29
+\sift@deathcycles=\count110
+\@vwid@loff=\dimen137
+\@vwid@roff=\dimen138
+)) (/usr/share/texlive/texmf-dist/tex/latex/numprint/numprint.sty
+Package: numprint 2012/08/20 v1.39 Print numbers (HH)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen139
+\extrarowheight=\dimen140
+\NC@list=\toks25
+\extratabsurround=\skip57
+\backup@length=\skip58
+)
+\c@nprt@mantissa@digitsbefore=\count111
+\c@nprt@mantissa@digitsafter=\count112
+\c@nprt@exponent@digitsbefore=\count113
+\c@nprt@exponent@digitsafter=\count114
+\nprt@digitwidth=\skip59
+\nprt@sepwidth=\skip60
+\nprt@decimalwidth=\skip61
+\nprt@blockwidth=\skip62
+\nprt@digittoks=\toks26
+\nprt@pretoks=\toks27
+\nprt@posttoks=\toks28
+\nprt@thisdigit=\count115
+\nprt@curpos=\count116
+\nprt@rndpos=\count117
+\c@nprt@digitsfirstblock=\count118
+\c@nprt@blockcnt=\count119
+\c@nprt@cntprint=\count120
+No configuration file `numprint.cfg' found.) (/usr/share/texlive/texmf-dist/tex
+/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip63
+\multirow@cntb=\count121
+\multirow@dima=\skip64
+\bigstrutjot=\dimen141
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count122
+\rotFPtop=\skip65
+\rotFPbot=\skip66
+\rot@float@box=\box30
+\rot@mess@toks=\toks29
+) (./main.aux
+
+LaTeX Warning: Label `sec:finRes' multiply defined.
+
+
+LaTeX Warning: Label `tab:wildComp' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen129
-\scratchbox=\box28
-\nofMPsegments=\count109
-\nofMParguments=\count110
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen130
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count123
+\scratchdimen=\dimen142
+\scratchbox=\box31
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen143
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -280,23 +372,29 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 <img/uib_2.png, id=1, 153.6942pt x 150.3216pt>
 File: img/uib_2.png Graphic file (type png)
 <use img/uib_2.png>
-Package pdftex.def Info: img/uib_2.png  used on input line 32.
+Package pdftex.def Info: img/uib_2.png  used on input line 36.
 (pdftex.def)             Requested size: 153.6938pt x 150.32121pt.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/uib_2.png>] (./tex/a
-bstract.tex) [2
+bstract.tex
 
-] (./main.toc [3
+Package natbib Warning: Citation `shaw97' on page 2 undefined on input line 7.
 
-])
+) [2
+
+] (./main.toc)
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
+[3
+
+]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -312,10 +410,87 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Overfull \hbox (28.59283pt too wide) in paragraph at lines 17--30
-[]\OT1/cmr/m/n/12 Cordeau and Groupe d'^^Setudes et de recherche en anal-yse de
-s d^^Secisions  (Montr^^Seal(2000)
- []
+Package natbib Warning: Citation `4flowWeb' on page 6 undefined on input line 8
+.
+
+
+Package natbib Warning: Citation `parragh08' on page 6 undefined on input line 
+12.
+
+
+Package natbib Warning: Citation `cordeau00' on page 6 undefined on input line 
+13.
+
+
+Package natbib Warning: Citation `nanry00' on page 6 undefined on input line 14
+.
+
+
+Package natbib Warning: Citation `cordeau00' on page 6 undefined on input line 
+17.
+
+
+Package natbib Warning: Citation `solomon87' on page 6 undefined on input line 
+20.
+
+
+Package natbib Warning: Citation `lu06' on page 6 undefined on input line 21.
+
+
+Package natbib Warning: Citation `kalantari85' on page 6 undefined on input lin
+e 22.
+
+
+Package natbib Warning: Citation `dumas91' on page 6 undefined on input line 23
+.
+
+
+Package natbib Warning: Citation `fagerholt10' on page 6 undefined on input lin
+e 24.
+
+
+Package natbib Warning: Citation `berbeglia10' on page 6 undefined on input lin
+e 25.
+
+
+Package natbib Warning: Citation `berbeglia07' on page 6 undefined on input lin
+e 26.
+
+
+Package natbib Warning: Citation `zhou13' on page 6 undefined on input line 27.
+
+
+
+Package natbib Warning: Citation `savelsbergh95' on page 6 undefined on input l
+ine 28.
+
+
+Package natbib Warning: Citation `dror89' on page 6 undefined on input line 29.
+
+
+
+Package natbib Warning: Citation `christiansen02' on page 6 undefined on input 
+line 31.
+
+
+Package natbib Warning: Citation `christiansen04' on page 6 undefined on input 
+line 34.
+
+
+Package natbib Warning: Citation `hemmati14' on page 6 undefined on input line 
+35.
+
+
+Package natbib Warning: Citation `hemmati16' on page 6 undefined on input line 
+39.
+
+
+Package natbib Warning: Citation `ferreira18' on page 6 undefined on input line
+ 40.
+
+
+Package natbib Warning: Citation `desrosiers95' on page 6 undefined on input li
+ne 41.
 
 
 Underfull \vbox (badness 1082) has occurred while \output is active []
@@ -323,7 +498,9 @@ Underfull \vbox (badness 1082) has occurred while \output is active []
 [6
 
 ]
-Underfull \vbox (badness 1248) has occurred while \output is active []
+
+Package natbib Warning: Citation `favaretto07' on page 7 undefined on input lin
+e 68.
 
 [7]) (./tex/chapter2.tex [8]
 Chapter 2.
@@ -342,9 +519,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--35
 
  []
 
-[9
 
-]
 Underfull \hbox (badness 10000) in paragraph at lines 37--59
 [][]
  []
@@ -359,7 +534,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--59
 
  []
 
+[9
 
+]
 Overfull \hbox (80.42036pt too wide) in paragraph at lines 60--99
 []
  []
@@ -439,13 +616,18 @@ Chapter 3.
 ]
 Chapter 4.
 
-LaTeX Warning: Reference `ssed:clust' on page 16 undefined on input line 21.
+Package natbib Warning: Citation `ropke06' on page 16 undefined on input line 8
+.
+
+
+Package natbib Warning: Citation `shaw97' on page 16 undefined on input line 15
+.
 
 [16
 
 ]
 ! Undefined control sequence.
-l.57 ...m table for siluette coefficient) \newlinw
+l.62 ...m table for siluette coefficient) \newlinw
                                                    \par
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -454,12 +636,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--72
+Underfull \hbox (badness 10000) in paragraph at lines 63--69
 
  []
 
@@ -470,7 +647,21 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [17]
-Overfull \hbox (7.5115pt too wide) detected at line 91
+Underfull \hbox (badness 10000) in paragraph at lines 74--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
+
+ []
+
+
+Package natbib Warning: Citation `shaw97' on page 18 undefined on input line 82
+.
+
+
+Overfull \hbox (7.5115pt too wide) detected at line 96
 \OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 D[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 D[]\OT1/cmr/m/n/12 ) + \OML/
 cmm/m/it/12 !\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 Q[] \OMS/cmsy/m/n/12 ^^@ \OML/c
@@ -480,17 +671,17 @@ OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^_\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 U[] \OT1
 /cmr/m/n/12 + \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )
  []
 
-
-Overfull \hbox (111.55676pt too wide) detected at line 110
+[18]
+Overfull \hbox (111.55676pt too wide) detected at line 115
 \OML/cmm/m/it/12 U[] \OT1/cmr/m/n/12 = 1 \OMS/cmsy/m/n/12 ^^@ []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
 
  []
 
-[18]) (./tex/chapter5.tex [19]
+) (./tex/chapter5.tex [19]
 Chapter 5.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -501,91 +692,244 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 [20
 
 ] [21]
-<img/europe_coordinates.png, id=84, 737.75626pt x 604.2575pt>
+<img/europe_coordinates.png, id=86, 737.75626pt x 604.2575pt>
 File: img/europe_coordinates.png Graphic file (type png)
 <use img/europe_coordinates.png>
-Package pdftex.def Info: img/europe_coordinates.png  used on input line 103.
+Package pdftex.def Info: img/europe_coordinates.png  used on input line 107.
 (pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
-<img/germany_coordinates.png, id=85, 602.25pt x 494.84875pt>
+<img/germany_coordinates.png, id=87, 602.25pt x 494.84875pt>
 File: img/germany_coordinates.png Graphic file (type png)
 <use img/germany_coordinates.png>
-Package pdftex.def Info: img/germany_coordinates.png  used on input line 110.
+Package pdftex.def Info: img/germany_coordinates.png  used on input line 114.
 (pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
-<img/uniform_coordinates.png, id=86, 485.815pt x 409.53pt>
+<img/uniform_coordinates.png, id=88, 485.815pt x 409.53pt>
 File: img/uniform_coordinates.png Graphic file (type png)
 <use img/uniform_coordinates.png>
-Package pdftex.def Info: img/uniform_coordinates.png  used on input line 117.
+Package pdftex.def Info: img/uniform_coordinates.png  used on input line 121.
 (pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[22 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
+[22]
+! Misplaced alignment tab character &.
+l.144 ...orders using respectively $3, 7, 20, 45 &
+                                                   80$ vehicles and containi...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[23 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
 rm_coordinates.png>]
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.182                 #
+                       Ord    & #Veh      & #Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-LaTeX Warning: Reference `fig:wildcomp' on page 23 undefined on input line 147.
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.182                 #Ord    & #
+                                 Veh      & #Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.182                 #Ord    & #Veh      & #
+                                             Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-
-LaTeX Warning: Reference `fig:wildcomp' on page 23 undefined on input line 147.
-
-
-[23]
-<img/avrg_imp_rank.png, id=94, 1187.43625pt x 120.45pt>
+[24] [25]
+<img/avrg_imp_rank.png, id=102, 1185.42876pt x 120.45pt>
 File: img/avrg_imp_rank.png Graphic file (type png)
 <use img/avrg_imp_rank.png>
-Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 175.
-(pdftex.def)             Requested size: 405.45045pt x 41.12704pt.
-<img/best_imp_rank.png, id=95, 1186.4325pt x 120.45pt>
+Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 244.
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
+<img/best_imp_rank.png, id=103, 1185.42876pt x 120.45pt>
 File: img/best_imp_rank.png Graphic file (type png)
 <use img/best_imp_rank.png>
-Package pdftex.def Info: img/best_imp_rank.png  used on input line 182.
-(pdftex.def)             Requested size: 405.45045pt x 41.16197pt.
-<img/best_avrg_imp_rank.png, id=96, 1187.43625pt x 121.45375pt>
+Package pdftex.def Info: img/best_imp_rank.png  used on input line 251.
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
+<img/best_avrg_imp_rank.png, id=104, 1185.42876pt x 120.45pt>
 File: img/best_avrg_imp_rank.png Graphic file (type png)
 <use img/best_avrg_imp_rank.png>
-Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 189.
-(pdftex.def)             Requested size: 405.45045pt x 41.46977pt.
-) (./tex/chapter6.tex [24 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <
-./img/best_avrg_imp_rank.png>] [25]
+Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 258.
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
+Runaway argument?
+regrBestNormal\@fref  we see that only 3 components, C4, C6 and C7, h\ETC.
+! Paragraph ended before \@fref was complete.
+<to be read again> 
+                   \par 
+l.396 \par
+          
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
+[26 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
+nk.png>] [27]
+Runaway argument?
+tTestGroup\@fref . 
+! Paragraph ended before \@fref was complete.
+<to be read again> 
+                   \par 
+l.420 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (7.67331pt too wide) in paragraph at lines 449--465
+ [][] 
+ []
+
+[28]
+Overfull \hbox (5.89127pt too wide) in paragraph at lines 528--546
+ [][] 
+ []
+
+[29]
+Underfull \vbox (badness 1077) has occurred while \output is active []
+
+[30] [31]
+
+LaTeX Warning: Reference `fig:wildRes' on page 32 undefined on input line 646.
+
+
+LaTeX Warning: Reference `fig:wildRes' on page 32 undefined on input line 646.
+
+[32]
+
+LaTeX Warning: Reference `tab:finRes' on page 33 undefined on input line 658.
+
+
+LaTeX Warning: Reference `tab:finRes' on page 33 undefined on input line 658.
+
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.669                     Set & #
+                                 Ord      & #Veh  & #Loc  & Solution      & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.669                     Set & #Ord      & #
+                                             Veh  & #Loc  & Solution      & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.669 ...              Set & #Ord      & #Veh  & #
+                                                  Loc  & Solution      & gap...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 715.
+
+
+
+LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 715.
+
+
+
+LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 720.
+
+
+LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 720.
+
+
+LaTeX Warning: Reference `sec:choosing' on page 33 undefined on input line 722.
+
+
+[33]) (./tex/chapter6.tex [34]
 Chapter 6.
-) (./tex/appendix.tex [26
+
+Package natbib Warning: Citation `shaw97' on page 35 undefined on input line 7.
+
+
+) (./tex/appendix.tex [35
 
 ]
 Appendix A.
-) (./main.bbl [27
 
-] [28
+Package natbib Warning: Citation `shaw97' on page 36 undefined on input line 7.
 
-]) [29] (./main.aux)
+
+) (./main.bbl [36
+
+] [37
+
+])
+
+Package natbib Warning: There were undefined citations.
+
+[38] (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5026 strings out of 492982
- 73820 string characters out of 6134896
- 167494 words of memory out of 5000000
- 8486 multiletter control sequences out of 15000+600000
- 11186 words of font info for 40 fonts, out of 8000000 for 9000
+ 6362 strings out of 492982
+ 94393 string characters out of 6134896
+ 211046 words of memory out of 5000000
+ 9770 multiletter control sequences out of 15000+600000
+ 12642 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,43p,379b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (29 pages, 456615 bytes).
+ 41i,21n,78p,682b,702s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (38 pages, 515674 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 202 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

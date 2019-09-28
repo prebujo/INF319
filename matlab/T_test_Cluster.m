@@ -11,5 +11,5 @@ No_Cluster_Best=[	996.694514502394	996.731429490379	996.764615403191	995.6030391
 [h_a_l,   p_a_l,ci_a_l,   stats_a_l]    = ttest(Cluster_Avrg,No_Cluster_Avrg,0.1,'left')
 
 [h_b,     p_b,  ci_b,     stats_b]      = ttest(Cluster_Best,No_Cluster_Best,0.05,'both')
-[h_b_r,   p_b_r,ci_b_r,   stats_b_r]    = ttest(Cluster_Best,No_Cluster_Best,0.05,'right'c
+[h_b_r,   p_b_r,ci_b_r,   stats_b_r]    = ttest(Cluster_Best,No_Cluster_Best,0.05,'right')
 [h_b_l,   p_b_l,ci_b_l,   stats_b_l]    = ttest(Cluster_Best,No_Cluster_Best,0.05,'left')

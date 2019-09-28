@@ -13,7 +13,7 @@ import java.util.*;
 public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
     private static final int RUNS_AMOUNT = 10;
-    private static final int MAX_WILD_ITERATIONS = 100;
+    private static final int MAX_WILD_ITERATIONS = 20;
     private final int INITIAL_SEGMENT_LENGTH = 100;
     private final double INITIAL_ACCEPTANCE_PROBABILITY = 0.8;
     private final IDataSet dataSet;

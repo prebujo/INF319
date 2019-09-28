@@ -90,7 +90,7 @@ public class HeuristicFinalMain {
         }
         List<IOperator> operators;
         operators=new ArrayList<>();
-        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
+//        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
 //        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
 //        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));

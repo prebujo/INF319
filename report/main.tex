@@ -6,11 +6,14 @@
 \usepackage{cancel}
 \usepackage{subfiles}
 \usepackage{graphicx}
-\usepackage{caption}
+\usepackage[font = footnotesize, labelfont=bf]{caption}
 \usepackage{subcaption}
 \usepackage{fancyhdr}
 \usepackage{fancyref}
-
+\usepackage{adjustbox}
+\usepackage{numprint}
+\usepackage{multirow}
+\usepackage{rotating}
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[RO,LE]{\leftmark}
@@ -19,6 +22,7 @@
 
 \graphicspath{{img/}{../img/}}
 \def\biblio{\bibliographystyle{abbrvnat}\bibliography{tex/references}}  
+
 
 \title{{A Pickup and Delivery problem with multiple time windows in supply chain industry}\\
 {\includegraphics{uib_2.png}}\\
