@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  26 SEP 2019 01:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  29 SEP 2019 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -246,12 +246,26 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \c@nprt@digitsfirstblock=\count118
 \c@nprt@blockcnt=\count119
 \c@nprt@cntprint=\count120
-No configuration file `numprint.cfg' found.))) (./chapter5.aux
+No configuration file `numprint.cfg' found.) (/usr/share/texlive/texmf-dist/tex
+/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip63
+\multirow@cntb=\count121
+\multirow@dima=\skip64
+\bigstrutjot=\dimen141
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count122
+\rotFPtop=\skip65
+\rotFPbot=\skip66
+\rot@float@box=\box30
+\rot@mess@toks=\toks29
+))) (./chapter5.aux
 
 LaTeX Warning: Label `sec:finRes' multiply defined.
-
-
-LaTeX Warning: Label `tab:wildComp' multiply defined.
 
 )
 \openout1 = `chapter5.aux'.
@@ -270,17 +284,17 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count121
-\scratchdimen=\dimen141
-\scratchbox=\box30
-\nofMPsegments=\count122
-\nofMParguments=\count123
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count124
-\MPscratchDim=\dimen142
-\MPnumerator=\count125
-\makeMPintoPDFobject=\count126
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count123
+\scratchdimen=\dimen142
+\scratchbox=\box31
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen143
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -359,6 +373,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Chapter 1.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
@@ -367,6 +382,12 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
+
+LaTeX Warning: Reference `sec:wild' on page 1 undefined on input line 46.
+
+
+LaTeX Warning: Reference `sec:wild' on page 1 undefined on input line 46.
+
 [1
 
 
@@ -396,132 +417,158 @@ File: ../img/uniform_coordinates.png Graphic file (type png)
 Package pdftex.def Info: ../img/uniform_coordinates.png  used on input line 118
 .
 (pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[3 <../img/europe_coordinates.png> <../img/germany_coordinates.png> <../img/uni
+[3]
+! Misplaced alignment tab character &.
+l.141 ...orders using respectively $3, 7, 20, 45 &
+                                                   80$ vehicles and containi...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[4 <../img/europe_coordinates.png> <../img/germany_coordinates.png> <../img/uni
 form_coordinates.png>]
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.179                 #
+                       Ord    & #Veh      & #Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-LaTeX Warning: Reference `sec:wild' on page 4 undefined on input line 142.
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.179                 #Ord    & #
+                                 Veh      & #Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.179                 #Ord    & #Veh      & #
+                                             Loc      & Objective         & ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
-LaTeX Warning: Reference `sec:wild' on page 4 undefined on input line 142.
+[5]
 
-[4] [5]
-
-LaTeX Warning: Reference `sec:swap' on page 6 undefined on input line 207.
-
-
-LaTeX Warning: Reference `sec:swap' on page 6 undefined on input line 207.
-
-
-LaTeX Warning: Reference `sec:exch' on page 6 undefined on input line 208.
-
-
-LaTeX Warning: Reference `sec:exch' on page 6 undefined on input line 208.
-
-
-LaTeX Warning: Reference `sec:2opt' on page 6 undefined on input line 209.
-
-
-LaTeX Warning: Reference `sec:2opt' on page 6 undefined on input line 209.
-
-
-LaTeX Warning: Reference `sec:rand' on page 6 undefined on input line 210.
-
-
-LaTeX Warning: Reference `sec:rand' on page 6 undefined on input line 210.
-
-
-LaTeX Warning: Reference `sec:clust' on page 6 undefined on input line 211.
-
-
-LaTeX Warning: Reference `sec:clust' on page 6 undefined on input line 211.
+LaTeX Warning: Reference `sec:swap' on page 6 undefined on input line 220.
 
 
-LaTeX Warning: Reference `sec:greedy' on page 6 undefined on input line 212.
+LaTeX Warning: Reference `sec:swap' on page 6 undefined on input line 220.
 
 
-LaTeX Warning: Reference `sec:greedy' on page 6 undefined on input line 212.
+LaTeX Warning: Reference `sec:exch' on page 6 undefined on input line 221.
 
 
-LaTeX Warning: Reference `sec:shaw' on page 6 undefined on input line 213.
+LaTeX Warning: Reference `sec:exch' on page 6 undefined on input line 221.
 
 
-LaTeX Warning: Reference `sec:shaw' on page 6 undefined on input line 213.
+LaTeX Warning: Reference `sec:2opt' on page 6 undefined on input line 222.
 
-<../img/avrg_imp_rank.png, id=30, 1187.43625pt x 120.45pt>
+
+LaTeX Warning: Reference `sec:2opt' on page 6 undefined on input line 222.
+
+
+LaTeX Warning: Reference `sec:rand' on page 6 undefined on input line 223.
+
+
+LaTeX Warning: Reference `sec:rand' on page 6 undefined on input line 223.
+
+
+LaTeX Warning: Reference `sec:clust' on page 6 undefined on input line 224.
+
+
+LaTeX Warning: Reference `sec:clust' on page 6 undefined on input line 224.
+
+
+LaTeX Warning: Reference `sec:greedy' on page 6 undefined on input line 225.
+
+
+LaTeX Warning: Reference `sec:greedy' on page 6 undefined on input line 225.
+
+
+LaTeX Warning: Reference `sec:shaw' on page 6 undefined on input line 226.
+
+
+LaTeX Warning: Reference `sec:shaw' on page 6 undefined on input line 226.
+
+[6]
+<../img/avrg_imp_rank.png, id=32, 1185.42876pt x 120.45pt>
 File: ../img/avrg_imp_rank.png Graphic file (type png)
 <use ../img/avrg_imp_rank.png>
-Package pdftex.def Info: ../img/avrg_imp_rank.png  used on input line 228.
-(pdftex.def)             Requested size: 405.45045pt x 41.12704pt.
-<../img/best_imp_rank.png, id=31, 1186.4325pt x 120.45pt>
+Package pdftex.def Info: ../img/avrg_imp_rank.png  used on input line 241.
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
+<../img/best_imp_rank.png, id=33, 1185.42876pt x 120.45pt>
 File: ../img/best_imp_rank.png Graphic file (type png)
 <use ../img/best_imp_rank.png>
-Package pdftex.def Info: ../img/best_imp_rank.png  used on input line 235.
-(pdftex.def)             Requested size: 405.45045pt x 41.16197pt.
-<../img/best_avrg_imp_rank.png, id=32, 1187.43625pt x 121.45375pt>
+Package pdftex.def Info: ../img/best_imp_rank.png  used on input line 248.
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
+<../img/best_avrg_imp_rank.png, id=34, 1185.42876pt x 120.45pt>
 File: ../img/best_avrg_imp_rank.png Graphic file (type png)
 <use ../img/best_avrg_imp_rank.png>
-Package pdftex.def Info: ../img/best_avrg_imp_rank.png  used on input line 242.
+Package pdftex.def Info: ../img/best_avrg_imp_rank.png  used on input line 255.
 
-(pdftex.def)             Requested size: 405.45045pt x 41.46977pt.
-[6] [7 <../img/avrg_imp_rank.png> <../img/best_imp_rank.png> <../img/best_avrg_
-imp_rank.png>]
+(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
 Runaway argument?
 regrBestNormal\@fref  we see that only 3 components, C4, C6 and C7, h\ETC.
 ! Paragraph ended before \@fref was complete.
 <to be read again> 
                    \par 
-l.380 \par
+l.393 \par
           
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[8]
+
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
+[7 <../img/avrg_imp_rank.png> <../img/best_imp_rank.png> <../img/best_avrg_imp_
+rank.png>] [8]
 Runaway argument?
 tTestGroup\@fref . 
 ! Paragraph ended before \@fref was complete.
 <to be read again> 
                    \par 
-l.404 
+l.417 
       
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Overfull \hbox (7.67331pt too wide) in paragraph at lines 433--449
+Overfull \hbox (7.67331pt too wide) in paragraph at lines 446--462
  [][] 
  []
 
-
-Overfull \hbox (5.89127pt too wide) in paragraph at lines 512--530
+[9] [10]
+Overfull \hbox (5.89127pt too wide) in paragraph at lines 525--543
  [][] 
  []
 
-[9] [10] [11] [12]
+[11] [12] [13]
 
-LaTeX Warning: Reference `fig:wildRes' on page 13 undefined on input line 630.
-
-
-LaTeX Warning: Reference `fig:wildRes' on page 13 undefined on input line 630.
-
-[13]
-! Double subscript.
-l.652 As an example $\wp_{10}\Re_{4}\Im_{7}_
-                                            E$ would be an instance with ten...
-I treat `x_1_2' essentially like `x_1{}_2'.
+LaTeX Warning: Reference `fig:wildRes' on page 14 undefined on input line 643.
 
 
-LaTeX Warning: Reference `tab:finRes' on page 14 undefined on input line 654.
-
-
-LaTeX Warning: Reference `tab:finRes' on page 14 undefined on input line 654.
+LaTeX Warning: Reference `fig:wildRes' on page 14 undefined on input line 643.
 
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.665                 #
-                       Ord    & #Veh  & #Loc  & Avrg      & Best      & Best...
+l.667                     Set & #
+                                 Ord      & #Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -530,8 +577,8 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.665                 #Ord    & #
-                                 Veh  & #Loc  & Avrg      & Best      & Best...
+l.667                     Set & #Ord      & #
+                                             Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -540,34 +587,43 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.665                 #Ord    & #Veh  & #
-                                         Loc  & Avrg      & Best      & Best...
+l.667 ...              Set & #Ord      & #Veh  & #
+                                                  Loc  & objective     & gap...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-
-LaTeX Warning: Reference `fig:operPerf' on page 14 undefined on input line 679.
-
-
-
-LaTeX Warning: Reference `fig:operPerf' on page 14 undefined on input line 679.
-
-
-
-LaTeX Warning: Reference `tab:finRed' on page 14 undefined on input line 684.
-
-
-LaTeX Warning: Reference `tab:finRed' on page 14 undefined on input line 684.
-
-
-LaTeX Warning: Reference `sec:choosing' on page 14 undefined on input line 686.
-
-
-[14]
+<../img/operators_4_ord.png, id=61, 717.68124pt x 440.64626pt>
+File: ../img/operators_4_ord.png Graphic file (type png)
+<use ../img/operators_4_ord.png>
+Package pdftex.def Info: ../img/operators_4_ord.png  used on input line 721.
+(pdftex.def)             Requested size: 192.0548pt x 117.91373pt.
+<../img/operators_12_ord.png, id=62, 717.68124pt x 416.55624pt>
+File: ../img/operators_12_ord.png Graphic file (type png)
+<use ../img/operators_12_ord.png>
+Package pdftex.def Info: ../img/operators_12_ord.png  used on input line 728.
+(pdftex.def)             Requested size: 192.0548pt x 111.4674pt.
+<../img/operators_35_ord.png, id=63, 719.68875pt x 415.5525pt>
+File: ../img/operators_35_ord.png Graphic file (type png)
+<use ../img/operators_35_ord.png>
+Package pdftex.def Info: ../img/operators_35_ord.png  used on input line 735.
+(pdftex.def)             Requested size: 192.0548pt x 110.89445pt.
+<../img/operators_80_ord.png, id=64, 718.685pt x 414.54875pt>
+File: ../img/operators_80_ord.png Graphic file (type png)
+<use ../img/operators_80_ord.png>
+Package pdftex.def Info: ../img/operators_80_ord.png  used on input line 742.
+(pdftex.def)             Requested size: 192.0548pt x 110.77841pt.
+<../img/operators_150_ord.png, id=65, 712.6625pt x 410.53375pt>
+File: ../img/operators_150_ord.png Graphic file (type png)
+<use ../img/operators_150_ord.png>
+Package pdftex.def Info: ../img/operators_150_ord.png  used on input line 749.
+(pdftex.def)             Requested size: 192.0548pt x 110.6326pt.
+[14] [15] [16 <../img/operators_4_ord.png> <../img/operators_12_ord.png> <../im
+g/operators_35_ord.png> <../img/operators_80_ord.png> <../img/operators_150_ord
+.png>]
 No file chapter5.bbl.
-[15] (./chapter5.aux)
+[17] (./chapter5.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -576,13 +632,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6046 strings out of 492982
- 90317 string characters out of 6134896
- 197141 words of memory out of 5000000
- 9491 multiletter control sequences out of 15000+600000
+ 6242 strings out of 492982
+ 93411 string characters out of 6134896
+ 214604 words of memory out of 5000000
+ 9672 multiletter control sequences out of 15000+600000
  10930 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,11n,77p,468b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,12n,77p,657b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -593,11 +649,11 @@ t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on chapter5.pdf (15 pages, 315661 bytes).
+10.pfb>
+Output written on chapter5.pdf (17 pages, 509240 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

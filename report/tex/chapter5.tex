@@ -52,9 +52,6 @@ For all statistical tests in this paper we have used a $95\%$ confidence interva
 After the analysis of the heuristics, a final composition was chosen for further testing.
 We then compared the performance of the final composition with solutions found by the mathematical model in AMPL. We also present figures which show the performance of our selected heuristics in a hphazardly selected single run.
 
-For these tests we compare the results toward the best known solution from AMPL and ..... TODO.
-We use a $95\%$ confidence level for all statistical experiments in this paper.
-
 \section{Instances}
 \label{sec:ins}
 The instance generator was created based on real data from an anonumous costomer of 4flow. 
@@ -654,8 +651,9 @@ After deciding on a model best suited to our problem we did a final run of our a
 The algorithm was run using 5 instance sets of each 5 representative sizes. 
 \subsection{Evaluation of final model}
 \label{sec:finRes}
-For each instance we also used the Windows computer to let AMPL try for 10 000 seconds to find an optimal solution for each instance.
-The results from the runs are summarized in \fref{tab:finRes}. 
+For each instance we used the Windows computer to let AMPL try for 10 000 seconds to find an optimal solution for each instance. 
+The larger runs ended up getting an error so these results we simply marked as NA.
+The results from the runs of our final model composition together with the mathematical model runs in AMPL are summarized in \fref{tab:finRes}. 
 
 \begin{table}
     \centering
@@ -680,7 +678,7 @@ The results from the runs are summarized in \fref{tab:finRes}.
                         & 12      & 7     & 9     & $5\,987.8$      & $0.00\%$      & 1041.8    & $5\,987.8$    & $5\,987.8$    & $0.6$     & $0.00\%$  \\
                         & 35      & 20    & 22    & $1\,985\,165.5$ & $99.90\%$     & 10000.3   & $14\,382.4$   & $14\,272.1$   & $2.6$     & $99.28\%$  \\
                         & 80      & 45    & 45    & $6\,809\,899.5$ & $100.0\%$     & 10000.0   & $25\,736.6$   & $24\,760.8$   & $16.8$    & $99.64\%$  \\
-                        & 150     & 80    & 85    & NA              & NA            & NA        & $36\,927.2$   & $36\,932.1$   & $112.1$   & NA  \\
+                        & 150     & 80    & 85    & NA              & NA            & NA        & $36\,927.2$   & $35\,932.1$   & $112.1$   & NA  \\
             \hline
                 \multirow{5}{*}{\begin{sideways} Set 3 \end{sideways}}  
                         & 4       & 3     & 7     & $1\,404.0$      & $0.00\%$      & 0.3       & $1\,404.0$    & $1\,404.0$    & $0.1$     & $0.00\%$  \\
@@ -712,17 +710,86 @@ The results from the runs are summarized in \fref{tab:finRes}.
     The final column contains the following function: (solution objective MM - SCALNS best objective)/solution objective MM.}
 \end{table}
 
+\Fref{fig:operators} shows the weight of each operator through each segment of our model SCALNS segments for haphazardly selected runs. 
+The vertical blue lines indicate which segment the best solution for the current run was found. The most relevant sections are the ones before this blue lines.
+
+\begin{figure}
+    \centering
+    \caption{Operator weights per segment from instance set 1}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{operators_4_ord}
+        \caption{Instance size 4 orders, run 1}
+        \label{fig:operators4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{operators_12_ord}
+        \caption{Instance size 12 orders, run 3}
+        \label{fig:operators12}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{operators_35_ord}
+        \caption{Instance size 35 orders, run 5}
+        \label{fig:operators35}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{operators_80_ord}
+        \caption{Instance size 80 orders, run 7}
+        \label{fig:operators80}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{operators_150_ord}
+        \caption{Instance size 150 orders, run 9}
+        \label{fig:operators150}
+    \end{subfigure}
+    \label{fig:operators}
+    \caption*{The y-axis represent the weight of each heuristic, the x-axis represent a segment run. The blue vertical lines represent the segment where the best solution was found.}
+\end{figure}
 
 
-We also haphazardly selected some runs from different instances to analyse how the operators are performing.
-The results are shown in \fref{fig:operPerf}.
-TODO: finish figures with operator performances
+
+
 
 \subsection{Observations of results  the final composition}
 \label{sec:finalObs}
-\Fref{tab:finRed} shows that our model is TODO: finish observations part.
-
-However, from the previous sections result we also cannot conclude that they are not significant in combination with other heuristics or if they are leading to a worse solution than not including them, see \ref{sec:choosing}. 
+The first noticeable thing from the results of \fref{tab:finRes} is that the performance of the mathematical model is quickly deteriarating with the sinze of the instances.
+Already at the second instance size the model is struggeling to finish on time and in one case, instance set 4, it does not find the optimal solution.
+For the third instance size (35 orders) the model can barely start iterating through solutions and the solution objecteve after 10 000 seconds has a very big optimality gap. 
+The optimality gap indicates the gap between the dual solution and the solution objective.
+The higher this gap the further the AMPL model is away from finding an optimal solution.
+We observe that this gap is very large for the third and fourth instance size (35 orders and 80 orders) which means that the AMPL would need more that 10 000 seconds to search for any type of real solution.
+This tells us that our problem is quickly getting very complex and that building a good model that can quickly find close to optimal solutions would be very important for this problem.
+\par
+Moving on to the results of our SCALNS model, there are several observations that are important here. 
+We see from the smallest instance size (4 orders) that our model is performing equally with the Mathematical model in terms of optimal solution but already beating it in terms of running time.
+This is not unexpected as the smallest problem does not require alot of iterations but it is unexpected that our model beats the mathematical model quite consistently in terms of running time.
+\par
+As we increase the instance size to 12 orders, we see that our model consistently finds the same solution as AMPL and in the case of instance set 4 it even beats AMPL.
+This combined with the fact that our model is doing this in less than 1 second for this instance size tells us that our model is performing very well.
+\par
+For the larger instance sizes AMPL was not able to find any solutions remotely close to the optimal value and our model is beating the mathematical model with solutions more than $99\%$ better.
+A great observation is how tight the best solution is with the average solution. 
+This indicates that we are very good at consistently finding good solutions. 
+This could also indicate that we are close to the optimal solution. 
+A best solution much lower than the average would indicate that we are often getting stuck and not moving to the best solution neighbourhood. 
+However our average solutions are within a $5\%$ range of the best solutions.
+This means we are consistently hitting solutions close to the best known.
+\par
+The \fref{fig:operators} show the performance of our heuristics.
+Figure \ref{fig:operators12} show that for smaller instances the heuristics C1, C4 aswell as C7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
+The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that C6 and C7 are the most important heuristics that perform the the most consistently at finding new and better solutions. 
+We do however see several spikes from the heuristic components C5 and C1. 
+Which indicate that they are finding new possibly better solutions from time to time, just less consistently than C6 an C7. 
+It doesnt look like C4, C5 and C1 are performing that well compared to the weigths of the stronger C6 and C7 however this could indicate that they are performing on just the perfect level to find solutions that the other operators cannot. 
+These observations also support our observations from \fref{sec:evalH2}, where C6 and C7 are outperforming the other components, but we still get some positive effects from including the components C1, C4 and C5. 
 
 \biblio                                                         
 \end{document}  

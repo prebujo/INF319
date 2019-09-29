@@ -43,6 +43,6 @@
 \contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{32}
 \contentsline {section}{\numberline {5.4}Final results}{33}
 \contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{33}
-\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{33}
-\contentsline {chapter}{\numberline {6}Conclusions}{35}
-\contentsline {chapter}{\numberline {A}Appendix}{36}
+\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{35}
+\contentsline {chapter}{\numberline {6}Conclusions}{36}
+\contentsline {chapter}{\numberline {A}Appendix}{37}

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1569760350 "main.aux" "main.bbl" "main" 1569760415
+["bibtex main"] 1569789818 "main.aux" "main.bbl" "main" 1569794132
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1480098435 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "main.aux" 1569760348 14863 edf0cdcf8540e54af68ecf9901070acc ""
+  "main.aux" 1569790148 15531 9c6eb0e39d45770f3a9a95aaec115df8 ""
   "main.bcf" 0 -1 0 ""
   "tex/references.bib" 1568836861 7182 a18d32e425833649126de8329fa46121 ""
   (generated)
   "main.blg"
   "main.bbl"
-["pdflatex"] 1569760415 "main.tex" "main.pdf" "main" 1569760415
+["pdflatex"] 1569794132 "main.tex" "main.pdf" "main" 1569794132
   "/etc/texmf/web2c/texmf.cnf" 1547821982 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
@@ -111,20 +111,25 @@
   "img/best_imp_rank.png" 1569615325 4382 b25910487958bd3625bf83aa03691cad ""
   "img/europe_coordinates.png" 1568889192 79348 7cf32079db45b888b597858e8e1b0a4d ""
   "img/germany_coordinates.png" 1568889273 51892 0586059ce6d0af9e2ce1d8589ab05e97 ""
+  "img/operators_12_ord.png" 1569787645 72554 ba50e7c704ef60c228848d4d8ff3fd6d ""
+  "img/operators_150_ord.png" 1569787758 46385 9e3988a298590304916e0a66165ad15d ""
+  "img/operators_35_ord.png" 1569787671 50887 50c8a5e52a1b4cc465b541f6426e97cf ""
+  "img/operators_4_ord.png" 1569787605 21558 3440f0cd3b6fe8be33126a78602308a4 ""
+  "img/operators_80_ord.png" 1569787699 50354 2b8edd765364aeaf9de96b17d292072c ""
   "img/uib_2.png" 1568664711 106002 c1cabd114d7c2d00d5fe16ea2d0dc1e1 ""
   "img/uniform_coordinates.png" 1568889370 8362 d24d02fbee7b8557c0bf01ce542fc0d8 ""
-  "main.aux" 1569760348 14863 edf0cdcf8540e54af68ecf9901070acc ""
-  "main.bbl" 1569760350 6783 d05af4417235ab61fa4de16f760de2e4 "bibtex main"
-  "main.lof" 1569760348 354 ae6abf023f8200bb8c040f20e0f99b87 ""
+  "main.aux" 1569790148 15531 9c6eb0e39d45770f3a9a95aaec115df8 ""
+  "main.bbl" 1569789818 6783 d05af4417235ab61fa4de16f760de2e4 "bibtex main"
+  "main.lof" 1569790148 471 41a4a0b9a8b8909c347502d58b49bba3 ""
   "main.tex" 1569622686 1373 1196af32143765bb75bdf3a7b92a40c9 ""
-  "main.toc" 1569760348 3523 000abd28a0d7a88b6cf3c38cdfaf6999 ""
+  "main.toc" 1569790148 3523 6181e89857ca19b5a5d04cc583e619cf ""
   "tex/abstract.tex" 1568665614 522 44a155ce56fb7bc746982fb98eade6a7 ""
   "tex/appendix.tex" 1568665444 522 07b5c8b06c74451ce2d2000b8a84b0d1 ""
   "tex/chapter1.tex" 1568885326 8034 2fdc37201bafef57a4710b9715042bc0 ""
   "tex/chapter2.tex" 1568891702 18792 a54f3cd1993629aeabd34d46f41d9741 ""
   "tex/chapter3.tex" 1568839648 812 4c43ba883b50a50365207ed6a6a15344 ""
   "tex/chapter4.tex" 1568992342 11526 96438c693c0c397e139774110066c9b9 ""
-  "tex/chapter5.tex" 1569760413 55212 1c5953374cab53015b0244a522a0b0e9 ""
+  "tex/chapter5.tex" 1569794132 60230 206c575e9960446650107ae40e449db6 ""
   "tex/chapter6.tex" 1568711490 525 8948d99e540654e2e5b86074f7cc4584 ""
   (generated)
   "main.toc"
