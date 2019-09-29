@@ -2,61 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/.~lock.Inst1_RESULTS_selected_heuristics.csv#" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_Wild_20_iter_No_save_best.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_all_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst1_RESULTS_selected_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst2_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst2_RESULTS_all_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst2_RESULTS_selected_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst3_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst3_RESULTS_all_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst3_RESULTS_selected_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst4_RESULTS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst4_RESULTS_all_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst4_RESULTS_selected_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst5_RESULTS_all_heuristics.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst5_RESULTS_selected_heuristics.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/heuristic/AdaptiveLargeNeighbourhoodSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst2_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst2_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst3_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst3_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst5_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Final_Results/Inst5_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/T_test_Cluster.m" beforeDir="false" afterPath="$PROJECT_DIR$/../matlab/T_test_Cluster.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/final_results/1 Normal_Anova_best.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/final_results/1 Normal_Regression_best.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/final_results/1. Normal_Regression_Avrg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Operator_Analysis_Data.ods#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/Operator_Analysis_Data.ods" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Operator_Analysis_Data.ods" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Final_Results/.~lock.Inst1_RESULTS_selected_heuristics.csv#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Results_Final.xlsx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/documents/.~lock.Operators Descriptions.odt#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/Screenshot from 2019-09-18 11-50-38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/avrg_imp_rank.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/avrg_imp_rank.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/best_avrg_imp_rank.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/best_avrg_imp_rank.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/best_imp_rank.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/best_imp_rank.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.lof" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -415,7 +364,7 @@
       <workItem from="1569442771276" duration="2408000" />
       <workItem from="1569524085595" duration="5801000" />
       <workItem from="1569590184318" duration="2474000" />
-      <workItem from="1569618683243" duration="2162000" />
+      <workItem from="1569618683243" duration="2767000" />
     </task>
     <servers />
   </component>

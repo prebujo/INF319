@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  28 SEP 2019 02:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  29 SEP 2019 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -263,9 +263,6 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 
 LaTeX Warning: Label `sec:finRes' multiply defined.
 
-
-LaTeX Warning: Label `tab:wildComp' multiply defined.
-
 )
 \openout1 = `main.aux'.
 
@@ -382,19 +379,14 @@ Package pdftex.def Info: img/uib_2.png  used on input line 36.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/uib_2.png>] (./tex/a
-bstract.tex
+bstract.tex) [2
 
-Package natbib Warning: Citation `shaw97' on page 2 undefined on input line 7.
+] (./main.toc [3
 
-) [2
-
-] (./main.toc)
+])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
-[3
-
-]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -410,87 +402,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 
-Package natbib Warning: Citation `4flowWeb' on page 6 undefined on input line 8
-.
-
-
-Package natbib Warning: Citation `parragh08' on page 6 undefined on input line 
-12.
-
-
-Package natbib Warning: Citation `cordeau00' on page 6 undefined on input line 
-13.
-
-
-Package natbib Warning: Citation `nanry00' on page 6 undefined on input line 14
-.
-
-
-Package natbib Warning: Citation `cordeau00' on page 6 undefined on input line 
-17.
-
-
-Package natbib Warning: Citation `solomon87' on page 6 undefined on input line 
-20.
-
-
-Package natbib Warning: Citation `lu06' on page 6 undefined on input line 21.
-
-
-Package natbib Warning: Citation `kalantari85' on page 6 undefined on input lin
-e 22.
-
-
-Package natbib Warning: Citation `dumas91' on page 6 undefined on input line 23
-.
-
-
-Package natbib Warning: Citation `fagerholt10' on page 6 undefined on input lin
-e 24.
-
-
-Package natbib Warning: Citation `berbeglia10' on page 6 undefined on input lin
-e 25.
-
-
-Package natbib Warning: Citation `berbeglia07' on page 6 undefined on input lin
-e 26.
-
-
-Package natbib Warning: Citation `zhou13' on page 6 undefined on input line 27.
-
-
-
-Package natbib Warning: Citation `savelsbergh95' on page 6 undefined on input l
-ine 28.
-
-
-Package natbib Warning: Citation `dror89' on page 6 undefined on input line 29.
-
-
-
-Package natbib Warning: Citation `christiansen02' on page 6 undefined on input 
-line 31.
-
-
-Package natbib Warning: Citation `christiansen04' on page 6 undefined on input 
-line 34.
-
-
-Package natbib Warning: Citation `hemmati14' on page 6 undefined on input line 
-35.
-
-
-Package natbib Warning: Citation `hemmati16' on page 6 undefined on input line 
-39.
-
-
-Package natbib Warning: Citation `ferreira18' on page 6 undefined on input line
- 40.
-
-
-Package natbib Warning: Citation `desrosiers95' on page 6 undefined on input li
-ne 41.
+Overfull \hbox (28.59283pt too wide) in paragraph at lines 17--30
+[]\OT1/cmr/m/n/12 Cordeau and Groupe d'^^Setudes et de recherche en anal-yse de
+s d^^Secisions  (Montr^^Seal(2000)
+ []
 
 
 Underfull \vbox (badness 1082) has occurred while \output is active []
@@ -498,9 +413,7 @@ Underfull \vbox (badness 1082) has occurred while \output is active []
 [6
 
 ]
-
-Package natbib Warning: Citation `favaretto07' on page 7 undefined on input lin
-e 68.
+Underfull \vbox (badness 1248) has occurred while \output is active []
 
 [7]) (./tex/chapter2.tex [8]
 Chapter 2.
@@ -615,14 +528,6 @@ Chapter 3.
 
 ]
 Chapter 4.
-
-Package natbib Warning: Citation `ropke06' on page 16 undefined on input line 8
-.
-
-
-Package natbib Warning: Citation `shaw97' on page 16 undefined on input line 15
-.
-
 [16
 
 ]
@@ -655,10 +560,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--77
 Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
-
-
-Package natbib Warning: Citation `shaw97' on page 18 undefined on input line 82
-.
 
 
 Overfull \hbox (7.5115pt too wide) detected at line 96
@@ -814,17 +715,11 @@ LaTeX Warning: Reference `fig:wildRes' on page 32 undefined on input line 646.
 LaTeX Warning: Reference `fig:wildRes' on page 32 undefined on input line 646.
 
 [32]
-
-LaTeX Warning: Reference `tab:finRes' on page 33 undefined on input line 658.
-
-
-LaTeX Warning: Reference `tab:finRes' on page 33 undefined on input line 658.
-
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
 l.669                     Set & #
-                                 Ord      & #Veh  & #Loc  & Solution      & ...
+                                 Ord      & #Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -834,7 +729,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 <recently read> ##
                   
 l.669                     Set & #Ord      & #
-                                             Veh  & #Loc  & Solution      & ...
+                                             Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -844,58 +739,41 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 <recently read> ##
                   
 l.669 ...              Set & #Ord      & #Veh  & #
-                                                  Loc  & Solution      & gap...
+                                                  Loc  & objective     & gap...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 
-LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 715.
+LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 718.
 
 
 
-LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 715.
+LaTeX Warning: Reference `fig:operPerf' on page 33 undefined on input line 718.
 
 
 
-LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 720.
+LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 723.
 
 
-LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 720.
+LaTeX Warning: Reference `tab:finRed' on page 33 undefined on input line 723.
 
 
-LaTeX Warning: Reference `sec:choosing' on page 33 undefined on input line 722.
+LaTeX Warning: Reference `sec:choosing' on page 33 undefined on input line 725.
 
 
 [33]) (./tex/chapter6.tex [34]
 Chapter 6.
-
-Package natbib Warning: Citation `shaw97' on page 35 undefined on input line 7.
-
-
 ) (./tex/appendix.tex [35
 
 ]
 Appendix A.
-
-Package natbib Warning: Citation `shaw97' on page 36 undefined on input line 7.
-
-
 ) (./main.bbl [36
 
 ] [37
 
-])
-
-Package natbib Warning: There were undefined citations.
-
-[38] (./main.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+]) [38] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -906,7 +784,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  6362 strings out of 492982
  94393 string characters out of 6134896
- 211046 words of memory out of 5000000
+ 212355 words of memory out of 5000000
  9770 multiletter control sequences out of 15000+600000
  12642 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -926,7 +804,7 @@ mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (38 pages, 515674 bytes).
+Output written on main.pdf (38 pages, 516850 bytes).
 PDF statistics:
  202 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams
