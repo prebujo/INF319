@@ -3,46 +3,54 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: abbrvnat.bst
 Database file #1: tex/references.bib
+Warning--entry type for "java" isn't style-file defined
+--line 1 of file tex/references.bib
+Warning--entry type for "ampl" isn't style-file defined
+--line 10 of file tex/references.bib
+Warning--entry type for "gurobi" isn't style-file defined
+--line 19 of file tex/references.bib
+Warning--entry type for "matlab" isn't style-file defined
+--line 28 of file tex/references.bib
 Warning--empty note in 4flowWeb
-You've used 23 entries,
+You've used 27 entries,
             2773 wiz_defined-function locations,
-            740 strings with 8630 characters,
-and the built_in function-call counts, 10597 in all, are:
-= -- 961
-> -- 610
-< -- 10
-+ -- 206
-- -- 183
-* -- 921
-:= -- 1648
-add.period$ -- 69
-call.type$ -- 23
-change.case$ -- 128
-chr.to.int$ -- 23
-cite$ -- 47
-duplicate$ -- 461
-empty$ -- 857
-format.name$ -- 218
-if$ -- 2170
+            757 strings with 8949 characters,
+and the built_in function-call counts, 11785 in all, are:
+= -- 1065
+> -- 650
+< -- 14
++ -- 222
+- -- 195
+* -- 981
+:= -- 1828
+add.period$ -- 81
+call.type$ -- 27
+change.case$ -- 144
+chr.to.int$ -- 27
+cite$ -- 55
+duplicate$ -- 521
+empty$ -- 985
+format.name$ -- 234
+if$ -- 2426
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 22
-newline$ -- 123
-num.names$ -- 92
-pop$ -- 222
+newline$ -- 143
+num.names$ -- 108
+pop$ -- 270
 preamble$ -- 1
-purify$ -- 107
+purify$ -- 119
 quote$ -- 0
-skip$ -- 346
+skip$ -- 402
 stack$ -- 0
-substring$ -- 467
-swap$ -- 22
+substring$ -- 475
+swap$ -- 26
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 248
+type$ -- 292
 warning$ -- 1
-while$ -- 107
+while$ -- 119
 width$ -- 0
-write$ -- 302
-(There was 1 warning)
+write$ -- 350
+(There were 5 warnings)

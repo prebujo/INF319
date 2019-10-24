@@ -16,37 +16,26 @@ This chapter will present the results from the following experiments:
 \end{itemize}
 
 Before going into the experimental results we will describe the experimental setup.
-This icludes the techical side aswell as the setup of the analytical experiments themselves.
+This icludes the techical setup of our experiments in \cref{sec:tech}, aswell as the setup of the analytical experiments themselves in \cref{sec:analy}.
 After that we will explain the generation ofthe instances used in the evaluation sections.
 
 \section{Experimental Setup}
 \label{sec:setup}
 In this section we describe the technical setup of the experiments aswell as the Analytical setup of our eperiments.
-\subsection{Technical Setup}
-\label{sec:tech}
-The computational experiments in this paper is run on two different computers. 
-The more demanding experiments are run on a 64-bit Windows 10 computer with a 3.4 Ghz i7-6700 quad core processor and 16GB RAM. 
-We will shorten the name of this computer to "Windows computer". 
-The less demanding experiments are run on a 64-bit Ubuntu 18.04 computer with a 1.8 Ghz quad core i7-8550u processor and 16GB RAM. 
-We call this computer for short "Ubuntu computer".
-As a general rule through the rest of this paper; if not specified, the results were run on the Ubuntu computer.
-
+\subsubsection{Technical Setup}
+The computational experiments in this paper are run on a 64-bit Ubuntu 18.04 computer with a 1.8 Ghz quad core i7-8550u processor and 16GB RAM. 
 The instance generator described in the next section was implemented in Java (version number).
-The mathematical model from section 2 is setup in AMPL (version number), using the Gurobi solver. 
-All AMPL experiments were run on the Windows computer.
-The ALNS heuristics are implemented in Java version 10.0.4+13.
-These experiments were run partly on the Ubuntu and partly on the Windows computer.
-The statistical experiments are performed in Matlab R2019a version 9.6.0.1174912 on the Ubuntu computer.
+The mathematical model from \cref{ch:mm} is setup in AMPL \citep{ampl}, using the Gurobi solver \citep{gurobi}.  
+All AMPL experiments were run on the powerful maschine.
+The ALNS heuristics are implemented in Java \citep{java} and these experiments were run partly on the home and partly on the powerful maschine.
+The ANOVA(III), multiple linear regressions and t-tests are performed in Matlab \citep{matlab} on the home maschine.
 
-
-\subsection{Analytics Setup}
-\label{sec:analy}
-In section 3 we described seven operators, aswell as a wild operator, some invented in this paper and others based on known ALNS heuristics. 
+\subsubsection{Analytics Setup}
+In section 3 we described seven heuristics, aswell as a wild algorithm. 
 For our testing we generated five instance sets of each five instances, totally 25 instance.
-While testing the algorithm from \fref{sec:wild}, we used one instance set. 
+While testing the algorithm from \cref{sec:wild}, we used one instance set. 
 All tests were run 10 times and results are given as an average and best objective value over the 10 runs aswell as an average running time over the runs.
 To analyse the performance of each of the heuristics, 5 reasonably sized instances was solved 10 times using each of the $2^7 = 128$ combinations of operators.
-These $2^7=128$ runs were done on the Windows computer. \par
 To determine which of the heuristics influence the result we have performed several statistical tests, including ANOVA (III) and multiple linear regression analysis, and pairwise t-tests. 
 For all statistical tests in this paper we have used a $95\%$ confidence interval.
 After the analysis of the heuristics, a final composition was chosen for further testing.
@@ -94,7 +83,7 @@ To make the instance generator as realistic as possible we have decided to split
 European, German and uniform geographically distributed locations.
 We made 2 maps based on real scale approximations of geographical data from National Geographics, in km.
 To simplify we have sticked to geographical points with an eliptic uniformly distributed area surrounding the point to represent a country or a city.
-\fref{fig:areas} illustrates the areas of possible locations used in the generator. 
+\cref{fig:areas} illustrates the areas of possible locations used in the generator. 
 Larger elipses are more likely to be selected by the generator than smaller elipses.
 \begin{figure}
 \centering
@@ -124,8 +113,8 @@ Larger elipses are more likely to be selected by the generator than smaller elip
 \end{figure}
 
 For the selected elipse a point was selected within the elipse at random with a uniform distribution.
-For \fref{fig:uni} points were generated at random within the limits shown.
-From our 5 instance sets, two were generated using \fref{fig:eur}, two with \fref{fig:ger} and one with the uniform distribution from \fref{fig:uni}. 
+For \cref{fig:uni} points were generated at random within the limits shown.
+From our 5 instance sets, two were generated using \cref{fig:eur}, two with \cref{fig:ger} and one with the uniform distribution from \cref{fig:uni}. 
 If a point belong in the same factory as a previously generated point, that point was generated within a reasonable radius of three kilometer.
 
 \subsection{Generated Instances}
@@ -133,9 +122,9 @@ If a point belong in the same factory as a previously generated point, that poin
 For testing our algorithm in this paper, 5 instance sets of each 5 instances of varying sizes were generated. 
 We have numbered the sets as follows:
 \begin{itemize}
-    \item Set 1 and set 2 are generated based on the European map from \fref{fig:eur}
-    \item Set 3 and set 4 are generated on the german map from \fref{fig:ger}
-    \item Set 5 is generated on the uniform distribution from \fref{fig:uni}
+    \item Set 1 and set 2 are generated based on the European map from \cref{fig:eur}
+    \item Set 3 and set 4 are generated on the german map from \cref{fig:ger}
+    \item Set 5 is generated on the uniform distribution from \cref{fig:uni}
 \end{itemize}
 
 Each instance set contain representative instance sizes of our problem based on data from 4flow, $4, 12, 35, 80, 150$ orders using respectively $3, 7, 20, 45 & 80$ vehicles and containing $7, 9, 22, 45, 85$ locations.  
@@ -156,18 +145,18 @@ The results from the final composition are presented in the next section.
 
 \subsection{Evaluation of the wild algorithm}
 \label{sec:evalw}
-To help our algorithm escape from a neighbourhood position we designed a wild algorithm described in section \fref{sec:wild}. To evaluate the implementaion of this operator we have decided to evaluate the result of running the complete ALNS with all heuristics included with three different modifications. 
+To help our algorithm escape from a neighbourhood position we designed a wild algorithm described in section \cref{sec:wild}. To evaluate the implementaion of this operator we have decided to evaluate the result of running the complete ALNS with all heuristics included with three different modifications. 
 First we run the algorithm without any escape algorithm.
 Secondly we ran the algorithm with a modification that resets the algorithm each time we get stuck and start from a new random solution.
 And lastly we ran our algorithm with our escape algorithm.
 Comparing these three options towards eachother will help us evaluate if our wild algorithm is helping us in general and see if our wild algorithm is different than doing a reset and just starting from a new solution somewhere.
 
 \subsubsection{Results of running ALNS}
-We ran our algorithm 10x3 times, ten for each escape adjustment, on instance set 1 from \fref{sec:ins}.
+We ran our algorithm 10x3 times, ten for each escape adjustment, on instance set 1 from \cref{sec:ins}.
 We modified our escape algorithm on this run to ignore if a best solution is found while moving from one neighbourhood to the next. 
-This way the extra iterations explained in \fref{sec:wild}, does not give any unfair advantage to our wild escape algorithm. We will simply be moving from one neighbourhood to the next without checking if we find a better solution on the way.
+This way the extra iterations explained in \cref{sec:wild}, does not give any unfair advantage to our wild escape algorithm. We will simply be moving from one neighbourhood to the next without checking if we find a better solution on the way.
 \par
-The result from running our algorithm with these three adjustments are summarized in \fref{tab:wildComp}.
+The result from running our algorithm with these three adjustments are summarized in \cref{tab:wildComp}.
 It shows the objective values found on average during each of the 10 runs, the best solution found overall and the average running time, for each excape adjustment.
 \begin{table}
     \centering
@@ -192,7 +181,7 @@ It shows the objective values found on average during each of the 10 runs, the b
 \end{table}
 
 \subsubsection{Observations of results from wild algorithm evaluation}
-The \fref{tab:wildComp} shows that on average using our wild algorithm clearly outperforms both the restart algorithm and not including a reset algorithm. 
+The \cref{tab:wildComp} shows that on average using our wild algorithm clearly outperforms both the restart algorithm and not including a reset algorithm. 
 We see that the average result for all instance sizes are lowest using our wild algorithm. 
 In addition our wild algorithm outperforms the others for all instances in finding the best solution, except for the instance with 80 orders, where not using an escape algorithm ended up finding a better best solution. 
 This is however probably due to the algorithm ending in a lucky neighbourhood and since the wild operator is vastly improving the solution on average we still think it is better to run our algorithm with the wild escape algorithm adjustment.
@@ -217,13 +206,13 @@ This results in $2^7 = 128$ each running 10 times. To be able to compare the res
 \subsubsection{Ranking the combinations}
 We shorten the names of each heuristic and will refer to them for here on as components. The components are assigned the following names:
 \begin{itemize}
-    \item C1: this is the swap heuristic described in \fref{sec:swap}
-    \item C2: exchange heuristic from \fref{sec:exch}
-    \item C3: is the 2-opt heuristic in \fref{sec:2opt} 
-    \item C4: is the random removal first fit insertion heuristic from \fref{sec:rand}
-    \item C5: clustering heuristic described in \fref{sec:clust}
-    \item C6: this is the worst removal and greedy insert heuristic in \fref{sec:greedy}
-    \item C7: is the shaw removal and regret-3 insertion heuristic described in \fref{sec:shaw}
+    \item C1: this is the swap heuristic described in \cref{sec:swap}
+    \item C2: exchange heuristic from \cref{sec:exch}
+    \item C3: is the 2-opt heuristic in \cref{sec:2opt} 
+    \item C4: is the random removal first fit insertion heuristic from \cref{sec:rand}
+    \item C5: clustering heuristic described in \cref{sec:clust}
+    \item C6: this is the worst removal and greedy insert heuristic in \cref{sec:greedy}
+    \item C7: is the shaw removal and regret-3 insertion heuristic described in \cref{sec:shaw}
 \end{itemize}
 
 \Fref{fig:rank} shows the ranking of each combination of components from left to right.
@@ -322,7 +311,7 @@ We did one ANOVA analysis for the average improvement over 10 runs shown in figu
     \caption*{The columns contains in order: the source of the variability and for each source the sum of the sqares, the degrees of freedom, the mean squares, the F-statistic and the p-value.}
 \end{table}
 
-In addition to this we performed a multiple linear regression in \fref{tab:regrNormal} on the same data as the ANOVA.
+In addition to this we performed a multiple linear regression in \cref{tab:regrNormal} on the same data as the ANOVA.
 The regressional analysis gives us insight into wether a component is positively or negatively influencing the result aswell as how well the components explain the result through the $R^2$.
 Also here we used the Instances as a random effect, and the final instance is when all Instance terms are 0.
 
@@ -383,10 +372,10 @@ Also here we used the Instances as a random effect, and the final instance is wh
 \end{table}
 
 \subsubsection{Observations from initial evaluation of heuristics}
-The results from table \ref{tab:anovaNormal} and \fref{tab:regrNormal} split our components into two groups. 
+The results from table \ref{tab:anovaNormal} and \cref{tab:regrNormal} split our components into two groups. 
 The first obvious group are the significant heuristics.
-The ANOVA results from table \ref{tab:anovaAvrgNormal} and \fref{tab:anovaBestNormal} tells us that four components, C4-C7, have a significant impact on the result.
-However from \ref{tab:regrAvrgNormal} and \fref{regrBestNormal} we see that only 3 components, C4, C6 and C7, have a positive estimated coefficient for both avrg and best (C1 is positive for best but negative for average improvement).
+The ANOVA results from table \ref{tab:anovaAvrgNormal} and \cref{tab:anovaBestNormal} tells us that four components, C4-C7, have a significant impact on the result.
+However from \ref{tab:regrAvrgNormal} and \cref{regrBestNormal} we see that only 3 components, C4, C6 and C7, have a positive estimated coefficient for both avrg and best (C1 is positive for best but negative for average improvement).
 From this we can safely conclude that C4, C6 and C7 are significantly, positively improving the result of our model on average and they are good at finding good soolutions. 
 C5 is significantly influencing the result but with a negative coefficient. 
 This leads us to conclude that this heuristic either performs poorly alone, or has a negative influence on the model, to figure out which we need to do further testing.
@@ -399,7 +388,7 @@ We refer to the heuristics C1,C2,C3 and C5 as the undecided group, or G in our f
 \subsection{Further evaluation of heuristics}
 \label{sec:evalH2}
 To further analyse the performance of the heuristics we want to analyse how the heuristics are performing as a group (G) to see if they have an effect on the results.
-The result from \fref{sec:evalH1} tells us that it is out of the question to use any combination of components where only undecided components are used.
+The result from \cref{sec:evalH1} tells us that it is out of the question to use any combination of components where only undecided components are used.
 These components will alone have a negative impact on the result but it is still possible that using them combined with the significant components could have a positive impact on the result
 We have therefore removed the observations where the undecided group appear alone in the following testing.
 We want to test if using one or several of the undecided heuristics in combination with other heuristics have a positive impact on the result.
@@ -413,7 +402,7 @@ We did this using further ANOVA (III) statistical analysis and multi linear regr
 \subsubsection{Evaluation of undecided components as a group}
 The first thing we did was to run a T-test on that compares the mean of the population which include some combination of the undecided group heuristics and the significant heuristics, towards the population that does not contain any heuristic from the undecided group. 
 To represent the population without any of the undecided heuristics we have the used the parameter $P_N$ and to represent the population with some combination of the undecided heuristics and the significant heuristics we have used the parameter $P_H$.
-The results from the T-test are summarized in \fref{tTestGroup}.
+The results from the T-test are summarized in \cref{tTestGroup}.
 
 \begin{table}
     \centering
@@ -489,7 +478,7 @@ We did this to see if a combination of the undecided group and the significant h
     \caption*{The columns contains in order: the source of the variability and for each source the sum of the sqares, the degrees of freedom, the mean squares, the F-statistic and the p-value.}
 \end{table}
 
-The results are summarized in table \ref{tab:anovaGroup} and \fref{tab:regrGroup}. 
+The results are summarized in table \ref{tab:anovaGroup} and \cref{tab:regrGroup}. 
 As an example a source of G+C4, contains all observations where at least one of the undecided components from G are combined exclusively with C4.
 
 \begin{table}
@@ -549,20 +538,20 @@ As an example a source of G+C4, contains all observations where at least one of 
 \end{table}
 
 \subsubsection{Observations from results of the heuristics further evaluation}
-The results from \fref{tab:tTestGroup} tells us that we cannot reject the $H_0$ null hypothesis  that the mean of the two populations are different using a $95\%$ confidence interval, for neither average or best improvement.
+The results from \cref{tab:tTestGroup} tells us that we cannot reject the $H_0$ null hypothesis  that the mean of the two populations are different using a $95\%$ confidence interval, for neither average or best improvement.
 This tells us that the components from the undecided group either have no significant impact on the result, or that the effect from some are nulling out the others. Further testing is needed to make any further conclusions. \par
-Table \ref{tab:anovaGroup} and \fref{tab:regrGroup} gives us further insight into our model.
-First of all the result from \fref{tab:anovaAvrgGroup} tells us that only two combinations of the undecided group and the significant variables have a significant impact on the result using a $95\%$ confidence interval.
+Table \ref{tab:anovaGroup} and \cref{tab:regrGroup} gives us further insight into our model.
+First of all the result from \cref{tab:anovaAvrgGroup} tells us that only two combinations of the undecided group and the significant variables have a significant impact on the result using a $95\%$ confidence interval.
 Using some heuristics from the undecided group combined with component C6 and C7, aswell as C4 has a significant impact on the average improvement result.
-From \fref{tab:regrAvrgGroup} we also see that the combinations are also getting a positive coefficient.
+From \cref{tab:regrAvrgGroup} we also see that the combinations are also getting a positive coefficient.
 We also observe that the $R^2 = 0.95$ is very high so this model explains the results very well and this supports the use of these heuristic combination in regards to the average improvement.
 \par
-The same combinations are significant and positive in reagards to the best improvement tabels \fref{tab:anovaBestGroup} and \fref{tab:regrBestGroup}.
+The same combinations are significant and positive in reagards to the best improvement tabels \cref{tab:anovaBestGroup} and \cref{tab:regrBestGroup}.
 And even though more combinations are significant for best improvement the combinations with highest positive estimated coefficients are still the combinations with C6 and C7, and C6 C7 and C4.
 We also observe here the increased $R^2 = 0.967$ which supports our conclusion that this should consistently lead to good results on best and average improvement.
 \par
 The results from the further testing tells us that there are combinations of the undecided group and the significant components that have a positive significant impact on the result of both average and best improvement. 
-It supports our results from \fref{sec:evalH1} of significant components C6, C7 and C4 and leads us to conclude that there might be a positive influence from the undecided group components, however further testing is nessecary to determine which components should be included. 
+It supports our results from \cref{sec:evalH1} of significant components C6, C7 and C4 and leads us to conclude that there might be a positive influence from the undecided group components, however further testing is nessecary to determine which components should be included. 
 
 \subsection{Evaluation of individual components}
 \label{sec:evalI}
@@ -572,7 +561,7 @@ We continue refering to them as the undecided group components or G.
 \par
 We want to figure out which of the components in the undecided group, if any, have a positive, or negative, influence on the result.
 To do this we performed pairwise t-tests to check if an undecided component is significantly improving or decreasing the best and average improvement.
-Like in \fref{sec:evalH2} it is out of the question to use any combination of heuristics where only undecided heuristics are used, so we remove these observations from the data also in these tests.
+Like in \cref{sec:evalH2} it is out of the question to use any combination of heuristics where only undecided heuristics are used, so we remove these observations from the data also in these tests.
 In our tests we test if the mean of the populations where we combine the undecided heuristics with some significant heuristic is significantly different than the pooulation when we are not using an undecided heuristic. 
 
 \subsubsection{T-tests of individual components}
@@ -620,7 +609,7 @@ The results from the pairwise t-tests are summarized in \ref{tab:tTest}.
 
 \subsubsection{Observations from the results of the individual component evaluations}
 The first thing we see from the t-tests is that we were right in assuming that the effect of the components were cancelling eachother out. 
-We go through each of the components results from \fref{tab:tTest} here:
+We go through each of the components results from \cref{tab:tTest} here:
 \begin{itemize}
     \item C1: The population mean of both best and average improvement is not significantly different using a $95\%$ confidence interval. It follows then that the tails are also not significantly different.
     \item C2: We reject the null hypothesis that the means are equal using a $95\%$ significanse interval for the average and best improvement regarding this component. 
@@ -636,14 +625,14 @@ Finally C5 is not affecting the average improvement however it is positively eff
 
 \subsection{Deciding on the final model composition}
 \label{sec:iniObs}
-The results from \fref{sec:wild} tells us that our final model should include our wild algorithm. 
+The results from \cref{sec:wild} tells us that our final model should include our wild algorithm. 
 This will influence our running time a little but give us much more reliable results.
 \par
-As for selecting heuristics or components to include, the results from section \ref{sec:evalH1} and \fref{sec:evalH2}, indicates that we need to include C4, C6 and C7 in our final model.
-We observed from our testing of the wild algorithm that the running time of C1 is significantly lower than our other operators \fref{fig:wildRes}. Even though \fref{sec:evalI} showed us that C1 had no effect on the model, the low running time is leading us to rather include this operator than not to get us a little bit better running times.
-It will as \fref{sec:evalI} also showed not negatively effect our results.
+As for selecting heuristics or components to include, the results from section \cref{sec:evalH1} and \cref{sec:evalH2}, indicates that we need to include C4, C6 and C7 in our final model.
+We observed from our testing of the wild algorithm that the running time of C1 is significantly lower than our other operators \cref{fig:wildRes}. Even though \cref{sec:evalI} showed us that C1 had no effect on the model, the low running time is leading us to rather include this operator than not to get us a little bit better running times.
+It will as \cref{sec:evalI} also showed not negatively effect our results.
 C5 is also not effecting the average improvement of our model, but it also has a good running time, and it significantly effects the result of the best improvement found. This tells us that we should include this operator in our final composition. \par
-The results from \fref{sec:evalH2} indicated that a combination of C4, C6 and C7 + some of combination of the undecided group components is significantly effecting both the average and best improvement. Therefore our final model composition will be the ALNS algorithm with the wild algorithm and heuristic components C1, C4, C5, C6 and C7.
+The results from \cref{sec:evalH2} indicated that a combination of C4, C6 and C7 + some of combination of the undecided group components is significantly effecting both the average and best improvement. Therefore our final model composition will be the ALNS algorithm with the wild algorithm and heuristic components C1, C4, C5, C6 and C7.
 
 \section{Final results}
 \label{sec:finRes}
@@ -651,9 +640,9 @@ After deciding on a model best suited to our problem we did a final run of our a
 The algorithm was run using 5 instance sets of each 5 representative sizes. 
 \subsection{Evaluation of final model}
 \label{sec:finRes}
-For each instance we used the Windows computer to let AMPL try for 10 000 seconds to find an optimal solution for each instance. 
+For each instance we used the powerful maschine to let AMPL try for 10 000 seconds to find an optimal solution for each instance. 
 The larger runs ended up getting an error so these results we simply marked as NA.
-The results from the runs of our final model composition together with the mathematical model runs in AMPL are summarized in \fref{tab:finRes}. 
+The results from the runs of our final model composition together with the mathematical model runs in AMPL are summarized in \cref{tab:finRes}. 
 
 \begin{table}
     \centering
@@ -710,7 +699,7 @@ The results from the runs of our final model composition together with the mathe
     The final column contains the following function: (solution objective MM - SCALNS best objective)/solution objective MM.}
 \end{table}
 
-\Fref{fig:operators} shows the weight of each operator through each segment of our model SCALNS segments for haphazardly selected runs. 
+\Cref{fig:operators} shows the weight of each operator through each segment of our model SCALNS segments for haphazardly selected runs. 
 The vertical blue lines indicate which segment the best solution for the current run was found. The most relevant sections are the ones before this blue lines.
 
 \begin{figure}
@@ -760,7 +749,7 @@ The vertical blue lines indicate which segment the best solution for the current
 
 \subsection{Observations of results  the final composition}
 \label{sec:finalObs}
-The first noticeable thing from the results of \fref{tab:finRes} is that the performance of the mathematical model is quickly deteriarating with the sinze of the instances.
+The first noticeable thing from the results of \cref{tab:finRes} is that the performance of the mathematical model is quickly deteriarating with the sinze of the instances.
 Already at the second instance size the model is struggeling to finish on time and in one case, instance set 4, it does not find the optimal solution.
 For the third instance size (35 orders) the model can barely start iterating through solutions and the solution objecteve after 10 000 seconds has a very big optimality gap. 
 The optimality gap indicates the gap between the dual solution and the solution objective.
@@ -783,13 +772,13 @@ A best solution much lower than the average would indicate that we are often get
 However our average solutions are within a $5\%$ range of the best solutions.
 This means we are consistently hitting solutions close to the best known.
 \par
-The \fref{fig:operators} show the performance of our heuristics.
-Figure \ref{fig:operators12} show that for smaller instances the heuristics C1, C4 aswell as C7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
+The \cref{fig:operators} show the performance of our heuristics.
+\Cref{fig:operators12} show that for smaller instances the heuristics C1, C4 aswell as C7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
 The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that C6 and C7 are the most important heuristics that perform the the most consistently at finding new and better solutions. 
 We do however see several spikes from the heuristic components C5 and C1. 
 Which indicate that they are finding new possibly better solutions from time to time, just less consistently than C6 an C7. 
 It doesnt look like C4, C5 and C1 are performing that well compared to the weigths of the stronger C6 and C7 however this could indicate that they are performing on just the perfect level to find solutions that the other operators cannot. 
-These observations also support our observations from \fref{sec:evalH2}, where C6 and C7 are outperforming the other components, but we still get some positive effects from including the components C1, C4 and C5. 
+These observations also support our observations from \cref{sec:evalH2}, where C6 and C7 are outperforming the other components, but we still get some positive effects from including the components C1, C4 and C5. 
 
 \biblio                                                         
 \end{document}  

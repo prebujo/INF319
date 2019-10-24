@@ -20,8 +20,8 @@
 \contentsline {section}{\numberline {4.6}Radical jump away from neighbourhood}{19}
 \contentsline {chapter}{\numberline {5}Computational Results}{20}
 \contentsline {section}{\numberline {5.1}Experimental Setup}{20}
-\contentsline {subsection}{\numberline {5.1.1}Technical Setup}{20}
-\contentsline {subsection}{\numberline {5.1.2}Analytics Setup}{21}
+\contentsline {subsubsection}{Technical Setup}{20}
+\contentsline {subsubsection}{Analytics Setup}{20}
 \contentsline {section}{\numberline {5.2}Instances}{21}
 \contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real data}{21}
 \contentsline {subsubsection}{Random locations based on real georaphical data}{22}
@@ -30,16 +30,16 @@
 \contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{23}
 \contentsline {subsubsection}{Results of running ALNS}{24}
 \contentsline {subsubsection}{Observations of results from wild algorithm evaluation}{24}
-\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{25}
+\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{24}
 \contentsline {subsubsection}{Ranking the combinations}{25}
 \contentsline {subsubsection}{ANOVA and regression analysis}{26}
-\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{28}
-\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{28}
+\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{27}
+\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{27}
 \contentsline {subsubsection}{Evaluation of undecided components as a group}{28}
-\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{29}
+\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{28}
 \contentsline {subsection}{\numberline {5.3.4}Evaluation of individual components}{30}
-\contentsline {subsubsection}{T-tests of individual components}{31}
-\contentsline {subsubsection}{Observations from the results of the individual component evaluations}{31}
+\contentsline {subsubsection}{T-tests of individual components}{30}
+\contentsline {subsubsection}{Observations from the results of the individual component evaluations}{32}
 \contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{32}
 \contentsline {section}{\numberline {5.4}Final results}{33}
 \contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{33}
