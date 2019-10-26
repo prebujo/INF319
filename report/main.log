@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  23 OCT 2019 15:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  26 OCT 2019 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -256,14 +256,7 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \rotFPbot=\skip66
 \rot@float@box=\box30
 \rot@mess@toks=\toks29
-) (./main.aux
-
-LaTeX Warning: Label `sec:finRes' multiply defined.
-
-
-LaTeX Warning: Label `sec:finRes@cref' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -599,91 +592,54 @@ LaTeX Warning: Reference `sec:analy' on page 1 undefined on input line 19.
 [20
 
 ] [21]
-<img/europe_coordinates.png, id=86, 737.75626pt x 604.2575pt>
+<img/europe_coordinates.png, id=87, 737.75626pt x 604.2575pt>
 File: img/europe_coordinates.png Graphic file (type png)
 <use img/europe_coordinates.png>
 Package pdftex.def Info: img/europe_coordinates.png  used on input line 93.
 (pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
-<img/germany_coordinates.png, id=87, 602.25pt x 494.84875pt>
+<img/germany_coordinates.png, id=88, 602.25pt x 494.84875pt>
 File: img/germany_coordinates.png Graphic file (type png)
 <use img/germany_coordinates.png>
 Package pdftex.def Info: img/germany_coordinates.png  used on input line 100.
 (pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
-<img/uniform_coordinates.png, id=88, 485.815pt x 409.53pt>
+<img/uniform_coordinates.png, id=89, 485.815pt x 409.53pt>
 File: img/uniform_coordinates.png Graphic file (type png)
 <use img/uniform_coordinates.png>
 Package pdftex.def Info: img/uniform_coordinates.png  used on input line 107.
 (pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[22 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
-rm_coordinates.png>]
-! Misplaced alignment tab character &.
-l.130 ...orders using respectively $3, 7, 20, 45 &
-                                                   80$ vehicles and containi...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+[22] [23 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/
+uniform_coordinates.png>] [24]
+Overfull \hbox (0.11673pt too wide) in paragraph at lines 218--219
+[]\OT1/cmr/m/n/12 H7: the shaw re-moval and regret-3 in-ser-tion heuris-tic de-
+scribed in sec-tion 4.2.7. 
+ []
 
-[23]
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.168                 #
-                       Ord    & #Veh      & #Loc      & Objective         & ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.168                 #Ord    & #
-                                 Veh      & #Loc      & Objective         & ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.168                 #Ord    & #Veh      & #
-                                             Loc      & Objective         & ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-[24]
 ! Undefined control sequence.
-l.218 \Fref
-           {fig:rank} shows the ranking of each combination of components fr...
+l.221 \Fref
+           {fig:rank} shows the ranking of each combination of heuristics fr...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<img/avrg_imp_rank.png, id=98, 1185.42876pt x 120.45pt>
+<img/avrg_imp_rank.png, id=99, 1185.42876pt x 120.45pt>
 File: img/avrg_imp_rank.png Graphic file (type png)
 <use img/avrg_imp_rank.png>
-Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 230.
+Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 234.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_imp_rank.png, id=99, 1185.42876pt x 120.45pt>
+<img/best_imp_rank.png, id=100, 1185.42876pt x 120.45pt>
 File: img/best_imp_rank.png Graphic file (type png)
 <use img/best_imp_rank.png>
-Package pdftex.def Info: img/best_imp_rank.png  used on input line 237.
+Package pdftex.def Info: img/best_imp_rank.png  used on input line 241.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_avrg_imp_rank.png, id=100, 1185.42876pt x 120.45pt>
+<img/best_avrg_imp_rank.png, id=101, 1185.42876pt x 120.45pt>
 File: img/best_avrg_imp_rank.png Graphic file (type png)
 <use img/best_avrg_imp_rank.png>
-Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 244.
+Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 248.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
 ! Undefined control sequence.
-l.258 \Fref
+l.262 \Fref
            {tab:anovaNormal} shows the results of ANOVA (III) analysis perfo...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -692,34 +648,32 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [25] [26 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_i
-mp_rank.png>]
+mp_rank.png>] [27]
 
-LaTeX Warning: Reference `regrBestNormal' on page 1 undefined on input line 378
-.
-
-[27]
-
-LaTeX Warning: Reference `tTestGroup' on page 1 undefined on input line 405.
+LaTeX Warning: Reference `tTestGroup' on page 1 undefined on input line 411.
 
 
-Overfull \hbox (7.67331pt too wide) in paragraph at lines 435--451
+Overfull \hbox (8.63997pt too wide) in paragraph at lines 441--457
  [][] 
  []
 
 
-Overfull \hbox (5.89127pt too wide) in paragraph at lines 514--532
+Overfull \hbox (6.85793pt too wide) in paragraph at lines 520--538
  [][] 
  []
 
-[28] [29] [30] [31]
+[28] [29]
+Underfull \vbox (badness 7667) has occurred while \output is active []
 
-LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 632.
+[30] [31]
+
+LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 638.
 
 [32]
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.656                     Set & #
+l.662                     Set & #
                                  Ord      & #Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -729,7 +683,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.656                     Set & #Ord      & #
+l.662                     Set & #Ord      & #
                                              Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -739,41 +693,38 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.656 ...              Set & #Ord      & #Veh  & #
+l.662 ...              Set & #Ord      & #Veh  & #
                                                   Loc  & objective     & gap...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-<img/operators_4_ord.png, id=128, 717.68124pt x 440.64626pt>
+<img/operators_4_ord.png, id=129, 717.68124pt x 440.64626pt>
 File: img/operators_4_ord.png Graphic file (type png)
 <use img/operators_4_ord.png>
-Package pdftex.def Info: img/operators_4_ord.png  used on input line 710.
+Package pdftex.def Info: img/operators_4_ord.png  used on input line 716.
 (pdftex.def)             Requested size: 192.0548pt x 117.91373pt.
-<img/operators_12_ord.png, id=129, 717.68124pt x 416.55624pt>
+<img/operators_12_ord.png, id=130, 717.68124pt x 416.55624pt>
 File: img/operators_12_ord.png Graphic file (type png)
 <use img/operators_12_ord.png>
-Package pdftex.def Info: img/operators_12_ord.png  used on input line 717.
+Package pdftex.def Info: img/operators_12_ord.png  used on input line 723.
 (pdftex.def)             Requested size: 192.0548pt x 111.4674pt.
-<img/operators_35_ord.png, id=130, 719.68875pt x 415.5525pt>
+<img/operators_35_ord.png, id=131, 719.68875pt x 415.5525pt>
 File: img/operators_35_ord.png Graphic file (type png)
 <use img/operators_35_ord.png>
-Package pdftex.def Info: img/operators_35_ord.png  used on input line 724.
+Package pdftex.def Info: img/operators_35_ord.png  used on input line 730.
 (pdftex.def)             Requested size: 192.0548pt x 110.89445pt.
-<img/operators_80_ord.png, id=131, 718.685pt x 414.54875pt>
+<img/operators_80_ord.png, id=132, 718.685pt x 414.54875pt>
 File: img/operators_80_ord.png Graphic file (type png)
 <use img/operators_80_ord.png>
-Package pdftex.def Info: img/operators_80_ord.png  used on input line 731.
+Package pdftex.def Info: img/operators_80_ord.png  used on input line 737.
 (pdftex.def)             Requested size: 192.0548pt x 110.77841pt.
-<img/operators_150_ord.png, id=132, 712.6625pt x 410.53375pt>
+<img/operators_150_ord.png, id=133, 712.6625pt x 410.53375pt>
 File: img/operators_150_ord.png Graphic file (type png)
 <use img/operators_150_ord.png>
-Package pdftex.def Info: img/operators_150_ord.png  used on input line 738.
+Package pdftex.def Info: img/operators_150_ord.png  used on input line 744.
 (pdftex.def)             Requested size: 192.0548pt x 110.6326pt.
-
-Underfull \vbox (badness 1199) has occurred while \output is active []
-
 [33] [34 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/operat
 ors_35_ord.png> <./img/operators_80_ord.png> <./img/operators_150_ord.png>]) (.
 /tex/chapter6.tex [35]
@@ -806,18 +757,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--177
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 7835 strings out of 492982
- 131212 string characters out of 6134896
- 233771 words of memory out of 5000000
- 11240 multiletter control sequences out of 15000+600000
+ 7836 strings out of 492982
+ 131226 string characters out of 6134896
+ 232778 words of memory out of 5000000
+ 11241 multiletter control sequences out of 15000+600000
  12811 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,78p,682b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,21n,78p,448b,728s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -834,7 +782,7 @@ share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (39 pages, 722757 bytes).
+Output written on main.pdf (39 pages, 721198 bytes).
 PDF statistics:
  214 PDF objects out of 1000 (max. 8388607)
  141 compressed objects within 2 object streams
