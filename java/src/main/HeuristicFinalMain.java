@@ -17,7 +17,7 @@ import java.util.*;
 
 public class HeuristicFinalMain {
     public static void main(String[] args) throws Throwable {
-        String[] instances = new String[]{"Inst1_","Inst2_","Inst3_","Inst4_","Inst5_"};
+        String[] instances = new String[]{"Inst4_"};
         for(String instance:instances) {
             long startTimer = System.nanoTime();
             //reads data from 4flow file
@@ -30,7 +30,7 @@ public class HeuristicFinalMain {
             List<IDataResult> results = new ArrayList<>();
             List<IOperator> operators = null;
             IFeasibility feasibility;
-            List<String> instanceSizes = Arrays.asList("Ord_4_Veh_3_Loc_7", "Ord_12_Veh_7_Loc_9", "Ord_35_Veh_20_Loc_22", "Ord_80_Veh_45_Loc_45", "Ord_150_Veh_80_Loc_85");
+            List<String> instanceSizes = Arrays.asList("Ord_12_Veh_7_Loc_9");
             List<IDataSet> dataSets = reader.readDataFromFiles(instance, instanceSizes);
             int i = 0;
             for (IDataSet dataSet : dataSets) {
@@ -90,8 +90,8 @@ public class HeuristicFinalMain {
         }
         List<IOperator> operators;
         operators=new ArrayList<>();
-//        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
-//        operators.add(new ExchangeThree("exch3",random,feasibility,dataSet));
+        operators.add(new SwapTwoFirstFit("swapf", random, feasibility, dataSet));
+//        operators.add(new ExchangeThree("exch3",rand6om,feasibility,dataSet));
 //        operators.add(new TwoOpt("2-opt",random,feasibility, dataSet));
         operators.add(new RemoveRandomInsertFirst("rrif", 1,Math.max(a, b),random,feasibility,dataSet));
         operators.add(new RemoveNonClusteredInsertClustered("rncic", 4,1,Math.max(a,b),random,feasibility,dataSet));

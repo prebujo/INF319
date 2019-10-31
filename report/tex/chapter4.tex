@@ -7,16 +7,26 @@
 \label{ch:appr}
 This chapter explains how we have applied ALNS to the PDPMTW. The model in this paper differs to models from papers like \cite{ropke06} in the following way:
 \begin{enumerate}
-    \item We use only one removal and one insertion heuristic in each search iteration in what we call an operator. We describe each of these operators and their heuristics in \ref{sec:oper}.
+    \item Our heuristics each contain one removal and one insertion heuristic and are not chosen separately. 
+    \item Heuristics are adapted and new heuristics are developed to fit our problem specific challenges.
+    \item We integrate an escape algorithm to avoid that the algorithm gets stuck.
 \end{enumerate}
+
+The first \cref{sec:init} explain how we have chosen the initial solution.\par
+Then \cref{sec:heur} present each of the heuristics included in the basic version of our model.
+The next \cref{sec:choos}, explains how our model is choosing a heuristic in a given iteration. 
+Then \cref{sec:weight} explain how our algorithm is using the performance history of heuristics to adapt the weights of the heuristics 
+
+\Cref{sec:wild} present the wild escape algorithm used to prevent that our model gets stuck in a local optimum.
+
 \section{Initial Solution}
 \label{sec:init}
 Many different algorithms have been made for finding an initial solution. In our paper we have chosen to simply start with an initial solution where no orders are assigned to any vehicle which is very efficient and will not lead us to getting 
 This is a test \cite{shaw97}. Hopefully it works..              
 
 \section{Heuristics}
-\label{sec:oper}
-This section presents the operators or heuristics used by our ALNS algorithm.
+\label{sec:heur}
+This section presents the heuristics used by our SCALNS algorithm.
 The first three operators \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
 The last four operators, \ref{sec:rand}, \ref{sec:clust}, \ref{sec:greedy}, \ref{sec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
 
@@ -25,7 +35,7 @@ We have implemented and adapted the most succesful heuristics and created some n
 
 \subsection{Swap first fit}
 \label{sec:swap}
-This operator simply swaps the pickup and delivery of two orders first time it fits. 
+This operator simply swaps the pickup and delivery of two orders first time it finds a fit.
 This operator is very efficient and jumps randomly around a neighbourhoods solution space.
 
 \subsection{3-exchange}
@@ -119,10 +129,8 @@ Thus the relatedness measure is given a value $0\leq r_{ij} \leq 2\psi + \omega 
 We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. \newline\par
 The insertion part of this operator tries to improve on the insert greedy by calculating a regret value, $c^*_i$, which represents how much is lost by inserting this order in its second best position.
 
-\subsection{Wild operator}
-
-\section{Choosing an operator}
-\label{sec:opchice}
+\section{Choosing a heuristic}
+\label{sec:choos}
 
 \section{Adaptive weight adjustment}
 \label{sec:weight}
@@ -130,19 +138,31 @@ The insertion part of this operator tries to improve on the insert greedy by cal
 \section{Acceptance criteria}
 \label{sec:accept}
 
-\section{Radical jump away from neighbourhood}
+\section{Wild escape algorithm}
 \label{sec:wild}
-ALNS algorithms are known to be good at searching locally aswell as globally. However they do sometimes get stuck in one neighbourhood, and it is important that our algorithm is able to adapt in these situations.
+Algorithms containing large neighbourhood heuristics, such as our model, are known to be good at searching locally aswell as globally. 
+However they do sometimes get stuck in one neighbourhood, and it is important that our algorithm is able to react automatically in these situations.
 If we for 500 iterations find no improvement in the solution we are assuming that we are stuck. In this case we need to do something to get unstuck. 
-We have designed our algorithm so that in the case when no improvement in found, we run 100 iterations apart from the normal iterations, where we accept any new solution found regardless of the objective value. 
-In these iterations we use what we call a wild operator. 
-The wild operator is basically a collection of the most unspecific targeting operators from \ref{sec:oper}.
-We use the operators from section \ref{sec:rand}, \ref{sec:exch} and \ref{sec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
+We have designed our algorithm so that in the case when no improvement in found for 500 iteration, we run \cref{alg:wild} with the stopping criteria of 10 iterations. iterations apart from the normal iterations, where we accept any new solution found regardless of the objective value. 
+In these iterations we use what we call a wild escape algorithm.
+The algorithm is described in \cref{alg:wild}.
+We use the operators from \cref{sec:rand}, \cref{sec:exch} and \cref{sec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
 We also increase the amount of elements the operators are working on to effectively move further then the normal search iterations. 
 
-
-
-
+\algsetup{
+    linenodelimiter=\ 
+}
+\begin{algorithm}
+    \label{alg:wild}
+    \caption{Wild escape}
+    \begin{algorithmic}[1]
+        \Function{wildEscape}{s}
+        \Repeat
+        \State $s=applyRandomWildHeuristic(s)$;
+        \Until stopping condition
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
 
 \biblio                                                         
 \end{document}

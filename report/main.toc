@@ -1,48 +1,47 @@
-\contentsline {chapter}{\numberline {1}Introduction}{6}
-\contentsline {chapter}{\numberline {2}Model Description}{9}
-\contentsline {chapter}{\numberline {3}Solution Method}{15}
-\contentsline {section}{\numberline {3.1}Local Neighbourhood Search}{15}
-\contentsline {section}{\numberline {3.2}Simmulated Annealing}{15}
-\contentsline {chapter}{\numberline {4}An Adaptive Large Neighbourhood Search Aproach}{16}
-\contentsline {section}{\numberline {4.1}Initial Solution}{16}
-\contentsline {section}{\numberline {4.2}Heuristics}{16}
-\contentsline {subsection}{\numberline {4.2.1}Swap first fit}{16}
-\contentsline {subsection}{\numberline {4.2.2}3-exchange}{17}
-\contentsline {subsection}{\numberline {4.2.3}2-opt}{17}
-\contentsline {subsection}{\numberline {4.2.4}Remove random and insert first fit}{17}
-\contentsline {subsection}{\numberline {4.2.5}Remove non-clustered and insert clustered}{17}
-\contentsline {subsection}{\numberline {4.2.6}Remove Worst and Insert Greedy}{18}
-\contentsline {subsection}{\numberline {4.2.7}Remove Similar and Regret Insert}{18}
-\contentsline {subsection}{\numberline {4.2.8}Wild operator}{19}
-\contentsline {section}{\numberline {4.3}Choosing an operator}{19}
-\contentsline {section}{\numberline {4.4}Adaptive weight adjustment}{19}
-\contentsline {section}{\numberline {4.5}Acceptance criteria}{19}
-\contentsline {section}{\numberline {4.6}Radical jump away from neighbourhood}{19}
-\contentsline {chapter}{\numberline {5}Computational Results}{20}
-\contentsline {section}{\numberline {5.1}Experimental Setup}{20}
-\contentsline {subsubsection}{Technical Setup}{20}
-\contentsline {subsubsection}{Analytics Setup}{20}
-\contentsline {section}{\numberline {5.2}Instances}{21}
-\contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real world data}{21}
-\contentsline {subsubsection}{Random locations based on real geographical data}{22}
-\contentsline {subsection}{\numberline {5.2.2}Generated Instances}{22}
-\contentsline {section}{\numberline {5.3}Initial Results}{23}
-\contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{23}
-\contentsline {subsubsection}{Results of escape modifications}{24}
-\contentsline {subsubsection}{Observations of results from wild escape algorithm}{24}
-\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{24}
-\contentsline {subsubsection}{Ranking the combinations}{25}
-\contentsline {subsubsection}{ANOVA and regression analysis}{26}
-\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{27}
-\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{27}
-\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{28}
-\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{30}
-\contentsline {subsection}{\numberline {5.3.4}Evaluation of individual heuristics}{30}
-\contentsline {subsubsection}{T-tests of individual heuristics}{31}
-\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{31}
-\contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{32}
-\contentsline {section}{\numberline {5.4}Final results}{32}
-\contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{33}
-\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{33}
-\contentsline {chapter}{\numberline {6}Conclusions}{36}
-\contentsline {chapter}{\numberline {A}Appendix}{37}
+\contentsline {chapter}{\numberline {1}Introduction}{7}
+\contentsline {chapter}{\numberline {2}Model Description}{10}
+\contentsline {chapter}{\numberline {3}Solution Method}{16}
+\contentsline {section}{\numberline {3.1}Local Neighbourhood Search}{16}
+\contentsline {section}{\numberline {3.2}Simmulated Annealing}{16}
+\contentsline {chapter}{\numberline {4}An Adaptive Large Neighbourhood Search Aproach}{17}
+\contentsline {section}{\numberline {4.1}Initial Solution}{17}
+\contentsline {section}{\numberline {4.2}Heuristics}{17}
+\contentsline {subsection}{\numberline {4.2.1}Swap first fit}{18}
+\contentsline {subsection}{\numberline {4.2.2}3-exchange}{18}
+\contentsline {subsection}{\numberline {4.2.3}2-opt}{18}
+\contentsline {subsection}{\numberline {4.2.4}Remove random and insert first fit}{18}
+\contentsline {subsection}{\numberline {4.2.5}Remove non-clustered and insert clustered}{19}
+\contentsline {subsection}{\numberline {4.2.6}Remove Worst and Insert Greedy}{19}
+\contentsline {subsection}{\numberline {4.2.7}Remove Similar and Regret Insert}{19}
+\contentsline {section}{\numberline {4.3}Choosing a heuristic}{20}
+\contentsline {section}{\numberline {4.4}Adaptive weight adjustment}{20}
+\contentsline {section}{\numberline {4.5}Acceptance criteria}{20}
+\contentsline {section}{\numberline {4.6}Wild escape algorithm}{20}
+\contentsline {chapter}{\numberline {5}Computational Results}{22}
+\contentsline {section}{\numberline {5.1}Experimental Setup}{22}
+\contentsline {subsubsection}{Technical Setup}{23}
+\contentsline {subsubsection}{Analytics Setup}{23}
+\contentsline {section}{\numberline {5.2}Instances}{23}
+\contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real world data}{23}
+\contentsline {subsubsection}{Random locations based on real geographical data}{24}
+\contentsline {subsection}{\numberline {5.2.2}Generated Instances}{25}
+\contentsline {section}{\numberline {5.3}Initial Results}{25}
+\contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{26}
+\contentsline {subsubsection}{Results of escape modifications}{26}
+\contentsline {subsubsection}{Observations of results from wild escape algorithm}{26}
+\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{27}
+\contentsline {subsubsection}{Ranking the combinations}{27}
+\contentsline {subsubsection}{ANOVA and regression analysis}{28}
+\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{29}
+\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{30}
+\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{30}
+\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{31}
+\contentsline {subsection}{\numberline {5.3.4}Evaluation of individual heuristics}{32}
+\contentsline {subsubsection}{T-tests of individual heuristics}{33}
+\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{33}
+\contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{34}
+\contentsline {section}{\numberline {5.4}Final results}{34}
+\contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{35}
+\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{35}
+\contentsline {chapter}{\numberline {6}Conclusions}{38}
+\contentsline {chapter}{\numberline {A}Appendix}{39}

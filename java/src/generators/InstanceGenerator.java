@@ -113,7 +113,7 @@ public class InstanceGenerator implements IInstanceGenerator {
         try {
             FileWriter fileWriter = new FileWriter("res/instances/Inst"+instanceID+"_Ord_"+orderAmount+"_Veh_"+vehicleAmount+"_Loc_"+(pickupLocationAmount+deliveryLocationAmount)+".dat");
 
-            this.random = new Random(10+instanceID);
+            this.random = new Random(101+instanceID);
 
             int itemNumber = 1;
 

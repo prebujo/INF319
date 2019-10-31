@@ -2,25 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/res/results/Final_Results/.~lock.Inst2_RESULTS_selected_heuristics.csv#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Results_Analysis.xlsx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Results_Final.xlsx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Results_Analysis.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.17.01.19 Q&amp;A.docx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/results/.~lock.Inst4_RESULTS.csv#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/instances/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/instances/instructions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/main/InstanceGeneratorMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/InstanceGeneratorMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/instances/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/instances/instructions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst2_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst3_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/results/Inst5_RESULTS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/InstanceGeneratorMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/InstanceGeneratorMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_12_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_12_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_150_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_150_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_35_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_35_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_4_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_4_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_80_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_80_ord.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.blg" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.blg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.lof" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter2.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/references.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/references.bib" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,12 +171,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OperatorAnalysis_two" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.OperatorAnalysis_two" />
+    <configuration name="InstanceGeneratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.InstanceGeneratorMain" />
       <module name="java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Ahmad_Main.*" />
+          <option name="PATTERN" value="main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -203,10 +213,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HeuristicFinalMain" />
+        <item itemvalue="Application.InstanceGeneratorMain" />
         <item itemvalue="Application.HeuristicFinalMain2" />
         <item itemvalue="Application.Operator_Analysis_Large" />
         <item itemvalue="Application.Operator_Analysis_Test" />
-        <item itemvalue="Application.OperatorAnalysis_two" />
       </list>
     </recent_temporary>
   </component>
@@ -381,6 +391,9 @@
       <workItem from="1569590184318" duration="2474000" />
       <workItem from="1569618683243" duration="2767000" />
       <workItem from="1571915540246" duration="1259000" />
+      <workItem from="1572343720662" duration="901000" />
+      <workItem from="1572344840092" duration="2415000" />
+      <workItem from="1572518474901" duration="834000" />
     </task>
     <servers />
   </component>

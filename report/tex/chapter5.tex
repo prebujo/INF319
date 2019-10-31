@@ -5,19 +5,18 @@
 \begin{document}                                                
 \chapter{Computational Results}
 \label{ch:res}
-This chapter will present the results from the following experiments
-\begin{itemize}
-    \item Wild escape algorithm evaluation
-
-    \item Heuristic evaluation and selection
-
-    \item Final composition of SCALNS evaluation
-
-\end{itemize}
-
-Before going into the experimental results we will describe the experimental setup.
-This icludes the techical setup of our experiments in \cref{sec:tech}, aswell as the setup of the analytical experiments themselves in \cref{sec:analy}.
-After that we will explain the generation ofthe instances used in the evaluation sections.
+This chapter will present the results from several experiments leading us to the experiments of a final composition of our ALNS model. \par 
+We start by explaining the experimental setup of our testing in \cref{sec:setup}. Then we will explain the instances we used in our experiments in \cref{sec:ins}. \par
+\Cref{sec:iniRes} contain the initial experiments of our model that lead us to the final composition of our model. 
+The first part, \cref{sec:evalW}, starts by testing the wild algorithm from \cref{sec:wild} and it finds that the wild algorithm outperforms a random restart and not using any escape algorithm.
+Then in \cref{sec:evalH1} we rank the heuristics performance and do ANOVA(III) and multiple linear regressions of the heuristics described in \cref{ch:appr}. 
+We find here that three heuristics have a significant positive influence on the result, the remove random and insert first first algorithm from \cref{sec:rand}, the remove worst and insert greedy heuristic from \cref{sec:greedy}, and the remove similar and insert regret-3 heuristic from \cref{sec:shaw}. \par
+We continue our initial experiments in \cref{sec:evalH2} with extended ANOVA(III), multiple linear regression models and pairwise t-tests to evaluate if combining the not significant heuristics with the significant ones from \cref{sec:evalH1}, can have a significant positive impact on the result.
+Here we find that the remove non-clustered and insert clustered heuristic from \cref{sec:clust} has a singificant positive influence on the best solution found. 
+We also find that the swap first fit heuristic from \cref{sec:swap} has no significant influence on the result. \par
+In \cref{sec:finComp} we present the final composition of our model which contain the heuristics mentioned above aswell as the wild algorithm.\par
+The final part of this chapter \cref{sec:evalFin} contains the evaluation of our final model composition and compares the results from the mathematical model from \cref{ch:mm} with the results of our model. It also presents an evaluation of the performance of the included heuristics.
+The results show a robust and efficient alorithm.
 
 \section{Experimental Setup}
 \label{sec:setup}
@@ -131,14 +130,14 @@ Each instance set contain representative instance sizes of our problem based on 
 The sizes of the instances and the instance set number are shown for each result presented in the following sections.
 
 \section{Initial Results}
-\label{sec:res}
+\label{sec:iniRes}
 In this section we present the results and observations from our initial experiments. 
 This data lead us to the final composition of our model.
 We have done this in 3 parts. \Cref{sec:evalw} contain the evaluation of our wild escape algorithm. Then follows \cref{sec:evalH1} which is the initial evaluation of the heuristics. Finally \cref{sec:evalH2} contain the further evaluation of the heuristics.
 Afterwards, in \cref{sec:finComp}, we will present the final composition of the model.
 
 \subsection{Evaluation of the wild algorithm}
-\label{sec:evalw}
+\label{sec:evalW}
 To help our algorithm escape from a local optimum, we designed a wild algorithm described in section \cref{sec:wild}. 
 To evaluate the implementation of this algorithm we have decided to compare the result of running the complete model from \cref{ch:appr} including all heuristics, with three different modifications.
 We ran all modifications on instance Set 1.
@@ -380,57 +379,57 @@ Ranking the combinations in \cref{fig:rank} does indicate that using all heurist
 It also shows that H6 and H7 are usually included in the better performing combinations. \par 
 The results from \cref{tab:anovaNormal} and \cref{tab:regrNormal} split our heuristics into two groups. 
 The first obvious group are the significant heuristics.
-The ANOVA results from table \cref{tab:anovaAvrgNormal} and \cref{tab:anovaBestNormal} tells us that four heuristics, H4-H7, have a significant impact on the result.
-However from \cref{tab:regrAvrgNormal} and \cref{tab:regrBestNormal} we see that only 3 heuristics, H4, H6 and H7, have a positive estimated coefficient for both avrg and best (H1 is positive for best but negative for average improvement).
+The ANOVA results from table \cref{tab:anovaAvrgNormal} and \cref{tab:anovaBestNormal} tells us that four heuristics, H4-H7, have a significant impact on the result using a $95\%$ confidence interval.
+However from \cref{tab:regrAvrgNormal} and \cref{tab:regrBestNormal} we see that only 3 heuristics, H4, H6 and H7, have a positive estimated coefficient, ie. a positive significant influence, for both average and best improvement (H1 is positive for best but negative for average improvement).
 From this we can safely conclude that H4, H6 and H7 are significantly, positively improving the result of our model on average and they are good at finding good soolutions. 
 H5 is significantly influencing the result but with a negative coefficient. 
 This leads us to conclude that this heuristic either performs poorly alone, or has a negative influence on the model, to figure out which we need to do further testing.
 \par
-Regarding the remaining heursitics, H1, H2, and H3, we can safely conclude that they are not contributing singificantly on the result on their own. 
-However we cannot conclude that they do not have a positive effect in combination with the significant heuristics. 
-We therefore observe that we need further testing to know if these heuristics have a positive or negative influence on the result.
+Regarding the remaining heursitics, H1, H2, and H3, we can safely conclude that they are not contributing singificantly on the result on their own, ie. an algorithm containing only these heuristics are not having a significantly positive impact on the results using a $95\%$ confidence interval.
+However it could be that they have a positive effect in on the result if they are used in combination with the significant heuristics.
+We therefore observe that we need further testing to know if these heuristics have a positive or negative influence on the result in combination with other heuristics.
 We refer to the heuristics H1,H2,H3 and H5 as the undecided group, or G in our further evaluation of the heuristics.
 
 \subsection{Further evaluation of heuristics}
 \label{sec:evalH2}
-To further analyse the performance of the heuristics we want to analyse how the heuristics are performing as a group (G) to see if they have an effect on the results.
-The result from \cref{sec:evalH1} tells us that it is out of the question to use any combination of heuristics where only undecided heuristics are used.
+To further analyse the performance of the heuristics we want to analyse how the heuristics are performing as an undecided group (G), see \cref{sec:evalH1}, to see if they have an effect on the results.
+The result from \cref{sec:evalH1} tells us that it is out of the question to use any combination of heuristics where only heuristics from the undecided group are used.
 These heuristics will alone have a negative impact on the result but it is still possible that using them combined with the significant heuristics could have a positive impact on the result
 We have therefore removed the observations where the undecided group appear alone in the following testing.
-We want to test if using one or several of the undecided heuristics in combination with other heuristics have a positive impact on the result.
-
+We want to test if using one or several of the G heuristics in combination with other heuristics have a positive impact on the result.
 We have done this in two parts.
-We first wanted to see if the heuristics as a group has a positive or negative influence on the result. 
-To test this we have done 2-sample t-tests to compare the mean of the population where we combine the undecided heuristics with some significant heuristic, to the mean of the pooulation when we are not using an undecided heuristic. 
-Then we wanted to see if using the undecided group with specific combinations of the significant heuristics have significant impact on the model. 
+We first wanted to see if the heuristics as a group, G, has a positive or negative influence on the result. 
+To test this we have done 2-sample t-tests to compare the mean of the population where we combine the G heuristics with some significant heuristic, to the mean of the pooulation when we are not using G. 
+Then we wanted to see if using G with specific combinations of the significant heuristics have significant impact on the model. 
 We did this using further ANOVA (III) statistical analysis and multi linear regression model.
 
 \subsubsection{Evaluation of undecided heuristics as a group}
-The first thing we did was to run a T-test on that compares the mean of the population which include some combination of the undecided group heuristics and the significant heuristics, towards the population that does not contain any heuristic from the undecided group. 
-To represent the population without any of the undecided heuristics we have the used the parameter $P_N$ and to represent the population with some combination of the undecided heuristics and the significant heuristics we have used the parameter $P_H$.
-The results from the T-test are summarized in \cref{tTestGroup}.
+The first thing we did was to run a t-test on that compares the mean of the population which include some combination of the G heuristics and the significant heuristics, towards the population that does not contain any heuristic from G. 
+To represent the population without any heuristics from G we have the used the parameter $P_N$ and to represent the population with some combination of the G-heuristics and the significant heuristics we have used the parameter $P_H$.
+The results from the t-test are summarized in \cref{tab:tTestGroup}.
 
 \begin{table}
     \centering
-    \caption{Results of T-tests on the undecided group mean vs no undecided heuristics}
+    \caption{Results of t-tests on the undecided group mean vs no undecided heuristics}
         \begin{tabular}{ccccccc}
         \hline
-            Populations    & Impr type & Tail   &H-stat   & p-value    & tStat & conf-int \\ 
+                                & Improvement   &       &           &           & & Confidence\\ 
+            Populations         & type          & Tail  &H-stat     & p-value   & tStat & interval \\ 
         \hline                
-        $P_H-P_N$   & Avrg  & both  & 0 & 0.5187    & -0.6458   & -0.3785 -- 0.1912\\
-        $P_H-P_N$   & Avrg  & right & 0 & 0.7407    & -0.6458   & -0.3326 -- inf   \\
-        $P_H-P_N$   & Avrg  & left  & 0 & 0.2593    & -0.6458   & -inf -- 0.1453   \\
-        $P_H-P_N$   & Best  & both  & 0 & 0.6903    & 0.3986    & -0.2174 -- 0.3281 \\
-        $P_H-P_N$   & Best  & right & 0 & 0.3452    & 0.3986    & -0.1734 -- inf    \\
-        $P_H-P_N$   & Best  & left  & 0 & 0.6548    & 0.3986    & -inf -- 0.2841    \\
+        $P_H-P_N$   & Average   & both  & 0 & 0.5187    & -0.6458   & -0.3785 -- 0.1912\\
+        $P_H-P_N$   & Average   & right & 0 & 0.7407    & -0.6458   & -0.3326 -- inf   \\
+        $P_H-P_N$   & Average   & left  & 0 & 0.2593    & -0.6458   & -inf -- 0.1453   \\
+        $P_H-P_N$   & Best      & both  & 0 & 0.6903    & 0.3986    & -0.2174 -- 0.3281 \\
+        $P_H-P_N$   & Best      & right & 0 & 0.3452    & 0.3986    & -0.1734 -- inf    \\
+        $P_H-P_N$   & Best      & left  & 0 & 0.6548    & 0.3986    & -inf -- 0.2841    \\
        \hline
         \end{tabular}
     \caption*{The columns contain in order: the populations tested agains eachother, type of data tested(average or best improvement), tail which determines the alternative hypothesis, h-value (1 rejects the null hypothesis, 0 failure to reject), p-value of the test, t-Statistic of the test, confidence interval for the true population mean}
    \label{tab:tTestGroup}
 \end{table}
 
-We continued the testing of the undecided group by performing ANOVA (III) analysis on different combinations of the undecided group and the significant heuristics. 
-We did this to see if a combination of the undecided group and the significant heuristics could help explain the variations in the result and to see if a combination of some or all of the significant heuristics work better than others.
+We continued the testing of G by performing ANOVA (III) analysis on different combinations of the G and the significant heuristics. 
+We did this to see if a combination of G and the significant heuristics could help explain the variations in the result and to see if a combination of some or all of the significant heuristics work better than others.
 
 \begin{table}
     \centering
@@ -544,8 +543,8 @@ As an example a source of G+H4, contains all observations where at least one of 
 \end{table}
 
 \subsubsection{Observations from results of the heuristics further evaluation}
-The results from \cref{tab:tTestGroup} tells us that we cannot reject the $H_0$ null hypothesis  that the mean of the two populations are different using a $95\%$ confidence interval, for neither average or best improvement.
-This tells us that the heuristics from the undecided group either have no significant impact on the result, or that the effect from some are nulling out the others. Further testing is needed to make any further conclusions. \par
+The results from \cref{tab:tTestGroup} tells us that we cannot reject the null hypothesis, for all populations, that the mean of the two populations are different using a $95\%$ confidence interval. This is the case for both average and best improvement.
+This tells us that the heuristics from the undecided group (G) either have no significant impact on the result, or that the effect from some are nulling out the others. Further testing is needed to make any further conclusions. \par
 Table \ref{tab:anovaGroup} and \cref{tab:regrGroup} gives us further insight into our model.
 First of all the result from \cref{tab:anovaAvrgGroup} tells us that only two combinations of the undecided group and the significant variables have a significant impact on the result using a $95\%$ confidence interval.
 Using some heuristics from the undecided group combined with heuristic H6 and H7, aswell as H4 has a significant impact on the average improvement result.
@@ -553,8 +552,9 @@ From \cref{tab:regrAvrgGroup} we also see that the combinations are also getting
 We also observe that the $R^2 = 0.95$ is very high so this model explains the results very well and this supports the use of these heuristic combination in regards to the average improvement.
 \par
 The same combinations are significant and positive in reagards to the best improvement tabels \cref{tab:anovaBestGroup} and \cref{tab:regrBestGroup}.
-And even though more combinations are significant for best improvement the combinations with highest positive estimated coefficients are still the combinations with H6 and H7, and H6 H7 and H4.
-We also observe here the increased $R^2 = 0.967$ which supports our conclusion that this should consistently lead to good results on best and average improvement.
+And even though more combinations are significant for best improvement, the combinations with highest positive estimated coefficients are still including H6 and H7, or H6 H7 and H4.
+We also observe here the increased $R^2 = 0.967$ which indicates that this model is explaining the result from best and average improvement very well.
+This could indicate that the conmbinations with H6, H7 and H4 are consistently contributing to the same positive results.
 \par
 The results from the further testing tells us that there are combinations of the undecided group and the significant heuristics that have a positive significant impact on the result of both average and best improvement. 
 It supports our results from \cref{sec:evalH1} of significant heuristics H6, H7 and H4 and leads us to conclude that there might be a positive influence from the undecided group heuristics, however further testing is nessecary to determine which heuristics should be included. 
@@ -568,17 +568,17 @@ We continue refering to them as the undecided group heuristics or G.
 We want to figure out which of the heuristics in the undecided group, if any, have a positive, or negative, influence on the result.
 To do this we performed pairwise t-tests to check if an undecided heuristic is significantly improving or decreasing the best and average improvement.
 Like in \cref{sec:evalH2} it is out of the question to use any combination of heuristics where only undecided heuristics are used, so we remove these observations from the data also in these tests.
-In our tests we test if the mean of the populations where we combine the undecided heuristics with some significant heuristic is significantly different than the pooulation when we are not using an undecided heuristic. 
+In our tests we test if the mean of the populations where we combine the undecided heuristics with some significant heuristic is significantly different than the population when we are not using an undecided heuristic. 
 
 \subsubsection{T-tests of individual heuristics}
 Similar to the previous section we use the parameter $P^{H_i}_{NA}$ to refer to the population without a specific heuristic $H_i$ for the average improvement, indicated by $A$, and the parameter $P^{H_i}_{HB}$ as the population including the heuristic $H_i$ for the best improvement, indicated by $B$. 
 Here $H_i$ represents one of the heuristics described in the previous section. 
 We did the test for all 4 of the undecided heuristics from the previous section $H_1$, $H_2$, $H_3$ and $H_5$.
-The results from the pairwise t-tests are summarized in \ref{tab:tTest}.
+The results from the pairwise t-tests are summarized in \cref{tab:tTest}.
 
 \begin{table}
     \centering
-    \caption{Results of T-tests on individual heuristics}
+    \caption{Results of t-tests on individual heuristics}
         \begin{tabular}{ccccccc}
         \hline
             Populations                 & Tail   &H-stat   & p-value    & tStat & conf-int \\ 
@@ -614,15 +614,14 @@ The results from the pairwise t-tests are summarized in \ref{tab:tTest}.
 \end{table}
 
 \subsubsection{Observations from the results of the individual heuristic evaluations}
-The first thing we see from the t-tests is that we were right in assuming that the effect of the heuristics were cancelling eachother out. 
-We go through each of the heuristics results from \cref{tab:tTest} here:
-\begin{itemize}
-    \item H1: The population mean of both best and average improvement is not significantly different using a $95\%$ confidence interval. It follows then that the tails are also not significantly different.
-    \item H2: We reject the null hypothesis that the means are equal using a $95\%$ significanse interval for the average and best improvement regarding this heuristic. 
-        The left tail alternative hypothesis' that the means of $P^{H_2}_{HA}$ and $P^{H_2}_{HB}$ is lower than $P^{H_2}_{NA}$ and $P^{H_2}_{NB}$ are accepted, while the right tail alternative hypothesis is rejected for both best and average improvement.
-    \item H3: The null hypothesis that the population mean of $P^{H_3}_{HA}$ is equal to the population mean of $P^{H_3}_{NA}$ is rejected and accepted for $P^{H_3}_{HB}$ and $P^{H_3}_{NB}$. The left tail alternative hypothesis that the means of $P^{H_3}_{HA}$ is with $95\%$ confidence lower than $P^{H_3}_{NA}$ , is accepted.
-    \item H5: The null hypothesis is rejected for  $P^{H_5}_{HB}$ and  $P^{H_5}_{NB}$ and accepted for $P^{H_5}_{HA}$ and $P^{H_5}_{NA}$ . The alternative hypothesis of the right tail of the best improvement, that the mean is significantly higher in $P^{H_5}_{HB}$ than  $P^{H_5}_{NB}$ is accepted.
-\end{itemize}
+The first thing we see from the t-tests is that the effect of the heuristics are cancelling eachother out, as some are left significant, and some are right significant.
+We go through each of the heuristics results from \cref{tab:tTest} here. \par
+For the heuristic H1 the population mean of both best and average improvement is not significantly different using a $95\%$ confidence interval. It follows then that the tails are also not significantly different. \par
+Regarding the results for heuristic H2 we reject the null hypothesis that the means are equal using a $95\%$ significanse interval for the average and best improvement regarding this heuristic. 
+The left tail alternative hypothesis' that the means of $P^{H_2}_{HA}$ and $P^{H_2}_{HB}$ is lower than $P^{H_2}_{NA}$ and $P^{H_2}_{NB}$ are accepted, while the right tail alternative hypothesis is rejected for both best and average improvement.\par 
+The results of H3 show that the null hypothesis that the population mean of $P^{H_3}_{HA}$ is equal to the population mean of $P^{H_3}_{NA}$ is rejected and accepted for $P^{H_3}_{HB}$ and $P^{H_3}_{NB}$. The left tail alternative hypothesis that the means of $P^{H_3}_{HA}$ is with $95\%$ confidence lower than $P^{H_3}_{NA}$ , is accepted.\par 
+For H5 the null hypothesis is rejected for  $P^{H_5}_{HB}$ and  $P^{H_5}_{NB}$ and accepted for $P^{H_5}_{HA}$ and $P^{H_5}_{NA}$ . 
+The alternative hypothesis of the right tail of the best improvement, that the mean is significantly higher in $P^{H_5}_{HB}$ than  $P^{H_5}_{NB}$ is accepted.
 
 The results summarized above tells us that using H1 will have no effect on the outcome of the result. 
 Also H2 and H3 are significantly decreasing the average for both heuristics and also for best for H2. 
@@ -635,9 +634,9 @@ The results from \cref{sec:wild} tells us that our final model should include ou
 This will influence our running time a little but give us much more reliable results.
 \par
 As for selecting heuristics to include, the results from section \cref{sec:evalH1} and \cref{sec:evalH2}, indicates that we need to include H4, H6 and H7 in our final model.
-We observed from our testing of the wild algorithm that the running time of H1 is significantly lower than our other heuristics \cref{fig:wildRes}. Even though \cref{sec:evalI} showed us that H1 had no effect on the model, the low running time is leading us to rather include this heuristic than not to get us a little bit better running times.
-It will as \cref{sec:evalI} also showed not negatively effect our results.
-H5 is also not effecting the average improvement of our model, but it also has a good running time, and it significantly effects the result of the best improvement found. This tells us that we should include this heuristic in our final composition. \par
+We observed from our testing of the wild algorithm that the running time of H1 is significantly lower than our other heuristics \cref{fig:wildRes}. Even though \cref{sec:evalI} showed us that H1 had no significant effect on the model, the low running time is leading us to rather include this heuristic than not, to lower the running time of our algorithm overall.
+It will as \cref{sec:evalI} also showed have no significant negative effect on the results of our model.
+H5 is also not effecting the average improvement of our model but it significantly effects the result of the best improvement found. This tells us that we should include this heuristic in our final composition. \par
 The results from \cref{sec:evalH2} indicated that a combination of H4, H6 and H7 + some of combination of the undecided group heuristics is significantly effecting both the average and best improvement. Therefore our final model composition will be the ALNS algorithm with the wild algorithm and heuristics H1, H4, H5, H6 and H7.
 
 \section{Final results}
@@ -647,7 +646,7 @@ The algorithm was run using 5 instance sets of each 5 representative sizes.
 \subsection{Evaluation of final model}
 \label{sec:finRes}
 For each instance we used the powerful maschine to let AMPL try for 10 000 seconds to find an optimal solution for each instance. 
-The larger runs ended up getting an error so these results we simply marked as NA.
+The larger runs resulted in a "out of memory" failure message so these results we simply marked as NA.
 The results from the runs of our final model composition together with the mathematical model runs in AMPL are summarized in \cref{tab:finRes}. 
 
 \begin{table}
@@ -672,7 +671,7 @@ The results from the runs of our final model composition together with the mathe
                         & 4       & 3     & 7     & $2\,501.0$      & $0.00\%$      & 0.1       & $2\,501.0$    & $2\,501.0$    & $0.1$     & $0.00\%$  \\
                         & 12      & 7     & 9     & $5\,987.8$      & $0.00\%$      & 1041.8    & $5\,987.8$    & $5\,987.8$    & $0.6$     & $0.00\%$  \\
                         & 35      & 20    & 22    & $1\,985\,165.5$ & $99.90\%$     & 10000.3   & $14\,382.4$   & $14\,272.1$   & $2.6$     & $99.28\%$  \\
-                        & 80      & 45    & 45    & $6\,809\,899.5$ & $100.0\%$     & 10000.0   & $25\,736.6$   & $24\,760.8$   & $16.8$    & $99.64\%$  \\
+                        & 80      & 45    & 45    & $6\,809\,899.5$ & $99.99\%$     & 10000.0   & $25\,736.6$   & $24\,760.8$   & $16.8$    & $99.64\%$  \\
                         & 150     & 80    & 85    & NA              & NA            & NA        & $36\,927.2$   & $35\,932.1$   & $112.1$   & NA  \\
             \hline
                 \multirow{5}{*}{\begin{sideways} Set 3 \end{sideways}}  
@@ -684,7 +683,7 @@ The results from the runs of our final model composition together with the mathe
             \hline
                 \multirow{5}{*}{\begin{sideways} Set 4 \end{sideways}}  
                         & 4       & 3     & 7     & $1\,696.1$      & $0.00\%$      & 0.7       & $1\,696.1$    & $1\,696.1$    & $0.1$     & $0.00\%$  \\
-                        & 12      & 7     & 9     & $437\,572.4$    & $0.13\%$      & 10000.2   & $434\,722.4$  & $434\,722.4$  & $0.6$     & $0.01\%$  \\
+                        & 12      & 7     & 9     & $3\,285.2$      & $21.45\%$     & 10000.0   & $3\,109.6$    & $3\,109.6$    & $1.5$     & $5.35\%$  \\
                         & 35      & 20    & 22    & $547\,881.6$    & $99.72\%$     & 10000.2   & $4\,652.8$    & $4\,494.5$    & $5.1$     & $99.18\%$  \\
                         & 80      & 45    & 45    & $6\,201\,301.5$ & $99.99\%$     & 10000.1   & $15\,540.0$   & $15\,290.6$   & $21.4$    & $99.75\%$  \\
                         & 150     & 80    & 85    & NA              & NA            & NA        & $22\,508.6$   & $22\,252.6$   & $103.4$   & NA  \\
@@ -693,7 +692,7 @@ The results from the runs of our final model composition together with the mathe
                         & 4       & 3     & 7     & $5\,154.9$      & $0.00\%$      & 0.4       & $5\,154.9$    & $5\,154.9$    & $0.1$     & $0.00\%$  \\
                         & 12      & 7     & 9     & $3\,716.2$      & $22.93\%$     & 10000.2   & $3\,716.2$    & $3\,716.2$    & $0.6$     & $0.00\%$  \\
                         & 35      & 20    & 22    & $1\,757\,079.6$ & $99.90\%$     & 10000.2   & $13\,138.9$   & $12\,944.2$   & $2.1$     & $99.26\%$  \\
-                        & 80      & 45    & 45    & $5\,909\,616.9$ & $100.00\%$    & 10000.0   & $24\,034.0$   & $23\,855.5$   & $9.1$     & $99.60\%$  \\
+                        & 80      & 45    & 45    & $5\,909\,616.9$ & $99.99\%$    & 10000.0   & $24\,034.0$   & $23\,855.5$   & $9.1$     & $99.60\%$  \\
                         & 150     & 80    & 85    & NA              & NA            & NA        & $41\,343.4$   & $39\,847.0$   & $82.6$    & NA  \\
             \hline
             \end{tabular}
@@ -702,10 +701,10 @@ The results from the runs of our final model composition together with the mathe
     \caption*{The columns contains in order:Instance set, number of orders, number of vehicles and number of locations in the instances. 
     The next three columns contain the result from running our mathematical model (MM) run in AMPL; solution objective, optimality gap and the running time.
     Then follows 3 columns with the results of our model, average objective found, best objective found and average running time. 
-    The final column contains the following function: (solution objective MM - SCALNS best objective)/solution objective MM.}
+    The final column contains a delta which is calculated as follows: (solution objective MM - SCALNS best objective)/solution objective MM.}
 \end{table}
 
-\Cref{fig:heuristics} shows the weight of each heuristic through each segment of our model SCALNS segments for haphazardly selected runs. 
+\Cref{fig:heuristics} shows the weight of each heuristic through each segment of our model SCALNS segments for arbitrarily selected runs. 
 The vertical blue lines indicate which segment the best solution for the current run was found. The most relevant sections are the ones before this blue lines.
 
 \begin{figure}
@@ -750,41 +749,37 @@ The vertical blue lines indicate which segment the best solution for the current
 \end{figure}
 
 
-
-
-
 \subsection{Observations of results  the final composition}
 \label{sec:finalObs}
-The first noticeable thing from the results of \cref{tab:finRes} is that the performance of the mathematical model is quickly deteriarating with the sinze of the instances.
-Already at the second instance size the model is struggeling to finish on time and in one case, instance set 4, it does not find the optimal solution.
-For the third instance size (35 orders) the model can barely start iterating through solutions and the solution objecteve after 10 000 seconds has a very big optimality gap. 
-The optimality gap indicates the gap between the dual solution and the solution objective.
-The higher this gap the further the AMPL model is away from finding an optimal solution.
-We observe that this gap is very large for the third and fourth instance size (35 orders and 80 orders) which means that the AMPL would need more that 10 000 seconds to search for any type of real solution.
+The first noticeable thing from the results of \cref{tab:finRes} is that the performance of the mathematical model is quickly deteriarating with the size of the instances.
+Already at the second instance size the model is struggeling to finish on time, and for set 3 and set 5 there is still an optimality gap.
+For the third instance size (35 orders) the model can barely start iterating through solutions and the solution objecteve after 10 000 seconds has a very large optimality gap. 
+We observe that the optimality gap is very large for the third and fourth instance size (35 orders and 80 orders) which means that the AMPL would need substantially more that 10 000 seconds to search for any type of real solution.
 This tells us that our problem is quickly getting very complex and that building a good model that can quickly find close to optimal solutions would be very important for this problem.
 \par
 Moving on to the results of our SCALNS model, there are several observations that are important here. 
-We see from the smallest instance size (4 orders) that our model is performing equally with the Mathematical model in terms of optimal solution but already beating it in terms of running time.
-This is not unexpected as the smallest problem does not require alot of iterations but it is unexpected that our model beats the mathematical model quite consistently in terms of running time.
+We see from the smallest instance size (4 orders) that our model is performing equally with the Mathematical model in terms of optimal solution but is already beating it in terms of running time.
+This is not unexpected as the smallest problem does not require a lot of iterations but it is unexpected that our model beats the mathematical model quite consistently in terms of running time.
 \par
-As we increase the instance size to 12 orders, we see that our model consistently finds the same solution as AMPL and in the case of instance set 4 it even beats AMPL.
-This combined with the fact that our model is doing this in less than 1 second for this instance size tells us that our model is performing very well.
+As we increase the instance size to 12 orders, we see that our model consistently finds the same solution as AMPL, apart for in one case (instance 4) where AMPL was not able to find the optimal solution in 10 000 seconds.
+This combined with the fact that our model is doing this in around 1 second for this instances of this size tells us that our model is performing very well.
+It is also showing that our model is a robust model as the average and best solutions found are all the same for instances of size orders $\leq12$.
 \par
-For the larger instance sizes AMPL was not able to find any solutions remotely close to the optimal value and our model is beating the mathematical model with solutions more than $99\%$ better.
-A great observation is how tight the best solution is with the average solution. 
-This indicates that we are very good at consistently finding good solutions. 
-This could also indicate that we are close to the optimal solution. 
-A best solution much lower than the average would indicate that we are often getting stuck and not moving to the best solution neighbourhood. 
+For the larger instance sizes (orders $\geq35$) AMPL was not able to find any solutions remotely close to the optimal value. The delta from \cref{fig:finRes} is higher than $99\%$ for all these instances, which indicates that our model is significantly faster and better at finding good solutions.
+Another observation is how tight the best solution is overall with the average solution, also for the larger instance sets. 
+This further indicates that our model is very robust and consistently finding similar solutions.
+A best solution much lower than the average could indicate that our model cannot move away from a local optimum in some cases.
 However our average solutions are within a $5\%$ range of the best solutions.
 This means we are consistently hitting solutions close to the best known.
 \par
 The \cref{fig:heuristics} show the performance of our heuristics.
-\Cref{fig:operators12} show that for smaller instances the heuristics H1, H4 aswell as H7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
-The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that H6 and H7 are the most important heuristics that perform the the most consistently at finding new and better solutions. 
-We do however see several spikes from the heuristic H5 and H1. 
-Which indicate that they are finding new possibly better solutions from time to time, just less consistently than H6 an H7. 
-It doesnt look like H4, H5 and H1 are performing that well compared to the weigths of the stronger H6 and H7 however this could indicate that they are performing on just the perfect level to find solutions that the other heuristics  cannot. 
-These observations also support our observations from \cref{sec:evalH2}, where H6 and H7 are outperforming the other heuristics, but we still get some positive effects from including the heuristics H1, H4 and H5. 
+\Cref{fig:operators12} show that for smaller instances the heuristics H1, H5 aswell as H7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
+The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that H6 and H7 are the most important heuristics that our algorithm are giving more weight than the others and that they are consistently outperforming the other heuristics in regards to finding new and better solutions. 
+We do however see several spikes from the heuristic H5 and H1 up until the best solution is found (blue line). 
+Which indicate that they are contributing on possibly moving to new and/or better solutions from time to time. 
+The H1, H5, and H4 are doing this less consistently than H6 an H7 for larger instance sets, but that doesnt mean that they are not important for the final result. \par
+These observations also support our observations from \cref{sec:evalH1} and \cref{sec:evalH2}, where H6 and H7 are outperforming the other heuristics. 
+Another observation from \cref{tab:finRes} is that clearly our adaptive weights are important for our search as size and problem constraints influence how the heuristics are performing and thereby changing how our model gives them weight. 
 
 \biblio                                                         
 \end{document}  

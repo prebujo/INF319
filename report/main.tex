@@ -1,6 +1,7 @@
 \documentclass[12pt,twoside]{report}
 \usepackage[usenames, dvipsnames]{color}                
 \usepackage{amsmath} 
+\usepackage{algorithm, algpseudocode}
 \usepackage[sort,comma]{natbib}
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
 \usepackage{cancel}
@@ -23,7 +24,6 @@
 \graphicspath{{img/}{../img/}}
 \def\biblio{\bibliographystyle{abbrvnat}\bibliography{tex/references}}  
 
-
 \title{{A Pickup and Delivery problem with multiple time windows in supply chain industry}\\
 {\includegraphics{uib_2.png}}\\
 {\large Department of Informatics}\\
@@ -35,6 +35,7 @@
 \begin{document}
 \maketitle
 \def\biblio{}
+
 
 \subfile{./tex/abstract.tex}
 
