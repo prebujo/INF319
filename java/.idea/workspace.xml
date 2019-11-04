@@ -2,35 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/results/.~lock.Inst4_RESULTS.csv#" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/generators/InstanceGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/instances/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/instances/instructions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/HeuristicFinalMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java/main/InstanceGeneratorMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/main/InstanceGeneratorMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/instances/Inst4_Ord_12_Veh_7_Loc_9.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/instances/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/instances/instructions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst1_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst2_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst3_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/res/results/Inst4_RESULTS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/results/Inst5_RESULTS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/InstanceGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HeuristicFinalMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/InstanceGeneratorMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/InstanceGeneratorMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/operators_12_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_12_ord.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/operators_150_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_150_ord.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/operators_35_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_35_ord.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/operators_4_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_4_ord.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/img/operators_80_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_80_ord.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/tex/chapter4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter4.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sources/ropke_pisinger_2016_An adaptive large neighborhood search heuristic for the pickup and delivery problem with time windows_TechRep.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -394,6 +375,7 @@
       <workItem from="1572343720662" duration="901000" />
       <workItem from="1572344840092" duration="2415000" />
       <workItem from="1572518474901" duration="834000" />
+      <workItem from="1572879783097" duration="2085000" />
     </task>
     <servers />
   </component>

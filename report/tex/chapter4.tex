@@ -3,15 +3,10 @@
 \makeatother                                                    
 \documentclass[../main.tex]{subfiles}                           
 \begin{document}                                                
-\chapter{An Adaptive Large Neighbourhood Search Aproach}
+\chapter{A 4th party logistics optimizer}
 \label{ch:appr}
-This chapter explains how we have applied ALNS to the PDPMTW. The model in this paper differs to models from papers like \cite{ropke06} in the following way:
-\begin{enumerate}
-    \item Our heuristics each contain one removal and one insertion heuristic and are not chosen separately. 
-    \item Heuristics are adapted and new heuristics are developed to fit our problem specific challenges.
-    \item We integrate an escape algorithm to avoid that the algorithm gets stuck.
-\end{enumerate}
-
+This chapter explains how we build our model, the fourth party logistics optimizer (4PLO).
+The first section \cref{sec:alns}, desribes the meta heuristic approach 
 The first \cref{sec:init} explain how we have chosen the initial solution.\par
 Then \cref{sec:heur} present each of the heuristics included in the basic version of our model.
 The next \cref{sec:choos}, explains how our model is choosing a heuristic in a given iteration. 
@@ -19,50 +14,144 @@ Then \cref{sec:weight} explain how our algorithm is using the performance histor
 
 \Cref{sec:wild} present the wild escape algorithm used to prevent that our model gets stuck in a local optimum.
 
+\section{ALNS for 4th party logistic problems}
+\label{sec:alns}
+Our metaheuristic is similar to the ALNS approach introduced by \cite{ropke06}, but we have adapted it to specifically solve our fourth party logistics problem. 
+Our approach will be explained over the next few sections but the ALNS implementation differs mainly in the following way:
+\begin{enumerate}
+    \item Our heuristics each contain one removal and one insertion heuristic and are not chosen separately. 
+    \item We integrate an escape algorithm to avoid that the algorithm gets stuck.
+\end{enumerate}
+
+A brief pseudocode of our implementation of ALNS for 4th party logistic problems is described in \cref{alg:alns}.  
+
+\begin{algorithm}
+    \label{alg:alns}
+    \caption{ALNS for 4th party logistic problems}
+    \begin{algorithmic}[1]
+        \Function{alns}{}
+        \State solution $s = generateInitialSolution()$
+        \State solution $s_{best} = s$
+        \State iterations since best solution found $i=0$
+        \Repeat
+            \If {$i>escape\ condition$}
+                \State $s = wildEscape(s)$ 
+            \EndIf
+            \State $s' = s$
+            \State select a heuristic, h, based on selection parameters
+            \State $s' = applyHeuristic(h,s')$
+            \If {$f(s') < f(s_{best})$}
+                \State $s_{best}=s'$
+            \EndIf
+            \If {$accept(s', s)$}
+                \State $s = s'$
+            \EndIf
+            \State update selection parameters and escape condition
+        \Until {stop condition met}
+        \State
+        \Return $s_{best}$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+The algorithm starts by picking an initial solution, and then moves into a loop where it picks a heuristic $h$, and an amount of orders $q$, before applying the heuristic to the current solution. 
+It then updates the best solution and decides to accept the newly created solution or not until the stop condition is met.
+At the start of the loop it checks if an escape condition is met where it will run \cref{alg:wild} on our current solution $s$. \par
+We will now move on to explaining each step of the model more in detail.
+
 \section{Initial Solution}
 \label{sec:init}
-Many different algorithms have been made for finding an initial solution. In our paper we have chosen to simply start with an initial solution where no orders are assigned to any vehicle which is very efficient and will not lead us to getting 
-This is a test \cite{shaw97}. Hopefully it works..              
+Many different algorithms have been made for finding an initial solutions to a PDPTW. \cite{hosny12} found that the sequential construction sequence may be the most suitable construction algorithm for the MV-PDPTW. 
+We have chosen to simply start with an initial solution where no orders are assigned to any vehicle, ie. all orders are assigned to the dummy vehicle in the solution permutation. 
+We chose this because it is simple to implement, efficient in terms of running time and our model will be able to adapt to the problem on its own, regardless of the initial solution.
 
 \section{Heuristics}
 \label{sec:heur}
-This section presents the heuristics used by our SCALNS algorithm.
-The first three operators \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling operators. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood.
-The last four operators, \ref{sec:rand}, \ref{sec:clust}, \ref{sec:greedy}, \ref{sec:shaw}, are using removal and reinsertion heuristics. These are used partly to move from one neighbourhood to another, and partly for local search depending on the  amount of solution elements being reinserted.  
+This section presents the heuristics used by our algorithm.
+The first three heuristics7gc \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling heuristics. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood. \par
 
-Removal and reinsertion heuristics are well reserached tools used in solving PDP. 
-We have implemented and adapted the most succesful heuristics and created some new ones to help solve our specific problem. 
+Removal and reinsertion heuristics are well reserached tools used in solving pickup and delivery problems. \cite{hemmati14} and \cite{hemmati16} use insertion and removal heuristics to solve benchmark tramp ship routing and scheduling problems and maritime shipping problems.
+The last four heuristics, \ref{sec:rand}, \ref{sec:clust}, \ref{sec:greedy}, \ref{sec:shaw}, we refer to here as removal and reinsertion heuristics. Each of them contain one heuristic for removal and one heuristic for reinsertion.
+These are used partly to move from one neighbourhood to another, and partly for local search depending on the amount of solution elements, $q$, being reinserted.  
 
-\subsection{Swap first fit}
+\subsection{Swap}
 \label{sec:swap}
-This operator simply swaps the pickup and delivery of two orders first time it finds a fit.
-This operator is very efficient and jumps randomly around a neighbourhoods solution space.
+This heuristic simply tries to swap the pickup and delivery of two different orders until the first time it finds a fit. 
+\cref{fig:swap} illustrates a successful swap between two orders in a simple solution permutation. 
+
+\begin{figure}                                                                                     
+ \centering                                                                                     
+ \includegraphics[width=\textwidth]{swap_ill.png}                                     
+ \label{fig:swap}                                                                            
+ \caption{A swap heuristic performed on a simple solution with two orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+\end{figure}
+
+This heuristic is very efficient and jumps randomly around a neighbourhoods solution space.
 
 \subsection{3-exchange}
 \label{sec:exch}
-The 3-exchange operator selects a random vehicle with at least two assigned orders, and performs an exchange of 3 assigned positions until a feasible new combination is found. This can be illustrated as follows: \newline
-A vehicles schedule before exchange: \newline
-        [ 1 \textbf{1} 2 \textbf{2} \textbf{3} 3 ] \newline
-A 3-exchange performed on highlighted positions (two, four and five) on this schedule would result in the following: \newline
-        [ 1 \textbf{3} 2 \textbf{1} \textbf{2} 3 ]  TODO: make an illustration here with arrows \newline
-This heuristic is very fast as the exchanges are fast operations and the feasibility check of a vehicles schedule is a very effective operation. Like the swap heuristic from the previous section this operator jumps randomly around a neighbourhoods solution space.
+The 3-exchange heuristic selects a random vehicle with at least two assigned orders, and performs an exchange of 3 assigned positions until a feasible new combination is found. A 3-exchange of position 2, 4 and 6 in a simple permutation is illustrated by \cref{fig:exch}. \newline
+
+\begin{figure}                                                                                     
+ \centering                                                                                     
+ \includegraphics[width=\textwidth]{3-exchange_ill.png}                                     
+ \label{fig:exch}                                                                            
+ \caption{A 3-exchange heuristic performed on a simple solution with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+\end{figure}
+
+This heuristic is very fast, as the exchanges are fast operations and checking if a vehicles schedule is feasible is also a very effective operation. Like the swap heuristic from the previous section this heuristic jumps randomly around a neighbourhoods solution space.
 
 \subsection{2-opt}
 \label{sec:2opt}
-The 2-opt operator used in this paper is based on the 2-opt-L operator from {ref: Carcasse2006}. 
-It selects a random vehicle with more than 2 orders (it breaks out after not finding any fitting vehicle after o tires, where o is the amount of orders in the problem).
+2-opt is a common heuristic used in travelling salesman problems aswell as with metaheuristics to solve VRP. \cite{lin65} implemented the 2-opt heuristic for travelling salesmen problem and \cite{bullnheimer99} combined 2-opt with the ant system metaheuristic.
+The 2-opt heuristic used in this paper is similar to the heuristic from \cite{carrabs07}.
+\Cref{fig:2opt} illustrates one iteration of our 2-opt heuristic on a simple permutation.
+
+\begin{figure}                                                                                     
+ \centering                                                                                     
+ \includegraphics[width=\textwidth]{2-opt_ill.png}                                     
+ \label{fig:2opt}                                                                            
+    \caption{One 2-opt heuristic operation performed on a simple solution with three orders. In this example $i=2$ and $j=4$ so the schedule $S_{ij}$ is reversed. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+\end{figure}
+
+\begin{algorithm}
+    \label{alg:2opt}
+    \caption{2-opt heuristic}
+    \begin{algorithmic}[1]
+        \Function{twoOpt}{$S\in \{ solution \ schedules \}$}
+        \Repeat
+        \State $S_{best} = S$
+        \For{$i<S.length$}
+            \State $j=i+1$
+            \For{$j<S.length$}
+                \State schedule $ S' = S_{0i} + reverse(S_{(i+1)j}) + S_{(j+1)n}$ 
+                \If {$f(S')<f(S_{best})$} 
+                \State $S = S'$
+                \EndIf
+            \EndFor
+        \EndFor
+        \Until {no further improvement found}
+        \State 
+        \Return $S$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+
+The heuristic selects a random vehicle with more than 2 orders.
 For the selected vehicle it divides up the route of the vehicle in 3 parts. 
-All orders up until the index i of the vehicle route are inserted normally. 
-Orders from the index j+1 until the end of the route are also inserted normally. 
-then finally orders from the index i+1 until index j are inserted in inverse order.
-If the new route has a smaller cost than the original route the route the route is remembered as the new best route. 
+All orders up until the index $i$ of the vehicle route are inserted normally. 
+Orders from the index $j+1$ until the end of the route are also inserted normally. 
+Then finally orders from the index i+1 until index j are inserted in reverse order.
+If the new schedule has a smaller cost than the original schedule, the schedule is remembered as the new best route. 
 When all reverses have been performed on the current route, the best route is selected as the new route.
 This operation is continued until no improvement can be made ie. the best possible schedule for the selected vehicle has been found.
+
 
 \subsection{Remove random and insert first fit}
 \label{sec:rand}
 Removes randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
-This operator is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
+This heuristic is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
 
 \subsection{Remove non-clustered and insert clustered}
 \label{sec:clust}
@@ -89,7 +178,7 @@ The reinsertion is using a greedy algorithm where it simply checks to find the b
 \newline 
 \subsection{Remove Similar and Regret Insert}
 \label{sec:shaw}
-The removal heuristic used in this operator is based on \citet{shaw97} with slight modifications based on our PDPMTWF problem. 
+The removal heuristic used in this heuristic is based on \citet{shaw97} with slight modifications based on our problem. 
 It removes orders that share specific similar qualities, as the basic idea is that by replacing these orders by eachother we find new, hopefully better, solutions. 
 Another good reason to remove similar orders is that it could be advantagous to reinsert these orders togther on the same vehicle since they share alot of the same properties in regards to distance, time etc.
 We define a relatedness factor $r_{ij}$ which represents how much the order $i$ is related to the order $j$. 
@@ -127,7 +216,7 @@ It can be formulated as follows
 Here $\overline{T_{ip}}$ and $\underline{T_{ip}}$ are the upper and lower time windows defined in the problem formulation.
 Thus the relatedness measure is given a value $0\leq r_{ij} \leq 2\psi + \omega + \phi + \tau  + \chi$. 
 We have chosen the following values in this paper $\psi=0.7$, $\omega=1.0$, $\phi=0.8$, $\tau=0.3$, $\chi = 0.3$. \newline\par
-The insertion part of this operator tries to improve on the insert greedy by calculating a regret value, $c^*_i$, which represents how much is lost by inserting this order in its second best position.
+The insertion part of this heuristic tries to improve on the insert greedy by calculating a regret value, $c^*_i$, which represents how much is lost by inserting this order in its second best position.
 
 \section{Choosing a heuristic}
 \label{sec:choos}
@@ -146,8 +235,8 @@ If we for 500 iterations find no improvement in the solution we are assuming tha
 We have designed our algorithm so that in the case when no improvement in found for 500 iteration, we run \cref{alg:wild} with the stopping criteria of 10 iterations. iterations apart from the normal iterations, where we accept any new solution found regardless of the objective value. 
 In these iterations we use what we call a wild escape algorithm.
 The algorithm is described in \cref{alg:wild}.
-We use the operators from \cref{sec:rand}, \cref{sec:exch} and \cref{sec:swap} as these operators are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
-We also increase the amount of elements the operators are working on to effectively move further then the normal search iterations. 
+We use the heuristics7gc from \cref{sec:rand}, \cref{sec:exch} and \cref{sec:swap} as these heuristics are not trying to improve and select targeted solutions but rather returns the first feasible solution they find. 
+We also increase the amount of elements the heuristics7gc are working on to effectively move further then the normal search iterations. 
 
 \algsetup{
     linenodelimiter=\ 
@@ -159,7 +248,7 @@ We also increase the amount of elements the operators are working on to effectiv
         \Function{wildEscape}{s}
         \Repeat
         \State $s=applyRandomWildHeuristic(s)$;
-        \Until stopping condition
+        \Until stop condition met
         \EndFunction
     \end{algorithmic}
 \end{algorithm}

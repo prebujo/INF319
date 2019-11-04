@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -27,6 +27,19 @@ G.~Berbeglia, J.-F. Cordeau, and G.~Laporte.
 \newblock Dynamic pickup and delivery problems.
 \newblock \emph{European journal of operational research}, 202\penalty0
   (1):\penalty0 8--15, 2010.
+
+\bibitem[Bullnheimer et~al.(1999)Bullnheimer, Hartl, and
+  Strauss]{bullnheimer99}
+B.~Bullnheimer, R.~F. Hartl, and C.~Strauss.
+\newblock Applying the ant system to the vehicle routing problem.
+\newblock In \emph{Meta-heuristics}, pages 285--296. Springer, 1999.
+
+\bibitem[Carrabs et~al.(2007)Carrabs, Cordeau, and Laporte]{carrabs07}
+F.~Carrabs, J.-F. Cordeau, and G.~Laporte.
+\newblock Variable neighborhood search for the pickup and delivery traveling
+  salesman problem with lifo loading.
+\newblock \emph{INFORMS Journal on Computing}, 19\penalty0 (4):\penalty0
+  618--632, 2007.
 
 \bibitem[Christiansen and Fagerholt(2002)]{christiansen02}
 M.~Christiansen and K.~Fagerholt.
@@ -110,12 +123,25 @@ A.~Hemmati, L.~M. Hvattum, M.~Christiansen, and G.~Laporte.
 \newblock \emph{European Journal of Operational Research}, 252\penalty0
   (3):\penalty0 775--788, 2016.
 
+\bibitem[Hosny and Mumford(2012)]{hosny12}
+M.~I. Hosny and C.~L. Mumford.
+\newblock Constructing initial solutions for the multiple vehicle pickup and
+  delivery problem with time windows.
+\newblock \emph{Journal of King Saud University-Computer and Information
+  Sciences}, 24\penalty0 (1):\penalty0 59--69, 2012.
+
 \bibitem[Kalantari et~al.(1985)Kalantari, Hill, and Arora]{kalantari85}
 B.~Kalantari, A.~V. Hill, and S.~R. Arora.
 \newblock An algorithm for the traveling salesman problem with pickup and
   delivery customers.
 \newblock \emph{European Journal of Operational Research}, 22\penalty0
   (3):\penalty0 377--386, 1985.
+
+\bibitem[Lin(1965)]{lin65}
+S.~Lin.
+\newblock Computer solutions of the traveling salesman problem.
+\newblock \emph{Bell System Technical Journal}, 44\penalty0 (10):\penalty0
+  2245--2269, 1965.
 
 \bibitem[Lu and Dessouky(2006)]{lu06}
 Q.~Lu and M.~M. Dessouky.

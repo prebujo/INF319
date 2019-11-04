@@ -2,9 +2,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A swap heuristic performed on a simple solution with two orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces A 3-exchange heuristic performed on a simple solution with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces One 2-opt heuristic operation performed on a simple solution with three orders. In this example $i=2$ and $j=4$ so the schedule $S_{ij}$ is reversed. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Area of random point generation\relax }}{25}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Ranking of improvements from initial solution\relax }}{28}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Operator weights per segment from instance set 1\relax }}{36}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Area of random point generation\relax }}{26}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Ranking of improvements from initial solution\relax }}{29}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Operator weights per segment from instance set 1\relax }}{37}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
