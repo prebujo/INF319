@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sources/ropke_pisinger_2016_An adaptive large neighborhood search heuristic for the pickup and delivery problem with time windows_TechRep.pdf" beforeDir="false" />
-    </list>
+    <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +364,7 @@
       <workItem from="1572343720662" duration="901000" />
       <workItem from="1572344840092" duration="2415000" />
       <workItem from="1572518474901" duration="834000" />
-      <workItem from="1572879783097" duration="2085000" />
+      <workItem from="1572879783097" duration="2087000" />
     </task>
     <servers />
   </component>
