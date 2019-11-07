@@ -1,0 +1,38 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{4flow, A 4PL planning and strategy company}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Litterature review}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Model Description}{}% 4
+\BOOKMARK [0][-]{chapter.3}{Solution Methods}{}% 5
+\BOOKMARK [1][-]{section.3.1}{Local Neighbourhood Search}{chapter.3}% 6
+\BOOKMARK [1][-]{section.3.2}{Simmulated Annealing}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.4}{A 4th party logistics optimizer}{}% 8
+\BOOKMARK [1][-]{section.4.1}{ALNS for 4th party logistic problems}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.2}{Initial Solution}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.3}{Heuristics}{chapter.4}% 11
+\BOOKMARK [2][-]{subsection.4.3.1}{Swap}{section.4.3}% 12
+\BOOKMARK [2][-]{subsection.4.3.2}{3-exchange}{section.4.3}% 13
+\BOOKMARK [2][-]{subsection.4.3.3}{2-opt}{section.4.3}% 14
+\BOOKMARK [2][-]{subsection.4.3.4}{Random fit}{section.4.3}% 15
+\BOOKMARK [2][-]{subsection.4.3.5}{Clustering}{section.4.3}% 16
+\BOOKMARK [2][-]{subsection.4.3.6}{Greedy}{section.4.3}% 17
+\BOOKMARK [2][-]{subsection.4.3.7}{Similar regret}{section.4.3}% 18
+\BOOKMARK [1][-]{section.4.4}{Choosing a heuristic}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.5}{Adaptive weight adjustment}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.6}{Acceptance criteria and stopping condition}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.7}{Wild escape algorithm}{chapter.4}% 22
+\BOOKMARK [0][-]{chapter.5}{Computational Results}{}% 23
+\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 24
+\BOOKMARK [1][-]{section.5.2}{Instances}{chapter.5}% 25
+\BOOKMARK [2][-]{subsection.5.2.1}{Generate Instances based on real world data}{section.5.2}% 26
+\BOOKMARK [2][-]{subsection.5.2.2}{Generated Instances}{section.5.2}% 27
+\BOOKMARK [1][-]{section.5.3}{Initial Results}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.3.1}{Evaluation of the wild algorithm}{section.5.3}% 29
+\BOOKMARK [2][-]{subsection.5.3.2}{Initial evaluation of heuristics}{section.5.3}% 30
+\BOOKMARK [2][-]{subsection.5.3.3}{Further evaluation of heuristics}{section.5.3}% 31
+\BOOKMARK [2][-]{subsection.5.3.4}{Evaluation of individual heuristics}{section.5.3}% 32
+\BOOKMARK [2][-]{subsection.5.3.5}{Deciding on the final model composition}{section.5.3}% 33
+\BOOKMARK [1][-]{section.5.4}{Final results}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.4.1}{Evaluation of final model}{section.5.4}% 35
+\BOOKMARK [2][-]{subsection.5.4.2}{Observations of results the final composition}{section.5.4}% 36
+\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 37
+\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 38

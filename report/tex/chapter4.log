@@ -1,12 +1,21 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  6 NOV 2019 22:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  6 NOV 2019 21:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**chapter4.tex
+(./chapter4.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+(/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls
+Document Class: subfiles 2012/05/23 Federico Garcia
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks14
+\verbatim@line=\toks15
+\verbatim@in@stream=\read1
+)
+Preamble taken from file `../main.tex'
+(../main.tex (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -41,7 +50,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks14
+\@emptytoks=\toks16
 \ex@=\dimen103
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -69,21 +78,21 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \dotsspace@=\muskip10
 \c@parentequation=\count95
 \dspbrk@lvl=\count96
-\tag@help=\toks15
+\tag@help=\toks17
 \row@=\count97
 \column@=\count98
 \maxfields@=\count99
-\andhelp@=\toks16
+\andhelp@=\toks18
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
 \tagshift@=\dimen108
 \tagwidth@=\dimen109
 \totwidth@=\dimen110
 \lineht@=\dimen111
-\@envbody=\toks17
+\@envbody=\toks19
 \multlinegap=\skip44
 \multlinetaggap=\skip45
-\mathdisplay@stack=\toks18
+\mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 ) (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
@@ -92,14 +101,14 @@ nment
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count100
-\float@exts=\toks19
+\float@exts=\toks21
 \float@box=\box28
-\@float@everytoks=\toks20
+\@float@everytoks=\toks22
 \@floatcapt=\box29
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks21
+\@float@every@algorithm=\toks23
 \c@algorithm=\count101
 ) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -128,7 +137,7 @@ LaTeX Info: Redefining \cite on input line 694.
 Package: geometry 2010/09/12 v5.6 Page Geometry
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
+\KV@toks@=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
@@ -148,17 +157,12 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutheight=\dimen117
 \Gm@layouthoffset=\dimen118
 \Gm@layoutvoffset=\dimen119
-\Gm@dimlist=\toks23
+\Gm@dimlist=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 ) (/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2012/05/23 Federico Garcia
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks24
-\verbatim@line=\toks25
-\verbatim@in@stream=\read1
-)) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
@@ -323,12 +327,15 @@ Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
 Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
 Package: xcolor-patch 2016/05/16 xcolor patch
 Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+
+Package auxhook Warning: Cannot patch \document,
+(auxhook)                using \AtBeginDocument instead.
+
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
@@ -397,30 +404,23 @@ LaTeX Info: Redefining \Cpagerefrange on input line 2301.
 LaTeX Info: Redefining \labelcref on input line 2301.
 LaTeX Info: Redefining \labelcpageref on input line 2301.
 Package cleveref Info: `algorithmicx' support loaded on input line 3051.
-) (./main.aux
+))) (./chapter4.aux)
+\openout1 = `chapter4.aux'.
 
-LaTeX Warning: Label `eq:cohesion' multiply defined.
-
-
-LaTeX Warning: Label `eq:cohesion@cref' multiply defined.
-
-)
-\openout1 = `main.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count141
@@ -489,7 +489,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 5.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -497,28 +497,95 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count147
 )
-LaTeX Info: Redefining \ref on input line 37.
-LaTeX Info: Redefining \pageref on input line 37.
-LaTeX Info: Redefining \nameref on input line 37.
-(./main.out) (./main.out)
+LaTeX Info: Redefining \ref on input line 5.
+LaTeX Info: Redefining \pageref on input line 5.
+LaTeX Info: Redefining \nameref on input line 5.
 \@outlinefile=\write3
-\openout3 = `main.out'.
+\openout3 = `chapter4.out'.
 
-<img/uib_2.png, id=156, 153.6942pt x 150.3216pt>
-File: img/uib_2.png Graphic file (type png)
-<use img/uib_2.png>
-Package pdftex.def Info: img/uib_2.png  used on input line 39.
-(pdftex.def)             Requested size: 153.6938pt x 150.32121pt.
+Chapter 1.
+
+LaTeX Warning: Reference `sec:alns' on page 1 undefined on input line 9.
+
+
+LaTeX Warning: Reference `sec:init' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Reference `sec:heur' on page 1 undefined on input line 11.
+
+
+LaTeX Warning: Reference `sec:choos' on page 1 undefined on input line 12.
+
+
+LaTeX Warning: Reference `sec:weight' on page 1 undefined on input line 13.
+
+
+LaTeX Warning: Reference `sec:wild' on page 1 undefined on input line 15.
+
+
+Package natbib Warning: Citation `ropke06' on page 1 undefined on input line 19
+.
+
+
+LaTeX Warning: Reference `alg:alns' on page 1 undefined on input line 26.
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 29.
+
+LaTeX Warning: Reference `alg:wild' on page 1 undefined on input line 58.
+
+
+Package natbib Warning: Citation `hosny12' on page 1 undefined on input line 63
+.
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/uib_2.png>] (./tex/a
-bstract.tex) [2
 
-] (./main.toc [3
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+LaTeX Warning: Reference `sec:swap' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Reference `sec:exch' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Reference `sec:2opt' on page 2 undefined on input line 70.
+
+
+Package natbib Warning: Citation `hemmati14' on page 2 undefined on input line 
+72.
+
+
+Package natbib Warning: Citation `hemmati16' on page 2 undefined on input line 
+72.
+
+
+LaTeX Warning: Reference `sec:rand' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Reference `sec:clust' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Reference `sec:greedy' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Reference `sec:shaw' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Reference `fig:swap' on page 1 undefined on input line 79.
+
+<../img/swap_ill.png, id=17, 1023.825pt x 401.5pt>
+File: ../img/swap_ill.png Graphic file (type png)
+<use ../img/swap_ill.png>
+Package pdftex.def Info: ../img/swap_ill.png  used on input line 83.
+(pdftex.def)             Requested size: 426.79134pt x 167.3668pt.
+
+LaTeX Warning: Reference `fig:exch' on page 1 undefined on input line 92.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -526,173 +593,32 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
-
-(./tex/chapter1.tex [5
-
-]
-Chapter 1.
-
-Overfull \hbox (28.59283pt too wide) in paragraph at lines 24--37
-[][]\OT1/cmr/m/n/12 Cordeau and Groupe d'^^Setudes et de recherche en anal-yse 
-des d^^Secisions [] ([]Montr^^Seal(2000[])
- []
-
-[6
-
-]
-Underfull \vbox (badness 1248) has occurred while \output is active []
-
-[7]) (./tex/chapter2.tex [8]
-Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--36
-\OT1/cmr/m/n/12 edges in the graph.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--60
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--60
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--60
-
- []
-
-[9
-
-]
-Overfull \hbox (80.42036pt too wide) in paragraph at lines 61--100
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--100
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--100
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 106--115
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[11]
-Overfull \hbox (59.38237pt too wide) in paragraph at lines 116--133
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--133
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--133
-
- []
-
-[12]
-
-LaTeX Warning: Reference `objectfunc' on page 13 undefined on input line 188.
-
-
-LaTeX Warning: Reference `eq:3' on page 13 undefined on input line 190.
-
-
-LaTeX Warning: Reference `eq:4' on page 13 undefined on input line 191.
-
-
-LaTeX Warning: Reference `eq:5' on page 13 undefined on input line 192.
-
-
-LaTeX Warning: Reference `eq:6' on page 13 undefined on input line 193.
-
-[13]
-
-LaTeX Warning: Reference `eq:7' on page 14 undefined on input line 195.
-
-
-LaTeX Warning: Reference `eq:8' on page 14 undefined on input line 196.
-
-
-LaTeX Warning: Reference `eq:9' on page 14 undefined on input line 197.
-
-
-LaTeX Warning: Reference `eq:10' on page 14 undefined on input line 199.
-
-
-LaTeX Warning: Reference `eq:12' on page 14 undefined on input line 199.
-
-) (./tex/chapter3.tex [14]
-Chapter 3.
-) (./tex/chapter4.tex [15
-
-]
-Chapter 4.
-
-LaTeX Warning: Reference `sec:choos' on page 1 undefined on input line 12.
-
-
-Overfull \hbox (1.18211pt too wide) in paragraph at lines 19--21
-\OT1/cmr/m/n/12 Our meta-heuris-tic is sim-i-lar to the ALNS ap-proach in-tro-d
-uced by []Ropke and Pisinger[]
- []
-
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 29.
-[16
-
-]
-<img/swap_ill.png, id=463, 1023.825pt x 401.5pt>
-File: img/swap_ill.png Graphic file (type png)
-<use img/swap_ill.png>
-Package pdftex.def Info: img/swap_ill.png  used on input line 83.
-(pdftex.def)             Requested size: 426.79134pt x 167.3668pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
-
- []
-
-[17]
-<img/3-exchange_ill.png, id=487, 1040.88875pt x 463.7325pt>
-File: img/3-exchange_ill.png Graphic file (type png)
-<use img/3-exchange_ill.png>
-Package pdftex.def Info: img/3-exchange_ill.png  used on input line 96.
+[2]
+<../img/3-exchange_ill.png, id=46, 1040.88875pt x 463.7325pt>
+File: ../img/3-exchange_ill.png Graphic file (type png)
+<use ../img/3-exchange_ill.png>
+Package pdftex.def Info: ../img/3-exchange_ill.png  used on input line 96.
 (pdftex.def)             Requested size: 426.79134pt x 190.13863pt.
-[18 <./img/swap_ill.png> <./img/3-exchange_ill.png>]
-<img/2-opt_ill.png, id=501, 1031.855pt x 395.4775pt>
-File: img/2-opt_ill.png Graphic file (type png)
-<use img/2-opt_ill.png>
-Package pdftex.def Info: img/2-opt_ill.png  used on input line 111.
+
+Package natbib Warning: Citation `lin65' on page 3 undefined on input line 105.
+
+
+
+Package natbib Warning: Citation `bullnheimer99' on page 3 undefined on input l
+ine 105.
+
+
+Package natbib Warning: Citation `carrabs07' on page 3 undefined on input line 
+106.
+
+
+LaTeX Warning: Reference `fig:2opt' on page 1 undefined on input line 107.
+
+[3 <../img/swap_ill.png> <../img/3-exchange_ill.png>]
+<../img/2-opt_ill.png, id=56, 1031.855pt x 395.4775pt>
+File: ../img/2-opt_ill.png Graphic file (type png)
+<use ../img/2-opt_ill.png>
+Package pdftex.def Info: ../img/2-opt_ill.png  used on input line 111.
 (pdftex.def)             Requested size: 426.79134pt x 163.577pt.
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
 has been already used, duplicate ignored
@@ -765,9 +691,10 @@ icate ignored
                    \relax 
 l.134         \State
                     
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[19 <./img/2-opt_ill.png>]pdfTeX warning (ext4): destination with the same iden
+LaTeX Warning: Reference `alg:2opt' on page 1 undefined on input line 141.
+
+[4 <../img/2-opt_ill.png>]pdfTeX warning (ext4): destination with the same iden
 tifier (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -850,20 +777,30 @@ ame identifier (name{ALG@line.13}) has been already used, duplicate ignored
                    \relax 
 l.172         \State
                     
-<img/cohesion.png, id=516, 431.6125pt x 349.305pt>
-File: img/cohesion.png Graphic file (type png)
-<use img/cohesion.png>
-Package pdftex.def Info: img/cohesion.png  used on input line 207.
+
+LaTeX Warning: Reference `alg:rand' on page 1 undefined on input line 178.
+
+
+LaTeX Warning: Reference `sec:4flow' on page 1 undefined on input line 188.
+
+
+Package natbib Warning: Citation `kaufman90' on page 5 undefined on input line 
+200.
+
+<../img/cohesion.png, id=67, 431.6125pt x 349.305pt>
+File: ../img/cohesion.png Graphic file (type png)
+<use ../img/cohesion.png>
+Package pdftex.def Info: ../img/cohesion.png  used on input line 207.
 (pdftex.def)             Requested size: 149.37956pt x 120.88878pt.
-<img/separation.png, id=517, 774.895pt x 336.25626pt>
-File: img/separation.png Graphic file (type png)
-<use img/separation.png>
-Package pdftex.def Info: img/separation.png  used on input line 214.
+<../img/separation.png, id=68, 774.895pt x 336.25626pt>
+File: ../img/separation.png Graphic file (type png)
+<use ../img/separation.png>
+Package pdftex.def Info: ../img/separation.png  used on input line 214.
 (pdftex.def)             Requested size: 256.0774pt x 111.12396pt.
+[5]
 
-Underfull \vbox (badness 1917) has occurred while \output is active []
+LaTeX Warning: Reference `fig:silu' on page 1 undefined on input line 223.
 
-[20]
 
 ! Package amsmath Error: Multiple \label's: label '{eq:siluette}' will be lost.
 
@@ -878,14 +815,17 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<img/single_linkage.png, id=524, 1289.81876pt x 452.69125pt>
-File: img/single_linkage.png Graphic file (type png)
-<use img/single_linkage.png>
-Package pdftex.def Info: img/single_linkage.png  used on input line 251.
+<../img/single_linkage.png, id=77, 1289.81876pt x 452.69125pt>
+File: ../img/single_linkage.png Graphic file (type png)
+<use ../img/single_linkage.png>
+Package pdftex.def Info: ../img/single_linkage.png  used on input line 251.
 (pdftex.def)             Requested size: 426.79134pt x 149.7892pt.
-[21 <./img/cohesion.png> <./img/separation.png>]pdfTeX warning (ext4): destinat
-ion with the same identifier (name{ALG@line.1}) has been already used, duplicat
-e ignored
+
+LaTeX Warning: Reference `fig:hierarch' on page 1 undefined on input line 256.
+
+[6 <../img/cohesion.png> <../img/separation.png>]pdfTeX warning (ext4): destina
+tion with the same identifier (name{ALG@line.1}) has been already used, duplica
+te ignored
 <to be read again> 
                    \relax 
 l.265         \Function
@@ -973,7 +913,11 @@ cate ignored
 <to be read again> 
                    \relax 
 l.279         \State
-                     [22 <./img/single_linkage.png>]
+                    
+
+LaTeX Warning: Reference `alg:cluster' on page 1 undefined on input line 285.
+
+[7 <../img/single_linkage.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 297.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -981,6 +925,9 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 297.
+
+LaTeX Warning: Reference `alg:cluster' on page 1 undefined on input line 309.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 309--311
 
@@ -1080,7 +1027,12 @@ l.336         \Until
 <to be read again> 
                    \relax 
 l.337         \State
-                     [23]
+                    
+
+Package natbib Warning: Citation `shaw97' on page 8 undefined on input line 354
+.
+
+[8]
 Overfull \hbox (7.5115pt too wide) detected at line 368
 []\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 D[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 D[]\OT1/cmr/m/n/12 ) + \OM
@@ -1092,10 +1044,10 @@ T1/cmr/m/n/12 + \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )
  []
 
 
-Underfull \vbox (badness 1009) has occurred while \output is active []
+LaTeX Warning: Reference `ch:mm' on page 1 undefined on input line 372.
 
-[24]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
-1}) has been already used, duplicate ignored
+[9]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1
+}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.401         \Function
@@ -1200,249 +1152,156 @@ l.416         \Until
 <to be read again> 
                    \relax 
 l.417         \State
-                     [25] [26]
-<img/weight_probability.png, id=590, 713.66624pt x 414.54875pt>
-File: img/weight_probability.png Graphic file (type png)
-<use img/weight_probability.png>
-Package pdftex.def Info: img/weight_probability.png  used on input line 479.
+                    
+
+LaTeX Warning: Reference `alg:simReg' on page 1 undefined on input line 424.
+
+
+LaTeX Warning: Reference `sec:greedy' on page 1 undefined on input line 428.
+
+[10]
+
+LaTeX Warning: Reference `sec:swap' on page 1 undefined on input line 443.
+
+
+LaTeX Warning: Reference `sec:exch' on page 1 undefined on input line 443.
+
+
+LaTeX Warning: Reference `ch:res' on page 1 undefined on input line 445.
+
+
+LaTeX Warning: Reference `alg:alns' on page 1 undefined on input line 446.
+
+
+Package natbib Warning: Citation `hemmati14' on page 11 undefined on input line
+ 446.
+
+
+Package natbib Warning: Citation `ropke06' on page 11 undefined on input line 4
+53.
+
+
+LaTeX Warning: Reference `sec:weight' on page 1 undefined on input line 453.
+
+
+LaTeX Warning: Reference `sec:choosing' on page 1 undefined on input line 457.
+
+
+LaTeX Warning: Reference `alg:alns' on page 1 undefined on input line 460.
+
+[11]
+<../img/weight_probability.png, id=129, 713.66624pt x 414.54875pt>
+File: ../img/weight_probability.png Graphic file (type png)
+<use ../img/weight_probability.png>
+Package pdftex.def Info: ../img/weight_probability.png  used on input line 479.
+
 (pdftex.def)             Requested size: 298.75262pt x 173.53366pt.
-[27 <./img/weight_probability.png>]pdfTeX warning (ext4): destination with the 
-same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+
+LaTeX Warning: Reference `fig:weights' on page 1 undefined on input line 484.
+
+
+LaTeX Warning: Reference `ch:solMeth' on page 1 undefined on input line 492.
+
+
+Package natbib Warning: Citation `crama03' on page 12 undefined on input line 4
+94.
+
+[12 <../img/weight_probability.png>]
+
+LaTeX Warning: Reference `alg:alns' on page 1 undefined on input line 510.
+
+pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.515         \Function
+l.517         \Function
                        {wildEscape}{$s\in solution,s_{best}$, set of heurist...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.516         \Repeat
+l.518         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.517             \State
+l.519             \State
                          choose a random heuristic $h$ from $H$pdfTeX warning (
 ext4): destination with the same identifier (name{ALG@line.4}) has been already
  used, duplicate ignored
 <to be read again> 
                    \relax 
-l.518             \State
+l.520             \State
                          apply $h$ to $s$pdfTeX warning (ext4): destination wit
 h the same identifier (name{ALG@line.5}) has been already used, duplicate ignor
 ed
 <to be read again> 
                    \relax 
-l.519             \If
+l.521             \If
                       {$f(s)<f(s_{best})$}pdfTeX warning (ext4): destination wi
 th the same identifier (name{ALG@line.6}) has been already used, duplicate igno
 red
 <to be read again> 
                    \relax 
-l.520                 \State
+l.522                 \State
                              $s_{best} = s$pdfTeX warning (ext4): destination w
 ith the same identifier (name{ALG@line.7}) has been already used, duplicate ign
 ored
 <to be read again> 
                    \relax 
-l.522         \Until
+l.524         \Until
                      stop condition metpdfTeX warning (ext4): destination with 
 the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.523         \State
-                     \Return $s$) (./tex/chapter5.tex [28]
-Chapter 5.
+l.525         \State
+                     \Return $s$
 
-Underfull \vbox (badness 5817) has occurred while \output is active []
+LaTeX Warning: Reference `alg:wild' on page 1 undefined on input line 530.
 
-[29
 
-] [30]
-<img/europe_coordinates.png, id=667, 737.75626pt x 604.2575pt>
-File: img/europe_coordinates.png Graphic file (type png)
-<use img/europe_coordinates.png>
-Package pdftex.def Info: img/europe_coordinates.png  used on input line 92.
-(pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
-<img/germany_coordinates.png, id=668, 602.25pt x 494.84875pt>
-File: img/germany_coordinates.png Graphic file (type png)
-<use img/germany_coordinates.png>
-Package pdftex.def Info: img/germany_coordinates.png  used on input line 99.
-(pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
-<img/uniform_coordinates.png, id=669, 485.815pt x 409.53pt>
-File: img/uniform_coordinates.png Graphic file (type png)
-<use img/uniform_coordinates.png>
-Package pdftex.def Info: img/uniform_coordinates.png  used on input line 106.
-(pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[31]
+LaTeX Warning: Reference `sec:rand' on page 1 undefined on input line 532.
 
-LaTeX Warning: Reference `sec:evalw' on page 1 undefined on input line 136.
 
-[32 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
-rm_coordinates.png>] [33] [34]
-Overfull \hbox (0.11673pt too wide) in paragraph at lines 217--218
-[]\OT1/cmr/m/n/12 H7: the shaw re-moval and regret-3 in-ser-tion heuris-tic de-
-scribed in sec-tion []4.3.7[]. 
- []
+LaTeX Warning: Reference `sec:exch' on page 1 undefined on input line 532.
 
-! Undefined control sequence.
-l.220 \Fref
-           {fig:rank} shows the ranking of each combination of heuristics fr...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-<img/avrg_imp_rank.png, id=719, 1185.42876pt x 120.45pt>
-File: img/avrg_imp_rank.png Graphic file (type png)
-<use img/avrg_imp_rank.png>
-Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 233.
-(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_imp_rank.png, id=720, 1185.42876pt x 120.45pt>
-File: img/best_imp_rank.png Graphic file (type png)
-<use img/best_imp_rank.png>
-Package pdftex.def Info: img/best_imp_rank.png  used on input line 240.
-(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_avrg_imp_rank.png, id=721, 1185.42876pt x 120.45pt>
-File: img/best_avrg_imp_rank.png Graphic file (type png)
-<use img/best_avrg_imp_rank.png>
-Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 247.
-(pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-! Undefined control sequence.
-l.261 \Fref
-           {tab:anovaNormal} shows the results of ANOVA (III) analysis perfo...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Warning: Reference `sec:swap' on page 1 undefined on input line 532.
 
-[35 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
-nk.png>] [36]
-Overfull \hbox (8.63997pt too wide) in paragraph at lines 440--456
- [][] 
- []
+No file chapter4.bbl.
 
-[37]
-Overfull \hbox (6.85793pt too wide) in paragraph at lines 519--537
- [][] 
- []
+Package natbib Warning: There were undefined citations.
 
-[38] [39] [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 534.
+[13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 534.
+(./chapter4.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 534.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 534.
 
-LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 637.
+Package rerunfilecheck Warning: File `chapter4.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-[41]
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.661                     Set & #
-                                 Ord      & #Veh  & #Loc  & objective     & ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.661                     Set & #Ord      & #
-                                             Veh  & #Loc  & objective     & ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<recently read> ##
-                  
-l.661 ...              Set & #Ord      & #Veh  & #
-                                                  Loc  & objective     & gap...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-<img/operators_4_ord.png, id=800, 716.6775pt x 408.52625pt>
-File: img/operators_4_ord.png Graphic file (type png)
-<use img/operators_4_ord.png>
-Package pdftex.def Info: img/operators_4_ord.png  used on input line 715.
-(pdftex.def)             Requested size: 192.0548pt x 109.47449pt.
-<img/operators_12_ord.png, id=801, 716.6775pt x 415.5525pt>
-File: img/operators_12_ord.png Graphic file (type png)
-<use img/operators_12_ord.png>
-Package pdftex.def Info: img/operators_12_ord.png  used on input line 722.
-(pdftex.def)             Requested size: 192.0548pt x 111.35735pt.
-<img/operators_35_ord.png, id=802, 714.67pt x 415.5525pt>
-File: img/operators_35_ord.png Graphic file (type png)
-<use img/operators_35_ord.png>
-Package pdftex.def Info: img/operators_35_ord.png  used on input line 729.
-(pdftex.def)             Requested size: 192.0548pt x 111.66805pt.
-<img/operators_80_ord.png, id=803, 716.6775pt x 414.54875pt>
-File: img/operators_80_ord.png Graphic file (type png)
-<use img/operators_80_ord.png>
-Package pdftex.def Info: img/operators_80_ord.png  used on input line 736.
-(pdftex.def)             Requested size: 192.0548pt x 111.08836pt.
-<img/operators_150_ord.png, id=804, 716.6775pt x 412.54124pt>
-File: img/operators_150_ord.png Graphic file (type png)
-<use img/operators_150_ord.png>
-Package pdftex.def Info: img/operators_150_ord.png  used on input line 743.
-(pdftex.def)             Requested size: 192.0548pt x 110.5504pt.
-[42] [43 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/operat
-ors_35_ord.png> <./img/operators_80_ord.png> <./img/operators_150_ord.png>]
-! Interruption.
-<to be read again> \AtBegShi@Output 
-                                    \endgroup \set@typeset@protect 
-l.759 \par
-          
-? 
-
-LaTeX Warning: Reference `fig:finRes' on page 1 undefined on input line 768.
-
-) (./tex/chapter6.tex [44]
-Chapter 6.
-) (./tex/appendix.tex [45
-
-]
-Appendix A.
-) (./main.bbl [46
-
-] [47
-
-]
-Underfull \hbox (badness 1314) in paragraph at lines 172--176
-[]\OT1/cmr/m/n/12 Oracle Cor-po-ra-tion.  Java se jdk, 2019.  URL []$\OT1/cmtt/
-m/n/12 https : / / www . oracle . com /
- []
-
-[48])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
- [49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
- (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 317B7FD0F883C25622A8239350B76DF1;2622.
-
+Package rerunfilecheck Info: Checksums for `chapter4.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  B628FD664D60BBFD3AD26D4325795115;995.
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 12211 strings out of 492982
- 197103 string characters out of 6134896
- 349143 words of memory out of 5000000
- 15350 multiletter control sequences out of 15000+600000
- 13339 words of font info for 48 fonts, out of 8000000 for 9000
+ 11617 strings out of 492982
+ 187906 string characters out of 6134896
+ 318538 words of memory out of 5000000
+ 14949 multiletter control sequences out of 15000+600000
+ 11192 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,21n,78p,509b,769s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,12n,77p,495b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1453,18 +1312,16 @@ nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (49 pages, 933973 bytes).
+/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on chapter4.pdf (13 pages, 418587 bytes).
 PDF statistics:
- 975 PDF objects out of 1000 (max. 8388607)
- 875 compressed objects within 9 object streams
- 227 named destinations out of 1000 (max. 500000)
- 400 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 218 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,15 @@
+\BOOKMARK [0][-]{chapter.1}{A 4th party logistics optimizer}{}% 1
+\BOOKMARK [1][-]{section.1.1}{ALNS for 4th party logistic problems}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Initial Solution}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Heuristics}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.3.1}{Swap}{section.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.3.2}{3-exchange}{section.1.3}% 6
+\BOOKMARK [2][-]{subsection.1.3.3}{2-opt}{section.1.3}% 7
+\BOOKMARK [2][-]{subsection.1.3.4}{Random fit}{section.1.3}% 8
+\BOOKMARK [2][-]{subsection.1.3.5}{Clustering}{section.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.3.6}{Greedy}{section.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.3.7}{Similar regret}{section.1.3}% 11
+\BOOKMARK [1][-]{section.1.4}{Choosing a heuristic}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.5}{Adaptive weight adjustment}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.6}{Acceptance criteria and stopping condition}{chapter.1}% 14
+\BOOKMARK [1][-]{section.1.7}{Wild escape algorithm}{chapter.1}% 15

@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="" />
+    <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/Operators_illustrations.odp" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Operators_illustrations.odp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/Results_Analysis.ods" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Results_Analysis.ods" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_12_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_12_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_150_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_150_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_35_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_35_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_4_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_4_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/operators_80_ord.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/operators_80_ord.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.bbl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.blg" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.blg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.lof" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/tex/chapter1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter1.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/tex/chapter4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter4.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/tex/references.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/references.bib" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -365,6 +388,7 @@
       <workItem from="1572344840092" duration="2415000" />
       <workItem from="1572518474901" duration="834000" />
       <workItem from="1572879783097" duration="2087000" />
+      <workItem from="1573070518953" duration="2260000" />
     </task>
     <servers />
   </component>
@@ -463,7 +487,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
-          <line>292</line>
+          <line>291</line>
           <option name="timeStamp" value="218" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -479,7 +503,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/heuristic/AdaptiveLargeNeighbourhoodSearch.java</url>
-          <line>233</line>
+          <line>232</line>
           <option name="timeStamp" value="233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

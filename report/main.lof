@@ -2,12 +2,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A swap heuristic performed on a simple solution with two orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces A 3-exchange heuristic performed on a simple solution with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces One 2-opt heuristic operation performed on a simple solution with three orders. In this example $i=2$ and $j=4$ so the schedule $S_{ij}$ is reversed. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A swap heuristic performed on a simple solution with two orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}{figure.caption.5}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces A 3-exchange heuristic performed on a simple solution with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{18}{figure.caption.6}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces One 2-opt heuristic operation performed on a simple solution with three orders. In this example $i=2$ and $j=4$ so the schedule $S_{ij}$ is reversed. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.\relax }}{19}{figure.caption.7}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces The figures show the cohesion and separation effect illustrated respectively by the red and yellow lines. The green node represent location $i$ and $Cl_i$ is its cluster. The cluster $Cl_h$ is the cluster with the minimum average distance to $i$. \relax }}{21}{figure.caption.9}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Each table represents a distance matrix between pairs of nodes. In the first table, $d_{bd}$ marked in yellow is the shortest distance and therefore chosen to be part of the same cluster. The new node, or cluster, $(b,d)$ contain the shortest distances to the other nodes. In the second table, $d_{ac}$ is shortest and therefore put together in a cluster.\relax }}{22}{figure.caption.11}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces The figure illustrates an example of the developement of the weight probability $p_i$ when running our model. The x-axis represent a segment and the y-axis the probability of selecting a heuristic.\relax }}{27}{figure.caption.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Area of random point generation\relax }}{26}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Ranking of improvements from initial solution\relax }}{29}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Operator weights per segment from instance set 1\relax }}{37}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Area of random point generation\relax }}{32}{figure.caption.17}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Ranking of improvements from initial solution\relax }}{35}{figure.caption.22}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Operator weights per segment from instance set 1\relax }}{43}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

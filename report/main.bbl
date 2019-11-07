@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -60,6 +60,12 @@ J.-F. Cordeau and Q.~Groupe d'{\'e}tudes et de recherche en analyse
 \newblock \emph{The VRP with time windows}.
 \newblock Montr{\'e}al: Groupe d'{\'e}tudes et de recherche en analyse des
   d{\'e}cisions, 2000.
+
+\bibitem[Crama and Schyns(2003)]{crama03}
+Y.~Crama and M.~Schyns.
+\newblock Simulated annealing for complex portfolio selection problems.
+\newblock \emph{European Journal of operational research}, 150\penalty0
+  (3):\penalty0 546--571, 2003.
 
 \bibitem[Desrosiers et~al.(1995)Desrosiers, Dumas, Solomon, and
   Soumis]{desrosiers95}
@@ -136,6 +142,11 @@ B.~Kalantari, A.~V. Hill, and S.~R. Arora.
   delivery customers.
 \newblock \emph{European Journal of Operational Research}, 22\penalty0
   (3):\penalty0 377--386, 1985.
+
+\bibitem[Kaufman and Rousseeuw(1990)]{kaufman90}
+L.~Kaufman and P.~Rousseeuw.
+\newblock Finding groups in data; an introduction to cluster analysis.
+\newblock Technical report, J. Wiley, 1990.
 
 \bibitem[Lin(1965)]{lin65}
 S.~Lin.

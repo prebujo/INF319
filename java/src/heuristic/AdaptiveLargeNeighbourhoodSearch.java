@@ -194,7 +194,6 @@ public class AdaptiveLargeNeighbourhoodSearch implements IHeuristic{
 
                 while (segmentIteration < SEGMENT_LENGTH) {
 
-                    //TODO: Experiment with something wild to do when no improvement has been found for a while
                     if (iterationsSinceBestSolution>MAX_ITERATIONS_WITHOUT_IMPROVEMENT&&withWildOperators){
                         int acceptIterations = 0;
                         wildRunsIterations[run][wildIdx] = iteration;
