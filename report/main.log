@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  6 NOV 2019 22:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  9 NOV 2019 18:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,7 +504,7 @@ LaTeX Info: Redefining \nameref on input line 37.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<img/uib_2.png, id=156, 153.6942pt x 150.3216pt>
+<img/uib_2.png, id=160, 153.6942pt x 150.3216pt>
 File: img/uib_2.png Graphic file (type png)
 <use img/uib_2.png>
 Package pdftex.def Info: img/uib_2.png  used on input line 39.
@@ -658,123 +658,130 @@ Chapter 3.
 
 ]
 Chapter 4.
-
-LaTeX Warning: Reference `sec:choos' on page 1 undefined on input line 12.
-
-
-Overfull \hbox (1.18211pt too wide) in paragraph at lines 19--21
-\OT1/cmr/m/n/12 Our meta-heuris-tic is sim-i-lar to the ALNS ap-proach in-tro-d
-uced by []Ropke and Pisinger[]
- []
-
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 29.
+put line 25.
+<img/solution.png, id=457, 746.79pt x 403.5075pt>
+File: img/solution.png Graphic file (type png)
+<use img/solution.png>
+Package pdftex.def Info: img/solution.png  used on input line 66.
+(pdftex.def)             Requested size: 277.41176pt x 149.89267pt.
 [16
 
-]
-<img/swap_ill.png, id=463, 1023.825pt x 401.5pt>
+] [17 <./img/solution.png>]
+<img/swap_ill.png, id=496, 1196.47pt x 406.51875pt>
 File: img/swap_ill.png Graphic file (type png)
 <use img/swap_ill.png>
-Package pdftex.def Info: img/swap_ill.png  used on input line 83.
-(pdftex.def)             Requested size: 426.79134pt x 167.3668pt.
+Package pdftex.def Info: img/swap_ill.png  used on input line 100.
+(pdftex.def)             Requested size: 426.79134pt x 145.00679pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-[17]
-<img/3-exchange_ill.png, id=487, 1040.88875pt x 463.7325pt>
+
+Underfull \vbox (badness 1354) has occurred while \output is active []
+
+[18]
+<img/3-exchange_ill.png, id=502, 1200.485pt x 417.56pt>
 File: img/3-exchange_ill.png Graphic file (type png)
 <use img/3-exchange_ill.png>
-Package pdftex.def Info: img/3-exchange_ill.png  used on input line 96.
-(pdftex.def)             Requested size: 426.79134pt x 190.13863pt.
-[18 <./img/swap_ill.png> <./img/3-exchange_ill.png>]
-<img/2-opt_ill.png, id=501, 1031.855pt x 395.4775pt>
+Package pdftex.def Info: img/3-exchange_ill.png  used on input line 113.
+(pdftex.def)             Requested size: 426.79134pt x 148.44827pt.
+<img/2-opt_ill.png, id=510, 1127.21124pt x 384.43625pt>
 File: img/2-opt_ill.png Graphic file (type png)
 <use img/2-opt_ill.png>
-Package pdftex.def Info: img/2-opt_ill.png  used on input line 111.
-(pdftex.def)             Requested size: 426.79134pt x 163.577pt.
+Package pdftex.def Info: img/2-opt_ill.png  used on input line 128.
+(pdftex.def)             Requested size: 426.79134pt x 145.55934pt.
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.119         \Function
-                       {twoOpt}{}pdfTeX warning (ext4): destination with the sa
-me identifier (name{ALG@line.2}) has been already used, duplicate ignored
+l.136         \Function
+                       {2-opt}{}pdfTeX warning (ext4): destination with the sam
+e identifier (name{ALG@line.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.120         \State
-                     select random vehicle $v$pdfTeX warning (ext4): destinatio
-n with the same identifier (name{ALG@line.3}) has been already used, duplicate 
-ignored
+l.137         \State
+                     select random vehicle $v$ with $|v|>2$pdfTeX warning (ext4
+): destination with the same identifier (name{ALG@line.3}) has been already use
+d, duplicate ignored
 <to be read again> 
                    \relax 
-l.121         \State
-                     schedule $S = S_v$pdfTeX warning (ext4): destination with 
-the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
-
+l.138         \State
+                     vehicle schedule $S_v$pdfTeX warning (ext4): destination w
+ith the same identifier (name{ALG@line.4}) has been already used, duplicate ign
+ored
 <to be read again> 
                    \relax 
-l.122         \Repeat
+l.139         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.123         \State
-                     $S_{best} = S$pdfTeX warning (ext4): destination with the 
-same identifier (name{ALG@line.6}) has been already used, duplicate ignored
+l.140         \State
+                     $S_{best} = S_v$pdfTeX warning (ext4): destination with th
+e same identifier (name{ALG@line.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.124         \For
-                  {$i<S.length$}pdfTeX warning (ext4): destination with the sam
+l.141         \State
+                     $n = |S_v|$pdfTeX warning (ext4): destination with the sam
 e identifier (name{ALG@line.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.125             \State
+l.142         \For
+                  {$i<n$}pdfTeX warning (ext4): destination with the same ident
+ifier (name{ALG@line.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.143             \State
                          $j=i+1$pdfTeX warning (ext4): destination with the sam
-e identifier (name{ALG@line.8}) has been already used, duplicate ignored
+e identifier (name{ALG@line.9}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.126             \For
-                      {$j<S.length$}pdfTeX warning (ext4): destination with the
- same identifier (name{ALG@line.9}) has been already used, duplicate ignored
+l.144             \For
+                      {$j<n$}pdfTeX warning (ext4): destination with the same i
+dentifier (name{ALG@line.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.127                 \State
-                             schedule $ S' = S_{0i} + reverse(S_{(i+1)j}) + ...
-pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10})
+l.145                 \State
+                             current vehicle schedule $S_v' = S_{0i} + rever...
+pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.11})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.128                 \If
-                          {$f(S')<f(S_{best})$}pdfTeX warning (ext4): destinati
-on with the same identifier (name{ALG@line.11}) has been already used, duplicat
-e ignored
+l.146                 \If
+                          {$f(S_v')<f(S_{best})$}pdfTeX warning (ext4): destina
+tion with the same identifier (name{ALG@line.12}) has been already used, duplic
+ate ignored
 <to be read again> 
                    \relax 
-l.129                 \State
-                             $S = S'$pdfTeX warning (ext4): destination with th
-e same identifier (name{ALG@line.12}) has been already used, duplicate ignored
+l.147                 \State
+                             $S_{best} = S_v'$pdfTeX warning (ext4): destinatio
+n with the same identifier (name{ALG@line.13}) has been already used, duplicate
+ ignored
 <to be read again> 
                    \relax 
-l.133         \Until
+l.151         \State
+                     $S_v = S_{best}$pdfTeX warning (ext4): destination with th
+e same identifier (name{ALG@line.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.152         \Until
                      {no further improvement found}pdfTeX warning (ext4): desti
-nation with the same identifier (name{ALG@line.13}) has been already used, dupl
+nation with the same identifier (name{ALG@line.15}) has been already used, dupl
 icate ignored
 <to be read again> 
                    \relax 
-l.134         \State
-                    
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[19 <./img/2-opt_ill.png>]pdfTeX warning (ext4): destination with the same iden
-tifier (name{ALG@line.1}) has been already used, duplicate ignored
+l.153         \State
+                     [19 <./img/swap_ill.png> <./img/3-exchange_ill.png>] [20 <
+./img/2-opt_ill.png>]pdfTeX warning (ext4): destination with the same identifie
+r (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.159         \Function
+l.177         \Function
                        {randomFit}{$s\in \{solution}$}
 ! Extra }, or forgotten \endgroup.
-l.159 ... \Function{randomFit}{$s\in \{solution}$}
+l.177 ... \Function{randomFit}{$s\in \{solution}$}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -786,84 +793,80 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.160         \State
+l.178         \State
                      select the number of orders to reinsert $q$pdfTeX warning 
 (ext4): destination with the same identifier (name{ALG@line.3}) has been alread
 y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.161         \State
+l.179         \State
                      solution $s' = s$pdfTeX warning (ext4): destination with t
 he same identifier (name{ALG@line.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.162         \State
+l.180         \State
                      remove $q$ orders from $s'$pdfTeX warning (ext4): destinat
 ion with the same identifier (name{ALG@line.5}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.163         \State
+l.181         \State
                      set I = removed orderspdfTeX warning (ext4): destination w
 ith the same identifier (name{ALG@line.6}) has been already used, duplicate ign
 ored
 <to be read again> 
                    \relax 
-l.164         \For
+l.182         \For
                   {$z\in I$}pdfTeX warning (ext4): destination with the same id
 entifier (name{ALG@line.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.165             \Repeat
+l.183             \Repeat
                          pdfTeX warning (ext4): destination with the same ident
 ifier (name{ALG@line.8}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.166             \State
+l.184             \State
                          choose random vehicle $v$pdfTeX warning (ext4): destin
 ation with the same identifier (name{ALG@line.9}) has been already used, duplic
 ate ignored
 <to be read again> 
                    \relax 
-l.167             \State
-                         choose random position in schedule $S_v$pdfTeX warning
- (ext4): destination with the same identifier (name{ALG@line.10}) has been alre
-ady used, duplicate ignored
+l.185             \State
+                         choose random position in vehicle schedule $S_v$pdfTeX
+ warning (ext4): destination with the same identifier (name{ALG@line.10}) has b
+een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.168             \State
+l.186             \State
                          insert $z$ in $S_v$pdfTeX warning (ext4): destination 
 with the same identifier (name{ALG@line.11}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
-l.169             \Until
-                         {feasible schedule found}pdfTeX warning (ext4): destin
-ation with the same identifier (name{ALG@line.12}) has been already used, dupli
-cate ignored
+l.187             \Until
+                         {feasible vehicle schedule found}pdfTeX warning (ext4)
+: destination with the same identifier (name{ALG@line.12}) has been already use
+d, duplicate ignored
 <to be read again> 
                    \relax 
-l.170             \State
+l.188             \State
                          update s'pdfTeX warning (ext4): destination with the s
 ame identifier (name{ALG@line.13}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.172         \State
-                    
-<img/cohesion.png, id=516, 431.6125pt x 349.305pt>
+l.190         \State
+                     [21]
+<img/cohesion.png, id=535, 431.6125pt x 349.305pt>
 File: img/cohesion.png Graphic file (type png)
 <use img/cohesion.png>
-Package pdftex.def Info: img/cohesion.png  used on input line 207.
+Package pdftex.def Info: img/cohesion.png  used on input line 225.
 (pdftex.def)             Requested size: 149.37956pt x 120.88878pt.
-<img/separation.png, id=517, 774.895pt x 336.25626pt>
+<img/separation.png, id=536, 774.895pt x 336.25626pt>
 File: img/separation.png Graphic file (type png)
 <use img/separation.png>
-Package pdftex.def Info: img/separation.png  used on input line 214.
+Package pdftex.def Info: img/separation.png  used on input line 232.
 (pdftex.def)             Requested size: 256.0774pt x 111.12396pt.
-
-Underfull \vbox (badness 1917) has occurred while \output is active []
-
-[20]
 
 ! Package amsmath Error: Multiple \label's: label '{eq:siluette}' will be lost.
 
@@ -872,26 +875,26 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.242 \end{alignat}
+l.260 \end{alignat}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<img/single_linkage.png, id=524, 1289.81876pt x 452.69125pt>
+[22 <./img/cohesion.png> <./img/separation.png>]
+<img/single_linkage.png, id=547, 1289.81876pt x 452.69125pt>
 File: img/single_linkage.png Graphic file (type png)
 <use img/single_linkage.png>
-Package pdftex.def Info: img/single_linkage.png  used on input line 251.
+Package pdftex.def Info: img/single_linkage.png  used on input line 269.
 (pdftex.def)             Requested size: 426.79134pt x 149.7892pt.
-[21 <./img/cohesion.png> <./img/separation.png>]pdfTeX warning (ext4): destinat
-ion with the same identifier (name{ALG@line.1}) has been already used, duplicat
-e ignored
+pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.265         \Function
+l.283         \Function
                        {cluster}{$s\in \{solution}$, $p$}
 ! Extra }, or forgotten \endgroup.
-l.265 ...unction{cluster}{$s\in \{solution}$, $p$}
+l.283 ...unction{cluster}{$s\in \{solution}$, $p$}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -903,97 +906,97 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.266         \State
+l.284         \State
                      select the number of orders to reinsert $q$pdfTeX warning 
 (ext4): destination with the same identifier (name{ALG@line.3}) has been alread
 y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.267         \State
+l.285         \State
                      add orders to array A acending based on cluster value $...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.268         \State
+l.286         \State
                      empty order set $I$pdfTeX warning (ext4): destination with
  the same identifier (name{ALG@line.5}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.269         \Repeat
+l.287         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270             \State
+l.288             \State
                          choose a random number $y$ between $[0,1]$pdfTeX warni
 ng (ext4): destination with the same identifier (name{ALG@line.7}) has been alr
 eady used, duplicate ignored
 <to be read again> 
                    \relax 
-l.271             \State
+l.289             \State
                          remove the order in position $y^p$ in $A$ from $s$pdfT
 eX warning (ext4): destination with the same identifier (name{ALG@line.8}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.272             \State
+l.290             \State
                          add removed order to $I$pdfTeX warning (ext4): destina
 tion with the same identifier (name{ALG@line.9}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.273         \Until
+l.291         \Until
                      {$|I| = q$}pdfTeX warning (ext4): destination with the sam
 e identifier (name{ALG@line.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.274         \For
+l.292         \For
                   {$i\in I$}pdfTeX warning (ext4): destination with the same id
 entifier (name{ALG@line.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275             \State
+l.293             \State
                          find vehicle schedule $S_v$ which maximizes $c_i$pdfTe
 X warning (ext4): destination with the same identifier (name{ALG@line.12}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276             \State
+l.294             \State
                          insert $i$ in best possible position in $S_v$pdfTeX wa
 rning (ext4): destination with the same identifier (name{ALG@line.13}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.277             \State
+l.295             \State
                          update $s$ based on $S_v$pdfTeX warning (ext4): destin
 ation with the same identifier (name{ALG@line.14}) has been already used, dupli
 cate ignored
 <to be read again> 
                    \relax 
-l.279         \State
-                     [22 <./img/single_linkage.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 297.
+l.297         \State
+                    
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 315.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 297.
-
-Underfull \hbox (badness 10000) in paragraph at lines 309--311
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 315.
+[23 <./img/single_linkage.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
-has been already used, duplicate ignored
+[24]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
+1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.323         \Function
+l.345         \Function
                        {greedy}{$s\in \{solution}$, $p$}
 ! Extra }, or forgotten \endgroup.
-l.323 ...Function{greedy}{$s\in \{solution}$, $p$}
+l.345 ...Function{greedy}{$s\in \{solution}$, $p$}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1005,83 +1008,83 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.324         \State
+l.346         \State
                      select the number of orders to reinsert $q$pdfTeX warning 
 (ext4): destination with the same identifier (name{ALG@line.3}) has been alread
 y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.325         \State
+l.347         \State
                      add orders in array $A$ based on decending cost $f(S_v)...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.326         \State
+l.348         \State
                      empty order set $I$pdfTeX warning (ext4): destination with
  the same identifier (name{ALG@line.5}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.327         \Repeat
+l.349         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.328             \State
+l.350             \State
                          choose a random number $y$ between $[0,1]$pdfTeX warni
 ng (ext4): destination with the same identifier (name{ALG@line.7}) has been alr
 eady used, duplicate ignored
 <to be read again> 
                    \relax 
-l.329             \State
+l.351             \State
                          remove the order in position $y^p$ in $A$ from $s$pdfT
 eX warning (ext4): destination with the same identifier (name{ALG@line.8}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.330             \State
+l.352             \State
                          add removed order to $I$pdfTeX warning (ext4): destina
 tion with the same identifier (name{ALG@line.9}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.331         \Until
+l.353         \Until
                      {$|I| = q$}pdfTeX warning (ext4): destination with the sam
 e identifier (name{ALG@line.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.332         \Repeat
+l.354         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.333             \State
+l.355             \State
                          sort $I$ based on each orders minimum increase in o...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.334             \State
+l.356             \State
                          insert the first order $i$ from $I$ in its best pos...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.13})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.335             \State
+l.357             \State
                          remove order $i$ from $I$pdfTeX warning (ext4): destin
 ation with the same identifier (name{ALG@line.14}) has been already used, dupli
 cate ignored
 <to be read again> 
                    \relax 
-l.336         \Until
+l.358         \Until
                     {$|I| = 0$}pdfTeX warning (ext4): destination with the same
  identifier (name{ALG@line.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337         \State
-                     [23]
-Overfull \hbox (7.5115pt too wide) detected at line 368
+l.359         \State
+                    
+Overfull \hbox (7.5115pt too wide) detected at line 390
 []\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 D[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 D[]\OT1/cmr/m/n/12 ) + \OM
 L/cmm/m/it/12 !\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 Q[] \OMS/cmsy/m/n/12 ^^@ \OML
@@ -1091,17 +1094,14 @@ mr/m/n/12 (1 \OMS/cmsy/m/n/12 ^^@ []\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^\G[]
 T1/cmr/m/n/12 + \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )
  []
 
-
-Underfull \vbox (badness 1009) has occurred while \output is active []
-
-[24]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
+[25]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.401         \Function
+l.423         \Function
                        {similarRegret}{$s\in \{solution}$, $p$}
 ! Extra }, or forgotten \endgroup.
-l.401 ...n{similarRegret}{$s\in \{solution}$, $p$}
+l.423 ...n{similarRegret}{$s\in \{solution}$, $p$}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1113,181 +1113,189 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.402         \State
+l.424         \State
                      select the number of orders to reinsert $q$pdfTeX warning 
 (ext4): destination with the same identifier (name{ALG@line.3}) has been alread
 y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.403         \State
+l.425         \State
                      select a random order $i$ from $s$pdfTeX warning (ext4): d
 estination with the same identifier (name{ALG@line.4}) has been already used, d
 uplicate ignored
 <to be read again> 
                    \relax 
-l.404         \State
+l.426         \State
                      add $i$ to order set $I$pdfTeX warning (ext4): destination
  with the same identifier (name{ALG@line.5}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
-l.405         \Repeat
+l.427         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.406             \State
+l.428             \State
                          add all orders $j\not\in I$ in array $A$ acending b...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.407             \State
+l.429             \State
                          choose a random number $y$ between $[0,1]$pdfTeX warni
 ng (ext4): destination with the same identifier (name{ALG@line.8}) has been alr
 eady used, duplicate ignored
 <to be read again> 
                    \relax 
-l.408             \State
+l.430             \State
                          remove the order in position $y^p$ in $A$ from $s$pdfT
 eX warning (ext4): destination with the same identifier (name{ALG@line.9}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.409             \State
+l.431             \State
                          add removed order to $I$pdfTeX warning (ext4): destina
 tion with the same identifier (name{ALG@line.10}) has been already used, duplic
 ate ignored
 <to be read again> 
                    \relax 
-l.410         \Until
+l.432         \Until
                      {$|I| = q$}pdfTeX warning (ext4): destination with the sam
 e identifier (name{ALG@line.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.411         \Repeat
+l.433         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.412             \State
+l.434             \State
                          sort $I$ acending based on regret value $c^*_i$pdfTeX 
 warning (ext4): destination with the same identifier (name{ALG@line.13}) has be
 en already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.413             \State
+l.435             \State
                          insert the first order $z$ from $I$ in its best pos...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.14})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.414             \State
+l.436             \State
                          update $s$ based on $S_v$pdfTeX warning (ext4): destin
 ation with the same identifier (name{ALG@line.15}) has been already used, dupli
 cate ignored
 <to be read again> 
                    \relax 
-l.415             \State
+l.437             \State
                          remove order $z$ from $I$pdfTeX warning (ext4): destin
 ation with the same identifier (name{ALG@line.16}) has been already used, dupli
 cate ignored
 <to be read again> 
                    \relax 
-l.416         \Until
+l.438         \Until
                     {$|I| = 0$}pdfTeX warning (ext4): destination with the same
  identifier (name{ALG@line.17}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.417         \State
-                     [25] [26]
-<img/weight_probability.png, id=590, 713.66624pt x 414.54875pt>
+l.439         \State
+                     [26]
+Underfull \vbox (badness 1708) has occurred while \output is active []
+
+[27]
+<img/weight_probability.png, id=601, 713.66624pt x 414.54875pt>
 File: img/weight_probability.png Graphic file (type png)
 <use img/weight_probability.png>
-Package pdftex.def Info: img/weight_probability.png  used on input line 479.
+Package pdftex.def Info: img/weight_probability.png  used on input line 501.
 (pdftex.def)             Requested size: 298.75262pt x 173.53366pt.
-[27 <./img/weight_probability.png>]pdfTeX warning (ext4): destination with the 
-same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+[28 <./img/weight_probability.png>]
+
+LaTeX Warning: Reference `line:escpCond' on page 1 undefined on input line 530.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.515         \Function
-                       {wildEscape}{$s\in solution,s_{best}$, set of heurist...
+l.537         \Function
+                       {wildEscape}{solution $s$, $s_{best}$, set of heurist...
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.516         \Repeat
+l.538         \Repeat
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.517             \State
-                         choose a random heuristic $h$ from $H$pdfTeX warning (
+l.539             \State
+                         choose a random heuristic $h$ from $W$pdfTeX warning (
 ext4): destination with the same identifier (name{ALG@line.4}) has been already
  used, duplicate ignored
 <to be read again> 
                    \relax 
-l.518             \State
+l.540             \State
                          apply $h$ to $s$pdfTeX warning (ext4): destination wit
 h the same identifier (name{ALG@line.5}) has been already used, duplicate ignor
 ed
 <to be read again> 
                    \relax 
-l.519             \If
-                      {$f(s)<f(s_{best})$}pdfTeX warning (ext4): destination wi
-th the same identifier (name{ALG@line.6}) has been already used, duplicate igno
-red
+l.541             \If
+                      {$f(s)<f(s_{best})$} \label{line:best}pdfTeX warning (ext
+4): destination with the same identifier (name{ALG@line.6}) has been already us
+ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.520                 \State
-                             $s_{best} = s$pdfTeX warning (ext4): destination w
-ith the same identifier (name{ALG@line.7}) has been already used, duplicate ign
-ored
+l.542                 \State
+                             $s_{best} = s$ \label{line:best2}pdfTeX warning (e
+xt4): destination with the same identifier (name{ALG@line.7}) has been already 
+used, duplicate ignored
 <to be read again> 
                    \relax 
-l.522         \Until
-                     stop condition metpdfTeX warning (ext4): destination with 
-the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
-
+l.544         \Until
+                     stop condition met \label{line:stopCond}pdfTeX warning (ex
+t4): destination with the same identifier (name{ALG@line.8}) has been already u
+sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.523         \State
-                     \Return $s$) (./tex/chapter5.tex [28]
+l.545         \State
+                     \Return $s$) [29] (./tex/chapter5.tex [30]
 Chapter 5.
 
 Underfull \vbox (badness 5817) has occurred while \output is active []
 
-[29
+[31
 
-] [30]
-<img/europe_coordinates.png, id=667, 737.75626pt x 604.2575pt>
+] [32]
+<img/europe_coordinates.png, id=692, 737.75626pt x 604.2575pt>
 File: img/europe_coordinates.png Graphic file (type png)
 <use img/europe_coordinates.png>
-Package pdftex.def Info: img/europe_coordinates.png  used on input line 92.
+Package pdftex.def Info: img/europe_coordinates.png  used on input line 93.
 (pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
-<img/germany_coordinates.png, id=668, 602.25pt x 494.84875pt>
+<img/germany_coordinates.png, id=693, 602.25pt x 494.84875pt>
 File: img/germany_coordinates.png Graphic file (type png)
 <use img/germany_coordinates.png>
-Package pdftex.def Info: img/germany_coordinates.png  used on input line 99.
+Package pdftex.def Info: img/germany_coordinates.png  used on input line 100.
 (pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
-<img/uniform_coordinates.png, id=669, 485.815pt x 409.53pt>
+<img/uniform_coordinates.png, id=694, 485.815pt x 409.53pt>
 File: img/uniform_coordinates.png Graphic file (type png)
 <use img/uniform_coordinates.png>
-Package pdftex.def Info: img/uniform_coordinates.png  used on input line 106.
+Package pdftex.def Info: img/uniform_coordinates.png  used on input line 107.
 (pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[31]
+[33]
 
-LaTeX Warning: Reference `sec:evalw' on page 1 undefined on input line 136.
+LaTeX Warning: Reference `sec:evalw' on page 1 undefined on input line 137.
 
-[32 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
-rm_coordinates.png>] [33] [34]
-Overfull \hbox (0.11673pt too wide) in paragraph at lines 217--218
+[34 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
+rm_coordinates.png>] [35] [36]
+Overfull \hbox (0.11673pt too wide) in paragraph at lines 218--219
 []\OT1/cmr/m/n/12 H7: the shaw re-moval and regret-3 in-ser-tion heuris-tic de-
-scribed in sec-tion []4.3.7[]. 
+scribed in sec-tion []4.4.7[]. 
  []
 
 ! Undefined control sequence.
-l.220 \Fref
+l.221 \Fref
            {fig:rank} shows the ranking of each combination of heuristics fr...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1295,23 +1303,23 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<img/avrg_imp_rank.png, id=719, 1185.42876pt x 120.45pt>
+<img/avrg_imp_rank.png, id=742, 1185.42876pt x 120.45pt>
 File: img/avrg_imp_rank.png Graphic file (type png)
 <use img/avrg_imp_rank.png>
-Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 233.
+Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 234.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_imp_rank.png, id=720, 1185.42876pt x 120.45pt>
+<img/best_imp_rank.png, id=743, 1185.42876pt x 120.45pt>
 File: img/best_imp_rank.png Graphic file (type png)
 <use img/best_imp_rank.png>
-Package pdftex.def Info: img/best_imp_rank.png  used on input line 240.
+Package pdftex.def Info: img/best_imp_rank.png  used on input line 241.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_avrg_imp_rank.png, id=721, 1185.42876pt x 120.45pt>
+<img/best_avrg_imp_rank.png, id=744, 1185.42876pt x 120.45pt>
 File: img/best_avrg_imp_rank.png Graphic file (type png)
 <use img/best_avrg_imp_rank.png>
-Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 247.
+Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 248.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
 ! Undefined control sequence.
-l.261 \Fref
+l.262 \Fref
            {tab:anovaNormal} shows the results of ANOVA (III) analysis perfo...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1319,26 +1327,37 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[35 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
-nk.png>] [36]
-Overfull \hbox (8.63997pt too wide) in paragraph at lines 440--456
+[37 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
+nk.png>]
+Underfull \vbox (badness 7030) has occurred while \output is active []
+
+[38]
+Underfull \vbox (badness 1701) has occurred while \output is active []
+
+[39]
+Overfull \hbox (8.63997pt too wide) in paragraph at lines 441--457
  [][] 
  []
 
-[37]
-Overfull \hbox (6.85793pt too wide) in paragraph at lines 519--537
+
+Overfull \hbox (6.85793pt too wide) in paragraph at lines 520--538
  [][] 
  []
 
-[38] [39] [40]
 
-LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 637.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[41]
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[41] [42] [43]
+
+LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 638.
+
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.661                     Set & #
+l.662                     Set & #
                                  Ord      & #Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -1348,7 +1367,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.661                     Set & #Ord      & #
+l.662                     Set & #Ord      & #
                                              Veh  & #Loc  & objective     & ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -1358,75 +1377,69 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
-l.661 ...              Set & #Ord      & #Veh  & #
+l.662 ...              Set & #Ord      & #Veh  & #
                                                   Loc  & objective     & gap...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-<img/operators_4_ord.png, id=800, 716.6775pt x 408.52625pt>
+<img/operators_4_ord.png, id=825, 716.6775pt x 408.52625pt>
 File: img/operators_4_ord.png Graphic file (type png)
 <use img/operators_4_ord.png>
-Package pdftex.def Info: img/operators_4_ord.png  used on input line 715.
+Package pdftex.def Info: img/operators_4_ord.png  used on input line 716.
 (pdftex.def)             Requested size: 192.0548pt x 109.47449pt.
-<img/operators_12_ord.png, id=801, 716.6775pt x 415.5525pt>
+<img/operators_12_ord.png, id=826, 716.6775pt x 415.5525pt>
 File: img/operators_12_ord.png Graphic file (type png)
 <use img/operators_12_ord.png>
-Package pdftex.def Info: img/operators_12_ord.png  used on input line 722.
+Package pdftex.def Info: img/operators_12_ord.png  used on input line 723.
 (pdftex.def)             Requested size: 192.0548pt x 111.35735pt.
-<img/operators_35_ord.png, id=802, 714.67pt x 415.5525pt>
+<img/operators_35_ord.png, id=827, 714.67pt x 415.5525pt>
 File: img/operators_35_ord.png Graphic file (type png)
 <use img/operators_35_ord.png>
-Package pdftex.def Info: img/operators_35_ord.png  used on input line 729.
+Package pdftex.def Info: img/operators_35_ord.png  used on input line 730.
 (pdftex.def)             Requested size: 192.0548pt x 111.66805pt.
-<img/operators_80_ord.png, id=803, 716.6775pt x 414.54875pt>
+<img/operators_80_ord.png, id=828, 716.6775pt x 414.54875pt>
 File: img/operators_80_ord.png Graphic file (type png)
 <use img/operators_80_ord.png>
-Package pdftex.def Info: img/operators_80_ord.png  used on input line 736.
+Package pdftex.def Info: img/operators_80_ord.png  used on input line 737.
 (pdftex.def)             Requested size: 192.0548pt x 111.08836pt.
-<img/operators_150_ord.png, id=804, 716.6775pt x 412.54124pt>
+<img/operators_150_ord.png, id=829, 716.6775pt x 412.54124pt>
 File: img/operators_150_ord.png Graphic file (type png)
 <use img/operators_150_ord.png>
-Package pdftex.def Info: img/operators_150_ord.png  used on input line 743.
+Package pdftex.def Info: img/operators_150_ord.png  used on input line 744.
 (pdftex.def)             Requested size: 192.0548pt x 110.5504pt.
-[42] [43 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/operat
-ors_35_ord.png> <./img/operators_80_ord.png> <./img/operators_150_ord.png>]
-! Interruption.
-<to be read again> \AtBegShi@Output 
-                                    \endgroup \set@typeset@protect 
-l.759 \par
-          
-? 
+[44] [45] [46 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/o
+perators_35_ord.png> <./img/operators_80_ord.png> <./img/operators_150_ord.png>
+]
 
-LaTeX Warning: Reference `fig:finRes' on page 1 undefined on input line 768.
+LaTeX Warning: Reference `fig:finRes' on page 1 undefined on input line 769.
 
-) (./tex/chapter6.tex [44]
+) (./tex/chapter6.tex [47]
 Chapter 6.
-) (./tex/appendix.tex [45
+) (./tex/appendix.tex [48
 
 ]
 Appendix A.
-) (./main.bbl [46
+) (./main.bbl [49
 
-] [47
+] [50
 
 ]
-Underfull \hbox (badness 1314) in paragraph at lines 172--176
+Underfull \hbox (badness 1314) in paragraph at lines 165--169
 []\OT1/cmr/m/n/12 Oracle Cor-po-ra-tion.  Java se jdk, 2019.  URL []$\OT1/cmtt/
 m/n/12 https : / / www . oracle . com /
  []
 
-[48])
+[51])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
- [49]
+[52]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
- (./main.aux)
+(./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 317B7FD0F883C25622A8239350B76DF1;2622.
-
+(rerunfilecheck)             Checksum: C393D394950E098ECCD4183A3982E6B0;2672.
 
 LaTeX Warning: There were undefined references.
 
@@ -1436,13 +1449,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 12211 strings out of 492982
- 197103 string characters out of 6134896
- 349143 words of memory out of 5000000
- 15350 multiletter control sequences out of 15000+600000
+ 12226 strings out of 492982
+ 197368 string characters out of 6134896
+ 352143 words of memory out of 5000000
+ 15362 multiletter control sequences out of 15000+600000
  13339 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,21n,78p,509b,769s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,21n,78p,563b,769s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1455,16 +1468,17 @@ ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (49 pages, 933973 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmtt12.pfb>
+Output written on main.pdf (52 pages, 970640 bytes).
 PDF statistics:
- 975 PDF objects out of 1000 (max. 8388607)
- 875 compressed objects within 9 object streams
- 227 named destinations out of 1000 (max. 500000)
- 400 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1008 PDF objects out of 1200 (max. 8388607)
+ 902 compressed objects within 10 object streams
+ 229 named destinations out of 1000 (max. 500000)
+ 413 words of extra memory for PDF output out of 10000 (max. 10000000)
 

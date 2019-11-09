@@ -5,39 +5,35 @@
 \begin{document}                                                
 \chapter{A 4th party logistics optimizer}
 \label{ch:appr}
-This chapter explains how we build our model, the fourth party logistics optimizer (4PLO).
-The first section \cref{sec:alns}, desribes the meta heuristic approach 
-The first \cref{sec:init} explain how we have chosen the initial solution.\par
+This chapter explains the setup of our model, the fourth party logistics optimizer (4PLO).
+The first section \cref{sec:alns}, desribes the metaheuristic approach and explains the overall algorithm of our optimization model. 
+The following \crefrange{sec:represent}{sec:wild} go more into detail on the different parts of our 4PLO model.\par
+The first of these \cref{sec:represent} explain how we have represented a solution in our model and what a vehicle schedule is.
+The next \cref{sec:init} explain how we have chosen the initial solution.
 Then \cref{sec:heur} present each of the heuristics included in the basic version of our model.
-The next \cref{sec:choos}, explains how our model is choosing a heuristic in a given iteration. 
-Then \cref{sec:weight} explain how our algorithm is using the performance history of heuristics to adapt the weights of the heuristics 
+The next \cref{sec:choosing}, explains how our model is choosing a heuristic in a given iteration.
+After which \cref{sec:weight} show how we made our model adapt the choice of heuristic throughout the iterations using historical data.
+Then \cref{sec:accept} explain how we accept solutions based on simmulated annealing.
+Finally \cref{sec:wild} present the wild escape algorithm used by our model to diversify away from a local optimum.
 
-\Cref{sec:wild} present the wild escape algorithm used to prevent that our model gets stuck in a local optimum.
-
-\section{ALNS for 4th party logistic problems}
+\section{The 4th party logistic optimizer}
 \label{sec:alns}
-Our metaheuristic is similar to the ALNS approach introduced by \cite{ropke06}, but we have adapted it to specifically solve our fourth party logistics problem. 
-Our approach will be explained over the next few sections but the ALNS implementation differs mainly in the following way:
-\begin{enumerate}
-    \item Our heuristics each contain one removal and one insertion heuristic and are not chosen separately. 
-    \item We integrate an escape algorithm to avoid that the algorithm gets stuck.
-\end{enumerate}
 
-A brief pseudocode of our implementation of ALNS for 4th party logistic problems is described in \cref{alg:alns}.  
+A brief pseudocode of our implementation of the 4th party logistic optimizer is described in \cref{alg:alns}.  
 
 \begin{algorithm}
-    \caption{ALNS for 4th party logistic problems}\label{alg:alns}
+    \caption{4th party logistic optimizer}\label{alg:alns}
     \begin{algorithmic}[1]
-        \Function{alns}{}
+        \Function{alns}{heuristics H, wild heuristics W,}
         \State solution $s = generateInitialSolution()$
         \State solution $s_{best} = s$
         \State iterations since best solution found $i=0$
         \Repeat
-            \If {$i>escape\ condition$}
-                \State $s = wildEscape(s)$ 
+            \If {$i>escape\ condition$} \label{escpCond}
+                \State $s = wildEscape(s, s_{best}, W)$ 
             \EndIf
             \State $s' = s$
-            \State select a heuristic, h, based on selection parameters
+            \State select a heuristic, $h\in H$ based on selection parameters
             \State $s' = applyHeuristic(h,s')$
             \If {$f(s') < f(s_{best})$}
                 \State $s_{best}=s'$
@@ -53,105 +49,127 @@ A brief pseudocode of our implementation of ALNS for 4th party logistic problems
     \end{algorithmic}
 \end{algorithm}
 
-The algorithm starts by picking an initial solution, and then moves into a loop where it picks a heuristic $h$, and an amount of orders $q$, before applying the heuristic to the current solution. 
+The algorithm starts by picking an initial solution $s$, and then moves into a loop where it picks a heuristic $h$ and applies it to to the current solution, in each iteration.
 It then updates the best solution and decides to accept the newly created solution or not until the stop condition is met.
-At the start of the loop it checks if an escape condition is met where it will run \cref{alg:wild} on our current solution $s$. \par
-We will now move on to explaining each step of the model more in detail.
+At the start of the loop it checks if an escape condition is met where it will run the algorithm from \cref{alg:wild} on our current solution $s$. \par
+In the following sections we will go more into detail on each part of the model.
+
+\section{Solution representation}
+\label{sec:represent}
+In order for our model to solve the 4PL problem, choosing a good \textit{solution representation} is an important part of the algorithm. 
+There  are many ways to represent a solution like matrix, binary matrix and permutation. 
+It is tempting to represent our solution in a matrix, where each row represent a vehichles schedule. 
+However we will be using a permutation as solution representation in this paper, where each \textit{vehicles schedule} $S_v$ will be separated by a $0$.  
+
+\begin{figure}                                                                                     
+    \centering                                                                                 
+    \includegraphics[width=.65\textwidth]{solution}                                     
+    \caption{Example of a solution representation of a problem with 5 orders and 3 vehicles. A vehicle schedule, represented by $S_v$, contain information for each vehicle $v$, on which and in what order a vehicle schould pick up and deliver orders. The dark green tiles represent a pickup, the red tiles represent a delivery. The $0$ tiles separate each vehicle schedule. The complete permutaion represent our solution representation $s$.}
+    \label{fig:solution}
+\end{figure}
+
+\Cref{fig:solution} show an example of a solution $s$, with 5 orders and 3 vehicles. Each vehicle schedule indicate in which order a pickup and delivery should follow. 
+The first time an order appears has to be the pickup (highlighted as dark green in the figure). 
+In the same way the second time the same order number appears, it has to be the delivery. 
+As an example, $S_3$ is first picking up the order 4 and then delivering the order right after, as delivering an order before a pickup is not possible. The same goes for $S_1$, which first picks up order 5, then picks up order 3 and then delivers each of them after. $S_2$ represent an empty vehicle schedule. \par 
+The final part of the solution representation, $S_{dummy}$, shows a vehicle schedule that represent the orders that have not been assigned to a vehicle yet.
+In this chapter we will continue to refer to $s$ as a \textit{solution} and $S_v$ as a \textit{vehicle schedule} represented as above.
+
 
 \section{Initial Solution}
 \label{sec:init}
-Many different algorithms have been made for finding an initial solutions to a PDPTW. \cite{hosny12} found that the sequential construction sequence may be the most suitable construction algorithm for the MV-PDPTW. 
-We have chosen to simply start with an initial solution where no orders are assigned to any vehicle, ie. all orders are assigned to the dummy vehicle in the solution permutation. 
-We chose this because it is simple to implement, efficient in terms of running time and our model will be able to adapt to the problem on its own, regardless of the initial solution.
+We mentioned premature solutions in \cref{ch:methods}, that can lead to a problem of diversifying solutions in a pickup and delivery model. 
+To avoid this problem we have chosen to start with an initial solution $s$ where no orders are assigned to any vehicle, ie. all orders are assigned to the dummy vehicle in the solution representation.  
+Not only does this contribute to avoid the problem of premature solutions, it is also efficient in terms of running time. On top of that we design our model to be able to adapt to the problem on its own, regardless of the initial solution. 
 
 \section{Heuristics}
 \label{sec:heur}
 This section presents the heuristics used by our algorithm.
-The first three heuristics7gc \ref{sec:swap}, \ref{sec:exch}, \ref{sec:2opt}, we call shuffeling heuristics. They try to quickly schuffle a given solution around to find new solutions in the same neighbourhood. \par
-
-Removal and reinsertion heuristics are well reserached tools used in solving pickup and delivery problems. \cite{hemmati14} and \cite{hemmati16} use insertion and removal heuristics to solve benchmark tramp ship routing and scheduling problems and maritime shipping problems.
-The last four heuristics, \ref{sec:rand}, \ref{sec:clust}, \ref{sec:greedy}, \ref{sec:shaw}, we refer to here as removal and reinsertion heuristics. Each of them contain one heuristic for removal and one heuristic for reinsertion.
-These are used partly to move from one neighbourhood to another, and partly for local search depending on the amount of solution elements, $q$, being reinserted.  
+The first three heuristics \crefrange{sec:swap}{sec:2opt}, we call \textit{shuffeling heuristics}. They try to quickly schuffle a given solution around to do intensification search. \par
+Removal and reinsertion heuristics are well reserached tools used for both intensification and diversification when pickup and delivery problems, as we showed in \cref{ch:methods}. 
+The last four heuristics, \crefrange{sec:rand}{sec:shaw}, we refer to here as \textit{removal and reinsertion heuristics}. Each of them contain one heuristic for removal and one heuristic for reinsertion.
+These are used partly for diversification, and partly for intensification depending on the amount of solution elements, $q$, being reinserted.  
 
 \subsection{Swap}
 \label{sec:swap}
 This heuristic simply tries to swap the pickup and delivery of two different orders until the first time it finds a fit. 
-\Cref{fig:swap} illustrates a successful swap between two orders in a simple solution permutation. 
+\Cref{fig:swap} illustrates a successful swap between two orders in a vehicle schedule. 
 
 \begin{figure}                                                                    
     \centering                                                                                     
     \includegraphics[width=\textwidth]{swap_ill}                                     
-    \caption{A swap heuristic performed on a simple solution with two orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+    \caption{A swap heuristic performed on a vehicle schedule with three orders. The numbered nodes indicate an order location and the letters P and D indicate pickup and delivery respectively. Emphazised numbers in the vehicle schedule are selected by the heuristic.}
     \label{fig:swap}
 \end{figure}
 
-This heuristic is very efficient and jumps randomly around a neighbourhoods solution space.
+This heuristic is very efficient in terms of running time and jumps randomly around the solution space. It is only working on two orders at a time so it is an intensification heuristic.
 
 \subsection{3-exchange}
 \label{sec:exch}
-The 3-exchange heuristic selects a random vehicle with at least two assigned orders, and performs an exchange of 3 assigned positions until a feasible new combination is found. A 3-exchange of position 2, 4 and 6 in a simple permutation is illustrated by \cref{fig:exch}. \newline
+The 3-exchange heuristic selects a random vehicle with at least two assigned orders, and performs an exchange of 3 assigned positions until a feasible new combination is found. A 3-exchange of position 2, 4 and 6 in a vehicle schedule is illustrated by \cref{fig:exch}. \newline
 
 \begin{figure}                                                                                     
     \centering                                                                                     
     \includegraphics[width=\textwidth]{3-exchange_ill}                                     
-    \caption{A 3-exchange heuristic performed on a simple solution with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+    \caption{A 3-exchange heuristic performed on a vehicle schedule with three orders. The numbered nodes indicate an order location and the letters P and D indicate pickup and delivery respectively. Emphazised numbers in the vehicle schedule are selected by the heuristic.}
     \label{fig:exch}                                                                            
 \end{figure}
 
-This heuristic is very fast, as the exchanges are fast operations and checking if a vehicles schedule is feasible is also a very effective operation. Like the swap heuristic from the previous section this heuristic jumps randomly around a neighbourhoods solution space.
+This heuristic is very fast, as the exchanges are fast operations and checking if a vehicles schedule is feasible is also a very effective operation. Like the swap heuristic from the previous section this heuristic jumps randomly around the solution space and is an intensification heuristic.
 
 \subsection{2-opt}
 \label{sec:2opt}
-2-opt is a common heuristic used in travelling salesman problems aswell as with metaheuristics to solve VRP. \cite{lin65} implemented the 2-opt heuristic for travelling salesmen problem and \cite{bullnheimer99} combined 2-opt with the ant system metaheuristic.
+The 2-opt heuristic is used in metaheuristics to solve vehicle routing problems. \cite{lin65} implemented the 2-opt heuristic for travelling salesmen problem and \cite{bullnheimer99} combined 2-opt with the ant system metaheuristic.
 The 2-opt heuristic used in this paper is similar to the heuristic from \cite{carrabs07}.
-\Cref{fig:2opt} illustrates one iteration of our 2-opt heuristic on a simple permutation.
+\Cref{fig:2opt} illustrates one iteration of our 2-opt heuristic performed on a vehicle schedule.
 
 \begin{figure}                                                                                     
     \centering                                                                                 
     \includegraphics[width=\textwidth]{2-opt_ill}                                     
-    \caption{One 2-opt heuristic operation performed on a simple solution with three orders. In this example $i=2$ and $j=4$ so the schedule $S_{ij}$ is reversed. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively.}
+    \caption{One 2-opt heuristic operation performed on a vehicle schedule with three orders. The numbers indicate an order and the letters P and D indicate pickup and delivery respectively. Emphazised numbers indicate the $S_{(i+1)j}$ selected vehicle schedule part to reverse.}
     \label{fig:2opt}
 \end{figure}
 
 \begin{algorithm}
     \caption{2-opt heuristic}\label{alg:2opt}
     \begin{algorithmic}[1]
-        \Function{twoOpt}{}
-        \State select random vehicle $v$
-        \State schedule $S = S_v$
+        \Function{2-opt}{}
+        \State select random vehicle $v$ with $|v|>2$
+        \State vehicle schedule $S_v$
         \Repeat
-        \State $S_{best} = S$
-        \For{$i<S.length$}
+        \State $S_{best} = S_v$
+        \State $n = |S_v|$
+        \For{$i<n$}
             \State $j=i+1$
-            \For{$j<S.length$}
-                \State schedule $ S' = S_{0i} + reverse(S_{(i+1)j}) + S_{(j+1)n}$ 
-                \If {$f(S')<f(S_{best})$} 
-                \State $S = S'$
+            \For{$j<n$}
+                \State current vehicle schedule $S_v' = S_{0i} + reverse(S_{(i+1)j}) + S_{(j+1)n}$ 
+                \If {$f(S_v')<f(S_{best})$} 
+                \State $S_{best} = S_v'$
                 \EndIf
             \EndFor
         \EndFor
+        \State $S_v = S_{best}$
         \Until {no further improvement found}
         \State 
-        \Return $S$
+        \Return $S_v$
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
 
 
-The heuristic is also described in \cref{alg:2opt} and it starts by selecting a random vehicle with more than 2 orders.
-For the selected vehicle it divides up the schedule $S$ of the vehicle in 3 parts. 
-All orders up until the index $i$ of the vehicle schedule are inserted normally. 
-Orders from the index $j+1$ until the end of the schedule are also inserted normally. 
-Then finally orders from the index i+1 until index j are inserted in reverse order.
-If the new schedule has a smaller cost than the original schedule, the schedule is remembered as the new best route. 
-When all reverses have been performed on the current route, the best route is selected as the new route.
-This operation is continued until no improvement can be made ie. the best possible schedule for the selected vehicle has been found.
+The heuristic is described in \cref{alg:2opt} and it starts by selecting a random vehicle with more than 2 orders.
+For the selected vehicle it divides up the vehicle schedule $S_v$ in 3 parts, $S_0i$, $S_{ij}$ and $S_{jn}$, where $n=|S_v|$. It does this for all possible combinations of $0<i<n$ and $i<j\leq n$.
+All orders up until the index $i$, aswell as orders from the index $j+1$ until the end of the vehicle schedule are left unchanged.
+Then the orders from the index $i+1$ until index $j$ are inserted in reverse order.
+If the new vehicle schedule $S_v'$ has a smaller cost than the best vehicle schedule $S_{best}$, it is remembered as the new best vehicle schedule. 
+After all iterations the best vehicle schedule $S_{best}$ is selected as the new $S_v$.
+This operation is continued until no improvement can be made for $S_v$ ie. the best possible schedule for the selected vehicle has been found.
 
 \subsection{Random fit}
 \label{sec:rand}
 In most problems there are solutions that you simply cannot find using pure logic. 
-Constant minimizing costs and searching for the most efficient solution possible could lead you to always end up in the same local neighbourhoods, and not really exploring the whole solution space. 
-We therefore decided to make one remove and reinsert heuristic that does not have any specific priorities but rather moves around neighbourhoods randomly. 
+Constantly minimizing costs and searching for the most efficient solution possible could lead to a problem of diversification, and not really exploring the whole solution space. 
+We therefore decided to make one remove and reinsert heuristic that does not have any specific priorities but rather moves around the solution space randomly. 
 
 \begin{algorithm}
     \caption{Remove random and reinsert first fit heuristic}\label{alg:rand}
@@ -164,9 +182,9 @@ We therefore decided to make one remove and reinsert heuristic that does not hav
         \For{$z\in I$}
             \Repeat
             \State choose random vehicle $v$
-            \State choose random position in schedule $S_v$
+            \State choose random position in vehicle schedule $S_v$
             \State insert $z$ in $S_v$
-            \Until {feasible schedule found}
+            \Until {feasible vehicle schedule found}
             \State update s'
         \EndFor
         \State
@@ -178,15 +196,15 @@ We therefore decided to make one remove and reinsert heuristic that does not hav
 \Cref{alg:rand} shows the pseudocode for our remove random insert first fit heuristic. 
 It starts by selecting a random amount of orders $q$ which it is to remove and reinsert. 
 Then it selects $q$ random orders and removes them from the solution. 
-
-
-randomly between 2 orders and 10 percent of the amount of orders and reinserts them randomly in their first possible position. 
-This heuristic is used to jump from one neighbourhood to another and is trying to search for possible solutions regardless of the cost they produce.
+We have chosen $q$ between 2 orders and $10\%$ of the amount of orders in the instance.
+The heuristic then selects a random vehicle $v$ and inserts the removed orders in its vehicle schedule $S_v$ randomly until a feasible vehicle schedule is found.
+It then updates the solution $s$ with the $S_v$.
+This heuristic is used for diversifying the solution and is trying to search for possible solutions regardless of the cost they produce.
 
 \subsection{Clustering}
 \label{sec:clust}
 \Cref{sec:4flow} illustrates how a typical 4PL customer typically have their factories and suppliers structured in clusters around a continent or a country. 
-This led us to try to build a heuristic which considers clusters as a factor when removing and reinserting an order in a schedule. 
+This led us to try to build a heuristic which considers clusters as a factor when removing and reinserting an order in a vehicle schedule. 
 Orders delivered from and too different clusters by the same vehicle, should be removed. 
 In the same way orders that are being delivered from and to similar clusters should be bundled together on vehicles. \par
 To build a heuristic which takes advantage of this there challenges that needs to be overcome. 
@@ -220,17 +238,17 @@ Together these aspects make out the siluette $u$.
 \end{figure}
 
 
-\Cref{fig:silu} illustrate the cohesion and sparation of a green node $i$ part of cluster $Cl_i$. 
-The cohesion $a_i$ is the mean of the distance, $d_{ij}$, from $x$ to all other nodes in cluster $Cl_i$. The separation $b_i$ is the minimum of the mean of the distance to the nodes in all other clusters, which in the illustration is cluster B.
+\Cref{fig:silu} illustrate the cohesion and sparation of a green node $i$ part of cluster $C^L_i$. 
+The cohesion $a_i$ is the mean of the distances, $d_{ij}$, from $i$ to all other nodes $j\in C^L_i$. The separation $b_i$ is the minimum of the mean of the distances $d_{ij}$ from node $i$ to the nodes $j\not\in C^L_h$ in all other clusters $h\in \Gamma$.
 The two effects can be written as follows:
 \begin{equation}
     \label{eq:cohesion}
-    a_i = \dfrac{1}{|Cl_i|-1}\sum_{j\in Cl_i, i\neq j}{d_{ij}}
+    a_i = \dfrac{1}{|C^L_i|-1}\sum_{j\in C^L_i, i\neq j}{d_{ij}}
 \end{equation}
 
 \begin{equation}
     \label{eq:cohesion}
-    b_i = \min_{h\neq i} \dfrac{1}{|Cl_h|}\sum_{i\neq j}{d_{ij}}
+    b_i = \min_{h\neq i} \dfrac{1}{|C^L_h|}\sum_{i\neq j}{d_{ij}}
 \end{equation}
 
 The siluette coefficient $u_i$ for location $i$ is then calculated as follows: 
@@ -282,31 +300,35 @@ In the previous sections we described how we can compare clusters of different s
     \end{algorithmic}
 \end{algorithm}
 
-\Cref{alg:cluster} start by selecting the amount of orders to remove. Then it sorts all orders from the given solution $s$ according to the cluster value $c_i$. $c_i$ is calculated based on the locations visited by the vehicle, ie. which other orders are bundled together on a schedule
-We can define $c_i$ as:
+\Cref{alg:cluster} start by selecting the amount of orders to remove. Then it sorts all orders from the given solution $s$ according to the cluster value $c^L_i$. $c^L_i$ is calculated based on the locations visited by the vehicle, ie. which other orders are bundled together on a vehicle schedule.
+We can define $c^L_i$ as:
 \begin{equation}
-    c_i = \dfrac{|L^P_{iv}|+|L^D_{iv}|}{|S_v|-2}
+    c^L_i = \dfrac{|L^P_{i}|+|L^D_{i}|}{|S_v|-2}
 \end{equation}
 
-Here the set $L^P_{iv}$ is locations from the same cluster $Cl^P_i$ as the pickup location $P$ of $i$ on vehicle $v$. 
-$L^D_{iv}$ is a set of locations from the same cluster $Cl^D_i$ as the delivery location of $i$ on vehicle $v$. 
-The set $S_v$ is the size of the schedule for vehicle $v$, ie. amount of locations visited. \par
+Here the set $L^P_{i}$ contain the locations from the same cluster $C^{LP}_i$ as the pickup location $P$ of $i$ on the same vehicle schedule. 
+$L^D_{i}$ is a set of locations from the same cluster $C^{LD}_i$ as the delivery location $D$ of $i$, visited in the same vehicle schedule.
+The set $S_v$ is the vehicle schedule for vehicle $v$, ie. $|S_v|$ is the amount of locations visited. \par
 
-To help explain how the $c_i$ works we give an example:
+To help explain how the $c^L_i$ works we give an example:
 \begin{itemize}
-    \item Vehicle 1 is transporting order 1, 2, and 3.
+    \item A vehicle schedule $S_1 =$ (1 2 1 2 3 3) 
     \item Order 1 has a pickup location in cluster A and delivery location in cluster B.
     \item Order 2 has a pickup location in cluster B and delivery location in cluster C.
     \item Order 3 has a pickup location in cluster C and delivery location in cluster B.
 \end{itemize}
 
-For each location order 1 has in common with the other orders he is rewarded 1 point. Order 1's pickup location is unique. but the delivery location he shares with the pickup location of order 2 and delivery location of order 3. He is rewarded 2 points. \par
-With this logic, order 2 is rewarded 3 points and order 3 is rewarded 3 points aswell.
-To be able to compare these points with orders on other vehicles we divide the points on the maximum possible which is equal to $|S_v|-2$, or in the example $6-2 = 4$. 
-The order with the smallest rank is order 1 with $\dfrac{2}{4}$. In other words two out of four locations visited, apart from the orders locations, belong to the same cluster as the pickup or delivery of order 1.
-Order 2 and 3 have equally highest rank of $\dfrac{3}{4}$, ie. three out of four other locations belong to the same cluster as the pickup or delivery location of these orders. \par
+For each location, related to other orders, visited in cluster A, order 1 will be rewarded a point since its pickup is in cluster A. 
+For each location visited in cluster B, related to other orders, order 1 will be rewarded a point.
+The pickup of order 1 is in cluster A which is unvisited by other orders, so $|L^P_{1}| = 0$.
+Therefore  $c^L_1$ is not increased.
+The delivery of order 1 is in cluster B, which is visited during pickup of order 2 and delivery of order 3 and therefore $|L^D_{1}|=2$ which increases $c^L_i$. \par
+With the same logic, for order 2 the $|L^P_{2}|=2$ and $|L^D_{2}| = 1$.
+Order 3 gets $|L^P_{3}=1$ and $|L^D_3| = 2$.
+To be able to compare these points with orders on other vehicles we divide the points on the maximum possible points possible which is the same as $|S_v|-2$, or in the example above $6-2 = 4$ locations. 
+That leads us to $c^L_1 = \dfrac{2}{4}$ and $c^L_2 = c^L_3 = \dfrac{3}{4}$ in our example. \par
 
-In continuation of our \cref{alg:cluster} it uses the cluster ranking $c_i$ first to decide which orders to remove.
+In continuation of explanation of \cref{alg:cluster} it uses the cluster ranking $c^L_i$ first to decide which orders to remove.
 It will remove the orders with the lowest ranking, using some randomization, based on the value $p$. 
 We choose to remove the order on the position $y^p$ in the $c_i$ sorted list of orders, where $y$ is a random number between $[0,1]$. We have chosen $p=4$ for all our heursitics.  \newline \par
 To reinsert the orders we have chosen to try and insert the order by maximizing $c_i$. This means we find the vehicle schedule where the $c_i$ rank is the highest, and insert the order in the best possible position in the chosen vehicle. 
@@ -443,18 +465,18 @@ However we propose to use all the heuristics, for now.
 The reason for doing so is that the swap heuristic from \cref{sec:swap} could be good for one type of instance, while the similar regret heuristic from \cref{sec:exch} might be good for another type of instance. 
 We think that alternating between several type of heuristics gives us amore robust algorithm. 
 We will however do alot of testing in \cref{ch:res}, which will lead us to a more compact version of the model. \par
-To select a heuristic to use in each iteration of \cref{alg:alns}, we have used the \emph{roulette weel principle} from \cite{hemmati14}. 
-This means that is we represent each heuristic by a number $i \in [1..m]$ where m is the amount of heuristics. 
+To select a heuristic to use in each iteration of \cref{alg:alns}, we have used a what can be refered to as a \emph{roulette weel principle}. 
+This means that we represent each heuristic by a number $i \in [1..m]$ where m is the amount of heuristics. 
 We select a heuristic with a probability $p_i$ calculated based on each heuristics \textit{weight} $w_i$ as follows:
 \begin{equation}\label{eq:weights}
     p_i=\dfrac{w_i}{\sum_{j=1}^m w_j}
 \end{equation}
 
-Notice we are using one probability per heuristic and not per insertion and removal heuristic like \cite{ropke06}. These weights could be set fixed per problem but we choose to use an adaptive weight system explained futher in \cref{sec:weight}.
+These weights could be set fixed per problem but we choose to use an adaptive weight system explained futher in \cref{sec:weight}.
 
 \section{Adaptive weight adjustment}
 \label{sec:weight}
-The weights from \cref{sec:choosing} can be adapted automatically by the algorithm. 
+The weights from \cref{sec:choosing} can be adapted automatically by the algorithm. \cite{ropke06} implemented an adaptive weight system in a Large neighbourhood search model.
 The basic idea is to keep track of the perfomance of each heuristic through a scoring system. 
 A heuristic is given a higher score for a better performance and a low score for low performance. 
 The entire \cref{alg:alns} is divided into \textit{segments}, or a numer of iterations. 
@@ -488,8 +510,8 @@ The figure also shows that we have put a lower limit to the probility to make ce
 \section{Acceptance criteria and stopping condition}
 \label{sec:accept}
 We could only accept solutions that are better than the current one.
-However this could lead our model to get stuck in a local neighbourhood and not be able to get out of it. 
-We have therefore chosen to use the acceptance criteria used by simmulated annealing, mentioned in \cref{ch:solMeth}. 
+However this could lead our model to get problems with diversification and not be able to get explore the entire solution space. 
+We have therefore chosen to use the acceptance criteria used by simmulated annealing, mentioned in \cref{ch:methods}. 
 This acceptance criteria is made so that it accepts a solution that is better than the current solution. It also accepts a worse solution with the probability $e^{-|f-f_{new}|/T}$, where $T<0$ is the temperature. 
 The cooling schedule we use here was implemented by \cite{crama03}. That sets a certain starting temperature $T_{start}$ that decreases per iteration with a certain cooling rate $0<c<1$.
 We wanted to let $T_{start}$ depend on the problem instance our model is trying to solve. Therefore we run 100 iterations with a fixed acceptance rate of $a = 0.8$. 
@@ -503,30 +525,34 @@ The algorithm stops when a specified number of iterations are reached which we s
 
 \section{Wild escape algorithm}
 \label{sec:wild}
-Algorithms containing large neighbourhood heuristics, such as our model, are known to be good at searching locally aswell as globally. 
-However they do sometimes get stuck in one neighbourhood, and it is important that our algorithm is able to react in these situations.
-We designed an algorithm as part of our model that reacts if a certain criteria is fulfilled. \Cref{alg:alns} shows that if a certain criteria is fulfilled we will run an escape algorithm.
-We set the criteria that if for 500 iterations we do not find an improvement in $s_{best}$ we will run the algorithm we call escape algorithm. 
+Algorithms containing large neighbourhood search heuristics, such as our model, are known to be good at searching locally aswell as globally. 
+However considering that our model is more focused on instensification, it could be that we end up getting stuck in a part of the solution space. It is important that our algorithm is able to react in these situations.
+In \cref{alg:alns} we see in \cref{line:escpCond} that if an escape condition is fulfilled, we will run a Wild Escape function. 
+We set the criteria that if we, for 500 iterations, do not find an improvement in $s_{best}$, we will perform this action.
 
 \begin{algorithm}
     \label{alg:wild}
     \caption{Wild escape algorithm}
     \begin{algorithmic}[1]
-        \Function{wildEscape}{$s\in solution,s_{best}$, set of heuristics $H$}
+        \Function{wildEscape}{solution $s$, $s_{best}$, set of heuristics $W$}
         \Repeat
-            \State choose a random heuristic $h$ from $H$
+            \State choose a random heuristic $h$ from $W$
             \State apply $h$ to $s$
-            \If {$f(s)<f(s_{best})$}
-                \State $s_{best} = s$
+            \If {$f(s)<f(s_{best})$} \label{line:best}
+                \State $s_{best} = s$ \label{line:best2}
             \EndIf
-        \Until stop condition met
+        \Until stop condition met \label{line:stopCond}
         \State \Return $s$
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
 
-The algorithms pseudocode is described in \cref{alg:wild}. The stopping criteria of the algorithm is 20 iterations. 
-The algorithm accepts any new solution found regardless of the objective value.
-The heuristics used by the escape algorithm are the heuristics random fit from \cref{sec:rand}, 3-exchange from \cref{sec:exch} and swap \cref{sec:swap}. The heuristics have an increased size of $q$so that they can move further away from the current neighbourhood. We chose these heuristics because they are not trying to improve the solution in any specific way and select targeted solutions, but rather moves randomly around the solution space. 
+The algorithms pseudocode is described in \cref{alg:wild}. 
+The stopping condition, in \cref{line:stopCond}, is 20 iterations. 
+The algorithm accepts any new solution found regardless of the objective value to move as far away from the current solution as possible.
+\Crefrange{line:best}{line:best2} in \cref{alg:wild} are saying that if we happen to find a better solution $s_{best}$ on our way out of the current solution space, we should remember it. We still continue moving away from the current solution $s$.
+The heuristics used by the escape algorithm are the heuristics random fit from \cref{sec:rand}, 3-exchange from \cref{sec:exch} and swap \cref{sec:swap}. 
+The heuristics have an increased size of $q$ to increase diversification. 
+We chose these heuristics because they are not trying to improve the solution in any specific way and select targeted solutions, but rather moves randomly around the solution space. 
 \biblio                                                         
 \end{document}

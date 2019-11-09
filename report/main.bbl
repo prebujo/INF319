@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -128,13 +128,6 @@ A.~Hemmati, L.~M. Hvattum, M.~Christiansen, and G.~Laporte.
   sea inventory-routing problem.
 \newblock \emph{European Journal of Operational Research}, 252\penalty0
   (3):\penalty0 775--788, 2016.
-
-\bibitem[Hosny and Mumford(2012)]{hosny12}
-M.~I. Hosny and C.~L. Mumford.
-\newblock Constructing initial solutions for the multiple vehicle pickup and
-  delivery problem with time windows.
-\newblock \emph{Journal of King Saud University-Computer and Information
-  Sciences}, 24\penalty0 (1):\penalty0 59--69, 2012.
 
 \bibitem[Kalantari et~al.(1985)Kalantari, Hill, and Arora]{kalantari85}
 B.~Kalantari, A.~V. Hill, and S.~R. Arora.
