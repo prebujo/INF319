@@ -15,37 +15,37 @@
 \contentsline {subsection}{\numberline {4.4.3}2-opt}{19}{subsection.4.4.3}
 \contentsline {subsection}{\numberline {4.4.4}Random fit}{21}{subsection.4.4.4}
 \contentsline {subsection}{\numberline {4.4.5}Clustering}{21}{subsection.4.4.5}
-\contentsline {subsubsection}{The siluette coefficient}{22}{section*.9}
+\contentsline {subsubsection}{The Siluette coefficient}{22}{section*.9}
 \contentsline {subsubsection}{Hirarchial single linkage clustering}{23}{section*.11}
 \contentsline {subsubsection}{Removing and inserting elements based on clusters}{23}{section*.13}
 \contentsline {subsection}{\numberline {4.4.6}Greedy}{25}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.4.7}Similar regret}{25}{subsection.4.4.7}
-\contentsline {section}{\numberline {4.5}Choosing a heuristic}{27}{section.4.5}
+\contentsline {subsection}{\numberline {4.4.7}Similar Regret}{25}{subsection.4.4.7}
+\contentsline {section}{\numberline {4.5}Choosing a heuristic}{28}{section.4.5}
 \contentsline {section}{\numberline {4.6}Adaptive weight adjustment}{28}{section.4.6}
 \contentsline {section}{\numberline {4.7}Acceptance criteria and stopping condition}{29}{section.4.7}
-\contentsline {section}{\numberline {4.8}Wild escape algorithm}{29}{section.4.8}
+\contentsline {section}{\numberline {4.8}Wild escape algorithm}{30}{section.4.8}
 \contentsline {chapter}{\numberline {5}Computational Results}{31}{chapter.5}
 \contentsline {section}{\numberline {5.1}Experimental Setup}{31}{section.5.1}
-\contentsline {subsubsection}{Technical Setup}{32}{section*.15}
-\contentsline {subsubsection}{Analytics Setup}{32}{section*.16}
+\contentsline {subsubsection}{Technical Setup}{32}{section*.16}
+\contentsline {subsubsection}{Analytics Setup}{32}{section*.17}
 \contentsline {section}{\numberline {5.2}Instances}{32}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real world data}{32}{subsection.5.2.1}
-\contentsline {subsubsection}{Random locations based on real geographical data}{34}{section*.17}
+\contentsline {subsubsection}{Random locations based on real geographical data}{34}{section*.18}
 \contentsline {subsection}{\numberline {5.2.2}Generated Instances}{34}{subsection.5.2.2}
 \contentsline {section}{\numberline {5.3}Initial Results}{35}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{35}{subsection.5.3.1}
-\contentsline {subsubsection}{Results of escape modifications}{35}{section*.19}
-\contentsline {subsubsection}{Observations of results from wild escape algorithm}{35}{section*.21}
+\contentsline {subsubsection}{Results of escape modifications}{35}{section*.20}
+\contentsline {subsubsection}{Observations of results from wild escape algorithm}{35}{section*.22}
 \contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{36}{subsection.5.3.2}
-\contentsline {subsubsection}{Ranking the combinations}{37}{section*.22}
-\contentsline {subsubsection}{ANOVA and regression analysis}{38}{section*.24}
-\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{39}{section*.27}
+\contentsline {subsubsection}{Ranking the combinations}{37}{section*.23}
+\contentsline {subsubsection}{ANOVA and regression analysis}{38}{section*.25}
+\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{39}{section*.28}
 \contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{39}{subsection.5.3.3}
-\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{40}{section*.28}
-\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{41}{section*.32}
+\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{40}{section*.29}
+\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{41}{section*.33}
 \contentsline {subsection}{\numberline {5.3.4}Evaluation of individual heuristics}{42}{subsection.5.3.4}
-\contentsline {subsubsection}{T-tests of individual heuristics}{42}{section*.33}
-\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{42}{section*.35}
+\contentsline {subsubsection}{T-tests of individual heuristics}{42}{section*.34}
+\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{42}{section*.36}
 \contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{44}{subsection.5.3.5}
 \contentsline {section}{\numberline {5.4}Final results}{44}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{44}{subsection.5.4.1}

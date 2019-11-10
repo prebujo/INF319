@@ -219,6 +219,9 @@ INPUT ./img/single_linkage.png
 INPUT ./img/single_linkage.png
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT img/timewindows.png
+INPUT ./img/timewindows.png
+INPUT ./img/timewindows.png
 INPUT img/weight_probability.png
 INPUT ./img/weight_probability.png
 INPUT ./img/weight_probability.png
