@@ -10,10 +10,10 @@ We start by explaining the experimental setup of our testing in \cref{sec:setup}
 \Cref{sec:iniRes} contain the initial experiments of our model that lead us to the final composition of our model. 
 The first part, \cref{sec:evalW}, starts by testing the wild algorithm from \cref{sec:wild} and it finds that the wild algorithm outperforms a random restart and not using any escape algorithm.
 Then in \cref{sec:evalH1} we rank the heuristics performance and do ANOVA(III) and multiple linear regressions of the heuristics described in \cref{ch:appr}. 
-We find here that three heuristics have a significant positive influence on the result, the remove random and insert first first algorithm from \cref{sec:rand}, the remove worst and insert greedy heuristic from \cref{sec:greedy}, and the remove similar and insert regret-3 heuristic from \cref{sec:shaw}. \par
+We find here that three heuristics have a significant positive influence on the result, the Random Rit algorithm from \cref{sec:rand}, the Greedy heuristic from \cref{sec:greedy}, and Similar Regret heuristic from \cref{sec:shaw}. \par
 We continue our initial experiments in \cref{sec:evalH2} with extended ANOVA(III), multiple linear regression models and pairwise t-tests to evaluate if combining the not significant heuristics with the significant ones from \cref{sec:evalH1}, can have a significant positive impact on the result.
-Here we find that the remove non-clustered and insert clustered heuristic from \cref{sec:clust} has a singificant positive influence on the best solution found. 
-We also find that the swap first fit heuristic from \cref{sec:swap} has no significant influence on the result. \par
+Here we find that the cluster heuristic from \cref{sec:clust} has a singificant positive influence on the best solution found. 
+We also find that the Swap heuristic from \cref{sec:swap} has no significant influence on the result. \par
 In \cref{sec:finComp} we present the final composition of our model which contain the heuristics mentioned above aswell as the wild algorithm.\par
 The final part of this chapter \cref{sec:evalFin} contains the evaluation of our final model composition and compares the results from the mathematical model from \cref{ch:mm} with the results of our model. It also presents an evaluation of the performance of the included heuristics.
 The results show a robust and efficient alorithm.
@@ -209,13 +209,13 @@ Each percentage was also multiplied by $1000$ to make the analysis more readable
 \subsubsection{Ranking the combinations}
 We shorten the names of each heuristic and will refer to them here on as:
 \begin{itemize}
-    \item H1: the swap heuristic described in \cref{sec:swap}.
-    \item H2: the exchange heuristic from \cref{sec:exch}.
-    \item H3: the 2-opt heuristic in \cref{sec:2opt}.
-    \item H4: the random removal first fit insertion heuristic from \cref{sec:rand}.
-    \item H5: the clustering heuristic described in \cref{sec:clust}.
-    \item H6: the worst removal and greedy insert heuristic in \cref{sec:greedy}.
-    \item H7: the shaw removal and regret-3 insertion heuristic described in \cref{sec:shaw}.
+    \item H1-swap: the Swap heuristic described in \cref{sec:swap}.
+    \item H2-exchange: the Exchange heuristic from \cref{sec:exch}.
+    \item H3-2opt: the 2-opt heuristic in \cref{sec:2opt}.
+    \item H4-random: the Random Fit heuristic from \cref{sec:rand}.
+    \item H5-cluster: the Clustering heuristic described in \cref{sec:clust}.
+    \item H6-greedy: the Greedy heuristic in \cref{sec:greedy}.
+    \item H7-similar: Similar Regret heuristic described in \cref{sec:shaw}.
 \end{itemize}
 
 \Fref{fig:rank} shows the ranking of each combination of heuristics from left to right.
@@ -273,13 +273,13 @@ We did one ANOVA analysis for the average improvement over 10 runs shown in figu
             \hline
             Source  &Sum sq.    &df &Mean sq.   &F      &P$>$F \\ 
             \hline
-            H1      & 0.052     & 1 & 0.052     & 0.09  & 0.7682\\
-            H2      & 0.748     & 1 & 0.748     & 1.26  & 0.2628\\
-            H3      & 0.038     & 1 & 0.038     & 0.06  & 0.8017\\
-            H4      & 22.432    & 1 & 22.432    & 37.66 & 0     \\
-            H5      & 12.734    & 1 & 12.734    & 21.38 & 0     \\
-            H6      & 117.945   & 1 & 117.945   & 198   & 0     \\
-            H7      & 112.406   & 1 & 112.406   & 188.7 & 0     \\
+            H1-swap      & 0.052     & 1 & 0.052     & 0.09  & 0.7682\\
+            H2-exchange      & 0.748     & 1 & 0.748     & 1.26  & 0.2628\\
+            H3-2opt      & 0.038     & 1 & 0.038     & 0.06  & 0.8017\\
+            H4-random      & 22.432    & 1 & 22.432    & 37.66 & 0     \\
+            H5-cluster      & 12.734    & 1 & 12.734    & 21.38 & 0     \\
+            H6-greedy      & 117.945   & 1 & 117.945   & 198   & 0     \\
+            H7-similar      & 112.406   & 1 & 112.406   & 188.7 & 0     \\
             Instance& 371.704   & 4 & 92.926    & 156   & 0     \\
             Error   & 350.257   &588& 0.596     &       &       \\
             Total   & 975.207   &599&           &       &       \\
@@ -295,13 +295,13 @@ We did one ANOVA analysis for the average improvement over 10 runs shown in figu
             \hline
             Source  &Sum sq.    &df &Mean sq.   &F      &P$>$F \\ 
             \hline
-            H1      & 0.075     & 1 & 0.0745    & 0.23  & 0.6306\\
-            H2      & 0.195     & 1 & 0.1949    & 0.61  & 0.4369\\
-            H3      & 0         & 1 & 0.0001    & 0     & 0.988 \\
-            H4      & 8.372     & 1 & 8.3718    & 26    & 0     \\
-            H5      & 3.679     & 1 & 3.6789    & 11.43 & 0.0008\\
-            H6      & 66.236    & 1 & 66.2357   & 205.71& 0     \\
-            H7      & 67.081    & 1 & 67.0813   & 208.33& 0     \\
+            H1-swap      & 0.075     & 1 & 0.0745    & 0.23  & 0.6306\\
+            H2-exchange      & 0.195     & 1 & 0.1949    & 0.61  & 0.4369\\
+            H3-2opt      & 0         & 1 & 0.0001    & 0     & 0.988 \\
+            H4-random      & 8.372     & 1 & 8.3718    & 26    & 0     \\
+            H5-cluster      & 3.679     & 1 & 3.6789    & 11.43 & 0.0008\\
+            H6-greedy      & 66.236    & 1 & 66.2357   & 205.71& 0     \\
+            H7-similar      & 67.081    & 1 & 67.0813   & 208.33& 0     \\
             Instance& 344.971   & 4 & 86.2428   & 267.84& 0     \\
             Error   & 189.331   &588& 0.322     &       &       \\
             Total   & 671.378   &599&           &       &       \\
@@ -330,13 +330,13 @@ Also here we used the instances as a random effect.
             Term    &Estimate   & SE    & tStat & pValue \\ 
             \hline                
         Intercept   & 994.58    & 0.11713       & 8491.5    & 0         \\
-            H1      & -0.018582 & 0.063017      & -0.29487  & 0.7682    \\
-            H2      & -0.07063  & 0.063017      & 1.1208    & 0.26283   \\
-            H3      & -0.01583  & 0.063017      & -0.2512   & 0.80175   \\
-            H4      & 0.39108   & 0.063729      & 6.1366    & 1.5502e-09\\
-            H5      & -0.29466  & 0.063729      & -4.6236   & 4.6407e-06\\
-            H6      & 0.89676   & 0.063729      & 14.071    & 5.7098e-39\\
-            H7      & 0.87544   & 0.063729      & 13.737    & 1.923e-37 \\
+            H1-swap      & -0.018582 & 0.063017      & -0.29487  & 0.7682    \\
+            H2-exchange      & -0.07063  & 0.063017      & 1.1208    & 0.26283   \\
+            H3-2opt      & -0.01583  & 0.063017      & -0.2512   & 0.80175   \\
+            H4-random      & 0.39108   & 0.063729      & 6.1366    & 1.5502e-09\\
+            H5-cluster      & -0.29466  & 0.063729      & -4.6236   & 4.6407e-06\\
+            H6-greedy      & 0.89676   & 0.063729      & 14.071    & 5.7098e-39\\
+            H7-similar      & 0.87544   & 0.063729      & 13.737    & 1.923e-37 \\
             Inst1   & 0.50928   & 0.099639      & 5.1113    & 4.3337e-07\\
             Inst2   & -0.051052 & 0.099639      & -0.51237  & 0.60859   \\
             Inst3   & 1.6601    & 0.099639      & 16.662    & 2.4375e-51\\
@@ -354,13 +354,13 @@ Also here we used the instances as a random effect.
             Term    &Estimate   & SE    & tStat & pValue \\ 
             \hline                
         Intercept   & 994.97    & 0.086114      & 11554     & 0         \\
-            H1      & 0.022291  & 0.046332      & 0.48112   & 0.63061   \\
-            H2      & -0.036047 & 0.046332      & -0.77801  & 0.43687   \\
-            H3      &-0.00069693& 0.046332      & -0.015042 & 0.988     \\
-            H4      & 0.23891   & 0.046855      & 5.099     & 4.6112e-07\\
-            H5      & -0.15838  & 0.046855      & -3.3801   & 0.00077249\\
-            H6      & 0.67202   & 0.046855      & 14.342    & 3.2e-40   \\
-            H7      & 0.67629   & 0.046855      & 14.434    & 1.2062e-40\\
+            H1-swap      & 0.022291  & 0.046332      & 0.48112   & 0.63061   \\
+            H2-exchange      & -0.036047 & 0.046332      & -0.77801  & 0.43687   \\
+            H3-2opt      &-0.00069693& 0.046332      & -0.015042 & 0.988     \\
+            H4-random      & 0.23891   & 0.046855      & 5.099     & 4.6112e-07\\
+            H5-cluster      & -0.15838  & 0.046855      & -3.3801   & 0.00077249\\
+            H6-greedy      & 0.67202   & 0.046855      & 14.342    & 3.2e-40   \\
+            H7-similar      & 0.67629   & 0.046855      & 14.434    & 1.2062e-40\\
             Inst1   & 0.64176   & 0.073257      & 8.7605    & 2.0732e-17\\
             Inst2   & 0.16783   & 0.073257      & 2.291     & 0.022316  \\
             Inst3   & 1.837     & 0.073257      & 25.077    & 6.2887e-95\\
@@ -377,19 +377,19 @@ Also here we used the instances as a random effect.
 
 \subsubsection{Observations from initial evaluation of heuristics}
 Ranking the combinations in \cref{fig:rank} does indicate that using all heuristics are giving a performance in the middle of all rankings which indicates we should use a combination that excludes some heuristics. 
-It also shows that H6 and H7 are usually included in the better performing combinations. \par 
+It also shows that H6-greedy and H7-similar are usually included in the better performing combinations. \par 
 The results from \cref{tab:anovaNormal} and \cref{tab:regrNormal} split our heuristics into two groups. 
 The first obvious group are the significant heuristics.
 The ANOVA results from table \cref{tab:anovaAvrgNormal} and \cref{tab:anovaBestNormal} tells us that four heuristics, H4-H7, have a significant impact on the result using a $95\%$ confidence interval.
-However from \cref{tab:regrAvrgNormal} and \cref{tab:regrBestNormal} we see that only 3 heuristics, H4, H6 and H7, have a positive estimated coefficient, ie. a positive significant influence, for both average and best improvement (H1 is positive for best but negative for average improvement).
-From this we can safely conclude that H4, H6 and H7 are significantly, positively improving the result of our model on average and they are good at finding good soolutions. 
-H5 is significantly influencing the result but with a negative coefficient. 
+However from \cref{tab:regrAvrgNormal} and \cref{tab:regrBestNormal} we see that only 3 heuristics, H4-random, H6-greedy and H7-similar, have a positive estimated coefficient, ie. a positive significant influence, for both average and best improvement (H1-swap is positive for best but negative for average improvement).
+From this we can safely conclude that H4-random, H6-greedy and H7-similar are significantly, positively improving the result of our model on average and they are good at finding good soolutions. 
+H5-cluster is significantly influencing the result but with a negative coefficient. 
 This leads us to conclude that this heuristic either performs poorly alone, or has a negative influence on the model, to figure out which we need to do further testing.
 \par
-Regarding the remaining heursitics, H1, H2, and H3, we can safely conclude that they are not contributing singificantly on the result on their own, ie. an algorithm containing only these heuristics are not having a significantly positive impact on the results using a $95\%$ confidence interval.
+Regarding the remaining heursitics, H1-swap, H2-exchange, and H3-2opt, we can safely conclude that they are not contributing singificantly on the result on their own, ie. an algorithm containing only these heuristics are not having a significantly positive impact on the results using a $95\%$ confidence interval.
 However it could be that they have a positive effect in on the result if they are used in combination with the significant heuristics.
 We therefore observe that we need further testing to know if these heuristics have a positive or negative influence on the result in combination with other heuristics.
-We refer to the heuristics H1,H2,H3 and H5 as the undecided group, or G in our further evaluation of the heuristics.
+We refer to the heuristics H1-swap, H2-exchange, H3-2opt and H5-cluster as the undecided group, or G in our further evaluation of the heuristics.
 
 \subsection{Further evaluation of heuristics}
 \label{sec:evalH2}
@@ -485,7 +485,7 @@ We did this to see if a combination of G and the significant heuristics could he
 \end{table}
 
 The results are summarized in table \ref{tab:anovaGroup} and \cref{tab:regrGroup}. 
-As an example a source of G+H4, contains all observations where at least one of the undecided heuristics from G are combined exclusively with H4.
+As an example a source of G+H4, contains all observations where at least one of the undecided heuristics from G are combined exclusively with H4-random.
 
 \begin{table}
     \centering
@@ -548,22 +548,22 @@ The results from \cref{tab:tTestGroup} tells us that we cannot reject the null h
 This tells us that the heuristics from the undecided group (G) either have no significant impact on the result, or that the effect from some are nulling out the others. Further testing is needed to make any further conclusions. \par
 Table \ref{tab:anovaGroup} and \cref{tab:regrGroup} gives us further insight into our model.
 First of all the result from \cref{tab:anovaAvrgGroup} tells us that only two combinations of the undecided group and the significant variables have a significant impact on the result using a $95\%$ confidence interval.
-Using some heuristics from the undecided group combined with heuristic H6 and H7, aswell as H4 has a significant impact on the average improvement result.
+Using some heuristics from the undecided group combined with heuristic H6-greedy and H7-similar, aswell as H4-random has a significant impact on the average improvement result.
 From \cref{tab:regrAvrgGroup} we also see that the combinations are also getting a positive coefficient.
 We also observe that the $R^2 = 0.95$ is very high so this model explains the results very well and this supports the use of these heuristic combination in regards to the average improvement.
 \par
 The same combinations are significant and positive in reagards to the best improvement tabels \cref{tab:anovaBestGroup} and \cref{tab:regrBestGroup}.
-And even though more combinations are significant for best improvement, the combinations with highest positive estimated coefficients are still including H6 and H7, or H6 H7 and H4.
+And even though more combinations are significant for best improvement, the combinations with highest positive estimated coefficients are still including H6-greedy and H7-similar, or H6-greedy H7-similar and H4-random.
 We also observe here the increased $R^2 = 0.967$ which indicates that this model is explaining the result from best and average improvement very well.
-This could indicate that the conmbinations with H6, H7 and H4 are consistently contributing to the same positive results.
+This could indicate that the conmbinations with H6-greedy, H7-similar and H4-random are consistently contributing to the same positive results.
 \par
 The results from the further testing tells us that there are combinations of the undecided group and the significant heuristics that have a positive significant impact on the result of both average and best improvement. 
-It supports our results from \cref{sec:evalH1} of significant heuristics H6, H7 and H4 and leads us to conclude that there might be a positive influence from the undecided group heuristics, however further testing is nessecary to determine which heuristics should be included. 
+It supports our results from \cref{sec:evalH1} of significant heuristics H6-greedy, H7-similar and H4-random and leads us to conclude that there might be a positive influence from the undecided group heuristics, however further testing is nessecary to determine which heuristics should be included. 
 
 \subsection{Evaluation of individual heuristics}
 \label{sec:evalI}
-Until now, the heuristic H4, H6 and H7 have been proven significant.
-The heuristics H1, H2, H3 and H5 have been proven significant in combination with the significant heuristics but not alone.
+Until now, the heuristic H4-random, H6-greedy and H7-similar have been proven significant.
+The heuristics H1-swap, H2-exchange, H3-2opt and H5-cluster have been proven significant in combination with the significant heuristics but not alone.
 We continue refering to them as the undecided group heuristics or G. 
 \par
 We want to figure out which of the heuristics in the undecided group, if any, have a positive, or negative, influence on the result.
@@ -617,28 +617,28 @@ The results from the pairwise t-tests are summarized in \cref{tab:tTest}.
 \subsubsection{Observations from the results of the individual heuristic evaluations}
 The first thing we see from the t-tests is that the effect of the heuristics are cancelling eachother out, as some are left significant, and some are right significant.
 We go through each of the heuristics results from \cref{tab:tTest} here. \par
-For the heuristic H1 the population mean of both best and average improvement is not significantly different using a $95\%$ confidence interval. It follows then that the tails are also not significantly different. \par
-Regarding the results for heuristic H2 we reject the null hypothesis that the means are equal using a $95\%$ significanse interval for the average and best improvement regarding this heuristic. 
+For the heuristic H1-swap the population mean of both best and average improvement is not significantly different using a $95\%$ confidence interval. It follows then that the tails are also not significantly different. \par
+Regarding the results for heuristic H2-exchange we reject the null hypothesis that the means are equal using a $95\%$ significanse interval for the average and best improvement regarding this heuristic. 
 The left tail alternative hypothesis' that the means of $P^{H_2}_{HA}$ and $P^{H_2}_{HB}$ is lower than $P^{H_2}_{NA}$ and $P^{H_2}_{NB}$ are accepted, while the right tail alternative hypothesis is rejected for both best and average improvement.\par 
-The results of H3 show that the null hypothesis that the population mean of $P^{H_3}_{HA}$ is equal to the population mean of $P^{H_3}_{NA}$ is rejected and accepted for $P^{H_3}_{HB}$ and $P^{H_3}_{NB}$. The left tail alternative hypothesis that the means of $P^{H_3}_{HA}$ is with $95\%$ confidence lower than $P^{H_3}_{NA}$ , is accepted.\par 
-For H5 the null hypothesis is rejected for  $P^{H_5}_{HB}$ and  $P^{H_5}_{NB}$ and accepted for $P^{H_5}_{HA}$ and $P^{H_5}_{NA}$ . 
+The results of H3-2opt show that the null hypothesis that the population mean of $P^{H_3}_{HA}$ is equal to the population mean of $P^{H_3}_{NA}$ is rejected and accepted for $P^{H_3}_{HB}$ and $P^{H_3}_{NB}$. The left tail alternative hypothesis that the means of $P^{H_3}_{HA}$ is with $95\%$ confidence lower than $P^{H_3}_{NA}$ , is accepted.\par 
+For H5-cluster the null hypothesis is rejected for  $P^{H_5}_{HB}$ and  $P^{H_5}_{NB}$ and accepted for $P^{H_5}_{HA}$ and $P^{H_5}_{NA}$ . 
 The alternative hypothesis of the right tail of the best improvement, that the mean is significantly higher in $P^{H_5}_{HB}$ than  $P^{H_5}_{NB}$ is accepted.
 
-The results summarized above tells us that using H1 will have no effect on the outcome of the result. 
-Also H2 and H3 are significantly decreasing the average for both heuristics and also for best for H2. 
+The results summarized above tells us that using H1-swap will have no effect on the outcome of the result. 
+Also H2-exchange and H3-2opt are significantly decreasing the average for both heuristics and also for best for H2-exchange. 
 This indicates that it is not beneficial to include these heuristics in a model.
-Finally H5 is not affecting the average improvement however it is positively effecting the best improvement, indicating that it could be beneficial to include this heuristic.
+Finally H5-cluster is not affecting the average improvement however it is positively effecting the best improvement, indicating that it could be beneficial to include this heuristic.
 
 \subsection{Deciding on the final model composition}
 \label{sec:finComp}
 The results from \cref{sec:wild} tells us that our final model should include our wild algorithm. 
 This will influence our running time a little but give us much more reliable results.
 \par
-As for selecting heuristics to include, the results from section \cref{sec:evalH1} and \cref{sec:evalH2}, indicates that we need to include H4, H6 and H7 in our final model.
-We observed from our testing of the wild algorithm that the running time of H1 is significantly lower than our other heuristics \cref{fig:wildRes}. Even though \cref{sec:evalI} showed us that H1 had no significant effect on the model, the low running time is leading us to rather include this heuristic than not, to lower the running time of our algorithm overall.
+As for selecting heuristics to include, the results from section \cref{sec:evalH1} and \cref{sec:evalH2}, indicates that we need to include H4-random, H6-greedy and H7-similar in our final model.
+We observed from our testing of the wild algorithm that the running time of H1-swap is significantly lower than our other heuristics \cref{fig:wildRes}. Even though \cref{sec:evalI} showed us that H1-swap had no significant effect on the model, the low running time is leading us to rather include this heuristic than not, to lower the running time of our algorithm overall.
 It will as \cref{sec:evalI} also showed have no significant negative effect on the results of our model.
-H5 is also not effecting the average improvement of our model but it significantly effects the result of the best improvement found. This tells us that we should include this heuristic in our final composition. \par
-The results from \cref{sec:evalH2} indicated that a combination of H4, H6 and H7 + some of combination of the undecided group heuristics is significantly effecting both the average and best improvement. Therefore our final model composition will be the ALNS algorithm with the wild algorithm and heuristics H1, H4, H5, H6 and H7.
+H5-cluster is also not effecting the average improvement of our model but it significantly effects the result of the best improvement found. This tells us that we should include this heuristic in our final composition. \par
+The results from \cref{sec:evalH2} indicated that a combination of H4-random, H6-greedy and H7-similar + some of combination of the undecided group heuristics is significantly effecting both the average and best improvement. Therefore our final model composition will be the ALNS algorithm with the wild algorithm and heuristics H1-swap, H4-random, H5-cluster, H6-greedy and H7-similar.
 
 \section{Final results}
 \label{sec:evalFin}
@@ -774,12 +774,12 @@ However our average solutions are within a $5\%$ range of the best solutions.
 This means we are consistently hitting solutions close to the best known.
 \par
 The \cref{fig:heuristics} show the performance of our heuristics.
-\Cref{fig:operators12} show that for smaller instances the heuristics H1, H5 aswell as H7 are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
-The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that H6 and H7 are the most important heuristics that our algorithm are giving more weight than the others and that they are consistently outperforming the other heuristics in regards to finding new and better solutions. 
-We do however see several spikes from the heuristic H5 and H1 up until the best solution is found (blue line). 
+\Cref{fig:operators12} show that for smaller instances the heuristics H1-swap, H5-cluster aswell as H7-similar are getting higher weights before we find the optimal solution. This indicates that they are important for the smaller instances.
+The remaining figures \ref{fig:operators35}, \ref{fig:operators80} and \ref{fig:operators150} indicate that H6-greedy and H7-similar are the most important heuristics that our algorithm are giving more weight than the others and that they are consistently outperforming the other heuristics in regards to finding new and better solutions. 
+We do however see several spikes from the heuristic H5-cluster and H1-swap up until the best solution is found (blue line). 
 Which indicate that they are contributing on possibly moving to new and/or better solutions from time to time. 
-The H1, H5, and H4 are doing this less consistently than H6 an H7 for larger instance sets, but that doesnt mean that they are not important for the final result. \par
-These observations also support our observations from \cref{sec:evalH1} and \cref{sec:evalH2}, where H6 and H7 are outperforming the other heuristics. 
+The H1-swap, H5-cluster, and H4-random are doing this less consistently than H6-greedy an H7-similar for larger instance sets, but that doesnt mean that they are not important for the final result. \par
+These observations also support our observations from \cref{sec:evalH1} and \cref{sec:evalH2}, where H6-greedy and H7-similar are outperforming the other heuristics. 
 Another observation from \cref{tab:finRes} is that clearly our adaptive weights are important for our search as size and problem constraints influence how the heuristics are performing and thereby changing how our model gives them weight. 
 
 \biblio                                                         

@@ -188,10 +188,13 @@ INPUT ./tex/chapter2.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT ./tex/chapter3.tex
 INPUT ./tex/chapter3.tex
-INPUT ./tex/chapter4.tex
-INPUT ./tex/chapter4.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
+INPUT img/diver_intensification.png
+INPUT ./img/diver_intensification.png
+INPUT ./img/diver_intensification.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT ./tex/chapter4.tex
+INPUT ./tex/chapter4.tex
 INPUT img/solution.png
 INPUT ./img/solution.png
 INPUT ./img/solution.png
