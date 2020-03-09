@@ -4,21 +4,19 @@
     <list default="true" id="1cf20c0c-4780-49e4-b417-327b273a59d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../presentation/.~lock.Operators_illustrations.odp#" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/.~lock.Operators_illustrations.odp#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/.~lock.feedback chapter4.odt#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qna/feedback chapter4.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/feedback chapter4.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../presentation/Operators_illustrations.odp" beforeDir="false" afterPath="$PROJECT_DIR$/../presentation/Operators_illustrations.odp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../qna/17.01.19 Q&amp;A.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/cohesion.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/cohesion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/separation.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/separation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report/img/solution.png" beforeDir="false" afterPath="$PROJECT_DIR$/../report/img/solution.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.blg" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.blg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/main.fls" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.fls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.lof" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../report/main.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../report/tex/chapter3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter3.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/chapter5.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/chapter5.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../report/tex/references.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../report/tex/references.bib" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -384,7 +382,8 @@
       <workItem from="1572518474901" duration="834000" />
       <workItem from="1572879783097" duration="2087000" />
       <workItem from="1573070518953" duration="2260000" />
-      <workItem from="1573431236698" duration="1223000" />
+      <workItem from="1573431236698" duration="1720000" />
+      <workItem from="1574461814144" duration="506000" />
     </task>
     <servers />
   </component>

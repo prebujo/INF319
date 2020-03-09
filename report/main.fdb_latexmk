@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1573434470 "main.aux" "main.bbl" "main" 1573436598
+["bibtex main"] 1573471296 "main.aux" "main.bbl" "main" 1573824368
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1480098435 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "main.aux" 1573436370 42571 6cb0317c4e0ce17c50b835e6021aee97 ""
+  "main.aux" 1573471293 42787 17834c4f0a8be3bf58f7642acd31379e ""
   "main.bcf" 0 -1 0 ""
   "tex/references.bib" 1573431826 11359 c0b6d3f2276eec2556598b9cae27e4d1 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1573436598 "main.tex" "main.pdf" "main" 1573436598
+["pdflatex"] 1573471292 "main.tex" "main.pdf" "main" 1573824368
   "/etc/texmf/web2c/texmf.cnf" 1547821982 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
@@ -141,24 +141,24 @@
   "img/uib_2.png" 1568664711 106002 c1cabd114d7c2d00d5fe16ea2d0dc1e1 ""
   "img/uniform_coordinates.png" 1568889370 8362 d24d02fbee7b8557c0bf01ce542fc0d8 ""
   "img/weight_probability.png" 1573060391 49084 258ee82757363e42bb5fb93102be40d9 ""
-  "main.aux" 1573436370 42571 6cb0317c4e0ce17c50b835e6021aee97 ""
-  "main.bbl" 1573434470 9910 218258f35511ef96b7d086627bc7a06e "bibtex main"
-  "main.lof" 1573436370 3979 c0bca6b324ad1147b1f09d4ef88f83dc ""
-  "main.out" 1573436370 2747 76310c991566449caad7113d83c7eb80 ""
+  "main.aux" 1573471293 42787 17834c4f0a8be3bf58f7642acd31379e ""
+  "main.bbl" 1573471296 9910 218258f35511ef96b7d086627bc7a06e "bibtex main"
+  "main.lof" 1573471293 3979 c456deb27ff9db1331f7d5095645a8cc ""
+  "main.out" 1573471293 2808 b556fbb7b6f1a5881b700bb5012ec486 ""
   "main.tex" 1572971733 1451 6a85716aeceb7a0823a4a4d87bb0cbe6 ""
-  "main.toc" 1573436370 4683 14103ec2bce888cd253b58f6710018ec ""
+  "main.toc" 1573471293 4757 cf7669c65c7918efb5ca4a83ba150140 ""
   "tex/abstract.tex" 1568665614 522 44a155ce56fb7bc746982fb98eade6a7 ""
   "tex/appendix.tex" 1568665444 522 07b5c8b06c74451ce2d2000b8a84b0d1 ""
   "tex/chapter1.tex" 1572970467 8153 fd98554c42a6652d6362d5f9bf2db78c ""
   "tex/chapter2.tex" 1571837839 18806 a1b3a8d9ea3e0c9f0a84ac02568125fe ""
-  "tex/chapter3.tex" 1573436597 8239 bfd01cf984df125f2bf942e3aa3546dd ""
+  "tex/chapter3.tex" 1573471300 8282 a4e84060f2fed72fc9b74bf085f1791c ""
   "tex/chapter4.tex" 1573425607 39647 99a39c919e85f5b1b083aa859c9d7523 ""
   "tex/chapter5.tex" 1573352862 64437 a138544759dd30377c04bf96e6b3c0f8 ""
   "tex/chapter6.tex" 1568711490 525 8948d99e540654e2e5b86074f7cc4584 ""
   (generated)
-  "main.aux"
   "main.pdf"
   "main.toc"
   "main.out"
   "main.lof"
+  "main.aux"
   "main.log"

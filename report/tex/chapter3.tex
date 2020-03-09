@@ -11,6 +11,9 @@ The first part, \cref{sec:requirements} will cover metaheuristics and requiremen
 The next \cref{sec:intens} will present approaches that help intensify the search. 
 The final part \cref{sec:divers} will focus on approaches that helps a model to diversify the search for solutions. The chapter will lead us to the solution method we have chosen which is presented in detail in \cref{ch:appr}.
 
+\section{Exact approach}
+\label{sec:exact}
+
 \section{Solution method requirements}
 \label{sec:requirements}
 A metaheuristic is a high-level problem-independent algorithmic framework that provides a set of guidelines or strategies to develop heuristic optimization algorithms \cite{sorensen13}. 
@@ -39,7 +42,7 @@ In \cref{fig:sification} we show how intensification might work on a given solut
 
 Local search heuristics like the ones implemented by \cite{nanry00} and \cite{li03} are build using intensification heuristics that perform smaller moves such as moving an order from one vehicle to another, or swapping two orders with eachother. 
 We implemented two similar heuristics in \cref{sec:swap} and \cref{sec:exch} which are performing small efficient intensification moves. \par
-\cite{lin65} implemented a 2-opt heuristic for travelling salesman problem. The 2-opt heuristic is a very intensification operator as it focuses on one vehicles routes neighbourhood through several iterations and ends up returning the local optimum for that vehicle route. We have implemented a version of the 2-opt heuristic in \cref{sec:2opt}.
+\cite{lin65} implemented a 2-opt heuristic for travelling salesman problem. The 2-opt heuristic is a very intensification heuristic as it focuses on one vehicles routes neighbourhood through several iterations and ends up returning the local optimum for that vehicle route. We have implemented a version of the 2-opt heuristic in \cref{sec:2opt}.
 
 \section{Diversification}
 \label{sec:divers}
@@ -90,8 +93,8 @@ Then the solution $s$ is updated if the solution is accepted.
 In \cref{sec:weight} we have used similar adaptive weights to allow our model to automatically keep a good balance between diversification and intensification. \par
 
 The tabu search implemented by \cite{glover86} uses a memory, or a tabu list, which remembers parts of the search which are then being cut off, or tabu'ed.
-This type of behaivior helps the algorithm to diversify and avoid searching in a cycle by performing the same type of move. 
-We have chosen to remember which solutions we have visited and not rewarding this type of behaivior in our adaptive weights. \par
+This type of behavior helps the algorithm to diversify and avoid searching in a cycle by performing the same type of move. 
+We have chosen to remember which solutions we have visited and not rewarding this type of behavior in our adaptive weights. \par
 
 \cite{kirkpatrick83} implemented a simmulated anealing algorithm applied to the travelling salesmen problem. Simmulated anealing helps diversify a search by sometimes accepting worse solutions based on a temperature $T$. 
 The temperature $T$ is on a cooling down schedule and the longer the search goes on the lower the chances of acceptance becomes. 

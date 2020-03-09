@@ -3,53 +3,54 @@
 \contentsline {section}{\numberline {1.2}Litterature review}{6}{section.1.2}
 \contentsline {chapter}{\numberline {2}Model Description}{9}{chapter.2}
 \contentsline {chapter}{\numberline {3}Solution Methods}{15}{chapter.3}
-\contentsline {section}{\numberline {3.1}Solution method requirements}{15}{section.3.1}
-\contentsline {section}{\numberline {3.2}Intensification}{15}{section.3.2}
-\contentsline {section}{\numberline {3.3}Diversification}{16}{section.3.3}
-\contentsline {chapter}{\numberline {4}A 4th party logistics optimizer}{18}{chapter.4}
-\contentsline {section}{\numberline {4.1}The 4th party logistic optimizer}{18}{section.4.1}
-\contentsline {section}{\numberline {4.2}Solution representation}{18}{section.4.2}
-\contentsline {section}{\numberline {4.3}Initial Solution}{20}{section.4.3}
-\contentsline {section}{\numberline {4.4}Heuristics}{20}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Swap}{20}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}3-exchange}{21}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}2-opt}{21}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Random fit}{23}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Clustering}{23}{subsection.4.4.5}
-\contentsline {subsubsection}{The Siluette coefficient}{24}{section*.10}
-\contentsline {subsubsection}{Hirarchial single linkage clustering}{25}{section*.12}
-\contentsline {subsubsection}{Removing and inserting elements based on clusters}{25}{section*.14}
-\contentsline {subsection}{\numberline {4.4.6}Greedy}{27}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.4.7}Similar Regret}{27}{subsection.4.4.7}
-\contentsline {section}{\numberline {4.5}Choosing a heuristic}{30}{section.4.5}
-\contentsline {section}{\numberline {4.6}Adaptive weight adjustment}{30}{section.4.6}
-\contentsline {section}{\numberline {4.7}Acceptance criteria and stopping condition}{31}{section.4.7}
-\contentsline {section}{\numberline {4.8}Wild escape algorithm}{32}{section.4.8}
-\contentsline {chapter}{\numberline {5}Computational Results}{33}{chapter.5}
-\contentsline {section}{\numberline {5.1}Experimental Setup}{33}{section.5.1}
-\contentsline {subsubsection}{Technical Setup}{33}{section*.17}
-\contentsline {subsubsection}{Analytics Setup}{34}{section*.18}
-\contentsline {section}{\numberline {5.2}Instances}{34}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real world data}{34}{subsection.5.2.1}
-\contentsline {subsubsection}{Random locations based on real geographical data}{35}{section*.19}
-\contentsline {subsection}{\numberline {5.2.2}Generated Instances}{36}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Initial Results}{36}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{37}{subsection.5.3.1}
-\contentsline {subsubsection}{Results of escape modifications}{37}{section*.21}
-\contentsline {subsubsection}{Observations of results from wild escape algorithm}{37}{section*.23}
-\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{38}{subsection.5.3.2}
-\contentsline {subsubsection}{Ranking the combinations}{38}{section*.24}
-\contentsline {subsubsection}{ANOVA and regression analysis}{39}{section*.26}
-\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{40}{section*.29}
-\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{41}{subsection.5.3.3}
-\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{41}{section*.30}
-\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{42}{section*.34}
-\contentsline {subsection}{\numberline {5.3.4}Evaluation of individual heuristics}{43}{subsection.5.3.4}
-\contentsline {subsubsection}{T-tests of individual heuristics}{44}{section*.35}
-\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{44}{section*.37}
-\contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{45}{subsection.5.3.5}
-\contentsline {section}{\numberline {5.4}Final results}{45}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{46}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{46}{subsection.5.4.2}
-\contentsline {chapter}{\numberline {6}Conclusions}{49}{chapter.6}
-\contentsline {chapter}{\numberline {A}Appendix}{50}{appendix.A}
+\contentsline {section}{\numberline {3.1}Exact approach}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}Solution method requirements}{15}{section.3.2}
+\contentsline {section}{\numberline {3.3}Intensification}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}Diversification}{16}{section.3.4}
+\contentsline {chapter}{\numberline {4}A 4th party logistics optimizer}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}The 4th party logistic optimizer}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Solution representation}{19}{section.4.2}
+\contentsline {section}{\numberline {4.3}Initial Solution}{21}{section.4.3}
+\contentsline {section}{\numberline {4.4}Heuristics}{21}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Swap}{21}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}3-exchange}{22}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}2-opt}{22}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Random fit}{24}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Clustering}{24}{subsection.4.4.5}
+\contentsline {subsubsection}{The Siluette coefficient}{25}{section*.10}
+\contentsline {subsubsection}{Hirarchial single linkage clustering}{26}{section*.12}
+\contentsline {subsubsection}{Removing and inserting elements based on clusters}{26}{section*.14}
+\contentsline {subsection}{\numberline {4.4.6}Greedy}{28}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Similar Regret}{28}{subsection.4.4.7}
+\contentsline {section}{\numberline {4.5}Choosing a heuristic}{31}{section.4.5}
+\contentsline {section}{\numberline {4.6}Adaptive weight adjustment}{31}{section.4.6}
+\contentsline {section}{\numberline {4.7}Acceptance criteria and stopping condition}{32}{section.4.7}
+\contentsline {section}{\numberline {4.8}Wild escape algorithm}{33}{section.4.8}
+\contentsline {chapter}{\numberline {5}Computational Results}{34}{chapter.5}
+\contentsline {section}{\numberline {5.1}Experimental Setup}{34}{section.5.1}
+\contentsline {subsubsection}{Technical Setup}{34}{section*.17}
+\contentsline {subsubsection}{Analytics Setup}{35}{section*.18}
+\contentsline {section}{\numberline {5.2}Instances}{35}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Generate Instances based on real world data}{35}{subsection.5.2.1}
+\contentsline {subsubsection}{Random locations based on real geographical data}{36}{section*.19}
+\contentsline {subsection}{\numberline {5.2.2}Generated Instances}{37}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Initial Results}{37}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Evaluation of the wild algorithm}{38}{subsection.5.3.1}
+\contentsline {subsubsection}{Results of escape modifications}{38}{section*.21}
+\contentsline {subsubsection}{Observations of results from wild escape algorithm}{38}{section*.23}
+\contentsline {subsection}{\numberline {5.3.2}Initial evaluation of heuristics}{39}{subsection.5.3.2}
+\contentsline {subsubsection}{Ranking the combinations}{39}{section*.24}
+\contentsline {subsubsection}{ANOVA and regression analysis}{40}{section*.26}
+\contentsline {subsubsection}{Observations from initial evaluation of heuristics}{41}{section*.29}
+\contentsline {subsection}{\numberline {5.3.3}Further evaluation of heuristics}{42}{subsection.5.3.3}
+\contentsline {subsubsection}{Evaluation of undecided heuristics as a group}{42}{section*.30}
+\contentsline {subsubsection}{Observations from results of the heuristics further evaluation}{43}{section*.34}
+\contentsline {subsection}{\numberline {5.3.4}Evaluation of individual heuristics}{44}{subsection.5.3.4}
+\contentsline {subsubsection}{T-tests of individual heuristics}{45}{section*.35}
+\contentsline {subsubsection}{Observations from the results of the individual heuristic evaluations}{45}{section*.37}
+\contentsline {subsection}{\numberline {5.3.5}Deciding on the final model composition}{46}{subsection.5.3.5}
+\contentsline {section}{\numberline {5.4}Final results}{46}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Evaluation of final model}{47}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Observations of results the final composition}{47}{subsection.5.4.2}
+\contentsline {chapter}{\numberline {6}Conclusions}{50}{chapter.6}
+\contentsline {chapter}{\numberline {A}Appendix}{51}{appendix.A}

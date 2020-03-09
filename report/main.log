@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  11 NOV 2019 02:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.20)  11 NOV 2019 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,7 +504,7 @@ LaTeX Info: Redefining \nameref on input line 37.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<img/uib_2.png, id=164, 153.6942pt x 150.3216pt>
+<img/uib_2.png, id=168, 153.6942pt x 150.3216pt>
 File: img/uib_2.png Graphic file (type png)
 <use img/uib_2.png>
 Package pdftex.def Info: img/uib_2.png  used on input line 39.
@@ -530,7 +530,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -538,7 +538,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -546,7 +546,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <argument> ...\relax $\@@underline {\hbox {T_{1p}}
                                                   }\mathsurround \z@ $\relax...
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -557,7 +557,7 @@ deleted material, e.g., by typing `I$}'.
 ! Extra }, or forgotten $.
 <argument> ...relax $\@@underline {\hbox {T_{1p}}}
                                                   \mathsurround \z@ $\relax ...
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -568,7 +568,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -576,7 +576,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -584,7 +584,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -592,7 +592,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <argument> ...\relax $\@@underline {\hbox {T_{2p}}
                                                   }\mathsurround \z@ $\relax...
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -603,7 +603,7 @@ deleted material, e.g., by typing `I$}'.
 ! Extra }, or forgotten $.
 <argument> ...relax $\@@underline {\hbox {T_{2p}}}
                                                   \mathsurround \z@ $\relax ...
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -614,7 +614,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -622,7 +622,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -633,7 +633,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -644,7 +644,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -655,7 +655,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -666,7 +666,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -677,7 +677,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.12 ...ndow sets.\relax }}{29}{figure.caption.15}
+l.12 ...ndow sets.\relax }}{30}{figure.caption.15}
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -819,17 +819,20 @@ LaTeX Warning: Reference `eq:12' on page 14 undefined on input line 199.
 
 ) (./tex/chapter3.tex [14]
 Chapter 3.
-<img/diver_intensification.png, id=459, 1091.07625pt x 581.17125pt>
+<img/diver_intensification.png, id=464, 1091.07625pt x 581.17125pt>
 File: img/diver_intensification.png Graphic file (type png)
 <use img/diver_intensification.png>
-Package pdftex.def Info: img/diver_intensification.png  used on input line 29.
+Package pdftex.def Info: img/diver_intensification.png  used on input line 32.
 (pdftex.def)             Requested size: 341.43436pt x 181.86386pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [15
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 55.
-[16 <./img/diver_intensification.png>]) (./tex/chapter4.tex [17]
+put line 58.
+[16 <./img/diver_intensification.png>] [17]) (./tex/chapter4.tex [18]
 Chapter 4.
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) 
 has been already used, duplicate ignored
@@ -907,15 +910,15 @@ red
                    \relax 
 l.41             \If
                      {$accept(s', s)$}
-<img/solution.png, id=535, 746.79pt x 403.5075pt>
+<img/solution.png, id=544, 746.79pt x 403.5075pt>
 File: img/solution.png Graphic file (type png)
 <use img/solution.png>
 Package pdftex.def Info: img/solution.png  used on input line 66.
 (pdftex.def)             Requested size: 277.41176pt x 149.89267pt.
-[18
+[19
 
-] [19 <./img/solution.png>]
-<img/swap_ill.png, id=560, 1196.47pt x 406.51875pt>
+] [20 <./img/solution.png>]
+<img/swap_ill.png, id=570, 1196.47pt x 406.51875pt>
 File: img/swap_ill.png Graphic file (type png)
 <use img/swap_ill.png>
 Package pdftex.def Info: img/swap_ill.png  used on input line 100.
@@ -928,13 +931,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
 Underfull \vbox (badness 1354) has occurred while \output is active []
 
-[20]
-<img/3-exchange_ill.png, id=567, 1200.485pt x 417.56pt>
+[21]
+<img/3-exchange_ill.png, id=576, 1200.485pt x 417.56pt>
 File: img/3-exchange_ill.png Graphic file (type png)
 <use img/3-exchange_ill.png>
 Package pdftex.def Info: img/3-exchange_ill.png  used on input line 113.
 (pdftex.def)             Requested size: 426.79134pt x 148.44827pt.
-<img/2-opt_ill.png, id=575, 1127.21124pt x 384.43625pt>
+<img/2-opt_ill.png, id=584, 1127.21124pt x 384.43625pt>
 File: img/2-opt_ill.png Graphic file (type png)
 <use img/2-opt_ill.png>
 Package pdftex.def Info: img/2-opt_ill.png  used on input line 128.
@@ -1020,7 +1023,7 @@ icate ignored
 <to be read again> 
                    \relax 
 l.153         \State
-                     [21 <./img/swap_ill.png> <./img/3-exchange_ill.png>] [22 <
+                     [22 <./img/swap_ill.png> <./img/3-exchange_ill.png>] [23 <
 ./img/2-opt_ill.png>]pdfTeX warning (ext4): destination with the same identifie
 r (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -1103,13 +1106,13 @@ ame identifier (name{ALG@line.13}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.190         \State
-                     [23]
-<img/cohesion.png, id=598, 291.0875pt x 247.92625pt>
+                     [24]
+<img/cohesion.png, id=607, 291.0875pt x 247.92625pt>
 File: img/cohesion.png Graphic file (type png)
 <use img/cohesion.png>
 Package pdftex.def Info: img/cohesion.png  used on input line 222.
 (pdftex.def)             Requested size: 149.37956pt x 127.23137pt.
-<img/separation.png, id=599, 497.86pt x 226.8475pt>
+<img/separation.png, id=608, 497.86pt x 226.8475pt>
 File: img/separation.png Graphic file (type png)
 <use img/separation.png>
 Package pdftex.def Info: img/separation.png  used on input line 229.
@@ -1128,8 +1131,8 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[24 <./img/cohesion.png> <./img/separation.png>]
-<img/single_linkage.png, id=610, 1289.81876pt x 452.69125pt>
+[25 <./img/cohesion.png> <./img/separation.png>]
+<img/single_linkage.png, id=620, 1289.81876pt x 452.69125pt>
 File: img/single_linkage.png Graphic file (type png)
 <use img/single_linkage.png>
 Package pdftex.def Info: img/single_linkage.png  used on input line 268.
@@ -1214,7 +1217,7 @@ cate ignored
 <to be read again> 
                    \relax 
 l.298         \State
-                     [25 <./img/single_linkage.png>]
+                     [26 <./img/single_linkage.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 318.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -1227,7 +1230,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 334--336
 
  []
 
-[26]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
+[27]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1323,8 +1326,8 @@ mr/m/n/12 (1 \OMS/cmsy/m/n/12 ^^@ []\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^\G[]
 T1/cmr/m/n/12 + \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )
  []
 
-[27]
-<img/timewindows.png, id=636, 1192.455pt x 541.02126pt>
+[28]
+<img/timewindows.png, id=645, 1192.455pt x 541.02126pt>
 File: img/timewindows.png Graphic file (type png)
 <use img/timewindows.png>
 Package pdftex.def Info: img/timewindows.png  used on input line 434.
@@ -1431,13 +1434,13 @@ l.461         \Until
 <to be read again> 
                    \relax 
 l.462         \State
-                     [28] [29 <./img/timewindows.png>] [30]
-<img/weight_probability.png, id=673, 713.66624pt x 414.54875pt>
+                     [29] [30 <./img/timewindows.png>] [31]
+<img/weight_probability.png, id=683, 713.66624pt x 414.54875pt>
 File: img/weight_probability.png Graphic file (type png)
 <use img/weight_probability.png>
 Package pdftex.def Info: img/weight_probability.png  used on input line 528.
 (pdftex.def)             Requested size: 298.75262pt x 173.53366pt.
-[31 <./img/weight_probability.png>]
+[32 <./img/weight_probability.png>]
 
 LaTeX Warning: Reference `line:escpCond' on page 1 undefined on input line 557.
 
@@ -1488,32 +1491,32 @@ sed, duplicate ignored
 <to be read again> 
                    \relax 
 l.572         \State
-                     \Return $s$) (./tex/chapter5.tex [32]
+                     \Return $s$) (./tex/chapter5.tex [33]
 Chapter 5.
-[33
+[34
 
-] [34]
-<img/europe_coordinates.png, id=756, 737.75626pt x 604.2575pt>
+] [35]
+<img/europe_coordinates.png, id=765, 737.75626pt x 604.2575pt>
 File: img/europe_coordinates.png Graphic file (type png)
 <use img/europe_coordinates.png>
 Package pdftex.def Info: img/europe_coordinates.png  used on input line 93.
 (pdftex.def)             Requested size: 128.0387pt x 104.8615pt.
-<img/germany_coordinates.png, id=757, 602.25pt x 494.84875pt>
+<img/germany_coordinates.png, id=766, 602.25pt x 494.84875pt>
 File: img/germany_coordinates.png Graphic file (type png)
 <use img/germany_coordinates.png>
 Package pdftex.def Info: img/germany_coordinates.png  used on input line 100.
 (pdftex.def)             Requested size: 128.0387pt x 105.20493pt.
-<img/uniform_coordinates.png, id=758, 485.815pt x 409.53pt>
+<img/uniform_coordinates.png, id=767, 485.815pt x 409.53pt>
 File: img/uniform_coordinates.png Graphic file (type png)
 <use img/uniform_coordinates.png>
 Package pdftex.def Info: img/uniform_coordinates.png  used on input line 107.
 (pdftex.def)             Requested size: 128.0387pt x 107.93127pt.
-[35]
+[36]
 
 LaTeX Warning: Reference `sec:evalw' on page 1 undefined on input line 137.
 
-[36 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
-rm_coordinates.png>] [37] [38]
+[37 <./img/europe_coordinates.png> <./img/germany_coordinates.png> <./img/unifo
+rm_coordinates.png>] [38] [39]
 ! Undefined control sequence.
 l.221 \Fref
            {fig:rank} shows the ranking of each combination of heuristics fr...
@@ -1523,17 +1526,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<img/avrg_imp_rank.png, id=809, 1185.42876pt x 120.45pt>
+<img/avrg_imp_rank.png, id=818, 1185.42876pt x 120.45pt>
 File: img/avrg_imp_rank.png Graphic file (type png)
 <use img/avrg_imp_rank.png>
 Package pdftex.def Info: img/avrg_imp_rank.png  used on input line 234.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_imp_rank.png, id=810, 1185.42876pt x 120.45pt>
+<img/best_imp_rank.png, id=819, 1185.42876pt x 120.45pt>
 File: img/best_imp_rank.png Graphic file (type png)
 <use img/best_imp_rank.png>
 Package pdftex.def Info: img/best_imp_rank.png  used on input line 241.
 (pdftex.def)             Requested size: 405.45045pt x 41.19688pt.
-<img/best_avrg_imp_rank.png, id=811, 1185.42876pt x 120.45pt>
+<img/best_avrg_imp_rank.png, id=820, 1185.42876pt x 120.45pt>
 File: img/best_avrg_imp_rank.png Graphic file (type png)
 <use img/best_avrg_imp_rank.png>
 Package pdftex.def Info: img/best_avrg_imp_rank.png  used on input line 248.
@@ -1547,13 +1550,13 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[39 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
+[40 <./img/avrg_imp_rank.png> <./img/best_imp_rank.png> <./img/best_avrg_imp_ra
 nk.png>]
 Overfull \hbox (13.73978pt too wide) in paragraph at lines 352--370
  [][] 
  []
 
-[40] [41]
+[41] [42]
 Overfull \hbox (8.63997pt too wide) in paragraph at lines 441--457
  [][] 
  []
@@ -1563,11 +1566,11 @@ Overfull \hbox (6.85793pt too wide) in paragraph at lines 520--538
  [][] 
  []
 
-[42] [43] [44]
+[43] [44] [45]
 
 LaTeX Warning: Reference `fig:wildRes' on page 1 undefined on input line 638.
 
-[45]
+[46]
 ! You can't use `macro parameter character #' in restricted horizontal mode.
 <recently read> ##
                   
@@ -1598,45 +1601,45 @@ I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-<img/operators_4_ord.png, id=890, 716.6775pt x 408.52625pt>
+<img/operators_4_ord.png, id=899, 716.6775pt x 408.52625pt>
 File: img/operators_4_ord.png Graphic file (type png)
 <use img/operators_4_ord.png>
 Package pdftex.def Info: img/operators_4_ord.png  used on input line 716.
 (pdftex.def)             Requested size: 192.0548pt x 109.47449pt.
-<img/operators_12_ord.png, id=891, 716.6775pt x 415.5525pt>
+<img/operators_12_ord.png, id=900, 716.6775pt x 415.5525pt>
 File: img/operators_12_ord.png Graphic file (type png)
 <use img/operators_12_ord.png>
 Package pdftex.def Info: img/operators_12_ord.png  used on input line 723.
 (pdftex.def)             Requested size: 192.0548pt x 111.35735pt.
-<img/operators_35_ord.png, id=892, 714.67pt x 415.5525pt>
+<img/operators_35_ord.png, id=901, 714.67pt x 415.5525pt>
 File: img/operators_35_ord.png Graphic file (type png)
 <use img/operators_35_ord.png>
 Package pdftex.def Info: img/operators_35_ord.png  used on input line 730.
 (pdftex.def)             Requested size: 192.0548pt x 111.66805pt.
-<img/operators_80_ord.png, id=893, 716.6775pt x 414.54875pt>
+<img/operators_80_ord.png, id=902, 716.6775pt x 414.54875pt>
 File: img/operators_80_ord.png Graphic file (type png)
 <use img/operators_80_ord.png>
 Package pdftex.def Info: img/operators_80_ord.png  used on input line 737.
 (pdftex.def)             Requested size: 192.0548pt x 111.08836pt.
-<img/operators_150_ord.png, id=894, 716.6775pt x 412.54124pt>
+<img/operators_150_ord.png, id=903, 716.6775pt x 412.54124pt>
 File: img/operators_150_ord.png Graphic file (type png)
 <use img/operators_150_ord.png>
 Package pdftex.def Info: img/operators_150_ord.png  used on input line 744.
 (pdftex.def)             Requested size: 192.0548pt x 110.5504pt.
-[46] [47 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/operat
+[47] [48 <./img/operators_4_ord.png> <./img/operators_12_ord.png> <./img/operat
 ors_35_ord.png> <./img/operators_80_ord.png> <./img/operators_150_ord.png>]
 
 LaTeX Warning: Reference `fig:finRes' on page 1 undefined on input line 769.
 
-) (./tex/chapter6.tex [48]
+) (./tex/chapter6.tex [49]
 Chapter 6.
-) (./tex/appendix.tex [49
+) (./tex/appendix.tex [50
 
 ]
 Appendix A.
-) (./main.bbl [50
+) (./main.bbl [51
 
-] [51
+] [52
 
 ]
 Underfull \hbox (badness 1314) in paragraph at lines 192--196
@@ -1644,15 +1647,15 @@ Underfull \hbox (badness 1314) in paragraph at lines 192--196
 m/n/12 https : / / www . oracle . com /
  []
 
-[52])
+[53])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
-[53]
+[54]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
 (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 76310C991566449CAAD7113D83C7EB80;2747.
+(rerunfilecheck)             Checksum: B556FBB7B6F1A5881B700BB5012EC486;2808.
 
 LaTeX Warning: There were undefined references.
 
@@ -1662,10 +1665,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 12274 strings out of 492982
- 198227 string characters out of 6134896
+ 12279 strings out of 492982
+ 198285 string characters out of 6134896
  350143 words of memory out of 5000000
- 15397 multiletter control sequences out of 15000+600000
+ 15400 multiletter control sequences out of 15000+600000
  13339 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,21n,78p,674b,769s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1688,10 +1691,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (53 pages, 1018877 bytes).
+Output written on main.pdf (54 pages, 1019369 bytes).
 PDF statistics:
- 1069 PDF objects out of 1200 (max. 8388607)
- 960 compressed objects within 10 object streams
- 240 named destinations out of 1000 (max. 500000)
- 431 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1079 PDF objects out of 1200 (max. 8388607)
+ 969 compressed objects within 10 object streams
+ 242 named destinations out of 1000 (max. 500000)
+ 439 words of extra memory for PDF output out of 10000 (max. 10000000)
 
